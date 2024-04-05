@@ -16,6 +16,13 @@ spec:
         namespace: traefik-system
       interval: 1m
   values:
-    speaker:
-      frr:
-        enabled: true
+    ingressRoute:
+      dashboard:
+        matchRule: Host(`traefik.talos.omnilium.local`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
+        entryPoints:
+          - web
+          - websecure
+    ports:
+      websecure:
+        http3:
+          enabled: true
