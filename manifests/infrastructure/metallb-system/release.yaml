@@ -1,0 +1,21 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: metallb-system
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      chart: metallb
+      version: ">=0.14.4 <0.15.0"
+      sourceRef:
+        kind: HelmRepository
+        name: metallb
+        namespace: metallb-system
+      interval: 1m
+  values:
+    speaker:
+      frr:
+        enabled: true
