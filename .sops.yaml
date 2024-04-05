@@ -1,5 +1,5 @@
 creation_rules:
-  - path_regex: manifests/*.yaml
+  - path_regex: manifests/*
     encrypted_regex: ^(data|stringData)$
     pgp: >-
       0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
