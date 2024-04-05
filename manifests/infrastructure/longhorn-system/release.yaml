@@ -1,0 +1,23 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: longhorn
+  namespace: longhorn-system
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      chart: longhorn
+      version: ">=1.6.1 <1.7.0"
+      sourceRef:
+        kind: HelmRepository
+        name: longhorn
+        namespace: longhorn-system
+      interval: 1m
+  values:
+    ingress:
+      enabled: true
+      host: longhorn.talos.omnilium.local
+      tls: true
+      tlsSecret: longhorn-dashboard
