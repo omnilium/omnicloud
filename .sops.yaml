@@ -1,0 +1,14 @@
+creation_rules:
+  - path_regex: manifests/*.yaml
+    encrypted_regex: ^(data|stringData)$
+    pgp: >-
+      0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
+      1918B94484C52CDE42CA1B87E7812096B8DA4A52
+
+  - path_regex: talosconfig
+    encrypted_regex: ^key$
+    pgp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+
+  - path_regex: secrets.yaml
+    encrypted_regex: ^(secret|bootstraptoken|secretboxencryptionsecret|token|key)$
+    pgp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52

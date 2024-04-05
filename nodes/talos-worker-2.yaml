@@ -1,0 +1,17 @@
+machine:
+  install:
+    disk: /dev/sda
+  network:
+    hostname: talos-worker-2
+    interfaces:
+      - interface: enxbc241116fbc1
+        addresses:
+          - 10.0.0.4/16
+        routes:
+          - network: 0.0.0.0/0
+            gateway: 10.0.0.1
+    nameservers:
+      - 10.0.0.1
+  time:
+    servers:
+      - 10.0.0.1
