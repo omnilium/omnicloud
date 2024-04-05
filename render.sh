@@ -16,7 +16,6 @@ if [[ "$TYPE" == "worker" ]]; then
     --with-cluster-discovery=false \
     --with-secrets secrets.yaml \
     --config-patch @patches/cluster-name.yaml \
-    --config-patch @patches/mayastor.yaml \
     --config-patch @nodes/$1.yaml \
     --force \
     omnicloud \
