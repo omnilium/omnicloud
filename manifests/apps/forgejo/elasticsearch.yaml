@@ -19,3 +19,5 @@ spec:
               requests:
                 storage: 5Gi
             storageClassName: replicated
+  config:
+    node.store.allow_mmap: false
