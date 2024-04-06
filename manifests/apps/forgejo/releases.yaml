@@ -8,14 +8,13 @@ spec:
     chart:
         spec:
             chart: forgejo
-            version: '>=5.0.3 <5.1.0'
+            version: ">=5.0.3 <5.1.0"
             sourceRef:
                 kind: HelmRepository
                 name: forgejo
                 namespace: forgejo
             interval: 1m
     values:
-        replicaCount: 3
         podDisruptionBudget:
             minAvailable: 1
         service:
@@ -28,31 +27,13 @@ spec:
             hosts:
                 - host: git.omnilium.local
                   paths:
-                    - path: /
-                      pathType: Prefix
+                      - path: /
+                        pathType: Prefix
             tls:
                 - secretName: forgejo-tls
                   hosts:
-                    - git.omnilium.local
+                      - git.omnilium.local
         resources: {}
-        # affinity:
-        #   podAntiAffinity:
-        #     preferredDuringSchedulingIgnoredDuringExecution:
-        #       - weight: 100
-        #         podAffinityTerm:
-        #           labelSelector:
-        #             matchLabels:
-        #               app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-        #               app.kubernetes.io/instance: "{{ .Release.Name }}-{{ .Release.Namespace }}"
-        #           topologyKey: topology.omnilium.local/host
-        # topologySpreadConstraints:
-        #   - labelSelector:
-        #       matchLabels:
-        #         app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-        #         app.kubernetes.io/instance: "{{ .Release.Name }}-{{ .Release.Namespace }}"
-        #     topologyKey: topology.kubernetes.io/zone
-        #     maxSkew: 1
-        #     whenUnsatisfiable: ScheduleAnyway
         persistence:
             size: 25Gi
             storageClass: replicated
@@ -86,29 +67,29 @@ sops:
     pgp:
         - created_at: "2024-04-06T19:08:39Z"
           enc: |-
-            -----BEGIN PGP MESSAGE-----
+              -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwME63p0d/yeQj+7t7sZYgENSukjnPnYa4UqtLre1Iu7ik3W
-            EFKn1kUdSDFJNIX7US2YQdMU9MKSAkjiJsnnA9eD3F/HyDEpWCRjmT6DUaZy7+x7
-            ZDvTG5/7Eit12j4ZfWQ5MCK/5L3uHNgtt8DDSbFRW+K//kOK/RwhKWx4aHdJtrmx
-            9bB7+2/7Y8WNK7dQ55AR8NRoAQkCEMvi9R4aYGNOpXfJWfWOeXtaPcv5iVj4JZ8F
-            VmYpUo58CgJK13DVw7dSPU+l0i5h0NglGGD7Fh6lxdt5A01vHf+JzCnlgTHqvluY
-            OSq6RsSpqAu3Yrs6adh0aoS3HLwXsnppDcI=
-            =gfso
-            -----END PGP MESSAGE-----
+              hJ4D0dRkdsWQFPUSAwME63p0d/yeQj+7t7sZYgENSukjnPnYa4UqtLre1Iu7ik3W
+              EFKn1kUdSDFJNIX7US2YQdMU9MKSAkjiJsnnA9eD3F/HyDEpWCRjmT6DUaZy7+x7
+              ZDvTG5/7Eit12j4ZfWQ5MCK/5L3uHNgtt8DDSbFRW+K//kOK/RwhKWx4aHdJtrmx
+              9bB7+2/7Y8WNK7dQ55AR8NRoAQkCEMvi9R4aYGNOpXfJWfWOeXtaPcv5iVj4JZ8F
+              VmYpUo58CgJK13DVw7dSPU+l0i5h0NglGGD7Fh6lxdt5A01vHf+JzCnlgTHqvluY
+              OSq6RsSpqAu3Yrs6adh0aoS3HLwXsnppDcI=
+              =gfso
+              -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
         - created_at: "2024-04-06T19:08:39Z"
           enc: |-
-            -----BEGIN PGP MESSAGE-----
+              -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEcxl7LOkH+WzKeQ7TGO1mZWAhflZu4pceZwLdVNaXqICG
-            1vCbWIXKjHdDEfYxmqCDXGUNhHsrBUFGAWrXaLk6/GXlMaoYxx3RI9PUSr+3UMJv
-            lqQaxGhX6I2atj65dpzAMBlSI0P0m7qOMD7YWA/XgwbgP90UY0iupXFLzlkfnIuL
-            c8Oy48Eh/vEjFwpk1/GZPtRoAQkCENQ9Ldvfe3sk5jy8tY50DhEpWip5FulI/Zb6
-            mzUDYvazp+3fMCmJ9wffCxR9iD2zFMfJsR9SCJHZjip3hgnEPX78xPYoGyEO81DG
-            686uogaWKtB2bW+14+Zen0QwIIO+OkNuTps=
-            =6p36
-            -----END PGP MESSAGE-----
+              hJ4DLG005yzvDc8SAwMEcxl7LOkH+WzKeQ7TGO1mZWAhflZu4pceZwLdVNaXqICG
+              1vCbWIXKjHdDEfYxmqCDXGUNhHsrBUFGAWrXaLk6/GXlMaoYxx3RI9PUSr+3UMJv
+              lqQaxGhX6I2atj65dpzAMBlSI0P0m7qOMD7YWA/XgwbgP90UY0iupXFLzlkfnIuL
+              c8Oy48Eh/vEjFwpk1/GZPtRoAQkCENQ9Ldvfe3sk5jy8tY50DhEpWip5FulI/Zb6
+              mzUDYvazp+3fMCmJ9wffCxR9iD2zFMfJsR9SCJHZjip3hgnEPX78xPYoGyEO81DG
+              686uogaWKtB2bW+14+Zen0QwIIO+OkNuTps=
+              =6p36
+              -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|repmgrPassword|postgresPassword|adminPassword)$
     version: 3.8.1
@@ -123,7 +104,7 @@ spec:
     chart:
         spec:
             chart: tenant
-            version: '>=5.0.14 <5.1.0'
+            version: ">=5.0.14 <5.1.0"
             sourceRef:
                 kind: HelmRepository
                 name: minio
@@ -143,24 +124,24 @@ spec:
                   volumesPerServer: 1
                   size: 25Gi
                   labels:
-                    minio.omnilium.local/tenant: forgejo
+                      minio.omnilium.local/tenant: forgejo
                   affinity:
-                    podAntiAffinity:
-                        preferredDuringSchedulingIgnoredDuringExecution:
-                            - weight: 100
-                              podAffinityTerm:
-                                labelSelector:
-                                    matchLabels:
-                                        minio.omnilium.local/tenant: forgejo
-                                topologyKey: topology.omnilium.local/host
+                      podAntiAffinity:
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                              - weight: 100
+                                podAffinityTerm:
+                                    labelSelector:
+                                        matchLabels:
+                                            minio.omnilium.local/tenant: forgejo
+                                    topologyKey: topology.omnilium.local/host
                   resources: {}
                   topologySpreadConstraints:
-                    - labelSelector:
-                        matchLabels:
-                            minio.omnilium.local/tenant: forgejo
-                      topologyKey: topology.kubernetes.io/zone
-                      maxSkew: 1
-                      whenUnsatisfiable: ScheduleAnyway
+                      - labelSelector:
+                            matchLabels:
+                                minio.omnilium.local/tenant: forgejo
+                        topologyKey: topology.kubernetes.io/zone
+                        maxSkew: 1
+                        whenUnsatisfiable: ScheduleAnyway
         ingress:
             console:
                 enabled: true
@@ -170,7 +151,7 @@ spec:
                 tls:
                     - secretName: minio-console-tls
                       hosts:
-                        - forgejo.minio.omnilium.local
+                          - forgejo.minio.omnilium.local
 sops:
     kms: []
     gcp_kms: []
@@ -182,29 +163,29 @@ sops:
     pgp:
         - created_at: "2024-04-06T19:08:39Z"
           enc: |-
-            -----BEGIN PGP MESSAGE-----
+              -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwME63p0d/yeQj+7t7sZYgENSukjnPnYa4UqtLre1Iu7ik3W
-            EFKn1kUdSDFJNIX7US2YQdMU9MKSAkjiJsnnA9eD3F/HyDEpWCRjmT6DUaZy7+x7
-            ZDvTG5/7Eit12j4ZfWQ5MCK/5L3uHNgtt8DDSbFRW+K//kOK/RwhKWx4aHdJtrmx
-            9bB7+2/7Y8WNK7dQ55AR8NRoAQkCEMvi9R4aYGNOpXfJWfWOeXtaPcv5iVj4JZ8F
-            VmYpUo58CgJK13DVw7dSPU+l0i5h0NglGGD7Fh6lxdt5A01vHf+JzCnlgTHqvluY
-            OSq6RsSpqAu3Yrs6adh0aoS3HLwXsnppDcI=
-            =gfso
-            -----END PGP MESSAGE-----
+              hJ4D0dRkdsWQFPUSAwME63p0d/yeQj+7t7sZYgENSukjnPnYa4UqtLre1Iu7ik3W
+              EFKn1kUdSDFJNIX7US2YQdMU9MKSAkjiJsnnA9eD3F/HyDEpWCRjmT6DUaZy7+x7
+              ZDvTG5/7Eit12j4ZfWQ5MCK/5L3uHNgtt8DDSbFRW+K//kOK/RwhKWx4aHdJtrmx
+              9bB7+2/7Y8WNK7dQ55AR8NRoAQkCEMvi9R4aYGNOpXfJWfWOeXtaPcv5iVj4JZ8F
+              VmYpUo58CgJK13DVw7dSPU+l0i5h0NglGGD7Fh6lxdt5A01vHf+JzCnlgTHqvluY
+              OSq6RsSpqAu3Yrs6adh0aoS3HLwXsnppDcI=
+              =gfso
+              -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
         - created_at: "2024-04-06T19:08:39Z"
           enc: |-
-            -----BEGIN PGP MESSAGE-----
+              -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEcxl7LOkH+WzKeQ7TGO1mZWAhflZu4pceZwLdVNaXqICG
-            1vCbWIXKjHdDEfYxmqCDXGUNhHsrBUFGAWrXaLk6/GXlMaoYxx3RI9PUSr+3UMJv
-            lqQaxGhX6I2atj65dpzAMBlSI0P0m7qOMD7YWA/XgwbgP90UY0iupXFLzlkfnIuL
-            c8Oy48Eh/vEjFwpk1/GZPtRoAQkCENQ9Ldvfe3sk5jy8tY50DhEpWip5FulI/Zb6
-            mzUDYvazp+3fMCmJ9wffCxR9iD2zFMfJsR9SCJHZjip3hgnEPX78xPYoGyEO81DG
-            686uogaWKtB2bW+14+Zen0QwIIO+OkNuTps=
-            =6p36
-            -----END PGP MESSAGE-----
+              hJ4DLG005yzvDc8SAwMEcxl7LOkH+WzKeQ7TGO1mZWAhflZu4pceZwLdVNaXqICG
+              1vCbWIXKjHdDEfYxmqCDXGUNhHsrBUFGAWrXaLk6/GXlMaoYxx3RI9PUSr+3UMJv
+              lqQaxGhX6I2atj65dpzAMBlSI0P0m7qOMD7YWA/XgwbgP90UY0iupXFLzlkfnIuL
+              c8Oy48Eh/vEjFwpk1/GZPtRoAQkCENQ9Ldvfe3sk5jy8tY50DhEpWip5FulI/Zb6
+              mzUDYvazp+3fMCmJ9wffCxR9iD2zFMfJsR9SCJHZjip3hgnEPX78xPYoGyEO81DG
+              686uogaWKtB2bW+14+Zen0QwIIO+OkNuTps=
+              =6p36
+              -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|repmgrPassword|postgresPassword|adminPassword)$
     version: 3.8.1
