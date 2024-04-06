@@ -15,10 +15,6 @@ spec:
         name: prometheus
         namespace: prometheus
       interval: 1m
-  install:
-    timeout: 10m0s
-    remediation:
-      retries: 5
   values:
     nameOverride: prometheus
     namespaceOverride: prometheus
