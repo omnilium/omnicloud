@@ -15,3 +15,7 @@ machine:
   time:
     servers:
       - 10.0.0.1
+  nodeLabels:
+    topology.kubernetes.io/region: hel1
+    topology.kubernetes.io/zone: dc7
+    topology.omnilium.local/host: hel1-master-1
