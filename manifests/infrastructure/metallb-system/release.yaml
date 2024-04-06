@@ -16,6 +16,23 @@ spec:
         namespace: metallb-system
       interval: 1m
   values:
+    controller:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 100Mi
+        limits:
+          cpu: 250m
+          memory: 250Mi
+      priorityClassName: critical
     speaker:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 150Mi
+        limits:
+          cpu: 250m
+          memory: 250Mi
+      priorityClassName: critical
       frr:
         enabled: true
