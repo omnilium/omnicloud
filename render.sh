@@ -2,22 +2,23 @@
 
 set -eo pipefail
 
+declare -A nodes
+nodes["talos-master-1"]=controlplane
+nodes["talos-master-2"]=controlplane
+nodes["talos-master-3"]=controlplane
+nodes["talos-worker-1"]=worker
+nodes["talos-worker-2"]=worker
+nodes["talos-worker-3"]=worker
+nodes["talos-worker-4"]=worker
+nodes["talos-worker-5"]=worker
+nodes["talos-worker-6"]=worker
+
 if [[ -z "$1" ]]; then
-  echo "Usage: $0 <hostname>|all [type] [flags]"
+  echo "Usage: $0 <hostname>|all [flags]"
   exit 1
 fi
 
 if [[ "$1" == "all" ]]; then
-  declare -A nodes
-  nodes["talos-master-1"]=controlplane
-  nodes["talos-master-2"]=controlplane
-  nodes["talos-worker-1"]=worker
-  nodes["talos-worker-2"]=worker
-  nodes["talos-worker-3"]=worker
-  nodes["talos-worker-4"]=worker
-  nodes["talos-worker-5"]=worker
-  nodes["talos-worker-6"]=worker
-
   for node in "${!nodes[@]}"; do
     ./render.sh $node ${nodes[$node]} "${@:2}"
   done
@@ -25,11 +26,9 @@ if [[ "$1" == "all" ]]; then
   exit 0
 fi
 
-TYPE=${2:-worker}
-
 talosctl gen config \
   --output rendered/$1.yaml \
-  --output-types $TYPE \
+  --output-types ${nodes[$1]} \
   --with-cluster-discovery=false \
   --with-secrets secrets.yaml \
   --config-patch @patches/ca.yaml \
@@ -42,4 +41,4 @@ talosctl gen config \
   --force \
   omnicloud \
   https://api.talos.omnilium.local:6443 \
-  "${@:3}"
+  "${@:2}"
