@@ -16,4 +16,95 @@ spec:
         namespace: tls-system
       interval: 1m
   values:
+    global:
+      priorityClassName: medium
     installCRDs: true
+    replicaCount: 2
+    podDisruptionBudget:
+      enabled: true
+      minAvailable: 1
+    resources:
+      requests:
+        cpu: 50m
+        memory: 50Mi
+      limits:
+        cpu: 100m
+        memory: 100Mi
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: cert-manager
+                  app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+              topologyKey: topology.omnilium.local/host
+    topologySpreadConstraints:
+      - labelSelector:
+          matchLabels:
+            app.kubernetes.io/name: cert-manager
+            app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+        topologyKey: topology.kubernetes.io/zone
+        maxSkew: 1
+        whenUnsatisfiable: ScheduleAnyway
+    webhook:
+      replicaCount: 2
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
+      resources:
+        requests:
+          cpu: 50m
+          memory: 25Mi
+        limits:
+          cpu: 100m
+          memory: 50Mi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: webhook
+                    app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+                topologyKey: topology.omnilium.local/host
+        topologySpreadConstraints:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: webhook
+                app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+            topologyKey: topology.kubernetes.io/zone
+            maxSkew: 1
+            whenUnsatisfiable: ScheduleAnyway
+    cainjector:
+      replicaCount: 2
+      podDisruptionBudget:
+        enabled: true
+        minAvailable: 1
+      resources:
+        requests:
+          cpu: 50m
+          memory: 50Mi
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: cainjector
+                    app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+                topologyKey: topology.omnilium.local/host
+        topologySpreadConstraints:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: cainjector
+                app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+            topologyKey: topology.kubernetes.io/zone
+            maxSkew: 1
+            whenUnsatisfiable: ScheduleAnyway
