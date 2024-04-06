@@ -22,17 +22,17 @@ spec:
           cpu: 50m
           memory: 100Mi
         limits:
-          cpu: 250m
-          memory: 250Mi
+          cpu: 100m
+          memory: 200Mi
       priorityClassName: critical
     speaker:
       resources:
         requests:
           cpu: 50m
-          memory: 150Mi
+          memory: 100Mi
         limits:
-          cpu: 250m
-          memory: 250Mi
+          cpu: 100m
+          memory: 200Mi
       priorityClassName: critical
       frr:
         enabled: true
