@@ -1,6 +1,12 @@
 creation_rules:
+  - path_regex: manifests/apps/forgejo/releases.yaml
+    encrypted_regex: ^(password|repmgrPassword|postgresPassword|adminPassword|ISSUE_INDEXER_CONN_STR|REPO_INDEXER_CONN_STR|MINIO_SECRET_ACCESS_KEY)$
+    pgp: >-
+      0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
+      1918B94484C52CDE42CA1B87E7812096B8DA4A52
+
   - path_regex: manifests/*
-    encrypted_regex: ^(data|stringData|password|repmgrPassword|postgresPassword|adminPassword)$
+    encrypted_regex: ^(data|stringData)$
     pgp: >-
       0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
       1918B94484C52CDE42CA1B87E7812096B8DA4A52
