@@ -1,0 +1,21 @@
+machine:
+  install:
+    disk: /dev/sda
+  network:
+    hostname: talos-master-2
+    interfaces:
+      - interface: enxbc24118b9a8f
+        addresses:
+          - 10.0.0.9/16
+        routes:
+          - network: 0.0.0.0/0
+            gateway: 10.0.0.1
+    nameservers:
+      - 10.0.0.1
+  time:
+    servers:
+      - 10.0.0.1
+  nodeLabels:
+    topology.kubernetes.io/region: hel1
+    topology.kubernetes.io/zone: dc7
+    topology.omnilium.local/host: hel1-master-1

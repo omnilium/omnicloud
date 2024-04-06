@@ -10,6 +10,7 @@ fi
 if [[ "$1" == "all" ]]; then
   declare -A nodes
   nodes["talos-master-1"]=controlplane
+  nodes["talos-master-2"]=controlplane
   nodes["talos-worker-1"]=worker
   nodes["talos-worker-2"]=worker
   nodes["talos-worker-3"]=worker

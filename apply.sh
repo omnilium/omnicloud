@@ -10,6 +10,7 @@ fi
 if [[ "$1" == "all" ]]; then
   declare -A nodes
   nodes["talos-master-1"]=10.0.0.2
+  nodes["talos-master-2"]=10.0.0.9
   nodes["talos-worker-1"]=10.0.0.3
   nodes["talos-worker-2"]=10.0.0.4
   nodes["talos-worker-3"]=10.0.0.5
