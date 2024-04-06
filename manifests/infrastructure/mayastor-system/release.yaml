@@ -98,6 +98,7 @@ spec:
           memory: 150Mi
       localpvScConfig:
         basePath: "/var/openebs/local/{{ .Release.Name }}/etcd"
+      priorityClassName: critical
     loki-stack:
       enabled: false
       localpvScConfig:
@@ -114,6 +115,7 @@ spec:
         jetstream:
           memStorage:
             size: 10Mi
+      priorityClassName: critical
     obs:
       callhome:
         resources:
