@@ -109,7 +109,7 @@ spec:
           limits:
             cpu: 100m
             memory: 50Mi
-        priorityClassName: low-no-preemption
+        priorityClassName: low-no-preempting
       stats:
         resources:
           requests:
