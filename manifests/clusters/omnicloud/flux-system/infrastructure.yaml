@@ -2,6 +2,37 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
+  name: mayastor-system
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./manifests/infrastructure/mayastor-system
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: mayastor-system-config
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./manifests/infrastructure/mayastor-system-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: mayastor
+      namespace: mayastor-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
   name: metallb-system
   namespace: flux-system
 spec:
@@ -29,19 +60,6 @@ spec:
       kind: HelmRelease
       name: metallb
       namespace: metallb-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: traefik-system
-  namespace: flux-system
-spec:
-  interval: 10m0s
-  path: ./manifests/infrastructure/traefik-system
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
@@ -81,30 +99,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: mayastor-system
+  name: traefik-system
   namespace: flux-system
 spec:
   interval: 10m0s
-  path: ./manifests/infrastructure/mayastor-system
+  path: ./manifests/infrastructure/traefik-system
   prune: true
   sourceRef:
     kind: GitRepository
     name: flux-system
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: mayastor-system-config
-  namespace: flux-system
-spec:
-  interval: 10m0s
-  path: ./manifests/infrastructure/mayastor-system-config
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  healthChecks:
-    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-      kind: HelmRelease
-      name: mayastor
-      namespace: mayastor-system

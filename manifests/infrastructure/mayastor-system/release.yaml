@@ -30,3 +30,5 @@ spec:
       enabled: false
       localpvScConfig:
         basePath: "/var/openebs/local/{{ .Release.Name }}/loki"
+    storageClass:
+      enabled: false
