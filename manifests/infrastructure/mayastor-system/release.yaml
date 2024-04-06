@@ -22,5 +22,10 @@ spec:
     base:
       metrics:
         enabled: false
+    etcd:
+      localpvScConfig:
+        basePath: "/var/openebs/local/{{ .Release.Name }}/etcd"
     loki-stack:
       enabled: false
+      localpvScConfig:
+        basePath: "/var/openebs/local/{{ .Release.Name }}/loki"
