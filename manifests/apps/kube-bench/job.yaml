@@ -30,12 +30,6 @@ spec:
             - mountPath: /var/lib/kube-controller-manager
               name: var-lib-kube-controller-manager
               readOnly: true
-            - mountPath: /etc/systemd
-              name: etc-systemd
-              readOnly: true
-            - mountPath: /lib/systemd/
-              name: lib-systemd
-              readOnly: true
             - mountPath: /srv/kubernetes/
               name: srv-kubernetes
               readOnly: true
@@ -69,12 +63,6 @@ spec:
         - hostPath:
             path: /var/lib/kube-controller-manager
           name: var-lib-kube-controller-manager
-        - hostPath:
-            path: /etc/systemd
-          name: etc-systemd
-        - hostPath:
-            path: /lib/systemd
-          name: lib-systemd
         - hostPath:
             path: /srv/kubernetes
           name: srv-kubernetes
