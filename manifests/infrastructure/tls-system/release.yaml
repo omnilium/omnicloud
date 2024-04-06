@@ -38,13 +38,13 @@ spec:
               labelSelector:
                 matchLabels:
                   app.kubernetes.io/name: cert-manager
-                  app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+                  app.kubernetes.io/instance: tls
               topologyKey: topology.omnilium.local/host
     topologySpreadConstraints:
       - labelSelector:
           matchLabels:
             app.kubernetes.io/name: cert-manager
-            app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+            app.kubernetes.io/instance: tls
         topologyKey: topology.kubernetes.io/zone
         maxSkew: 1
         whenUnsatisfiable: ScheduleAnyway
@@ -68,13 +68,13 @@ spec:
                 labelSelector:
                   matchLabels:
                     app.kubernetes.io/name: webhook
-                    app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+                    app.kubernetes.io/instance: tls
                 topologyKey: topology.omnilium.local/host
         topologySpreadConstraints:
           - labelSelector:
               matchLabels:
                 app.kubernetes.io/name: webhook
-                app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+                app.kubernetes.io/instance: tls
             topologyKey: topology.kubernetes.io/zone
             maxSkew: 1
             whenUnsatisfiable: ScheduleAnyway
@@ -98,13 +98,13 @@ spec:
                 labelSelector:
                   matchLabels:
                     app.kubernetes.io/name: cainjector
-                    app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+                    app.kubernetes.io/instance: tls
                 topologyKey: topology.omnilium.local/host
         topologySpreadConstraints:
           - labelSelector:
               matchLabels:
                 app.kubernetes.io/name: cainjector
-                app.kubernetes.io/instance: "{{ .Release.Namespace }}"
+                app.kubernetes.io/instance: tls
             topologyKey: topology.kubernetes.io/zone
             maxSkew: 1
             whenUnsatisfiable: ScheduleAnyway
