@@ -49,8 +49,7 @@ spec:
         enabled: true
         annotations:
           cert-manager.io/cluster-issuer: local
-        hosts:
-          - operator.minio.omnilium.local
+        host: operator.minio.omnilium.local
         tls:
           - secretName: minio-operator-tls
             hosts:
