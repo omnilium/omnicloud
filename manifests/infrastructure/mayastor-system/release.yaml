@@ -16,6 +16,7 @@ spec:
         namespace: mayastor-system
       interval: 1m
   values:
+    # https://github.com/siderolabs/talos/issues/8001#issuecomment-1859079349
     crds:
       jaeger:
         enabled: false
