@@ -142,6 +142,8 @@ spec:
                         topologyKey: topology.kubernetes.io/zone
                         maxSkew: 1
                         whenUnsatisfiable: ScheduleAnyway
+            certificate:
+                requestAutoCert: false
         ingress:
             console:
                 enabled: true
