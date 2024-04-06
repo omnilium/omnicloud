@@ -41,7 +41,7 @@ spec:
                 helm.sh/resource-policy: keep
         gitea:
             admin:
-                username: admin
+                username: webmaster
                 password: ENC[AES256_GCM,data:gs89nKHT+cpZJgEubzHT5s0O3TMb06XXjnzZntAZv33J4moWP+EyafOzdQ==,iv:gg0bTL5Z4Ae0QFWqqE+iBVNUM2LOOulyo9Zwldj8xe0=,tag:qhAEWBMALj0b7K29pYSlng==,type:str]
                 email: webmaster@omnilium.com
         postgresql-ha:
