@@ -18,8 +18,26 @@ spec:
   values:
     nameOverride: prometheus
     namespaceOverride: prometheus
+    alertmanager:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 100Mi
+        limits:
+          cpu: 100m
+          memory: 200Mi
+      storage:
+        volumeClaimTemplate:
+          spec:
+            storageClassName: single
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 10Gi
     grafana:
       defaultDashboardsTimezone: Europe/Bucharest
+      defaultDashboardsEditable: false
       ingress:
         enabled: true
         annotations:
@@ -39,6 +57,18 @@ spec:
         size: 10Gi
         finalizers:
           - kubernetes.io/pvc-protection
+      sidecar:
+        dashboards:
+          provider:
+            allowUiUpdates: true
+    prometheusOperator:
+      resources:
+        requests:
+          cpu: 50m
+          memory: 50Mi
+        limits:
+          cpu: 100m
+          memory: 100Mi
     prometheus:
       ingress:
         enabled: true
@@ -50,3 +80,20 @@ spec:
           - secretName: prometheus-tls
             hosts:
               - prometheus.omnilium.local
+      prometheusSpec:
+        resources:
+          requests:
+            cpu: 250m
+            memory: 1Gi
+          limits:
+            cpu: "1"
+            memory: 2Gi
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: single
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 50Gi
