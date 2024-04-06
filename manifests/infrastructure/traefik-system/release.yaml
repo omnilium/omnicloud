@@ -65,11 +65,13 @@ spec:
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-                app.kubernetes.io/instance: "{{ .Release.Name }}-{{ .Release.Namespace }}"
-            topologyKey: topology.omnilium.local/host
+          - weight: 100
+            podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: '{{ template "traefik.name" . }}'
+                  app.kubernetes.io/instance: "{{ .Release.Name }}-{{ .Release.Namespace }}"
+              topologyKey: topology.omnilium.local/host
     topologySpreadConstraints:
       - labelSelector:
           matchLabels:
