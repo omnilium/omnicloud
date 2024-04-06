@@ -6,28 +6,28 @@ data:
             docker.io:
                 endpoints:
                     - https://harbor.omnilium.local/v2/docker.io
-                    - https://docker.io/v2
+                    # - https://docker.io/v2
                 overridePath: true
             ghcr.io:
                 endpoints:
                     - https://harbor.omnilium.local/v2/ghcr.io
-                    - https://ghcr.io/v2
+                    # - https://ghcr.io/v2
                 overridePath: true
             gcr.io:
                 endpoints:
                     - https://harbor.omnilium.local/v2/gcr.io
-                    - https://gcr.io/v2
+                    # - https://gcr.io/v2
                 overridePath: true
             registry.k8s.io:
                 endpoints:
                     - https://harbor.omnilium.local/v2/registry.k8s.io
-                    - https://registry.k8s.io/v2
+                    # - https://registry.k8s.io/v2
                 overridePath: true
         config:
             harbor.omnilium.local:
                 auth:
                     username: robot$talos
-                    password: ENC[AES256_GCM,data:R6WLA47cx0k/RrgkdMtVg+Upyezy4xoLYVg7YSmONcw=,iv:gR/OzSUbwKYnRHgAsZdRxuGEZiQvXAjD+rS4owmjUdc=,tag:AlOxHDkOnCBHAy/kfNOH3w==,type:str]
+                    password: ENC[AES256_GCM,data:IMAw6GFuzvdjKcMs30FsHGEzQAQOXMZXKvJWjxGFHhw=,iv:FQ+r5jG/szU6e+40Y+KmnJSJ8C30RWOV1LN5OhAXJ9U=,tag:iw0v8ySEWLMxar1HnsUOAw==,type:str]
                 tls:
                     ca: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN3VENDQW1lZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQ0JtVEVMTUFrR0ExVUVCaE1DVWs4eERUQUwKQmdOVkJBZ01CRU5zZFdveEZEQVNCZ05WQkFjTUMwTnNkV290VG1Gd2IyTmhNU293S0FZRFZRUUtEQ0ZQYlc1cApiR2wxYlNCQlpIWmhibU5sWkNCRGVXSmxjbTVsZEdsamN5QlRVa3d4SXpBaEJna3Foa2lHOXcwQkNRRVdGR052CmJuUmhZM1JBYjIxdWFXeHBkVzB1WTI5dE1SUXdFZ1lEVlFRRERBdFBiVzVwYkdsMWJTQkRRVEFlRncweU5EQTAKTURVeE9EUTBNakZhRncwek5EQTBNRE14T0RRME1qRmFNSUdaTVFzd0NRWURWUVFHRXdKU1R6RU5NQXNHQTFVRQpDQXdFUTJ4MWFqRVVNQklHQTFVRUJ3d0xRMngxYWkxT1lYQnZZMkV4S2pBb0JnTlZCQW9NSVU5dGJtbHNhWFZ0CklFRmtkbUZ1WTJWa0lFTjVZbVZ5Ym1WMGFXTnpJRk5TVERFak1DRUdDU3FHU0liM0RRRUpBUllVWTI5dWRHRmoKZEVCdmJXNXBiR2wxYlM1amIyMHhGREFTQmdOVkJBTU1DMDl0Ym1sc2FYVnRJRU5CTUZrd0V3WUhLb1pJemowQwpBUVlJS29aSXpqMERBUWNEUWdBRVVHVncrWkhycGlzUnp6aDk5MU0zMWhWSlI3UlhLemc2QkhYelBuNVYxY3A0CnZTOFltSHhLbnE3OFU5b0V0TXJMdHpwU21qZ0ZWV2RINlFtZDU2TjhWYU9CblRDQm1qQTNCZ2xnaGtnQmh2aEMKQVEwRUtoWW9UMUJPYzJWdWMyVWdSMlZ1WlhKaGRHVmtJRU5sY25ScFptbGpZWFJsSUVGMWRHaHZjbWwwZVRBZApCZ05WSFE0RUZnUVV1MEp2aitiMzkxZ3ZPOVhnWEVlb1dKMml2S0V3SHdZRFZSMGpCQmd3Rm9BVXUwSnZqK2IzCjkxZ3ZPOVhnWEVlb1dKMml2S0V3RHdZRFZSMFRBUUgvQkFVd0F3RUIvekFPQmdOVkhROEJBZjhFQkFNQ0FZWXcKQ2dZSUtvWkl6ajBFQXdJRFNBQXdSUUloQUo0MDBtQXpnT3E0T0dOdzlFbFJqdUd3R2F4UFJlbkd5VVdxS0lIUQpjaUZEQWlCWlFSbVRHUDVFVGpLYllzall2N1FBblg5S3RsYU9lK3FDd1cvZGEyU1pkZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
 sops:
@@ -36,20 +36,20 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-06T10:26:52Z"
-    mac: ENC[AES256_GCM,data:IJR2Ackc1OtemNJqBzm+8wCCqpYgdXl6iv5grTbPkrjB4q9pwir3jrt0mycaF7BB761aiZJHpHedYcWNpEwuCAbTC9oHDfYEsL4+8dT6kmxy9rBP45plEaEyIH7+lN14y+6Kg8gvX/Htn7KdNG2Gkocg0RlMvIu7H66XKEfczC0=,iv:ydFSk2ueOprzUTUVDEhNClxqzunTOpjoSRvcsfi/iy0=,tag:RcnrcdEJZHcZDww+BWtbEQ==,type:str]
+    lastmodified: "2024-04-06T11:21:01Z"
+    mac: ENC[AES256_GCM,data:JG4bHyctBrAOnQEWTp49RUw86zIHPYcNN+WIdmRz5rmrPD+gPbH2VJ9z9841oX+sRcgaQk5MyjiHZI37RT0qzeFc9pCJR5RCLhhSNaySPlkbMKJmuvoJEg1hJ9rISnjS9iHcrl+57Ih4DJ2G4n2ul8IbqClUpLOOeMGTZuWD0E0=,iv:aIbGCT5n/0xO+52R8pNFXZmYjf1sp7wcC1tePdERDlg=,tag:84xjuWV5iiqx5ivgFIPUDw==,type:str]
     pgp:
-        - created_at: "2024-04-06T10:26:52Z"
+        - created_at: "2024-04-06T11:21:01Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwME+nm5khySn/mFDhOs5TCA/T5Aqqs2L35IPC4p4ecTUtnO
-            q+Sdd3QGEuZT1ohxETsfnXKpKLY4y3tm4CAC6lFQC4NZfNu6KzExVk2CiimnVWAX
-            AIzdhN+3rG63SF4sIs8gMBwWFkB5CllbpWzMoKOGVEImCYEN5L6egxe9DJKPxdmS
-            r+K0KCMohiN7W2Qfs7R4wdRmAQkCEJFE6yND9yOIA9/5QqDSEAl3dF5rgmEzQAvV
-            mlddLa4PgW4YBifMyP00Oxr868fDrQUUbFe8+r7wbyCl5RTUS1oS/AbvLOq8y8rd
-            3vJVtm+m8fVQK9wyRx1RIVuGOhZF6XjS
-            =IPFR
+            hJ4DLG005yzvDc8SAwME3oX3QsdBO+LY+CxAtxi3UIaoZbBm9O2kHr2BoX4181de
+            ZucxQDXTyrcaALN+IaWHVB77hrHoj9nQc45R/tWpk0eN+0EixSGcP8ZASXskU0GI
+            QzTttltocHWa5hsZ53GUMMh/fzIVxBxHofTuzekdTJhu8asNWacYgXtrrphYlKVa
+            650JL4Be8MaQXHiymM7K3dRmAQkCEGLVhjx46KG331X6l4h/w462wYzcAAtiYM6z
+            bIPdoBC78vlh3V1soqGv+aisRqWsk4P/kxn+lr6LkxH97wiVyM7u8Dq14BOQ2SOA
+            aKnXcUvdsJcoJ+O7p0T+Ze9KjgDuxY4l
+            =khEq
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^password$

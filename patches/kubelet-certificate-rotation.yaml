@@ -1,0 +1,4 @@
+- op: add
+  path: /machine/kubelet/extraArgs
+  value:
+    rotate-server-certificates: true

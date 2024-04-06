@@ -26,31 +26,20 @@ fi
 
 TYPE=${2:-worker}
 
-if [[ "$TYPE" == "worker" ]]; then
-  talosctl gen config \
-    --output rendered/$1.yaml \
-    --output-types $TYPE \
-    --with-cluster-discovery=false \
-    --with-secrets secrets.yaml \
-    --config-patch @patches/cluster-name.yaml \
-    --config-patch @patches/harbor.yaml \
-    --config-patch @patches/mayastor.yaml \
-    --config-patch @nodes/$1.yaml \
-    --force \
-    omnicloud \
-    https://api.talos.omnilium.local:6443 \
-    "${@:3}"
-else
-  talosctl gen config \
-    --output rendered/$1.yaml \
-    --output-types $TYPE \
-    --with-cluster-discovery=false \
-    --with-secrets secrets.yaml \
-    --config-patch @patches/cluster-name.yaml \
-    --config-patch @patches/harbor.yaml \
-    --config-patch @nodes/$1.yaml \
-    --force \
-    omnicloud \
-    https://api.talos.omnilium.local:6443 \
-    "${@:3}"
-fi
+talosctl gen config \
+  --output rendered/$1.yaml \
+  --output-types $TYPE \
+  --with-cluster-discovery=false \
+  --with-secrets secrets.yaml \
+  --config-patch @patches/ca.yaml \
+  --config-patch @patches/cluster-name.yaml \
+  --config-patch @patches/discovery.yaml \
+  --config-patch @patches/harbor.yaml \
+  --config-patch @patches/kubelet-certificate-rotation.yaml \
+  --config-patch @patches/mayastor.yaml \
+  --config-patch @patches/metrics.yaml \
+  --config-patch @nodes/$1.yaml \
+  --force \
+  omnicloud \
+  https://api.talos.omnilium.local:6443 \
+  "${@:3}"
