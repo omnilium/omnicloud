@@ -19,22 +19,23 @@ spec:
     nameOverride: prometheus
     namespaceOverride: prometheus
     alertmanager:
-      resources:
-        requests:
-          cpu: 50m
-          memory: 100Mi
-        limits:
-          cpu: 100m
-          memory: 200Mi
-      storage:
-        volumeClaimTemplate:
-          spec:
-            storageClassName: single
-            accessModes:
-              - ReadWriteOnce
-            resources:
-              requests:
-                storage: 10Gi
+      alertmanagerSpec:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 200Mi
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: single
+              accessModes:
+                - ReadWriteOnce
+              resources:
+                requests:
+                  storage: 10Gi
     grafana:
       defaultDashboardsTimezone: Europe/Bucharest
       defaultDashboardsEditable: false
