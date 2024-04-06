@@ -1,0 +1,33 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: harbor
+  namespace: harbor
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      chart: harbor
+      version: ">=21.1.0 <21.2.0"
+      sourceRef:
+        kind: HelmRepository
+        name: harbor
+        namespace: harbor
+      interval: 1m
+  values:
+    adminPassword: affb519b6a735fc0e7af128f9dfc5767
+    externalURL: https://harbor.omnilium.local
+    exposureType: ingress
+    ingress:
+      core:
+        hostname: harbor.omnilium.local
+        annotations:
+          ingress.kubernetes.io/ssl-redirect: "true"
+          ingress.kubernetes.io/proxy-body-size: "0"
+          cert-manager.io/cluster-issuer: local
+        tls: true
+    persistence:
+      persistentVolumeClaim:
+        registry:
+          size: 50Gi
