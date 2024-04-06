@@ -20,9 +20,74 @@ spec:
     crds:
       jaeger:
         enabled: false
+    priorityClassName: critical
     base:
       metrics:
         enabled: false
+    operators:
+      pool:
+        resources:
+          requests:
+            cpu: 50m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+    agents:
+      core:
+        resources:
+          requests:
+            cpu: "1"
+            memory: 100Mi
+          limits:
+            cpu: "1"
+            memory: 100Mi
+      ha:
+        node:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+        cluster:
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 100Mi
+    apis:
+      rest:
+        replicaCount: 2
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+    csi:
+      controller:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+      node:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        nvme:
+          ctrl_loss_tmo: "300"
     etcd:
       localpvScConfig:
         basePath: "/var/openebs/local/{{ .Release.Name }}/etcd"
@@ -30,5 +95,28 @@ spec:
       enabled: false
       localpvScConfig:
         basePath: "/var/openebs/local/{{ .Release.Name }}/loki"
+    nats:
+      nats:
+        jetstream:
+          memStorage:
+            size: 10Mi
+    obs:
+      callhome:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 50Mi
+        priorityClassName: low-no-preemption
+      stats:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 50Mi
+          limits:
+            cpu: 100m
+            memory: 50Mi
     storageClass:
       enabled: false
