@@ -13,6 +13,9 @@ if [[ "$1" == "all" ]]; then
   nodes["talos-worker-1"]=worker
   nodes["talos-worker-2"]=worker
   nodes["talos-worker-3"]=worker
+  nodes["talos-worker-4"]=worker
+  nodes["talos-worker-5"]=worker
+  nodes["talos-worker-6"]=worker
 
   for node in "${!nodes[@]}"; do
     ./render.sh $node ${nodes[$node]} "${@:2}"
