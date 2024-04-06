@@ -89,6 +89,13 @@ spec:
         nvme:
           ctrl_loss_tmo: "300"
     etcd:
+      resources:
+        requests:
+          cpu: 100m
+          memory: 150Mi
+        limits:
+          cpu: 100m
+          memory: 150Mi
       localpvScConfig:
         basePath: "/var/openebs/local/{{ .Release.Name }}/etcd"
     loki-stack:
@@ -97,6 +104,13 @@ spec:
         basePath: "/var/openebs/local/{{ .Release.Name }}/loki"
     nats:
       nats:
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
         jetstream:
           memStorage:
             size: 10Mi
