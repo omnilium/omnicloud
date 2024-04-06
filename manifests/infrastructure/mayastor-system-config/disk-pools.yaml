@@ -28,3 +28,33 @@ spec:
   node: talos-worker-3
   disks:
     - "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1"
+---
+apiVersion: "openebs.io/v1beta1"
+kind: DiskPool
+metadata:
+  name: talos-worker-4
+  namespace: mayastor-system
+spec:
+  node: talos-worker-4
+  disks:
+    - "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1"
+---
+apiVersion: "openebs.io/v1beta1"
+kind: DiskPool
+metadata:
+  name: talos-worker-5
+  namespace: mayastor-system
+spec:
+  node: talos-worker-5
+  disks:
+    - "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1"
+---
+apiVersion: "openebs.io/v1beta1"
+kind: DiskPool
+metadata:
+  name: talos-worker-6
+  namespace: mayastor-system
+spec:
+  node: talos-worker-6
+  disks:
+    - "/dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi1"
