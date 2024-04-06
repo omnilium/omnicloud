@@ -8,7 +8,7 @@ spec:
     chart:
         spec:
             chart: forgejo
-            version: ">=5.0.3 <5.1.0"
+            version: '>=5.0.3 <5.1.0'
             sourceRef:
                 kind: HelmRepository
                 name: forgejo
@@ -25,12 +25,12 @@ spec:
             hosts:
                 - host: git.omni.ms
                   paths:
-                      - path: /
-                        pathType: Prefix
+                    - path: /
+                      pathType: Prefix
             tls:
                 - secretName: forgejo-tls
                   hosts:
-                      - git.omni.ms
+                    - git.omni.ms
         resources: {}
         persistence:
             size: 25Gi
@@ -40,54 +40,54 @@ spec:
         gitea:
             admin:
                 username: webmaster
-                password: ENC[AES256_GCM,data:gs89nKHT+cpZJgEubzHT5s0O3TMb06XXjnzZntAZv33J4moWP+EyafOzdQ==,iv:gg0bTL5Z4Ae0QFWqqE+iBVNUM2LOOulyo9Zwldj8xe0=,tag:qhAEWBMALj0b7K29pYSlng==,type:str]
+                password: ENC[AES256_GCM,data:SNGFtFeSY7OSeXL5OvP/q6d7Qr73cgEopIlzebpkf+KwqJlzJoEi8gPuLQ==,iv:o1YlpDpiUcIXq9Wykk+1KVCo+Iu3DOpIVAnpRmIqJ0M=,tag:6t6v9zpWJF0XqlwVNnI7ew==,type:str]
                 email: webmaster@omnilium.com
         postgresql-ha:
             global:
                 postgresql:
                     database: forgejo
-                    password: ENC[AES256_GCM,data:LP1+7xlbR4j3VOBjISAqL4jJvIMdBJmbA/Ntga0fd1NKbG2bB5DIB5zKAg==,iv:mfImutirbYvcm8jY28p6MR/lbBJ1XGKQdBLhUCLFNmU=,tag:BOvxgklMtCFgYjJnxwFoaw==,type:str]
+                    password: ENC[AES256_GCM,data:VVfROk921nX8kR6SAzxN6wU82cVTbb2nZEV8duFLxc612NwiVgnHDkVOBA==,iv:YUcE3Cpxj1obvwmmOT8nG//ybjjSH33Rf6mjo8d9oYo=,tag:FkagsQR2ewERg7JdK7WGsg==,type:str]
                     username: forgejo
             postgresql:
-                repmgrPassword: ENC[AES256_GCM,data:VamE/PpWHk04JmUf2hT47znlKFwzKiXYANgcHPaCSLezl+RxLqL5shmYWw==,iv:RmRQ3CvACISPq0sFp34pkqTiQyKoS3ctaBbl0QcfKag=,tag:woaBZrd+stRDPhBqaIqr5w==,type:str]
-                postgresPassword: ENC[AES256_GCM,data:65ngnJlNTOcWYHGYyOB+dRahkysbFbLS9Tg+lmoMWrK8xN7wIuvCpKc4FQ==,iv:PUH0saEtLNiVBhur4KRe4nHYlKdzdBnieJpJEh//KYM=,tag:09elPy274q3VXYs3d3PNHA==,type:str]
-                password: ENC[AES256_GCM,data:H+PRBmYqOLpQuSdBHyxpLhkp+XhusGOwDZh8P+dj521YsPT/xMKxz8gXVg==,iv:fr2mODG/EsO2XlUYh/eqqTR4x2/UIhIOzJwscbCSkD0=,tag:BnqCt6osMD9jhQu+oddo5w==,type:str]
+                repmgrPassword: ENC[AES256_GCM,data:CAjhxObw6+A/92Nc4a6DnaT60hHaU3j3TkHLEX3UbLw7t1/j0gRhInsx3A==,iv:0eUKNK9Ng9aZCzIeNI009LyFwIypg5JgMFaY8zsmzZ8=,tag:L8bN247+JOqhku7mx3LgMQ==,type:str]
+                postgresPassword: ENC[AES256_GCM,data:jB+SAaufZyh32KbvbxJ+VhHo3FJhiI5e3EON6zksqt8iVu6mDm7iJpqz+g==,iv:+429bOZsWo6C6FLHolIuqbcTyG6s0WW7KJrE9NjcIQo=,tag:lZRSUCvuLKa5/hdPmg3uNA==,type:str]
+                password: ENC[AES256_GCM,data:B8nLpF0a8RnRcfnfeOL4UlTVziBpQmEOBKaiwBkzZzpclrKACwWmzhDEPw==,iv:pd3xkVFeCVHGSxd7HUNERj/SQhk2usWxEasZ0DzcJhE=,tag:U1kcH5myBgOqGzE00+M1RQ==,type:str]
             pgpool:
-                adminPassword: ENC[AES256_GCM,data:1i6aZBntogm6FWISLwvDgRPm0JCrBKDvZezqKEg8JDrH5LnZj3giwDngUg==,iv:lfgiFfioAH5t1e7AX9DDRhrl+ACRcTjzxBgITGZAza8=,tag:ThuFDJLKZ8vEmdabyXfUrg==,type:str]
+                adminPassword: ENC[AES256_GCM,data:pgSje7Hcka4CUygLah2bfIHJGacYarw0I1nqKpkw1n6+FZStY0dqm4TMzw==,iv:61EdJ86Jpz+24JN2TIfCU+h+F+ofXD/qpe0dNcL5AlQ=,tag:eTpeORaJA4QJRjgBNju42Q==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-06T19:08:39Z"
-    mac: ENC[AES256_GCM,data:dj2yzvWHfG4cwCXsc69lgtBvKd9cSWgBJjJLt/wmgI8DUFceROULNCv46tPu/0m+IuTCCV6yIQJacCQCgrW1zJOBYUbb+FSRq9HElvCFmOGVWCDXHaLvlaJJ8mjf9vhWH+Y1fhHVw7EsVmLynK2LIMHu/FvHeEcqUUHfBPBY/VE=,iv:zDGO/NSSADi8oTQVvuupZYCd5U32O2NJ2jBkLdene+Y=,tag:WylWLvQrJ9uCRUtdYAz9lQ==,type:str]
+    lastmodified: "2024-04-06T20:12:56Z"
+    mac: ENC[AES256_GCM,data:00G6blqxWeODGrvdyGe6WbvK0d3PHkGTp051ZaLZbcH9sBu784rYNF6err/AI/hSLRZ6jVajIMsZONu+0P4C1Eh4Kre03nD4DoVsOZ5nfpawNWA3XzmMhiQwbYGpOzpmj0pR8vqJZIPpcoGA8kNO3/0AzL5opdbjRUFtJXbtQDg=,iv:f3AP3E02zgX/n/rWtOsNw48Q0oZBc2o8VuLWVxX7yVI=,tag:CezQGpjBAOKpb0+wIJ7Sdg==,type:str]
     pgp:
-        - created_at: "2024-04-06T19:08:39Z"
+        - created_at: "2024-04-06T20:12:56Z"
           enc: |-
-              -----BEGIN PGP MESSAGE-----
+            -----BEGIN PGP MESSAGE-----
 
-              hJ4D0dRkdsWQFPUSAwME63p0d/yeQj+7t7sZYgENSukjnPnYa4UqtLre1Iu7ik3W
-              EFKn1kUdSDFJNIX7US2YQdMU9MKSAkjiJsnnA9eD3F/HyDEpWCRjmT6DUaZy7+x7
-              ZDvTG5/7Eit12j4ZfWQ5MCK/5L3uHNgtt8DDSbFRW+K//kOK/RwhKWx4aHdJtrmx
-              9bB7+2/7Y8WNK7dQ55AR8NRoAQkCEMvi9R4aYGNOpXfJWfWOeXtaPcv5iVj4JZ8F
-              VmYpUo58CgJK13DVw7dSPU+l0i5h0NglGGD7Fh6lxdt5A01vHf+JzCnlgTHqvluY
-              OSq6RsSpqAu3Yrs6adh0aoS3HLwXsnppDcI=
-              =gfso
-              -----END PGP MESSAGE-----
+            hJ4D0dRkdsWQFPUSAwMEl2YSXEm9DbdkGE4y4MqCS3eM8Xy2di23xYukrOZrBTrj
+            TN9d92/ZikZuf0aI1mS0CedAufeIdc2IUt+EBlWw/ngQmzrWFbxAcWvpseed1hPH
+            VQ463o/6yAz3T1xcQ1YiMCNFBVZwaZQbaJkj+Uf/4PfKVML5pJDzTbfhNcBvYj3n
+            LxMREST75GHKJHvgc/wDztRmAQkCEP5JaJ0/ZEEabtFPSk40hHl5bcZdLt6bdwc3
+            vZe6Pg87pdUUipQxyMejYqwftuVXFWDaz61nVo0ZlrGM2c4xOk5nkjEw8kDACyv3
+            QbiOjr0LcNxEDmaq/V+9Q8KL0otyJ+s9
+            =wV88
+            -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-06T19:08:39Z"
+        - created_at: "2024-04-06T20:12:56Z"
           enc: |-
-              -----BEGIN PGP MESSAGE-----
+            -----BEGIN PGP MESSAGE-----
 
-              hJ4DLG005yzvDc8SAwMEcxl7LOkH+WzKeQ7TGO1mZWAhflZu4pceZwLdVNaXqICG
-              1vCbWIXKjHdDEfYxmqCDXGUNhHsrBUFGAWrXaLk6/GXlMaoYxx3RI9PUSr+3UMJv
-              lqQaxGhX6I2atj65dpzAMBlSI0P0m7qOMD7YWA/XgwbgP90UY0iupXFLzlkfnIuL
-              c8Oy48Eh/vEjFwpk1/GZPtRoAQkCENQ9Ldvfe3sk5jy8tY50DhEpWip5FulI/Zb6
-              mzUDYvazp+3fMCmJ9wffCxR9iD2zFMfJsR9SCJHZjip3hgnEPX78xPYoGyEO81DG
-              686uogaWKtB2bW+14+Zen0QwIIO+OkNuTps=
-              =6p36
-              -----END PGP MESSAGE-----
+            hJ4DLG005yzvDc8SAwMEWZMFL6TcBCa0C2wvUBjEfiXxp8ef/h0Q8Q7EX/xCNVZq
+            kyLfVuirYziygFmIs5trZOm1QbUAYTSgCGY8r49J9Jci9fgjSXjvxuipA5ZEVlzV
+            rg0aJWdhLRuDYODVjivnMP8fZjGegQfpXcLsr1UH633429tZk74wc8CFf5Dx6ZjG
+            xd2HP02COtUFZ9UnIYVWA9RmAQkCEPsAMF5MoWZHGLfsWso24dtyw0+x2Sd9JzAQ
+            Ox1sg80A8tv91E3PNFsXUpbIRgHnP+GDwr6j0C/xdJMrQ04CLbR2b6xTr8rEOViL
+            eW5j6BuhaTPzOsgaoL9xyfbKO+rvTejn
+            =E/Mq
+            -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|repmgrPassword|postgresPassword|adminPassword)$
     version: 3.8.1
@@ -102,7 +102,7 @@ spec:
     chart:
         spec:
             chart: tenant
-            version: ">=5.0.14 <5.1.0"
+            version: '>=5.0.14 <5.1.0'
             sourceRef:
                 kind: HelmRepository
                 name: minio
@@ -122,24 +122,24 @@ spec:
                   volumesPerServer: 1
                   size: 25Gi
                   labels:
-                      minio.omnilium.local/tenant: forgejo
+                    minio.omnilium.local/tenant: forgejo
                   affinity:
-                      podAntiAffinity:
-                          preferredDuringSchedulingIgnoredDuringExecution:
-                              - weight: 100
-                                podAffinityTerm:
-                                    labelSelector:
-                                        matchLabels:
-                                            minio.omnilium.local/tenant: forgejo
-                                    topologyKey: topology.omnilium.local/host
+                    podAntiAffinity:
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                            - weight: 100
+                              podAffinityTerm:
+                                labelSelector:
+                                    matchLabels:
+                                        minio.omnilium.local/tenant: forgejo
+                                topologyKey: topology.omnilium.local/host
                   resources: {}
                   topologySpreadConstraints:
-                      - labelSelector:
-                            matchLabels:
-                                minio.omnilium.local/tenant: forgejo
-                        topologyKey: topology.kubernetes.io/zone
-                        maxSkew: 1
-                        whenUnsatisfiable: ScheduleAnyway
+                    - labelSelector:
+                        matchLabels:
+                            minio.omnilium.local/tenant: forgejo
+                      topologyKey: topology.kubernetes.io/zone
+                      maxSkew: 1
+                      whenUnsatisfiable: ScheduleAnyway
             certificate:
                 requestAutoCert: false
         ingress:
@@ -151,41 +151,41 @@ spec:
                 tls:
                     - secretName: minio-console-tls
                       hosts:
-                          - forgejo.minio.omnilium.local
+                        - forgejo.minio.omnilium.local
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-06T19:08:39Z"
-    mac: ENC[AES256_GCM,data:dj2yzvWHfG4cwCXsc69lgtBvKd9cSWgBJjJLt/wmgI8DUFceROULNCv46tPu/0m+IuTCCV6yIQJacCQCgrW1zJOBYUbb+FSRq9HElvCFmOGVWCDXHaLvlaJJ8mjf9vhWH+Y1fhHVw7EsVmLynK2LIMHu/FvHeEcqUUHfBPBY/VE=,iv:zDGO/NSSADi8oTQVvuupZYCd5U32O2NJ2jBkLdene+Y=,tag:WylWLvQrJ9uCRUtdYAz9lQ==,type:str]
+    lastmodified: "2024-04-06T20:12:56Z"
+    mac: ENC[AES256_GCM,data:00G6blqxWeODGrvdyGe6WbvK0d3PHkGTp051ZaLZbcH9sBu784rYNF6err/AI/hSLRZ6jVajIMsZONu+0P4C1Eh4Kre03nD4DoVsOZ5nfpawNWA3XzmMhiQwbYGpOzpmj0pR8vqJZIPpcoGA8kNO3/0AzL5opdbjRUFtJXbtQDg=,iv:f3AP3E02zgX/n/rWtOsNw48Q0oZBc2o8VuLWVxX7yVI=,tag:CezQGpjBAOKpb0+wIJ7Sdg==,type:str]
     pgp:
-        - created_at: "2024-04-06T19:08:39Z"
+        - created_at: "2024-04-06T20:12:56Z"
           enc: |-
-              -----BEGIN PGP MESSAGE-----
+            -----BEGIN PGP MESSAGE-----
 
-              hJ4D0dRkdsWQFPUSAwME63p0d/yeQj+7t7sZYgENSukjnPnYa4UqtLre1Iu7ik3W
-              EFKn1kUdSDFJNIX7US2YQdMU9MKSAkjiJsnnA9eD3F/HyDEpWCRjmT6DUaZy7+x7
-              ZDvTG5/7Eit12j4ZfWQ5MCK/5L3uHNgtt8DDSbFRW+K//kOK/RwhKWx4aHdJtrmx
-              9bB7+2/7Y8WNK7dQ55AR8NRoAQkCEMvi9R4aYGNOpXfJWfWOeXtaPcv5iVj4JZ8F
-              VmYpUo58CgJK13DVw7dSPU+l0i5h0NglGGD7Fh6lxdt5A01vHf+JzCnlgTHqvluY
-              OSq6RsSpqAu3Yrs6adh0aoS3HLwXsnppDcI=
-              =gfso
-              -----END PGP MESSAGE-----
+            hJ4D0dRkdsWQFPUSAwMEl2YSXEm9DbdkGE4y4MqCS3eM8Xy2di23xYukrOZrBTrj
+            TN9d92/ZikZuf0aI1mS0CedAufeIdc2IUt+EBlWw/ngQmzrWFbxAcWvpseed1hPH
+            VQ463o/6yAz3T1xcQ1YiMCNFBVZwaZQbaJkj+Uf/4PfKVML5pJDzTbfhNcBvYj3n
+            LxMREST75GHKJHvgc/wDztRmAQkCEP5JaJ0/ZEEabtFPSk40hHl5bcZdLt6bdwc3
+            vZe6Pg87pdUUipQxyMejYqwftuVXFWDaz61nVo0ZlrGM2c4xOk5nkjEw8kDACyv3
+            QbiOjr0LcNxEDmaq/V+9Q8KL0otyJ+s9
+            =wV88
+            -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-06T19:08:39Z"
+        - created_at: "2024-04-06T20:12:56Z"
           enc: |-
-              -----BEGIN PGP MESSAGE-----
+            -----BEGIN PGP MESSAGE-----
 
-              hJ4DLG005yzvDc8SAwMEcxl7LOkH+WzKeQ7TGO1mZWAhflZu4pceZwLdVNaXqICG
-              1vCbWIXKjHdDEfYxmqCDXGUNhHsrBUFGAWrXaLk6/GXlMaoYxx3RI9PUSr+3UMJv
-              lqQaxGhX6I2atj65dpzAMBlSI0P0m7qOMD7YWA/XgwbgP90UY0iupXFLzlkfnIuL
-              c8Oy48Eh/vEjFwpk1/GZPtRoAQkCENQ9Ldvfe3sk5jy8tY50DhEpWip5FulI/Zb6
-              mzUDYvazp+3fMCmJ9wffCxR9iD2zFMfJsR9SCJHZjip3hgnEPX78xPYoGyEO81DG
-              686uogaWKtB2bW+14+Zen0QwIIO+OkNuTps=
-              =6p36
-              -----END PGP MESSAGE-----
+            hJ4DLG005yzvDc8SAwMEWZMFL6TcBCa0C2wvUBjEfiXxp8ef/h0Q8Q7EX/xCNVZq
+            kyLfVuirYziygFmIs5trZOm1QbUAYTSgCGY8r49J9Jci9fgjSXjvxuipA5ZEVlzV
+            rg0aJWdhLRuDYODVjivnMP8fZjGegQfpXcLsr1UH633429tZk74wc8CFf5Dx6ZjG
+            xd2HP02COtUFZ9UnIYVWA9RmAQkCEPsAMF5MoWZHGLfsWso24dtyw0+x2Sd9JzAQ
+            Ox1sg80A8tv91E3PNFsXUpbIRgHnP+GDwr6j0C/xdJMrQ04CLbR2b6xTr8rEOViL
+            eW5j6BuhaTPzOsgaoL9xyfbKO+rvTejn
+            =E/Mq
+            -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|repmgrPassword|postgresPassword|adminPassword)$
     version: 3.8.1
