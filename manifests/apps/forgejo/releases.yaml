@@ -15,8 +15,6 @@ spec:
                 namespace: forgejo
             interval: 1m
     values:
-        podDisruptionBudget:
-            minAvailable: 1
         service:
             ssh:
                 type: LoadBalancer
