@@ -6,7 +6,7 @@ metadata:
   namespace: forgejo
 spec:
   interval: 10m0s
-  url: oci://codeberg.org/forgejo-contrib/forgejo
+  url: oci://code.forgejo.org/forgejo-contrib/forgejo-helm
   type: oci
 ---
 apiVersion: source.toolkit.fluxcd.io/v1beta2
