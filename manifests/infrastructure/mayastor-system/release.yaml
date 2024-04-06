@@ -28,8 +28,8 @@ spec:
       pool:
         resources:
           requests:
-            cpu: 50m
-            memory: 50Mi
+            cpu: 100m
+            memory: 100Mi
           limits:
             cpu: 100m
             memory: 100Mi
@@ -42,6 +42,7 @@ spec:
           limits:
             cpu: "1"
             memory: 100Mi
+        priorityClassName: mayastor-cluster-critical
       ha:
         node:
           resources:
@@ -88,6 +89,10 @@ spec:
             memory: 100Mi
         nvme:
           ctrl_loss_tmo: "300"
+    io_engine:
+      nvme:
+        ioTimeout: 60s
+      priorityClassName: critical
     etcd:
       resources:
         requests:
