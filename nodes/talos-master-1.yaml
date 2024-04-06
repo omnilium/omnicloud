@@ -2,9 +2,9 @@ machine:
   install:
     disk: /dev/sda
   network:
-    hostname: talos-control-1
+    hostname: talos-master-1
     interfaces:
-      - interface: enxbc241197934c
+      - interface: enxbc24119cda22
         addresses:
           - 10.0.0.2/16
         routes:

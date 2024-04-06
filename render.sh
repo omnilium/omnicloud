@@ -3,8 +3,22 @@
 set -eo pipefail
 
 if [[ -z "$1" ]]; then
-    echo "Usage: $0 <hostname>"
-    exit 1
+  echo "Usage: $0 <hostname>|all [type] [flags]"
+  exit 1
+fi
+
+if [[ "$1" == "all" ]]; then
+  declare -A nodes
+  nodes["talos-master-1"]=controlplane
+  nodes["talos-worker-1"]=worker
+  nodes["talos-worker-2"]=worker
+  nodes["talos-worker-3"]=worker
+
+  for node in "${!nodes[@]}"; do
+    ./render.sh $node ${nodes[$node]} "${@:2}"
+  done
+
+  exit 0
 fi
 
 TYPE=${2:-worker}
@@ -16,6 +30,7 @@ if [[ "$TYPE" == "worker" ]]; then
     --with-cluster-discovery=false \
     --with-secrets secrets.yaml \
     --config-patch @patches/cluster-name.yaml \
+    --config-patch @patches/mayastor.yaml \
     --config-patch @nodes/$1.yaml \
     --force \
     omnicloud \

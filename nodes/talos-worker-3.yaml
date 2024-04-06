@@ -4,7 +4,7 @@ machine:
   network:
     hostname: talos-worker-3
     interfaces:
-      - interface: enxbc241179fa4a
+      - interface: enxbc2411ef8948
         addresses:
           - 10.0.0.5/16
         routes:
