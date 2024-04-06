@@ -8,7 +8,7 @@ spec:
     chart:
         spec:
             chart: forgejo
-            version: '>=5.0.3 <5.1.0'
+            version: ">=5.0.3 <5.1.0"
             sourceRef:
                 kind: HelmRepository
                 name: forgejo
@@ -27,12 +27,12 @@ spec:
             hosts:
                 - host: git.omni.ms
                   paths:
-                    - path: /
-                      pathType: Prefix
+                      - path: /
+                        pathType: Prefix
             tls:
                 - secretName: forgejo-tls
                   hosts:
-                    - git.omni.ms
+                      - git.omni.ms
         resources:
             requests:
                 cpu: 50m
@@ -51,7 +51,7 @@ spec:
         gitea:
             admin:
                 username: webmaster
-                password: ENC[AES256_GCM,data:I+Xs4A29hYu8Wh2WioaBZSp1HxO6Y44poFcTyfBX/IHQRIi1qF4eKOVRrQ==,iv:WhkF+wJweCeMOIMzq3WLQYRWtEbT7wvohLIz26/WnCg=,tag:c595dTr/lWUcOFHMkKn69A==,type:str]
+                password: aMLwKD1teiNtv9U4I6IsKEqAqyQSawIob2RGSxQIMcw
                 email: webmaster@omnilium.com
             config:
                 repository:
@@ -75,10 +75,10 @@ spec:
                     LFS_START_SERVER: true
                 indexer:
                     ISSUE_INDEXER_TYPE: elasticsearch
-                    ISSUE_INDEXER_CONN_STR: ENC[AES256_GCM,data:osZgnwePX4ldvhS96qDlS/aX99u1ud/7KC8CgzN/FZ4f/6qCVZbQhezUnctnpVaupaZoThDpxI2YXA6sF2+FI4fRs+0GGTaQd9xgS4DqRZthpc+iZNCrFw==,iv:flVsVY9yBL0UzGgvVa34Snb34UZspzeXXqZnkfUMNLY=,tag:FAdM6G3+Tn2cOHdYY+1dhQ==,type:str]
+                    ISSUE_INDEXER_CONN_STR: <http://elastic:Kk9r2D5ZvL1237i9JXfgb4E1@forgejo-es-http.forgejo.svc.cluster.local:9200>
                     REPO_INDEXER_ENABLED: true
                     REPO_INDEXER_TYPE: elasticsearch
-                    REPO_INDEXER_CONN_STR: ENC[AES256_GCM,data:9mOaMpAI2+ezOuNy5/fEGdIZKAE13/gcQSSu+rFmDT6HiQdTkY9Xhja+yVpuvoHQraNScUMQwmejPwju2VZFqy6sunxRS6PBzsw8lL0ajFJc35qMm5RYNA==,iv:b+3GKcrSKwI1eT4F6my2vM2H3gnWL+prq3yyUcahLIU=,tag:WqeQqlwjvVpBTY0195HI8A==,type:str]
+                    REPO_INDEXER_CONN_STR: <http://elastic:Kk9r2D5ZvL1237i9JXfgb4E1@forgejo-es-http.forgejo.svc.cluster.local:9200>
                 security:
                     REVERSE_PROXY_TRUSTED_PROXIES: 10.0.0.0/8
                     PASSWORD_HASH_ALGO: argon2
@@ -117,62 +117,25 @@ spec:
                 #     STORAGE_TYPE: minio
                 # storage.artifacts:
                 #     STORAGE_TYPE: minio
-                storage:
-                    MINIO_ENDPOINT: <minio.forgejo.svc.cluster.local>
-                    MINIO_ACCESS_KEY_ID: forgejo
-                    MINIO_SECRET_ACCESS_KEY: ENC[AES256_GCM,data:qQdXgOxFvUM/OBBuya95ybSvNaZWQrOkw9Ch1K2NoV4=,iv:FHNd+4gArBdcy/SOS154+qe4Hut6RYwxlM/j9AwtY4w=,tag:m12ief+WwDHxpVZ+ZB/uSg==,type:str]
-                    MINIO_BUCKET: forgejo
-                    MINIO_LOCATION: hel1
-                    MINIO_USE_SSL: false
+                # storage:
+                #     MINIO_ENDPOINT: <minio.forgejo.svc.cluster.local>
+                #     MINIO_ACCESS_KEY_ID: forgejo
+                #     MINIO_SECRET_ACCESS_KEY: p3DiX4Xb76qSxDW3bwXkTRhSrMgFXA9w
+                #     MINIO_BUCKET: forgejo
+                #     MINIO_LOCATION: hel1
+                #     MINIO_USE_SSL: false
         postgresql-ha:
             global:
                 postgresql:
                     database: forgejo
-                    password: ENC[AES256_GCM,data:0SxYyKh+vgyxcObWfq4zrqgyL+20oRhwrFgfysSBIc/vSNj8LcHDfLjhkA==,iv:Cgp6uucPDWTMiu7nydQNnCXYtHYRoAape2hvjFCNKz0=,tag:dOjDwWWDN0grq4Wg4ybc3A==,type:str]
+                    password: 2wXenH1oNHWOIL8tNgO9nHKG1ScwGICSOn3p4CTksc4
                     username: forgejo
             postgresql:
-                repmgrPassword: ENC[AES256_GCM,data:tUoZy0BBkKTNzwEVK6eyvVdx4OEhCu7CUB4k3ohjXrRIllJjY7FVKmmK1w==,iv:otKIAnyN8aF2zhwryttLjemrtyhrWQbL3VPUWuJ+uQo=,tag:nlKZgRd91ix6bVAwgQH2VQ==,type:str]
-                postgresPassword: ENC[AES256_GCM,data:qgT6uCPhvhQ7KUrc21vA8PbLJTgH5bUkj/00vH43vGL6LH0uw4J/vRCFSA==,iv:MlnyM/JnCEAjq4ujaQvvm0m6VefilC6WQYf90/GXYAw=,tag:2KeAZ7Yz0w+MCRD4hrDgJQ==,type:str]
-                password: ENC[AES256_GCM,data:2oJesHDftoB6s5QAWVeknB4Fzy8wcpAn5CD40YZ14vDxsklxJpopuy1SjA==,iv:Hm2p4ty/lAgFGPMC+ksyoKweh6+oinNCYVGYJcO/B84=,tag:pZdbdvycvi3LNwl9oMeG8Q==,type:str]
+                repmgrPassword: OFmiE4fAqmQsx1u8fgWqa56QpAScohbk1OSXZZeykIo
+                postgresPassword: LYfivLxxpdKigbYXQFiEPYiYylBNEQLKLoulCAYZxk8
+                password: 2wXenH1oNHWOIL8tNgO9nHKG1ScwGICSOn3p4CTksc4
             pgpool:
-                adminPassword: ENC[AES256_GCM,data:qnTFeyjsZhHl7CyueFg1fYU6oT63gf0YAaQy9B6i6tamrDxngrPD6tjI7w==,iv:K9N5dASEiek3YIYpQXKkkQLvJlvWzuEu9V5rCS6R6Uo=,tag:VBJ0d7aDpQGBtfwx94w9BA==,type:str]
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2024-04-06T22:18:24Z"
-    mac: ENC[AES256_GCM,data:x6NwZKhl/Z2RCbvyQZ3JsSynnW+4ZTDcoRYN5Hqj/2ZmkRCQDTXPMnbeu96TOhLdJvAdJAu1gSM+BKny6Orims4NDW6XSGJIdYq7/LOLC5A19qZBD8aF3VcgReGxP9sAU9Ss6XjrqoJvb294TmnCMKeInGNBoGOXaLxz8JmJDtk=,iv:FFgCNnlmxCGjbT3zWotCjQnpA8GYsBZjjGWobkBxCnI=,tag:HXDunLWEhhGQOlvVo4VTPQ==,type:str]
-    pgp:
-        - created_at: "2024-04-06T22:18:24Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
-
-            hJ4D0dRkdsWQFPUSAwMEqvpwCX/MH5XDMp0+WPyKOhZLPozBfYRjVgG7gQLzrrhG
-            vwnNgZMEs2AuKtKlmohOOR34JJf4FGc9hTRrh7Dn7bVcZNEKO4BTcdRA5CvM5adx
-            njAAbyEXQZ5Njx29DHPEMGepd8Ys374nRygplVerz2B3LSnGzhm35vpACRDPqddd
-            JX2JrPyAmOi3ezBYkDqmENRmAQkCEPPtJ4rF2DId4J0tLR/sXk58SdLgcPx8B4rC
-            eO+lo8QLl0o6ozufLrCNhMfa8ep0dbdbpQLe+e7xbPm69HVmBtVoQ/i0BnQNeRYc
-            mh3mvAsMXelaD+MvMoEOWj0cP8c2dBbf
-            =FtNk
-            -----END PGP MESSAGE-----
-          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-06T22:18:24Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
-
-            hJ4DLG005yzvDc8SAwMETjtYhLxe0moLMxBAIyZRtWWjjL5JSt/xLcYU+nFYiCE1
-            DDNa16XHLiYfty6OX4+nzJq76HcfSNjxw1W+KNkeHej1VyyLs1E36JWN2R8dZeB9
-            t/mUX7rft337fbQ/F127MMlJnECVmuLpm45wNiAy873KyMgVbb0WiqkwfqPUn65d
-            h2KoAyERioal5neucpwWjdRmAQkCEG11lkQUrlRS/U2OiABo3JaJPu0mtRhOKdQY
-            gAAQcNQ/3zPF2J+Be5FUGAgtJYChg8qcgFehR5RkmZ555TIp+nzz5w+XFFStiXUH
-            1ks9WQZB3lLX0DG1SHg2i2zt1EMetRZp
-            =vuW4
-            -----END PGP MESSAGE-----
-          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
-    encrypted_regex: ^(password|repmgrPassword|postgresPassword|adminPassword|ISSUE_INDEXER_CONN_STR|REPO_INDEXER_CONN_STR|MINIO_SECRET_ACCESS_KEY)$
-    version: 3.8.1
+                adminPassword: od42nikcjhshWMhCBX2LoTbr69svk9BpYkSFGwgH6zo
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
@@ -184,7 +147,7 @@ spec:
     chart:
         spec:
             chart: tenant
-            version: '>=5.0.14 <5.1.0'
+            version: ">=5.0.14 <5.1.0"
             sourceRef:
                 kind: HelmRepository
                 name: minio
@@ -204,24 +167,24 @@ spec:
                   volumesPerServer: 1
                   size: 25Gi
                   labels:
-                    minio.omnilium.local/tenant: forgejo
+                      minio.omnilium.local/tenant: forgejo
                   affinity:
-                    podAntiAffinity:
-                        preferredDuringSchedulingIgnoredDuringExecution:
-                            - weight: 100
-                              podAffinityTerm:
-                                labelSelector:
-                                    matchLabels:
-                                        minio.omnilium.local/tenant: forgejo
-                                topologyKey: topology.omnilium.local/host
+                      podAntiAffinity:
+                          preferredDuringSchedulingIgnoredDuringExecution:
+                              - weight: 100
+                                podAffinityTerm:
+                                    labelSelector:
+                                        matchLabels:
+                                            minio.omnilium.local/tenant: forgejo
+                                    topologyKey: topology.omnilium.local/host
                   resources: {}
                   topologySpreadConstraints:
-                    - labelSelector:
-                        matchLabels:
-                            minio.omnilium.local/tenant: forgejo
-                      topologyKey: topology.kubernetes.io/zone
-                      maxSkew: 1
-                      whenUnsatisfiable: ScheduleAnyway
+                      - labelSelector:
+                            matchLabels:
+                                minio.omnilium.local/tenant: forgejo
+                        topologyKey: topology.kubernetes.io/zone
+                        maxSkew: 1
+                        whenUnsatisfiable: ScheduleAnyway
             certificate:
                 requestAutoCert: false
         ingress:
@@ -233,41 +196,4 @@ spec:
                 tls:
                     - secretName: minio-console-tls
                       hosts:
-                        - forgejo.minio.omnilium.local
-sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age: []
-    lastmodified: "2024-04-06T22:18:24Z"
-    mac: ENC[AES256_GCM,data:x6NwZKhl/Z2RCbvyQZ3JsSynnW+4ZTDcoRYN5Hqj/2ZmkRCQDTXPMnbeu96TOhLdJvAdJAu1gSM+BKny6Orims4NDW6XSGJIdYq7/LOLC5A19qZBD8aF3VcgReGxP9sAU9Ss6XjrqoJvb294TmnCMKeInGNBoGOXaLxz8JmJDtk=,iv:FFgCNnlmxCGjbT3zWotCjQnpA8GYsBZjjGWobkBxCnI=,tag:HXDunLWEhhGQOlvVo4VTPQ==,type:str]
-    pgp:
-        - created_at: "2024-04-06T22:18:24Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
-
-            hJ4D0dRkdsWQFPUSAwMEqvpwCX/MH5XDMp0+WPyKOhZLPozBfYRjVgG7gQLzrrhG
-            vwnNgZMEs2AuKtKlmohOOR34JJf4FGc9hTRrh7Dn7bVcZNEKO4BTcdRA5CvM5adx
-            njAAbyEXQZ5Njx29DHPEMGepd8Ys374nRygplVerz2B3LSnGzhm35vpACRDPqddd
-            JX2JrPyAmOi3ezBYkDqmENRmAQkCEPPtJ4rF2DId4J0tLR/sXk58SdLgcPx8B4rC
-            eO+lo8QLl0o6ozufLrCNhMfa8ep0dbdbpQLe+e7xbPm69HVmBtVoQ/i0BnQNeRYc
-            mh3mvAsMXelaD+MvMoEOWj0cP8c2dBbf
-            =FtNk
-            -----END PGP MESSAGE-----
-          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-06T22:18:24Z"
-          enc: |-
-            -----BEGIN PGP MESSAGE-----
-
-            hJ4DLG005yzvDc8SAwMETjtYhLxe0moLMxBAIyZRtWWjjL5JSt/xLcYU+nFYiCE1
-            DDNa16XHLiYfty6OX4+nzJq76HcfSNjxw1W+KNkeHej1VyyLs1E36JWN2R8dZeB9
-            t/mUX7rft337fbQ/F127MMlJnECVmuLpm45wNiAy873KyMgVbb0WiqkwfqPUn65d
-            h2KoAyERioal5neucpwWjdRmAQkCEG11lkQUrlRS/U2OiABo3JaJPu0mtRhOKdQY
-            gAAQcNQ/3zPF2J+Be5FUGAgtJYChg8qcgFehR5RkmZ555TIp+nzz5w+XFFStiXUH
-            1ks9WQZB3lLX0DG1SHg2i2zt1EMetRZp
-            =vuW4
-            -----END PGP MESSAGE-----
-          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
-    encrypted_regex: ^(password|repmgrPassword|postgresPassword|adminPassword|ISSUE_INDEXER_CONN_STR|REPO_INDEXER_CONN_STR|MINIO_SECRET_ACCESS_KEY)$
-    version: 3.8.1
+                          - forgejo.minio.omnilium.local
