@@ -34,7 +34,6 @@ talosctl gen config \
   --config-patch @patches/ca.yaml \
   --config-patch @patches/cluster-name.yaml \
   --config-patch @patches/discovery.yaml \
-  --config-patch @patches/harbor.yaml \
   --config-patch @patches/kubelet-certificate-rotation.yaml \
   --config-patch @patches/mayastor.yaml \
   --config-patch @patches/metrics.yaml \
