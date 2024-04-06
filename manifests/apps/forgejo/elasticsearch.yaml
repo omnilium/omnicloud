@@ -1,0 +1,21 @@
+---
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: forgejo
+  namespace: forgejo
+spec:
+  version: 8.13.1
+  nodeSets:
+    - name: default
+      count: 3
+      volumeClaimTemplates:
+        - metadata:
+            name: elasticsearch-data
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 5Gi
+            storageClassName: replicated

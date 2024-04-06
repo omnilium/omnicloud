@@ -1,0 +1,57 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio-operator
+  namespace: minio
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      chart: minio-operator
+      version: ">=5.0.14 <5.1.0"
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: minio
+      interval: 1m
+  values:
+    operator:
+      priorityClassName: medium
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: name
+                    operator: In
+                    values:
+                      - minio-operator
+              topologyKey: topology.omnilium.local/host
+      resources:
+        requests:
+          cpu: 100m
+          memory: 250Mi
+          ephemeral-storage: 500Mi
+        limits:
+          cpu: 200m
+          memory: 500Mi
+    console:
+      affinity: {}
+      resources:
+        requests:
+          cpu: 100m
+          memory: 500Mi
+        limits:
+          cpu: 200m
+          memory: 1Gi
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: local
+        hosts:
+          - operator.minio.omnilium.local
+        tls:
+          - secretName: minio-operator-tls
+            hosts:
+              - operator.minio.omnilium.local
