@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - cluster.yaml
   - satellite-configurations.yaml
+  - storage-classes.yaml
