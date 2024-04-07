@@ -1,0 +1,52 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cockroachdb
+  namespace: onedev
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      chart: cockroachdb
+      version: ">=12.0.3 <12.1.0"
+      sourceRef:
+        kind: HelmRepository
+        name: cockroachdb
+        namespace: onedev
+      interval: 1m
+  values:
+    conf:
+      cache: 500MiB
+      cluster-name: onedev
+      max-sql-memory: 500MiB
+    statefulset:
+      labels:
+        app.kubernetes.io/component: cockroachdb
+        app.omnilium.local/identifier: cockroachdb-onedev
+      podAntiAffinity:
+        topologyKey: topology.omnilium.local/host
+      topologySpreadConstraints:
+        topologyKey: topology.kubernetes.io/zone
+      resources:
+        limits:
+          cpu: 200m
+          memory: 2.5Gi
+        requests:
+          cpu: 100m
+          memory: 2Gi
+    ingress:
+      enabled: true
+      annotations:
+        cert-manager.io/cluster-issuer: local
+      hosts:
+        - onedev.cockroachdb.omnilium.local
+      tls:
+        - hosts:
+            - onedev.cockroachdb.omnilium.local
+          secretName: cockroachdb-tls
+    storage:
+      persistentVolume:
+        size: 10Gi
+    tls:
+      enabled: false
