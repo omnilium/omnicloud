@@ -15,8 +15,8 @@ spec:
         name: tls
         namespace: tls-system
       interval: 1m
-      dependsOn:
-        - name: cert-manager
+  dependsOn:
+    - name: cert-manager
   values:
     replicaCount: 2
     secretTargets:
