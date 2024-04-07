@@ -19,7 +19,7 @@ spec:
             replicas: 3
             initSettings:
                 user: admin
-                password: ENC[AES256_GCM,data:US9k6wuu4Pr7b5Mc5A81me1HEwgujtJNxQGB+fr2k+Q=,iv:eQFvB3R52bT4LGVCIW2vODUPWh/1qmoQyMMnXhntx6E=,tag:j/EG78y1qzj5DEaPLA9q1Q==,type:str]
+                password: ENC[AES256_GCM,data:iKFrv53RRVW5qVnZIdnaUscl8URfNkmd2QqlpKQzWVo=,iv:oTEeD9N8WIThU0sholr//Rk5f0i3cMJT25wgJLbOHRg=,tag:1Wwtxl0KexPNPrwNFQeHGg==,type:str]
                 email: webmaster@omnilium.com
         database:
             external: true
@@ -28,7 +28,7 @@ spec:
             port: "5432"
             name: onedev
             user: onedev
-            password: ENC[AES256_GCM,data:NZBvubTTwp9x/1QmhpHzZdQepmBOH2ltKQouPdDxA/U=,iv:2Dk97HJ4Qx6ybtlZhgvfmY4pCm3XW4AObM84oU3dslE=,tag:MLSDN545U6kJLetXJphVew==,type:str]
+            password: ENC[AES256_GCM,data:Jh6i0ctIkJDbdhdHeJ0qTTGXVATUlMjV9v+n+O7B8IE=,iv:768vLC+1nzRUXr0Ns3zq5xvFwQKk8iUOywXn42txiXY=,tag:/0fqRPSkR7XX78BftPfCTw==,type:str]
             maximumPoolSize: "30"
         podLabels:
             app.omnilium.local/identifier: onedev
@@ -50,6 +50,11 @@ spec:
               maxSkew: 1
               whenUnsatisfiable: ScheduleAnyway
         service:
+            annotations:
+                traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+                traefik.ingress.kubernetes.io/service.sticky.cookie.name: glue
+                traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+                traefik.ingress.kubernetes.io/service.sticky.cookie.samesite: strict
             separateSSH:
                 enabled: true
         ingress:
@@ -69,33 +74,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-07T21:11:03Z"
-    mac: ENC[AES256_GCM,data:bGcqe8p4n5u0vPl2zkhEp5rSFnvOh7pHrfjeB4e/tvctyTe4b9YzZ7jk2it6zsPsha6nq0HdH6HKRyrqpUx9fD7yFF6GFvV6rA1YAqgc4FzOLp+6hEDr2zB/Uocam4+OBRGBUMa+6HRx4KjtKy7HWIwx4ZfllzPWopx3f0F7m/Y=,iv:VbAnQKHDzw+zxHFI4YBHoXAgObTCaqWxiwqeTkNlpQk=,tag:3IfOwTXxMj125ZsVsZmTGg==,type:str]
+    lastmodified: "2024-04-07T21:14:56Z"
+    mac: ENC[AES256_GCM,data:Qzc+PHEE84MtDcjZ/7btAkQYA6gUgBFhDN7mEwdtDIGlquFoSrHcEllKXCQRIRE3jMviHvf4ywc/ax1Kg1RIGfaZ28U0/Xwt2dXbBRKRXlgDyVReixybgJboN++cA1MnUkzY+3rcd2hJtg5XZhNRJOpNRWznxZldR2EuWwbpJO4=,iv:94hbbOZngsczFziuWCJlJnDucp8SwMX60a5RV7BOYzc=,tag:oBgvwLE6MAsfRYBknAfvVQ==,type:str]
     pgp:
-        - created_at: "2024-04-07T21:11:03Z"
+        - created_at: "2024-04-07T21:14:56Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEHDNuvhpf+QvplPrFd/fgekTBdaTmh0GTBmOaPEP9oHFZ
-            dSRUizbJIS2KoLorXJHvx9io5UAaYy7vvmMFy/3PpVwEMey9FONPKi298xzAzW84
-            UA84ACpZglS2y4sGlBmJMGJNXCYd86R/69IcrtRJ8hydmaqAByGCNqy3T7Y8drY6
-            PydbXonVo/xOSmDUhvwP09RmAQkCEHJkb6w5WdGL/6zT3jfXp2Ii8P5DarbQBZin
-            PCzKdkgDL+ddFVM1HBWu9wVnxCR6faPLlfMOjjQiJogWbt6utDv2xd2ctRMk3ykl
-            fiZZipUPfMQ0KSymwgv5fm+DYVrKWVhA
-            =Ck+4
+            hJ4D0dRkdsWQFPUSAwME7mu89xqWs7HIESaOUQEt4VEbPbmeM3whbpF7UwvGils0
+            h6y7ocAzqjX4dL9Kxj92Fc3xkGjsV/ttdVKM1wpmL8FbnLzhENSx9RMvVOvJ5/59
+            DD207zamnhMk1piEFkkJMAxfHTAjP3tiC0FpR7xAAzuzSHPtxItg14p3ZNXy0hdg
+            ui7JC0kTGz3RTgsIUKv81tRbAQkCEMzGEbbVUhgpSo/sO2LWXaRsEV1SfaEG6o4X
+            7ajdZ7v1xWKfz9bsV/af0gHIFtMkaNOL8MbpvalPfxDA1okKFrBFX9EYuzUxt9y/
+            wF1i3Qk0L/kNO835mw==
+            =VkBB
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-07T21:11:03Z"
+        - created_at: "2024-04-07T21:14:56Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEfB/Ipz3JFJDIsVJ4qcaDPna9TwVwBs1vLG65OBVLw8/z
-            qXVQ3HrjCWM15inkIvH/h60B1ASWBUkkFAyGPPstNtnnmJRgIo8tkrHx1ucXr3aB
-            YPfxYCR4u3kxFhkN4zH8MIJnfVSUz3/dww7AxQ6xIvVnG8/ewsmukLSQ0sVUZI21
-            cgbYEJRJv2BAK9ZZaljBVtRmAQkCEHuk/mr9OVWdwa99uROjRAnFhj/jgq9+DGcF
-            +RD5uDu6w6SnOv/mbpXo3/RB4cVOzw30PDUtGrwrOmbA+AfXIKazOWz1ONzQPL01
-            xR6N7ls8f4Cf5qZ+jgIQLbDiQZV9pjJr
-            =fX1c
+            hJ4DLG005yzvDc8SAwMERtzPexjb/ec45O0rPATxfBEz4wlVJ2/Bqi0wmgSKZVes
+            947tcxuO+huVc5ixqiCe+Kf7xZKOy6wFbHEIzWeyHs+fWEyywfFrEFnj8SRU+f3W
+            +uOkNQllMhWECmI+0oMbMEwTOnmbEdcAf5ZwEN8b+BH8CJy6rx15JF3swZtrqha/
+            Vf4XItYDVThEZ7fynEkXOtRbAQkCELEElYldSAVOSxMrSDd+n/vnYxe/9MwybaFb
+            UkurmKvJ0OQWdar+rhmWb6Clk+Pv6rMqmXVjQnzSCKeZMM0ZBcMP0LT0ehu3hDjX
+            JmrhcqaEQ0W0WVsGCQ==
+            =8zRi
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password)$
