@@ -19,7 +19,7 @@ spec:
             replicas: 1
             initSettings:
                 user: admin
-                password: ENC[AES256_GCM,data:ztMnQGz1dUuklakKC9pyp9CGvEXvs/sE83NkomWxjQ0=,iv:OEgnt4BZK1FDWfnD5E8cZJS8jEvSntgKA1UNkPmZfX8=,tag:1yVt/P+b0OykSzyioZtVxg==,type:str]
+                password: ENC[AES256_GCM,data:ito9Zi1aA6wTeeT3hz1zRvrE5a/XzaibUaPIZkReM4w=,iv:+KuILer8JksQcEapczR6hbdqzODUa2dNS0XCwMpzMzU=,tag:15nswi20w3DZ8+vjOlDdEA==,type:str]
                 email: webmaster@omnilium.com
         database:
             external: true
@@ -28,7 +28,7 @@ spec:
             post: "5432"
             name: onedev
             user: onedev
-            password: ENC[AES256_GCM,data:VAhwLIa3EBBLlPnl1ay3DtIhsMOLoomQqgqNnxWrWPc=,iv:UaTVVsmdPEtCfWl3Xh71qVZhZ/D9o0Ve21Gw3PmNEeM=,tag:oWaJ+DTX8ytgWkSXG872vw==,type:str]
+            password: ENC[AES256_GCM,data:UDve+kKytjQ3+mCaN/Z/vd+/KmRM4E9goaHEoLXgRps=,iv:d4H1qZVIKsxRU8qEsrxHT5M3/VWo4w1cjX53vHLWA+E=,tag:lXnETRxujo/P8jPoit7ycw==,type:str]
             maximumPoolSize: "200"
         podLabels:
             app.omnilium.local/identifier: onedev
@@ -50,11 +50,12 @@ spec:
               maxSkew: 1
               whenUnsatisfiable: ScheduleAnyway
         service:
-            annotations:
-                traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
-                traefik.ingress.kubernetes.io/service.sticky.cookie.name: glue
-                traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-                traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
+            # Max age not supported yet. Wait for Traefik 3.0
+            # annotations:
+            #     traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
+            #     traefik.ingress.kubernetes.io/service.sticky.cookie.name: glue
+            #     traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
+            #     traefik.ingress.kubernetes.io/service.sticky.cookie.maxAge: "3600"
             separateSSH:
                 enabled: true
         ingress:
@@ -74,33 +75,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-07T20:32:27Z"
-    mac: ENC[AES256_GCM,data:zqnJxmSsRaXwppfF05z0dhah7NH2ZSImvL0cCvm815NyTB0XJvApEJAmuTVgbOqA8xU40OLtre0wfulc5mvjkzGKutJaKz6sPpzxHnUe16CA4nO0J0anG6uztktLwu+WfnY7Fwhq5VKMe6NEI21nwhmw7z74keSFk62AcXJvUUw=,iv:AM9tyDji7JUzXGTUrEC94PIJe/j2epaOUWegVcMdtM4=,tag:YGb+okc/oJ+wJwQbHdScWw==,type:str]
+    lastmodified: "2024-04-07T20:36:42Z"
+    mac: ENC[AES256_GCM,data:eQMxycpm0LrJauF69UF96AACNYXLkYzZRJtuIRI20sRx3sRuD1fvgEBscoJryQLWaZDN5jtH3Qgq75qdrQY6yTE5FIRJewmVWohx9bB8tfd/ZIhc0TeBbRJo4Mo0iwfI5bw+QPxxJm0xojYzNTtq/A2ccOIxiq+EYgELHmLKY/U=,iv:1RF/AEixG4KsXVvTLZuvzqy6XKQ1dPh7ewqxbqD/Wkk=,tag:YUe8oJReZhOuq48CQyCm9A==,type:str]
     pgp:
-        - created_at: "2024-04-07T20:32:27Z"
+        - created_at: "2024-04-07T20:36:42Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEX8M6botvdeCKwcFR4lpBMQAPrAdr5WOvUvyYsT9gZ+dP
-            YgQ8qAw5Vpqmf3MGBrUUYVON1QRwtKNHteRwiMD8vCdWxC667n0q/lJGi+0vnfs8
-            suSyvt8HAHR38eCVC+LkMOWOPKWA0o4TdJoKw/2MUabVMyEp2Ydu4XXYMx6GAEAs
-            l8+kmEsyv3uwV/PcWKU3etRmAQkCEAWlNJ6UhT2HXi4fEhUszksEhsuyd1itn0H8
-            wFdDr4Jf2dTp/xS/u9lmW7Dffy58PD7IO7zZmQWIu04rqC1dXwoGqUQtBgbOQmw6
-            sDyoa0z3uWPkdoCd1gMRxIb0Sj6lVcl2
-            =Jw7O
+            hJ4D0dRkdsWQFPUSAwMErz9oF3SBYqhl0UDP64gRm5Ugdqmj5TkbwWc4RpRFrNPk
+            24QwAS1kZceDToCf/caXFLgRFFNarYFDZKPAM/mwFx5vShOy1AJMlHlxT5T3g/eE
+            3T41BfMRrp8PTzju4ybUMAGbwuU5deRX/ieyRmw/x6oSbIKCV2/t9h+JFxuoypHo
+            y2D1wE8bxxLmCn1w4jysINRmAQkCELUHS2vQYLyqv9+jSVIat0G7o5QQYMcPD5B5
+            D+cFaAjcHCcs/218W5vmcjIC44fWBv+knbsJtOFbLhHgdYzHmVJWbrOAHU4iK3Fs
+            5H013sTNcWRBH5a2Qu6ln11Pr+r76sR2
+            =OmeV
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-07T20:32:27Z"
+        - created_at: "2024-04-07T20:36:42Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMETlZkW41UKLY5lZoDs79U3eKGY4ACVudEFCgasTVPmuZw
-            XxhKqRMSPPr20yU5MRXsX/u2dmCPZej0KeJgPt0XhfINc5eXT+dGWWIgw9o92fa/
-            0IzjyTnw/UCZvXMq3ukLMIfN8uWiGbDhAzTMvfqfI9kx4ZViyJpEmPLeCJcxRJiC
-            N/bh2NQfC4XxIFGO90eTPdRmAQkCEHdspmIWmtBqBnpWdIperSOJe9GlZzw3mKyD
-            mkedgEq5drD9Q+KOIyDvskqwwTMqUsb7TzlEMcwPfpgo/1QE1KNysCKRBcSue8Q2
-            Cmi/ihC3J3uhf/X+QVuQG2ntKqqEOL7m
-            =N+lN
+            hJ4DLG005yzvDc8SAwMEaBx48jZNGPc9L4i12JIbuN3V/H/AdRjYceByB4/GMEec
+            /9QF42+JpiWsZ/MUbLRw6orlDFrObe1sADGKlYEG/zMyIOvs6rtyCnrPp2hcK3wk
+            lhyXBQBR5KHY6GRlR/H9MHxXJGKFVJWZzxt3b8j2akLHTNgSI9c+spTmGDf/gC/R
+            7LU0i2YBcJzet/Nlj3fI6NRmAQkCEHHUeV1ZXqGw+f+cHVafUEbrKSlRf6t0CzRk
+            B9Fnmq2MbBXWiPt+RG26ByJT26h1I4RgCO2hk32FiUVqLDiNKIHUBm72jXbMcO+0
+            x57DuO0rQFsw+ZOmjkFe8OkrjCjUk4pg
+            =x+T9
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password)$
