@@ -18,8 +18,10 @@ spec:
   values:
     global:
       priorityClassName: medium
-    crds:
-      enabled: true
+    installCRDs: true
+    # The below doesn't work for some reason
+    # crds:
+    #   enabled: true
     replicaCount: 2
     podDisruptionBudget:
       enabled: true
