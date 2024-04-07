@@ -1,0 +1,88 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: minio
+    namespace: gitlab
+spec:
+    interval: 10m0s
+    chart:
+        spec:
+            chart: tenant
+            version: '>=5.0.14 <5.1.0'
+            sourceRef:
+                kind: HelmRepository
+                name: minio
+                namespace: gitlab
+            interval: 1m
+    values:
+        secrets:
+            name: minio-env
+            accessKey: gitlab
+            secretKey: ENC[AES256_GCM,data:nNGEdXs5/49/rm27fY0E2gQ527x32CiJH0r8vwluA34=,iv:hTU5NrKAAZJXdNfb2COo1069N4JMjC1fuNg8sLyY9Uw=,tag:9qq546xiv741tk8OnoVjbw==,type:str]
+        tenant:
+            name: gitlab
+            pools:
+                - name: gitlab
+                  volumesPerServer: 1
+                  size: 10Gi
+                  labels:
+                    app.omnilium.local/identifier: minio-gitlab
+                  affinity:
+                    podAntiAffinity:
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                            - weight: 100
+                              podAffinityTerm:
+                                labelSelector:
+                                    matchLabels:
+                                        app.omnilium.local/identifier: minio-gitlab
+                                topologyKey: topology.omnilium.local/host
+                  resources: {}
+                  topologySpreadConstraints:
+                    - labelSelector: null
+                      matchLabels:
+                        app.omnilium.local/identifier: minio-gitlab
+                      topologyKey: topology.kubernetes.io/zone
+                      maxSkew: 1
+                      whenUnsatisfiable: ScheduleAnyway
+            certificate:
+                requestAutoCert: false
+            buckets:
+                - name: gitlab
+                  region: hel1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-07T10:04:34Z"
+    mac: ENC[AES256_GCM,data:AHXnS4U9qTwnnpnjbQibhKoTmmiaJPqhA8xy2EoMJMgpsYlQ6k/uJ5yD1+SBliOMgMjLz3KAr6x1O/VK/sPZJlLazMzYAzzc6+lfuzV8EexfsVu6qMJ09kfUiI+E50iSOhLGiVlXOBDtAkDh18QxYlp5zS+Vk47l6ngTO2wFVXk=,iv:eFL/tojM+PTQwR4QpSe2ZqPAjfEN3v3Yj6o+doSr41o=,tag:m41tPlV8H/CcvpB0dx4SCg==,type:str]
+    pgp:
+        - created_at: "2024-04-07T10:04:34Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEv0rlq3pTrnw+AwSmWMgOi7vIF2Wf853sTdvc3VuDtJYN
+            YjinVOFyQ+X75r9xSyCPonyiQsXJzWS+EjyCfXvyBApULLc6yWqmOZAZmgs/Jwko
+            lTTEzx1gHL2OEzEaK94oMJF8pwuql4gYv9d8LCP/8uP/5+LyJH2OOnveNgb9WfLX
+            J4qFUGkYfEYZJHupB4gP4dRmAQkCEMU+6Gny2lEk6dpBJOEEQLhXuuiM5v6RqGZ+
+            yNm76OCCjheYM+QZcPQfL2UZpIgaEe1Jl1LGy1oeD8ysF4wx+37+wszFiKxoJ7Ny
+            S35zB/YA41smsOvrbeB1bsHg+NFzVbxE
+            =1GCX
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-07T10:04:34Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEXa/ZLQVA9Hx7Lyuz4fBSMMVqazlJ5q//lgXVOSEtCDW4
+            8xKZbXSN4qwYm9sSnMF7E2+HyfUt+M2XYBx4Ffmzejzu7vUTC/obVrKDmoSyEcRs
+            7UW+ViBZOrMKTdTE3wUZMPdfpFvZkdUpzFO6mrrjVfyfSE6ytJ4HOXGTGCKRiGqO
+            kcnMg/dqBsRH5kAdx+qlsNRmAQkCECZpqsw3TJgjbyF6kZNLHsuu0GgHCCo9E353
+            EXK3Y2YsE0t7UqOki2iccCU4mYe9jG2KeOVZ3/EjwEoDI5itXIYa4VV9BPLnMY1C
+            7NtU9FfAIaS5El5JiW3Rlfj97xf5j0yV
+            =WtPf
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(secretKey)$
+    version: 3.8.1
