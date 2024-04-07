@@ -88,8 +88,8 @@ spec:
       namespace: traefik-system
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
-      name: minio
-      namespace: minio-operator
+      name: minio-operator
+      namespace: minio
   decryption:
     provider: sops
     secretRef:
