@@ -65,17 +65,64 @@ spec:
           report_only: false
         object_store:
           enabled: true
+          proxy_download: true
+          connection:
+            secret: gitlab
+            key: object_store_connection
+        lfs:
+          enabled: true
+          proxy_download: true
+          bucket: git-lfs
+          connection:
+            secret: gitlab
+            key: object_store_connection
+        artifacts:
+          enabled: true
+          proxy_download: true
+          bucket: gitlab-artifacts
+          connection:
+            secret: gitlab
+            key: object_store_connection
+        uploads:
+          enabled: true
+          proxy_download: true
+          bucket: gitlab-uploads
+          connection:
+            secret: gitlab
+            key: object_store_connection
+        packages:
+          enabled: true
+          proxy_download: true
+          bucket: gitlab-packages
           connection:
             secret: gitlab
             key: object_store_connection
         externalDiffs:
           enabled: true
+          proxy_download: true
+          bucket: gitlab-mr-diffs
+          connection:
+            secret: gitlab
+            key: object_store_connection
         terraformState:
           enabled: true
+          bucket: gitlab-terraform-state
+          connection:
+            secret: gitlab
+            key: object_store_connection
         ciSecureFiles:
           enabled: true
+          bucket: gitlab-ci-secure-files
+          connection:
+            secret: gitlab
+            key: object_store_connection
         dependencyProxy:
           enabled: true
+          proxy_download: true
+          bucket: gitlab-dependency-proxy
+          connection:
+            secret: gitlab
+            key: object_store_connection
       spamcheck:
         enabled: true
       pages:
