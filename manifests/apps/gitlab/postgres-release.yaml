@@ -19,13 +19,13 @@ spec:
             storageClass: replicated
             postgresql:
                 username: gitlab
-                password: ENC[AES256_GCM,data:0x+d7Czy5wrNcGLUR5zhMptUAZLU7wsgZB6P0xSlUCk=,iv:rDA+tAqXXoeTzNf/EgKOq8DAPUdx85YiPQM69TwaJ34=,tag:EioVkysMNcauvTE3teFEFw==,type:str]
+                password: ENC[AES256_GCM,data:yyQcSCUZehr3WwFRUfLB76SSC6VUj4NfsMQ9t0OBQNY=,iv:UJkpHAdB+gt6ktFKHXJhGGReyHHdgTsGa1AE1GU4OFk=,tag:sOJOu8ry+Vb21ISqzV/k/A==,type:str]
                 database: gitlab
                 repmgrUsername: repmgr
-                repmgrPassword: ENC[AES256_GCM,data:bAm3iaBvqvyeFQLNGykaDh4KGzXLp1830XjNbv/rMJI=,iv:RzZySI2+e1T6K3L0qoHOI+mRYm/NxZm403G2Zp0dc8k=,tag:2KBUj7BpFXuwtcvTzRqxyw==,type:str]
+                repmgrPassword: ENC[AES256_GCM,data:OjBxgcVuH52OeHLYJ7CLYZvuoV3GGYeJ4CV0DnphQ/8=,iv:Gh4VCSJwu2XzIpZ3DKLGHdP3FH4eH1husAOVpq/aC2E=,tag:Y4JeFJ6vfSfIK5nc4CpFNw==,type:str]
             pgpool:
                 adminUsername: pgpool
-                adminPassword: ENC[AES256_GCM,data:L2rPu2bBzutv24EDXO8XHQKKidMUGyy1ghjSTOdmfvA=,iv:i4Mgaq84lUiBjbYKyP9mJ0BtD0FoNzakbAycCAS7hk4=,tag:v+iKyR9YecntTcim/yQLPA==,type:str]
+                adminPassword: ENC[AES256_GCM,data:WBGmE1Nv4j6v47eviVX78wN/2EQo/lhBixTHbmvF8cU=,iv:DVfDC/VD5I92aGB+CPbKIcqcMRC0PHihKWddORgs9Uo=,tag:+TxrmUMi+mU2bMaTlkw6pg==,type:str]
         postgresql:
             podLabels:
                 app.omnilium.local/identifier: postgres-gitlab
@@ -45,43 +45,67 @@ spec:
                   topologyKey: topology.kubernetes.io/zone
                   maxSkew: 1
                   whenUnsatisfiable: ScheduleAnyway
+            extraVolumes:
+                - name: dshm
+                  emptyDir:
+                    medium: Memory
+                    sizeLimit: 256Mi
+            extraVolumeMounts:
+                - name: dshm
+                  mountPath: /dev/shm
             resourcesPreset: small
-            postgresPassword: ENC[AES256_GCM,data:ssWTQsDtenu6Z2cXFTRp1vbH8i5YcpsEwd87yzNVMKU=,iv:/tXvIk35qdzBC435TnFzNzYTxw/KzeF1PiQqXdlhVVs=,tag:1cuHJpQ8PUOQ02InIgFK6w==,type:str]
+            postgresPassword: ENC[AES256_GCM,data:Fr4aKiuw90vsSv2R20CFG8yGxYEQ1ylhH2zniE+hPjU=,iv:cRa33J2fDPJ7HNEZuCKdRt1odCQsbOOl5T8qMt3jMPw=,tag:TWfhQqZWwQCJJceIQXdWEw==,type:str]
+            maxConnections: 200
+        pgpool:
+            resourcesPreset: small
+            numInitChildren: "10"
+            maxPool: "5"
+            childMaxConnections: "18"
+            childLifeTime: "30"
+            clientIdleLimit: "10"
+            connectionLifeTime: "30"
         persistence:
             size: 10Gi
+        persistentVolumeClaimRetentionPolicy:
+            enabled: true
+        backup:
+            enabled: true
+            storage:
+                storageClass: replicated
+                size: 10Gi
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-07T09:16:35Z"
-    mac: ENC[AES256_GCM,data:wWOQOe/bbweJvsgiYCU+Km3pjf0g/HGouP8BWUguKHW5XUkKPj4FoMrISdsNRvmXcIAK/6f/sH0+knM+kXiT3fBKpXY68r4SFTuTLOT6lwsKg8sER24Hc7WeT6c7ltIHI+ET2bdA6N695v6zXhbiXPIauurjlUrNZ+fNsEwpQ2k=,iv:njXwtFAX9A0HqOEAV9SKliIJLDushFHM7DAitq7eov4=,tag:c1gDTXN1/C+XYZc+jgoAqg==,type:str]
+    lastmodified: "2024-04-07T12:21:59Z"
+    mac: ENC[AES256_GCM,data:AdyfWdNwg7nLw79B4va0gQ1PuFcZD/ycoculYS+9LfmQ+ohfR6DIW9H6iAh0X/H6JuH/I7i0bzRzR6OLAfAoaw5h8z6IUIwUQMSCRlWKbcbKF2q48VLeaVpmIcuNVio4H18dMtIlCRsHbGrBMOWbjBSm7RJvH67rRKqfLU8NN0g=,iv:67y/vRCFkfdDGMWgoc4E2BZ3K8mr6RSF2Alrw2KCXOU=,tag:HHJtlr8lDmQ80H4xGBdBNQ==,type:str]
     pgp:
-        - created_at: "2024-04-07T09:16:35Z"
+        - created_at: "2024-04-07T12:21:59Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEf/BJOc0zqPlH0m/e+SqTV1r6oZsk/Rd3ggqld6IQjHUE
-            mLp0IaAAMF9fdAWnr+j28CkePyfqDO47JzYJbxAk7NKWZL/nz78P+purA08GbjiM
-            asA9egLIkGXexuk66ty0MKBNA/mTWKmYJ+q6oVb7TQilcEgxg1HBHMElZh8hZ9cW
-            xbc1w2FE7AKh4tmVLBX0FNRoAQkCEDt612r/aq1OcNatVdGKxX6iSAQYXQi6uR6C
-            1DF9x0qVHWOa+KB7/JTeducHEdmIIVM9XPv+b265xqbWbwsso65Q+9uz79LZ0nxt
-            hMz1nFV6SuCxFVs/z6NvfF/6qR/3FxGEm+0=
-            =6K20
+            hJ4D0dRkdsWQFPUSAwME8vUr4bJzBUXwjJrQMrXOwR/cQPrGv0oyNsgD+QIRdOze
+            PTOBvZx9mAw956ioRteyi+Ds/t+IwiTRGPL1+aPyqsLal43OyRN/1eE9Tf/Vj3FC
+            ++frUE6oNVGBk4LHbQQoMOXNFNXMIR6/ROXV8Gs7A0Eh7THBs8otHT6AJs1mRDYK
+            WHFnX+vuENqA+LlLPaql+dRmAQkCEODQViQlUYPgN6BCoMHS/iS/dbBRMEI0j2lX
+            8YqA44rQQiTOLzyyDOzFnDSAFWpMrtabjqusppEUZUb56QnltJwhEikjFBZf7YY/
+            LotA3OrGilZD5vmvkVBAbr/itw5GH0fW
+            =2Xaa
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-07T09:16:35Z"
+        - created_at: "2024-04-07T12:21:59Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEkLF1laKc/xOLraHJHURukIYWqxgl+xVR8P93eKehVeOw
-            WMzwlrA9Be/TGEFVDZwfUiA4qcB0qpAf1pnU+0yp9Falfr7IZ0ehCP/U0nzYk1M/
-            SAbHBB2dGB9UCOMR4Lz3MLpzt+A/yRhM8B4IyTX+GQLjZE6VhOQYm9DxgJpiaPsr
-            syNtZbtDws+gQVmTUTW5BNRoAQkCEDrjMpEBL7jeYaSCi6YafwV1klD6p715Hs2l
-            6asABsxmnGP6kTmqGwtnaw3mPwtsKZFjjVaMciVpYi+fF3JlWduVxPOHnu0E1mpb
-            siUwTPWrRdOXUNO1dHdLmlzKpGXaL7bNdIQ=
-            =vKbP
+            hJ4DLG005yzvDc8SAwMENHeakcURE5euPl30NUMboQcWHUV1SJF95acLy93fD3aI
+            RAKN7nHd/QKPY295mmrNOEdtP/CoTXO/u/ux4oMPMkvhTL02WpwMtLyQrU1YMrtF
+            oLTynV8KDSGRnWkqJZP8MBvKcJy1asAUP+7XLRGKs1LtinLF5a5rnOytj8MCmABt
+            jvSQFtXiARgpDDtpINppjdRmAQkCEPbyn6u1OsBfnXCTx2yh3EN2QgAGBcxmkOfz
+            rZeiZTJPrGrncH24+QF5suhcju7ukUSPk8yxofe/EqADJ183OBHmuc6Rya08vjYl
+            6UCopyR1jlZDFFDSPPlvGkkhFx/gHU/5
+            =cghK
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(password|repmgrPassword|adminPassword|postgresPassword)$
