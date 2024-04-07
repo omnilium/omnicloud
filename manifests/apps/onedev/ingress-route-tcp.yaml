@@ -15,5 +15,3 @@ spec:
       middlewares:
         - name: inflight
           namespace: onedev
-  tls:
-    secretName: onedev-tls
