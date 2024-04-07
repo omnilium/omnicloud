@@ -5,3 +5,4 @@ resources:
   - repositories.yaml
   - postgres-release.yaml
   - onedev-release.yaml
+  - ingress-route-tcp.yaml

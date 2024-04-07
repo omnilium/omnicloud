@@ -1,0 +1,16 @@
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: onedev-ssh
+  namespace: onedev
+spec:
+  entryPoints:
+    - ssh
+  routes:
+    - match: HostSNI(`git.omni.ms`)
+      services:
+        - name: onedev-ssh
+          port: 22
+  tls:
+    secretName: onedev-tls
