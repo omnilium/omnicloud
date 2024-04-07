@@ -19,7 +19,7 @@ spec:
             replicas: 1
             initSettings:
                 user: admin
-                password: ENC[AES256_GCM,data:MtlRzzCC9A/mgJH/8gKAKkJAjxmltvQPaEtWPaXdppM=,iv:XP9IB4vSJBkaGuKc0E1QUGQ5tKyhSh3wYtiVmI1LlnE=,tag:NNjZgpjiFeWsPH5v0m8AGg==,type:str]
+                password: ENC[AES256_GCM,data:kjFBlR50STj83x+LagU3Br+VSmJrkD735St7qbiy3eA=,iv:dI9O5GPb4fWKtEl194nOSPMQcPjaG8TZTrIKVdJCyrs=,tag:5A4XDie2/PUTolXzm/qMwA==,type:str]
                 email: webmaster@omnilium.com
         database:
             external: true
@@ -28,7 +28,7 @@ spec:
             post: "5432"
             name: onedev
             user: onedev
-            password: ENC[AES256_GCM,data:UW8dmeKfWZPuXGLEvqCe2+BiP8pR6DDZSLYUkarQSO4=,iv:J5ZDeeaNh3YVKaQMt4bwzQDUvRmgQ4AORBDr8+QEQvk=,tag:yEWm3pl3kfQ3JI8/XYh6kQ==,type:str]
+            password: ENC[AES256_GCM,data:pSWzuuxXTzpUk1+EzaLSnZoLEqKPXEGHjcRA0vobdgI=,iv:uhp6p8KUKkqikLu8TuhCftiZ/mDyLI0CjpZjjBhgKvQ=,tag:qC8zscvUKwleM8x7XtVndQ==,type:str]
             maximumPoolSize: "200"
         podLabels:
             app.omnilium.local/identifier: onedev
@@ -54,7 +54,7 @@ spec:
                 traefik.ingress.kubernetes.io/service.sticky.cookie: "true"
                 traefik.ingress.kubernetes.io/service.sticky.cookie.name: glue
                 traefik.ingress.kubernetes.io/service.sticky.cookie.secure: "true"
-                traefik.ingress.kubernetes.io/service.sticky.cookie.maxage: 3600
+                traefik.ingress.kubernetes.io/service.sticky.cookie.maxage: "3600"
             separateSSH:
                 enabled: true
         ingress:
@@ -74,33 +74,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-07T20:15:07Z"
-    mac: ENC[AES256_GCM,data:OeOTZSeYzFdRdv3iWWDVqCRMy2fw92Qw91WjAWSliThUV0NHq25NNP+VuiJlHvtGOcbA5z0w2QVOtmE1BY39z/RfHms3uBKdrEeMJlWEcEv1XWfz8BulKBSk2+NaDgsRyh9m5wTAmTl0dRcfI73mqLwCBo3jAqG8ZuiXAE6Xl50=,iv:y0A/knztOonVODr5CW+8iUxgV7OQ39Z/iDC3tSFzSXc=,tag:00LL9yIYUGK38S/SJWSFkA==,type:str]
+    lastmodified: "2024-04-07T20:20:02Z"
+    mac: ENC[AES256_GCM,data:cAXQvZW8AM1ocwl14CRzYdu4BkRMjTQ9TJdzZW956krudDlXaOszqp4J388PeVKJA7Bkrzm3BPuquYbDXE/E1AhJuZZQx8MHU0g4wElwZn/hNQI9Gnb74MQl5zVUhQpREjVffv/S8UJegZJvDqcM10wG5b5sOuI3fhPis0c5ydw=,iv:djLBmkip4/f8eaWs+vHCiIVzTvx3Bszb8afljO4sTvs=,tag:flYWaj3zo1oV0bNYbIlTug==,type:str]
     pgp:
-        - created_at: "2024-04-07T20:15:07Z"
+        - created_at: "2024-04-07T20:20:02Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEyXAZjLjuU7sBXZDwrx0ckKZdFj8dv+vehThIlemrKXhv
-            wvy7TZvGojSjN80RDcrKqdbUR3lHQZZepQ4A6pEi3tKiqHRr0qgviTWJMDQYXtm4
-            lBKNJuHX1RJ0cz5PSUk4MLGQbnvLwpZIAEC70t3J5Ow96U6LVlPnygQaGgfpZP2Q
-            F7TTGy4krvqOxk8cb/WHftRoAQkCEI6hMOSzV8Xz7ZFBFogKnzqxIxG0H1oJuSw8
-            mgUcdu2GBpA896S2pSrfwv4i5eSItlj75I3WKVotFfAeK8ec59jKMsJljuA/qiIA
-            JuQsPu6cB6azLPtNhCCs+fMGExF95GbQWOo=
-            =8Rp0
+            hJ4D0dRkdsWQFPUSAwMEZ9H7vxy84Jk/ztnz/s3wcf486Zxl18rWv8OX9ejcAAUe
+            nVHahK7BdZZ0OD616UYLfeyW6sHHB02Al+GF2vh/ADh10qtFLxEr8zs6sTZ1kpP1
+            QO6hPFbRGKuXxVXEPKKyMBy4NpqHgd/4QDjyoLVwZl6aY326GrZR8SKiPN+EZlNV
+            a3ws+DbCZuGA/w+RkFYJmdRoAQkCENP34pCuqKAFjFym2n1WN8kAV5t5QTNgC/hb
+            Jb3q0fzvodQXvqBT4PI2FkXXn0GLR0slAzBhQ7yDYflLQr0d8Atybv7q+XISwVA7
+            Ol7tOrKZcBCqx37jkBpz28NcCZmyxtC8o+c=
+            =Zk+u
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-07T20:15:07Z"
+        - created_at: "2024-04-07T20:20:02Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEQX9sU+I5PBnpYbX++peCCWngv88/UdQ2nr13TTCO6w8S
-            jDtF+EYOQiZ/MJlx6EYGBPlbsHC4g6NffRC5pfo5XJkjvTwzpCXAo/7oArp7xeDG
-            BeA5EAUhme1ToEmtglJqME+KXnUcKoxS1INy8IcOH+dZnNiykl2ci8m6ry5Cm6yb
-            cLIj0dO66t4o8xly3+zFAdRoAQkCEPKaF+uJ6/Dh+IzdxFkppfdj4id1WxSnt7mG
-            HrawVOVGRUI2SpX+e4M5UbJIFGik3JrOot8zl7UCBQe3HB8yBmb9trpLIp8hmsPE
-            /KJmCNrwfh2u2FmV6ye2VvwG96EJtHtBIco=
-            =8S/h
+            hJ4DLG005yzvDc8SAwME/4OUhbFyQOPhgmuafWVAo9oW1PBtSuXAFXdfCIiWMek8
+            W4aFSPUDsxtQS7t14FaR6lINDmjZm+HdtrYNnLjcndA53lRF74LWLoZkbnGrYIgU
+            1tvVQFWvmTy6+V47c6c8MLAS+0N7ivMoPmqoTxk8Ru6aH8+3AMgguB0AK4jEF2Fd
+            NNylreDAMwwWnPqsPPamt9RoAQkCEOyfu1ldrcNMsg2S0ZHNZlPsG+bc7gIvmwrV
+            EKdsMKiCdm0CggsI7My0VMuWYLA0xnQeh9P821Q+UitlaGV5pGR/M7NYuShOimOB
+            +dQnUfGPkBq3t0wyu5n5zCghTvi3+3bUF3U=
+            =HAMz
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password)$
