@@ -20,7 +20,7 @@ fi
 
 if [[ "$1" == "all" ]]; then
   for node in "${!nodes[@]}"; do
-    ./render.sh $node ${nodes[$node]} "${@:2}"
+    ./render.sh $node "${@:2}"
   done
 
   exit 0
@@ -34,9 +34,12 @@ talosctl gen config \
   --config-patch @patches/ca.yaml \
   --config-patch @patches/cluster-name.yaml \
   --config-patch @patches/discovery.yaml \
+  --config-patch @patches/drbd.yaml \
+  --config-patch @patches/image.yaml \
   --config-patch @patches/kubelet-certificate-rotation.yaml \
-  --config-patch @patches/mayastor.yaml \
   --config-patch @patches/metrics.yaml \
+  --config-patch @patches/nameservers.yaml \
+  --config-patch @patches/time.yaml \
   --config-patch @nodes/$1.yaml \
   --force \
   omnicloud \

@@ -1,15 +1,20 @@
 machine:
   install:
     disk: /dev/sda
+    image: factory.talos.dev/installer/cbfda270cc448499f0b2f5f6bd78b40389e5d58fd53710de4cfde10084405b10:v1.6.7
   network:
-    hostname: talos-master-1
     interfaces:
       - interface: enxbc24119cda22
         addresses:
-          - 10.0.0.3/16
+          - 10.0.0.2/16
         routes:
           - network: 0.0.0.0/0
             gateway: 10.0.0.1
+    nameservers:
+      - 10.0.0.1
+  time:
+    servers:
+      - 10.0.0.1
   nodeLabels:
     topology.kubernetes.io/region: hel1
     topology.kubernetes.io/zone: dc7
