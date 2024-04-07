@@ -1,0 +1,115 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: postgres
+    namespace: onedev
+spec:
+    interval: 10m0s
+    chart:
+        spec:
+            chart: postgresql-ha
+            version: '>=14.0.2 <14.1.0'
+            sourceRef:
+                kind: HelmRepository
+                name: bitnami
+                namespace: onedev
+            interval: 1m
+    values:
+        global:
+            postgresql:
+                username: onedev
+                password: ENC[AES256_GCM,data:iFnRLwtFV3MD5Fpb7Gvd77OBY7Z2fYrKuCf/1sqoeuo=,iv:B5BGMd9/JCitbn08t6WAhoJKiwJhI2nyhxKvZYOSazs=,tag:+mPrF5QoHRu9z6KDoHNazg==,type:str]
+                database: onedev
+                repmgrUsername: repmgr
+                repmgrPassword: ENC[AES256_GCM,data:2+a7C5GimZrmzzp/R5MG8Qd1bRypQqTr1PPo7lEnqRo=,iv:af5YF21+fuDS15tDF0mh/xRvUMUX7gIWAUe90W5m1Qs=,tag:Rq0lsJ8h4p/t0aY77wyqHg==,type:str]
+            pgpool:
+                adminUsername: pgpool
+                adminPassword: ENC[AES256_GCM,data:mHri2G95Y9Pv5v+mEW6R8TTEUlT68JjlfQkTkxwmaGM=,iv:shnM7EX10kjZi/a0Rdl47XfCTrVBdKzPsE/1RY6scko=,tag:6p+CQV0MK5E33Lt/D2/avw==,type:str]
+        postgresql:
+            podLabels:
+                app.omnilium.local/identifier: postgres-onedev
+            affinity:
+                podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                        - weight: 100
+                          podAffinityTerm:
+                            labelSelector:
+                                matchLabels:
+                                    app.omnilium.local/identifier: postgres-onedev
+                            topologyKey: topology.omnilium.local/host
+            topologySpreadConstraints:
+                - labelSelector: null
+                  matchLabels:
+                    app.omnilium.local/identifier: postgres-onedev
+                  topologyKey: topology.kubernetes.io/zone
+                  maxSkew: 1
+                  whenUnsatisfiable: ScheduleAnyway
+            extraVolumes:
+                - name: dshm
+                  emptyDir:
+                    medium: Memory
+                    sizeLimit: 256Mi
+            extraVolumeMounts:
+                - name: dshm
+                  mountPath: /dev/shm
+            resourcesPreset: medium
+            password: ENC[AES256_GCM,data:BR8Aq6A7xFmFBed+VfPW/9iC+rjUYcxThiTjwIZZUzg=,iv:+f0zljxvBbSCA6FMgIfPmX4qa/fwsCC//e6kL0c2Vzs=,tag:tqCuTFSGm+Iznz7LlW47wA==,type:str]
+            postgresPassword: ENC[AES256_GCM,data:v1Neg9mUCG4LN0yXOuV3S1do+xOk/NwnEBaZYyck+ls=,iv:YLLKy0+tzZzIZfB2T1bBIGBbBBIWeHGVmGrs5KM7sqQ=,tag:Db9tGLzmXlD5GEI6clnXbw==,type:str]
+            repmgrPassword: ENC[AES256_GCM,data:yUjn1gyfW5mlBSbveh+ZPL0f05L7N30X7UjgBfROaQQ=,iv:qpVJT0Sqft7Lj5+mIteZoHK8dqDQznyw+W2Mw8BjsyQ=,tag:jbrzpf9lmqvgl8ehEx2BLw==,type:str]
+            maxConnections: 300
+            postgresConnectionLimit: 20
+            dbUserConnectionLimit: 280
+        pgpool:
+            resourcesPreset: small
+            adminPassword: ENC[AES256_GCM,data:VSct40qXssQeHx3Nc4B+h8xdrJASg/XIrC63oGeifww=,iv:qZlOa8cpcui1qstmaVxk5K7JqTDr4ZM2OIM0zrO8YIo=,tag:FqvFe0jcxbrV65MhHdCS+w==,type:str]
+            numInitChildren: "35"
+            maxPool: "8"
+            clientIdleLimit: "5"
+            connectionLifeTime: "10"
+        persistence:
+            size: 10Gi
+        persistentVolumeClaimRetentionPolicy:
+            enabled: true
+        backup:
+            enabled: true
+            cronjob:
+                storage:
+                    storageClass: replicated
+                    size: 10Gi
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-07T17:44:24Z"
+    mac: ENC[AES256_GCM,data:sazoe/+m7OQFRRhAgexUD6401i+JhA05DgRBU0u2UDl7ftibZ+wkMHiz4sUx8aRS5YWX3mpHwt3DIfwkCrcMPooUYJfvLh1FluZBBc33Pa+h1+xNH5V+smmb0mmF4A+ADlUmhtX1NV2avpL0kTnCVCPiscW2Dj2/tKr9aT+95eU=,iv:MECi/NZB/Wij73XdYyV1uKCIZ1iUi/hrA6CF7cwQ5dU=,tag:uwbv9g1ALcO7+ZDPSmOBeA==,type:str]
+    pgp:
+        - created_at: "2024-04-07T17:44:24Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEIQKvkLl4sJaajuVZCfxEZ46NZE4QuhXXOVY7OYlFVomI
+            zhfZSR6duRkl9PWHfWoGZMPJOOjnnEPHI1iqG7Aoq746Y+qXtdnxBv9kXTgCjC1z
+            UkcF8tDdfHFmO9L9iPvBMB20SjS7v1UDZdO+gnA+tPWjDiZuZRliDrCgOfmAufJS
+            mlkO1kCmpg783SOAKFbp/tRmAQkCEBxdFPKJmRdNWnftwRJv1Ugy6lpghASrtZnx
+            Z0dNgFMZRW0SonmdJmQinwr1M9XcJEgvv0hLVjc8+R0lry/f5Ok7mqMxSyvXcg1b
+            7ueGCEiYznFOlCkSzUgVIUfpgfyTq21u
+            =cjlk
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-07T17:44:24Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEkjII44s7Ncd631jF8tYjeCtfnvuIgxyWbdSoN6Ck4zTY
+            y37QRv58YObB8WWR9m6MfEzmL2UK3w/LqRm8GAtFxewZGbxxZKZGNIB7yiJ6FDTr
+            xJyl8k68ir1j4mA1IGYqMM7Ny8INgU0dDxwXp0oKra3CPiZcv3GGXvuZ0bUCbRiv
+            V4l/QFcdHa/8cCYHnNjvFtRmAQkCEGMLn9ctU5A9yaTCPRO+aMOx1/1bbUlZY3qd
+            8JZ3y+bwnBRccD+RKt1oBbhYJ2C+j2gcorxBK/S9WnwvhnBjV7oM7ml0LAh1VHOg
+            t7vBodnOw1jR8oPEufcxuZZAXeLT5mp+
+            =prXk
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(password|repmgrPassword|adminPassword|postgresPassword)$
+    version: 3.8.1
