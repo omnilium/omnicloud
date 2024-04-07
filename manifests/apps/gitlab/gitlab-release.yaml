@@ -50,6 +50,7 @@ spec:
         username: gitlab
         database: gitlab
         preparedStatements: true
+        keepalives: 0
       redis:
         auth:
           enabled: true
@@ -111,10 +112,10 @@ spec:
         enabled: true
         accessControl: true
         host: pages.omni.ms
-        # externalHttp:
-        #   - 10.0.1.1
-        # externalHttps:
-        #   - 10.0.1.1
+        externalHttp:
+          - 10.0.1.1
+        externalHttps:
+          - 10.0.1.1
       smtp:
         enabled: true
         address: smtp.eu.mailgun.org
