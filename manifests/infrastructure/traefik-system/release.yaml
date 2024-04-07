@@ -22,6 +22,10 @@ spec:
     providers:
       file:
         enabled: true
+        content: |
+          entryPoints:
+            ssh:
+              address: ":2222"
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
