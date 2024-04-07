@@ -17,7 +17,7 @@ spec:
     values:
         auth:
             sentinel: false
-            password: ENC[AES256_GCM,data:wkAzUGziHLOUBv9uLeK7i/BD2K2TLWUU7GNdi/0zj54=,iv:6vYTjUysY5OYoGgY0fDdou/4tbWtLhmKhW1RDUzc9iU=,tag:0vtuTBnM5n0l3cAe7tdeew==,type:str]
+            password: ENC[AES256_GCM,data:XO09vC4ezXKL2yJOL3nskSUfVO43GnBVkKPVCdRjp9s=,iv:QoKmunngrcoPYCP5z0TBoEQv5TdUgNDN34oTeyBote8=,tag:wb2VyIiEMF9czp8fbEwDnA==,type:str]
         master:
             resourcesPreset: micro
             podLabels:
@@ -40,6 +40,7 @@ spec:
                   whenUnsatisfiable: ScheduleAnyway
             persistence:
                 size: 10Gi
+            priorityClassName: high
         replica:
             replicaCount: 3
             resourcesPreset: micro
@@ -63,6 +64,7 @@ spec:
                   whenUnsatisfiable: ScheduleAnyway
             persistence:
                 size: 10Gi
+            priorityClassName: medium
         sentinel:
             enabled: true
             masterSet: gitlab
@@ -74,33 +76,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-07T12:58:13Z"
-    mac: ENC[AES256_GCM,data:BCh8wrKs+bww2A2b9WvGpfirjQm3WAUgdOiIGEQwXgK8UqSQcipEw+1KBJo4v5xRiiwweQswTXANkuVdCv+5ZDJcy8Swpt0KKqU+g+0Xxpe2knJNf0QYslrBMYf4alwv49XTa6SF82G0npAcy7PyIdR2kojCRYwUzEzAXUuCvGQ=,iv:XKSHHyj6wQtOiOJIltxvwUTEf4PbjmZljvXCmFkp/cQ=,tag:L/V1rlBbgOT0P9fw+0084w==,type:str]
+    lastmodified: "2024-04-07T14:45:48Z"
+    mac: ENC[AES256_GCM,data:ssiN+UKJjRIpsZq1Wy6+Brog37t5DoTuQHjUriqRhaEGGuFaBnkUw6M2UKrU/x8z5Ecgs0PDKLYffmRtivtbY1w/s9JaCX0ZqgK6jjSge7e+4XvNEUj7hp7/vfqRZgUra9yGwFECrxjYWENSfSCtpOYOH0t1LQI3LkWCTEzAS+8=,iv:VjOJe/cJYneMHsfaufr9Bf/IHYn6BAeJ0oP3SZt3Ntg=,tag:EiaUW3bt5jvrTQ8djTAZ2w==,type:str]
     pgp:
-        - created_at: "2024-04-07T12:58:13Z"
+        - created_at: "2024-04-07T14:45:48Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEIoHhyJ1eZWEkcd9osd/zPUVwekT6RghhV56A/+/urQ7B
-            Sw4ZES+XwELbFcWDD+TtowWYPukD1drjBb/CcQRvHr41WiRKznaCqqxaPbiXxG+n
-            DH5CyY/nBZ4tTzXVcMgMMLqiNRhXlie6NhaCdDIGAbhnZavsTzNr57mqPnlui3UF
-            aubu2KKyt0mduzV/Sf0qlNRoAQkCEGiiDJcSTXnPsw0fNJYfBb21o65RTaZsgTjy
-            noPxo8nrAKp0C8V2ydrNCNKVsKKgwLciXbpK4Q7R+fuuVtOjFbOfkBIkdpQDv0Oe
-            qlDhRHzfQT9StZKkfTUJ7n2r1BmoTkjydBo=
-            =A3Da
+            hJ4D0dRkdsWQFPUSAwMEr6VdXGFtcuKR8y1h3rl2hOyintsKJKQk/WWH8tOW2Swi
+            oIxFakc0Ir2678z09WJQb1H4shRUb7xqN96bEYfELBcyKv6gH2sVJvHzJPFmHiMS
+            HrupPLUh6Le266TXuuL+MEdqbiJxpeLlv3hmXWkEvvWHSKxw2gKAg1OOKFHn3fFJ
+            NASvH096JBubG2DY2HbQOdRoAQkCEFpIt6iOz1bx4ToDnhC3RS3+PgIK9IG3pPin
+            1gqhcGktVZgrjvjSE3sJh6cUhtNbpb+F/YUeO3A2dO1FitO7E5rSW74NsCcf9Yz5
+            kXGc9YfW4CMPdrQ7YzjIkhHodudYa5CLRSY=
+            =OzXW
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-07T12:58:13Z"
+        - created_at: "2024-04-07T14:45:48Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMElQ8U2kMT2VTgDtYSh1AGYE1PFgTRRQ+kUzTWX3/0YtWV
-            bx6Mb1Hpv04W5th8vsnn1XvHMnkw6VIjmOf3KXWw/hDW2p2kNamBDzowE2diaORC
-            BqApvdiuHRID1VEmWZAhMHeo6V5s4z+2VUce2EdonchkKlgnFmzLZVdYUyFEgeOZ
-            lJqZAf9N3uUzi4UqPFSb49RoAQkCEAjWAXGGmkxSVwCmVVYDEBgJJqgIAeoATPD8
-            dd6W4N0ZbEXyVV+4Y4Fcas7yW+kKxtPUJ+zaIb2LoRx7x2ARarUitZRKi4duoDj5
-            qjmXRf7s2X0bGS8SexFMBal1d0fSqvIHM58=
-            =0AAn
+            hJ4DLG005yzvDc8SAwME+Kd+xq3xME2hlzncSR44CH52ZSzpRJToJ1orPWH/rEou
+            gySx29xkGYUSt3jYY3pwlLEiUJTRAgmJs/SsMoIv3ZYuXtGW7Etivh91PnWBX4bP
+            /FEpQUR0MNmgPmaWCy34MBNAQRA8uxdqYZtm7BibhjLP9K2KfTZSvoX8XnW6xNpj
+            OzedrtN4YD2dji2vmOSyKNRoAQkCEF6CXKd3bn5T+DnR1gwwMnw8rzUsOXy8pNKu
+            xsw5C/F+PHCsk9+6FtNHwV5N64RWUZ400fvoAyA3Swile8QJWSQAzzhupSb0FP+P
+            2Uvz3uyp9ccKlUo5PtuKk0vAqfacfd15V8k=
+            =wLNf
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(password)$
