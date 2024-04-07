@@ -6,3 +6,5 @@ resources:
   - postgres-release.yaml
   - onedev-release.yaml
   - ingress-route-tcp.yaml
+  - middleware.yaml
+  - middleware-tcp.yaml
