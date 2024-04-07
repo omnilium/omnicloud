@@ -422,3 +422,32 @@ spec:
         requests:
           cpu: 100m
           memory: 128Mi
+    gitlab-runner:
+      replicas: 3
+      runners:
+        config: |
+          [[runners]]
+            [runners.kubernetes]
+              namespace = "gitlab"
+              image = "ubuntu:22.04"
+            [runners.cache]
+              Type = "s3"
+              Path = "gitlab-runner"
+              Shared = true
+            [runners.cache.s3]
+              ServerAddress = "https://storage.git.omni.ms"
+              BucketName = "runners-cache"
+              BucketLocation = "hel1"
+              Insecure = false
+        cache:
+          secretName: gitlab-runner
+      resources:
+        {}
+        # limits:
+        #   memory: 256Mi
+        #   cpu: 200m
+        #   ephemeral-storage: 512Mi
+        # requests:
+        #   memory: 128Mi
+        #   cpu: 100m
+        #   ephemeral-storage: 256Mi
