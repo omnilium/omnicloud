@@ -68,3 +68,7 @@ spec:
       kind: HelmRelease
       name: minio-operator
       namespace: minio
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg

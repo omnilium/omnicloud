@@ -1,52 +1,102 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: cockroachdb
-  namespace: onedev
+    name: cockroachdb
+    namespace: onedev
 spec:
-  interval: 10m0s
-  chart:
-    spec:
-      chart: cockroachdb
-      version: ">=12.0.3 <12.1.0"
-      sourceRef:
-        kind: HelmRepository
-        name: cockroachdb
-        namespace: onedev
-      interval: 1m
-  values:
-    conf:
-      cache: 500MiB
-      cluster-name: onedev
-      max-sql-memory: 500MiB
-    statefulset:
-      labels:
-        app.kubernetes.io/component: cockroachdb
-        app.omnilium.local/identifier: cockroachdb-onedev
-      podAntiAffinity:
-        topologyKey: topology.omnilium.local/host
-      topologySpreadConstraints:
-        topologyKey: topology.kubernetes.io/zone
-      resources:
-        limits:
-          cpu: 200m
-          memory: 2.5Gi
-        requests:
-          cpu: 100m
-          memory: 2Gi
-    ingress:
-      enabled: true
-      annotations:
-        cert-manager.io/cluster-issuer: local
-      hosts:
-        - onedev.cockroachdb.omnilium.local
-      tls:
-        - hosts:
-            - onedev.cockroachdb.omnilium.local
-          secretName: cockroachdb-tls
-    storage:
-      persistentVolume:
-        size: 10Gi
-    tls:
-      enabled: false
+    interval: 10m0s
+    chart:
+        spec:
+            chart: cockroachdb
+            version: '>=12.0.3 <12.1.0'
+            sourceRef:
+                kind: HelmRepository
+                name: cockroachdb
+                namespace: onedev
+            interval: 1m
+    values:
+        conf:
+            cache: 500MiB
+            cluster-name: onedev
+            max-sql-memory: 500MiB
+        statefulset:
+            labels:
+                app.kubernetes.io/component: cockroachdb
+                app.omnilium.local/identifier: cockroachdb-onedev
+            podAntiAffinity:
+                topologyKey: topology.omnilium.local/host
+            topologySpreadConstraints:
+                topologyKey: topology.kubernetes.io/zone
+            resources:
+                limits:
+                    cpu: 200m
+                    memory: 2.5Gi
+                requests:
+                    cpu: 100m
+                    memory: 2Gi
+        ingress:
+            enabled: true
+            annotations:
+                cert-manager.io/cluster-issuer: local
+            hosts:
+                - onedev.cockroachdb.omnilium.local
+            tls:
+                - hosts:
+                    - onedev.cockroachdb.omnilium.local
+                  secretName: cockroachdb-tls
+        storage:
+            persistentVolume:
+                size: 10Gi
+        init:
+            provisioning:
+                enabled: true
+                users:
+                    - name: onedev
+                      password: ENC[AES256_GCM,data:y2smU3tLuZaSrltaCl0JYol//Bd+q/NCVFTZvhgGmxk=,iv:ibHufpG6QfRa7oVXuiL2VqzUX8cnX9cDvKWVwBb+uws=,tag:PkG7kdYq+LGeQuFhxGHyiw==,type:str]
+                      options:
+                        - LOGIN
+                databases:
+                    - name: onedev
+                      options:
+                        - encoding='utf-8'
+                      owners:
+                        - onedev
+        tls:
+            enabled: false
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-07T17:27:31Z"
+    mac: ENC[AES256_GCM,data:hAl88IDkEqPQRgk7mINxSNKsUu3LBfDB1agYoPBPOOOwbbMr31WypNIwJpCGDzGDzw2O9lfmVAAVUcrWtmm2msfmontd+W+XGx7WmAKWVjXnOXLcUIpCojkXuG63Pum8JMelvwWOHVZQv1XwfViNrZnl7n3L59ZjeXKTw2bIEVg=,iv:Stsq3dLlP31/Koex5oW8jgm+/E4lMU0OTh/9Wj6vTg4=,tag:B2rgX9o8bLCmiBc1rzYJpA==,type:str]
+    pgp:
+        - created_at: "2024-04-07T17:27:31Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEVeQGhEu3X9b7pLXyRIaEtHcRiP6bHwY/vAflQK4rA/n1
+            ebFLUa43r/NjK4nB8i82xK6kRBJ/Hgf+Km+7uF549gpOH/XZg/9Ij5Qazl8foSY/
+            Ko51JVjRThkbvNo+wUQ3MG6QqCxP0iMf3W2ACm+iqh2vDvgRqr7MBwTqcMfw5nqm
+            hZBuWEqmv6olYDz5JJ0JcNRoAQkCENkea3GHMjIRFDn/yecatJ+pV8jWScw+JtA2
+            tXMzCGoyNyhbWXcGS6uFUjAy5/HdSANvaZRCQnD8XCg2XlRnzwpcjdwVgwvOtnUG
+            xtnrDt66sBeSmlGzZZ+1NXGb539ULdF0i5E=
+            =YRuq
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-07T17:27:31Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEc6cARlyWMMG/ZnGPZQIAl7QCU2Wy3VnD7WECdSMJHkN8
+            2n424f+3JrY3w5tbMG6L4UukQPwQmlEw1PV5u1wfmWvaYkylq0u6ZvpwJarQ3CBW
+            72Tz1w+qFHzCciaEdfD+MKvLfGG4kRi0DoYq1nAe7YSsr2+wb81Z15ONGnHWe3jk
+            +8VDY/z+zadexDYrjE+yd9RoAQkCEOAKXCL0FhrP617XotMHLcRwx46JHzOZoPEy
+            LP2SQaUGPTxc6adaUmhXnpMvXRZZVRP4fbr14icrOCc4usWziQEtD/ERhn+JjTKD
+            TiIXcfVncCbb+SwBRRRulN4U2aAF1iwqWpE=
+            =6eyU
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|stringData|password)$
+    version: 3.8.1
