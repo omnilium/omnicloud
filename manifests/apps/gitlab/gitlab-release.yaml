@@ -109,9 +109,9 @@ spec:
         accessControl: true
         host: pages.omni.ms
         externalHttp:
-          - 159.69.169.210
+          - 10.0.1.1
         externalHttps:
-          - 159.69.169.210
+          - 10.0.1.1
       smtp:
         enabled: true
         address: smtp.eu.mailgun.org
