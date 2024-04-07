@@ -104,6 +104,10 @@ spec:
       kind: HelmRelease
       name: cert-manager
       namespace: tls-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: trust-manager
+      namespace: tls-system
   decryption:
     provider: sops
     secretRef:
@@ -129,6 +133,10 @@ spec:
     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
       kind: HelmRelease
       name: cert-manager
+      namespace: tls-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: trust-manager
       namespace: tls-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
