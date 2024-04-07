@@ -8,7 +8,7 @@ spec:
   entryPoints:
     - ssh
   routes:
-    - match: HostSNI(`git.omni.ms`)
+    - match: HostSNI(`*`)
       services:
         - name: onedev-ssh
           port: 22
