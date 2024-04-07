@@ -32,7 +32,8 @@ spec:
           advertisedPort: 4443
       ssh:
         port: 2222
-        expose: true
+        expose:
+          default: true
         exposedPort: 22
     tlsOptions:
       default:
