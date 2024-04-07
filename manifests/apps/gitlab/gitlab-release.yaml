@@ -149,24 +149,24 @@ spec:
         persistence:
           storageClass: replicated
         resources:
-          # limits:
-          #  cpu: 100m
-          #  memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 500Mi
           requests:
             cpu: 100m
-            memory: 200Mi
+            memory: 300Mi
         gpgSigning:
           enabled: true
           secret: gitlab
           key: gpg_private_key
       gitlab-exporter:
         resources:
-          # limits:
-          #  cpu: 1
-          #  memory: 2G
+          limits:
+            cpu: 100m
+            memory: 200Mi
           requests:
-            cpu: 75m
-            memory: 100M
+            cpu: 50m
+            memory: 100Mi
       gitlab-pages:
         hpa:
           maxReplicas: 3
@@ -182,12 +182,12 @@ spec:
               stabilizationWindowSeconds: 300
         maxUnavailable: 1
         resources:
-          # limits:
-          #   cpu: 900m
-          #   memory: 2G
+          limits:
+            cpu: "1"
+            memory: 1Gi
           requests:
-            cpu: 900m
-            memory: 2G
+            cpu: 100m
+            memory: 500Mi
         priorityClassName: low
         redirectHttp: true
       gitlab-shell:
@@ -232,12 +232,12 @@ spec:
         maxUnavailable: 1
         minReplicas: 1
         resources:
-          # limits:
-          #   cpu: 100m
-          #   memory: 100M
+          limits:
+            cpu: 200m
+            memory: 100Mi
           requests:
             cpu: 100m
-            memory: 100M
+            memory: 50Mi
       mailroom:
         hpa:
           maxReplicas: 3
@@ -278,11 +278,12 @@ spec:
             scaleDown:
               stabilizationWindowSeconds: 300
         resources:
-          # limits:
-          #  memory: 5G
+          limits:
+            cpu: "1"
+            memory: 5Gi
           requests:
-            cpu: 900m
-            memory: 2G
+            cpu: 200m
+            memory: 2.5Gi
         maxUnavailable: 1
         priorityClassName: medium
       spamcheck:
@@ -301,11 +302,11 @@ spec:
         maxUnavailable: 1
         priorityClassName: high
         resources:
-          # limits:
-          #   cpu: 100m
-          #   memory: 100M
+          limits:
+            cpu: 500m
+            memory: 200M
           requests:
-            cpu: 100m
+            cpu: 200m
             memory: 100M
       toolbox:
         priorityClassName: medium
@@ -318,12 +319,12 @@ spec:
               secret: gitlab
               key: backups_connection
         resources:
-          # limits:
-          #  cpu: 1
-          #  memory: 2G
+          limits:
+            cpu: 200m
+            memory: 1Gi
           requests:
             cpu: 50m
-            memory: 350M
+            memory: 100Mi
       webservice:
         ingress:
           tls:
@@ -340,21 +341,21 @@ spec:
               stabilizationWindowSeconds: 300
         workhorse:
           resources:
-            # limits:
-            #   cpu: 100m
-            #   memory: 100M
+            limits:
+              cpu: 200m
+              memory: 200Mi
             requests:
               cpu: 100m
-              memory: 100M
+              memory: 100Mi
         trusted_proxies:
           - 10.0.0.0/8
         resources:
-          # limits:
-          #  cpu: 1.5
-          #  memory: 3G
+          limits:
+            cpu: "1.5"
+            memory: 5Gi
           requests:
-            cpu: 300m
-            memory: 2.5G
+            cpu: 500m
+            memory: 3Gi
         maxUnavailable: 1
         minReplicas: 2
         maxReplicas: 5
@@ -365,12 +366,12 @@ spec:
         tls:
           secretName: gitlab-registry-tls
       resources:
-        # limits:
-        #   cpu: 200m
-        #   memory: 1024Mi
+        limits:
+          cpu: 200m
+          memory: 500Mi
         requests:
           cpu: 50m
-          memory: 32Mi
+          memory: 50Mi
       maxUnavailable: 1
       hpa:
         maxReplicas: 5
