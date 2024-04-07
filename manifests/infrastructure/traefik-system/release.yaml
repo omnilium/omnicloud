@@ -45,7 +45,7 @@ spec:
           resource:
             name: memory
             target:
-              type: Utilizations
+              type: Utilization
               averageUtilization: 75
       behavior:
         scaleDown:
