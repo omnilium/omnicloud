@@ -16,6 +16,12 @@ spec:
         namespace: traefik-system
       interval: 1m
   values:
+    deployment:
+      podLabels:
+        app.omnilium.local/identifier: traefik
+    providers:
+      file:
+        enabled: true
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
@@ -68,14 +74,12 @@ spec:
             podAffinityTerm:
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-                  app.kubernetes.io/instance: "{{ .Release.Name }}-{{ .Release.Namespace }}"
+                  app.omnilium.local/identifier: traefik
               topologyKey: topology.omnilium.local/host
     topologySpreadConstraints:
       - labelSelector:
           matchLabels:
-            app.kubernetes.io/name: '{{ template "traefik.name" . }}'
-            app.kubernetes.io/instance: "{{ .Release.Name }}-{{ .Release.Namespace }}"
+            app.omnilium.local/identifier: traefik
         topologyKey: topology.kubernetes.io/zone
         maxSkew: 1
         whenUnsatisfiable: ScheduleAnyway
