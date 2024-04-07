@@ -19,13 +19,6 @@ spec:
     deployment:
       podLabels:
         app.omnilium.local/identifier: traefik
-    providers:
-      file:
-        enabled: true
-        content: |
-          entryPoints:
-            ssh:
-              address: ":2222"
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
@@ -37,6 +30,10 @@ spec:
         http3:
           enabled: true
           advertisedPort: 4443
+      ssh:
+        port: 2222
+        expose: true
+        exposedPort: 22
     tlsOptions:
       default:
         minVersion: VersionTLS13
