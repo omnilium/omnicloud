@@ -1,0 +1,130 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  interval: 10m0s
+  chart:
+    spec:
+      chart: gitlab
+      version: ">=7.10.1 <7.11.0"
+      sourceRef:
+        kind: HelmRepository
+        name: gitlab
+        namespace: gitlab
+      interval: 1m
+  values:
+    global:
+      pod:
+        labels:
+          app.omnilium.local/identifier: gitlab
+      hosts:
+        https: true
+        gitlab:
+          name: git.omni.ms
+        registry:
+          name: registry.omni.ms
+        smartcard:
+          name: git.omni.ms
+        kas:
+          name: kas.omni.ms
+        pages:
+          name: pages.omni.ms
+        ssh: git.omni.ms
+      ingress:
+        configureCertmanager: false
+        class: traefik
+        provider: traefik
+        annotations:
+          cert-manager.io/cluster-issuer: acme
+        tls:
+          enabled: true
+      psql:
+        password:
+          useSecret: true
+          secret: gitlab
+          key: postgres_password
+        host: postgres-postgresql-ha-pgpool.gitlab.svc.cluster.local
+        port: 5432
+        username: gitlab
+        database: gitlab
+        preparedStatements: true
+      redis:
+        auth:
+          enabled: true
+          secret: gitlab
+          key: redis_password
+        host: redis-headless.gitlab.svc.cluster.local
+        port: 6379
+      minio:
+        enabled: false
+      appConfig:
+        contentSecurityPolicy:
+          enabled: true
+          report_only: false
+        object_store:
+          enabled: true
+          connection:
+            secret: gitlab
+            key: object_store_connection
+        externalDiffs:
+          enabled: true
+        terraformState:
+          enabled: true
+        ciSecureFiles:
+          enabled: true
+        dependencyProxy:
+          enabled: true
+      spamcheck:
+        enabled: true
+      pages:
+        enabled: true
+        accessControl: true
+        host: pages.omni.ms
+        externalHttp:
+          - 159.69.169.210
+        externalHttps:
+          - 159.69.169.210
+      smtp:
+        enabled: true
+        address: smtp.eu.mailgun.org
+        port: 587
+        user_name: gitlab@mg.omni.ms
+        password:
+          secret: gitlab
+          key: mailgun_password
+        starttls_auto: true
+      email:
+        from: git@omni.ms
+      affinity:
+        podAntiAffinity:
+          topologyKey: topology.omnilium.local/host
+    certmanager:
+      installCRDs: false
+      install: false
+      rbac:
+        create: false
+    nginx-ingress:
+      enabled: false
+    prometheus:
+      install: false
+    redis:
+      install: false
+    postgresql:
+      install: false
+    gitlab:
+      toolbox:
+        backups:
+          objectStorage:
+            config:
+              secret: gitlab
+              key: backups_connection
+      webservice:
+        ingress:
+          tls:
+            secretName: gitlab-tls
+    registry:
+      ingress:
+        tls:
+          secretName: gitlab-registry-tls

@@ -18,14 +18,14 @@ spec:
         secrets:
             name: minio-env
             accessKey: gitlab
-            secretKey: ENC[AES256_GCM,data:XateIotPSb6k3+gMwJEnlFaqhECmab9OSG/MKpoWLlo=,iv:OyUfuhuCSI4Vjtkc4c2eTL5sCj/QaY3MiLSNoQI4bgg=,tag:sUaticd7O7AQbA5+YUz1oQ==,type:str]
+            secretKey: ENC[AES256_GCM,data:2lIkcP8bGzF1mzcWRoRfPlYvJgvual/Ikd+AMWC1nVk=,iv:YWXtvmwGCYnlxdYYMKpPyf9Xy+ea13V9ucnkXGUnvjs=,tag:gyZEBBIHY5PvRXSpV88rSw==,type:str]
         tenant:
             name: gitlab
             configuration:
                 name: minio-env
             pools:
                 - name: minio-pool-1
-                  volumesPerServer: 1
+                  volumesPerServer: 2
                   size: 10Gi
                   labels:
                     app.omnilium.local/identifier: minio-gitlab
@@ -49,41 +49,73 @@ spec:
             certificate:
                 requestAutoCert: false
             buckets:
-                - name: gitlab
+                - name: gitlab-artifacts
                   region: hel1
+                - name: git-lfs
+                  region: hel1
+                - name: gitlab-packages
+                  region: hel1
+                - name: gitlab-uploads
+                  region: hel1
+                - name: gitlab-mr-diffs
+                  region: hel1
+                - name: gitlab-terraform-state
+                  region: hel1
+                - name: gitlab-ci-secure-files
+                  region: hel1
+                - name: gitlab-dependency-proxy
+                  region: hel1
+                - name: gitlab-pages
+                  region: hel1
+                - name: gitlab-backups
+                  region: hel1
+                - name: tmp
+                  region: hel1
+                - name: registry
+                  region: hel1
+        ingress:
+            api:
+                enabled: true
+                annotations:
+                    cert-manager.io/cluster-issuer: acme
+                tls:
+                    - secretName: minio-tls
+                      hosts:
+                        - storage.git.omni.ms
+                host: storage.git.omni.ms
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-07T10:08:51Z"
-    mac: ENC[AES256_GCM,data:td9CTFXl4kqGAQluG9T4vUcvi96s6sQXkIxMnaEzGfDjsrF1r77HEvhyxg9E9pDOc8Re2kb1vwYL2+wDCRxUBi4YHoFG+wYM/1iqwcBAtNtpL6HuZ4V5CB3qN3q2XPu2rRBjHKhCQl9EFi830nKN5BbmxWNtQhsnADmH7w6NGTo=,iv:uUSYy2jSrnYvqArObJn8/ZzIbBmz71CQFH9ukvEzoIQ=,tag:rdw/jfC+ysritagALzwPEg==,type:str]
+    lastmodified: "2024-04-07T11:01:44Z"
+    mac: ENC[AES256_GCM,data:rWaJnEq1eQdOf4KxIy7rgNFCy7aVNHgsfVut5RjJoWmDRXGbCkFnliYOoc03Nc7UFiOw5FiVfDZNvsrJiXvF6ECs/mR1A3erpfEY/CqYn1JlWqbWtp6QhN444QAI2jw6yqsyWHEAN1PtuZBK6Qb7ALLfEEfKJclr2BRRA02c0Gw=,iv:z23ACMH9JNfLuenkycYPs4k0xq5/BR2wEMKtCExC0Ew=,tag:YWVKl9Svw9FFFUEcRX2V2g==,type:str]
     pgp:
-        - created_at: "2024-04-07T10:08:51Z"
+        - created_at: "2024-04-07T11:01:44Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEA244F9BeNIQJrnLnLqiQN64cZLC99QImQszoOnowVgcW
-            +eN49hSB9vq9atWh1LAUAkipgrWwcNp3Lmd6/sXT1NETe/40M3UkMVp5IuPjdRsP
-            fPhm96HM34sPlPicL1GiMEh89V+cpj2VHJHQpnWrG+gWL0wQQW8CYOGxJYvHkkId
-            pr32ts/C/yEkX0WQ7GLpq9RmAQkCEHe5F58R5nuATWzc09GB612fIOGwrm27DJkw
-            1UDjYVaEGth3qi0GWdxB2OWliH9dYwBRPDAsFGfeI2zlX0Ts6XyIQ3KqkWWFwLML
-            CnuaR6wEQLF+l4YP2/3Ok0aDW20zgaaC
-            =31Mq
+            hJ4D0dRkdsWQFPUSAwMEl6Mi5PXIOv2U/F+KMbBlyxk6vHVrqf6QeyCrzOX2vHZM
+            STeA8RD8fIaYxM8YhjT7X/4bXBaaNWEBranrjJdmVLnjfWVZu86n/m/oC0de34hA
+            YGdWevAL9hdjCFUe9w5xMEFhVJdHyUmUfKmhyMNfNV6y1dsMLoPoxRCijsOMVBw9
+            ljtmzuTEx3+HcJKJjXyJoNRmAQkCECUeanDZv8ToGOwfnZ5XL+JAKzf+U07HVXvM
+            HsLu/bDxe65+0I1U4fYGRZ0PwJv+uvTYZdIF3vfwjH4zxPvsgGAvrpH+YMnJpCPf
+            DGKEE3A16yUj5h866Iup4j2nzMof/swF
+            =X0Qk
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-07T10:08:51Z"
+        - created_at: "2024-04-07T11:01:44Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwME86EKH3ZhKVkftpi2IEN92SNGYIa+qoA0iD4XqhxMywVZ
-            9yRO5ZTQ4J1YuPZoPK5BhOoakfZZw6Czrgwa+bd2UYgVUt2/qd/o2cRKFtXFOn0i
-            emUpyRuOyBo27StkxWIsMF0p5STK/5wf68QxrXQeOqtSUAKmyUHDSHuYyeN5x3ew
-            VEVb/YjUGmDJl+qH2mYhCNRmAQkCEBCfD1hCHscXExMt5gL1Cqo6k9QbehicCET1
-            srGeeileuzP8eKu0OCNaCE9qAY5FwF549GZbdvIVmmrC+vyxl41vmn8kcE/oBI8c
-            Q36xbI8Md9cKjFylHckeWyLFTA7gLtUE
-            =p2Lt
+            hJ4DLG005yzvDc8SAwME2hpgjgwD8qbsoGTzNSU5/LpTvUu7fQReKR/uI4nyHoEm
+            2BcPIfboTM8zW9yx++z08UEPoS5s1VscbLYAAtIk/9WmH3CMFhZp0sjo4sVvIPqR
+            +kim0SXS/zXgf2RKsYqBMMoDcsiZk8qo+Jya1M48VcqgQ+cHNw/kZurEg52e9zSD
+            c0KUNfS0Dp6fZcksMtpa5tRmAQkCEMINReoNaClhfJMXKNeWQwdlXRjgXLzyRsT3
+            4sjXDC2pSrqOzTr5+Cw0owT1r3zodfjWIO7EBzZMOGTBsywjhIBPcMm8nJTJW1NY
+            N9yuhn0acaI35F0Q4yczWIPLxYDVmc9S
+            =yxoB
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(secretKey)$

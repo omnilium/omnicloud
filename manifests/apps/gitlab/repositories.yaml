@@ -17,3 +17,12 @@ metadata:
 spec:
   interval: 10m0s
   url: https://operator.min.io
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: HelmRepository
+metadata:
+  name: gitlab
+  namespace: gitlab
+spec:
+  interval: 10m0s
+  url: https://charts.gitlab.io
