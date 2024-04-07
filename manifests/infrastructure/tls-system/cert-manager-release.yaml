@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: tls
+  name: cert-manager
   namespace: tls-system
 spec:
   interval: 10m0s
@@ -18,7 +18,8 @@ spec:
   values:
     global:
       priorityClassName: medium
-    installCRDs: true
+    crds:
+      enabled: true
     replicaCount: 2
     podDisruptionBudget:
       enabled: true
@@ -30,6 +31,8 @@ spec:
       limits:
         cpu: 100m
         memory: 200Mi
+    podLabels:
+      app.omnilium.local/identifier: cert-manager
     affinity:
       podAntiAffinity:
         preferredDuringSchedulingIgnoredDuringExecution:
@@ -37,14 +40,12 @@ spec:
             podAffinityTerm:
               labelSelector:
                 matchLabels:
-                  app.kubernetes.io/name: cert-manager
-                  app.kubernetes.io/instance: tls
+                  app.omnilium.local/identifier: cert-manager
               topologyKey: topology.omnilium.local/host
     topologySpreadConstraints:
       - labelSelector:
           matchLabels:
-            app.kubernetes.io/name: cert-manager
-            app.kubernetes.io/instance: tls
+            app.omnilium.local/identifier: cert-manager
         topologyKey: topology.kubernetes.io/zone
         maxSkew: 1
         whenUnsatisfiable: ScheduleAnyway
@@ -67,17 +68,17 @@ spec:
               podAffinityTerm:
                 labelSelector:
                   matchLabels:
-                    app.kubernetes.io/name: webhook
-                    app.kubernetes.io/instance: tls
+                    app.omnilium.local/identifier: cert-manager-webhook
                 topologyKey: topology.omnilium.local/host
-        topologySpreadConstraints:
-          - labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: webhook
-                app.kubernetes.io/instance: tls
-            topologyKey: topology.kubernetes.io/zone
-            maxSkew: 1
-            whenUnsatisfiable: ScheduleAnyway
+      topologySpreadConstraints:
+        - labelSelector:
+            matchLabels:
+              app.omnilium.local/identifier: cert-manager-webhook
+          topologyKey: topology.kubernetes.io/zone
+          maxSkew: 1
+          whenUnsatisfiable: ScheduleAnyway
+      podLabels:
+        app.omnilium.local/identifier: cert-manager-webhook
     cainjector:
       replicaCount: 2
       podDisruptionBudget:
@@ -97,14 +98,14 @@ spec:
               podAffinityTerm:
                 labelSelector:
                   matchLabels:
-                    app.kubernetes.io/name: cainjector
-                    app.kubernetes.io/instance: tls
+                    app.omnilium.local/identifier: cert-manager-cainjector
                 topologyKey: topology.omnilium.local/host
-        topologySpreadConstraints:
-          - labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: cainjector
-                app.kubernetes.io/instance: tls
-            topologyKey: topology.kubernetes.io/zone
-            maxSkew: 1
-            whenUnsatisfiable: ScheduleAnyway
+      topologySpreadConstraints:
+        - labelSelector:
+            matchLabels:
+              app.omnilium.local/identifier: cert-manager-cainjector
+          topologyKey: topology.kubernetes.io/zone
+          maxSkew: 1
+          whenUnsatisfiable: ScheduleAnyway
+      podLabels:
+        app.omnilium.local/identifier: cert-manager-cainjector
