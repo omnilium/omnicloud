@@ -261,12 +261,9 @@ spec:
       migrations:
         priorityClassName: high
         resources:
-          limits:
-            cpu: 250m
-            memory: 200Mi
           requests:
             cpu: 250m
-            memory: 200Mi
+            memory: 500Mi
       sidekiq:
         minReplicas: 2
         maxReplicas: 5
