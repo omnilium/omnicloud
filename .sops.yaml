@@ -5,6 +5,12 @@ creation_rules:
       0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
       1918B94484C52CDE42CA1B87E7812096B8DA4A52
 
+  - path_regex: manifests/apps/gitlab/redis-release.yaml
+    encrypted_regex: ^(password)$
+    pgp: >-
+      0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
+      1918B94484C52CDE42CA1B87E7812096B8DA4A52
+
   - path_regex: manifests/*
     encrypted_regex: ^(data|stringData)$
     pgp: >-

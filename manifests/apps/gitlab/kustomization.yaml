@@ -4,3 +4,4 @@ resources:
   - namespace.yaml
   - repositories.yaml
   - postgres-release.yaml
+  - redis-release.yaml

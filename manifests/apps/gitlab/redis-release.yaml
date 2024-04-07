@@ -1,0 +1,101 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: redis
+    namespace: gitlab
+spec:
+    interval: 10m0s
+    chart:
+        spec:
+            chart: redis
+            version: '>=19.0.2 <19.1.0'
+            sourceRef:
+                kind: HelmRepository
+                name: bitnami
+                namespace: gitlab
+            interval: 1m
+    values:
+        auth:
+            password: ENC[AES256_GCM,data:ASJ6y7Df+DIF6q1iqY+8th6oz3k0s3MsvjNbrq+jIBg=,iv:3NMOY0r7gfbDnvYNb5v4roLWXIRwKX6eTxZNLO9LS7c=,tag:sW0wKKPl3eNluHBrWcs4Ag==,type:str]
+        master:
+            resourcesPreset: micro
+            podLabels:
+                app.omnilium.local/identifier: redis-gitlab
+            affinity:
+                podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                        - weight: 100
+                          podAffinityTerm:
+                            labelSelector:
+                                matchLabels:
+                                    app.omnilium.local/identifier: redis-gitlab
+                            topologyKey: topology.omnilium.local/host
+            topologySpreadConstraints:
+                - labelSelector: null
+                  matchLabels:
+                    app.omnilium.local/identifier: redis-gitlab
+                  topologyKey: topology.kubernetes.io/zone
+                  maxSkew: 1
+                  whenUnsatisfiable: ScheduleAnyway
+            persistence:
+                size: 10Gi
+        replica:
+            replicaCount: 2
+            resourcesPreset: nano
+            podLabels:
+                app.omnilium.local/identifier: redis-gitlab
+            affinity:
+                podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                        - weight: 100
+                          podAffinityTerm:
+                            labelSelector:
+                                matchLabels:
+                                    app.omnilium.local/identifier: redis-gitlab
+                            topologyKey: topology.omnilium.local/host
+            topologySpreadConstraints:
+                - labelSelector: null
+                  matchLabels:
+                    app.omnilium.local/identifier: redis-gitlab
+                  topologyKey: topology.kubernetes.io/zone
+                  maxSkew: 1
+                  whenUnsatisfiable: ScheduleAnyway
+            persistence:
+                size: 10Gi
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-07T09:31:06Z"
+    mac: ENC[AES256_GCM,data:kwtHkuEAIjixteOHB5inEsh7D//09hH3SSJHmu28R0YdJdtifemQZJS4JD1HgXtcMaxXa3vJ8dlM0rnQoHkazva5JUhWannPDWtGVxcbGQ2wQmQTRliwXPazXiR//b3O5SwLNETOuKggurx2r/SYoQpVPakpB7GyNouc2mPMQdo=,iv:Kcnnaq12IbxZoKbJv/OAs1l6twSi2U/8vUdbw+y/eVU=,tag:fOJ1r/SbFDq4TmsCkIHtRg==,type:str]
+    pgp:
+        - created_at: "2024-04-07T09:31:06Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMES0JWufQ+zHv3EGsaDa0sOmHxNID/FFNiG/p8X88j+cuv
+            nSavaJz81nGbSD9XHuqY22Ww3FPb8vWEK+dYuxm5GBkgbiEERNeo+4bPOaU/WiZp
+            osSC55zaIJsxnQ7osfToMEALyODtBdyCyxzh8MNpfKc8h7P49H5RXHw+KO2Gb23q
+            KBjqmPxL29dPme2ALtgQDdRoAQkCEAoqUJ+qGq/aNK966voWql1RDmjA/2d7qh7E
+            LZ7NVBbrv84KooQIzWecn1s9zag/UMQPruiHEj7+kIu8H5+hwbzvwg5hV5zW1/eU
+            WR2IS4BG5T05yLPxMNpGur/InGhaxPYOkgY=
+            =E7up
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-07T09:31:06Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEBAON7oxnvZs1jf7BcTaebRZTszQkSvp3HrO+6Qf/AN/O
+            UkFpnY3EvGPjw7HK/dNUbpbMVdhZCTTnQjpj7Kqry3weAJUT4hmFI3CAmtHtpj8G
+            3YHpw4Vi2atI107MX7bJMAgSBxd94x+Sx1tkS8up0ktzUYerfWpsMq6dswqQFL+O
+            VaBGx9OY5dNTbZh/3UQH3dRoAQkCEFpnIn0g/g5EhYNuqDzO8a6q+F381V3h8vOF
+            k2cfaHKP6Aouj1jJlwSYpkfgSFxS1BhpssAoKCTIMphov7Dlij3xKwU+779olHe8
+            O9dTmRNQWZnb1PjuO5Uc/NV18zSZ8lrbSz8=
+            =ZnkY
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(password)$
+    version: 3.8.1
