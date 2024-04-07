@@ -12,5 +12,8 @@ spec:
       services:
         - name: onedev-ssh
           port: 22
+      middlewares:
+        - name: inflight
+          namespace: onedev
   tls:
     secretName: onedev-tls
