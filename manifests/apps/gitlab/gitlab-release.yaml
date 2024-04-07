@@ -144,21 +144,281 @@ spec:
     postgresql:
       install: false
     gitlab:
+      gitaly:
+        priorityClassName: high
+        persistence:
+          storageClass: replicated
+        resources:
+          # limits:
+          #  cpu: 100m
+          #  memory: 128Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        gpgSigning:
+          enabled: true
+          secret: gitlab
+          key: gpg_private_key
+      gitlab-exporter:
+        resources:
+          # limits:
+          #  cpu: 1
+          #  memory: 2G
+          requests:
+            cpu: 75m
+            memory: 100M
+      gitlab-pages:
+        hpa:
+          maxReplicas: 3
+          minReplicas: 1
+          cpu:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          memory:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
+        maxUnavailable: 1
+        resources:
+          # limits:
+          #   cpu: 900m
+          #   memory: 2G
+          requests:
+            cpu: 900m
+            memory: 2G
+        priorityClassName: low
+        redirectHttp: true
+      gitlab-shell:
+        service:
+          type: LoadBalancer
+        priorityClassName: medium
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 50m
+            memory: 50Mi
+        maxUnavailable: 1
+        minReplicas: 2
+        maxReplicas: 5
+        hpa:
+          cpu:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          memory:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
       kas:
+        hpa:
+          cpu:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          memory:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
         ingress:
           tls:
             secretName: gitlab-kas-tls
+        maxReplicas: 3
+        maxUnavailable: 1
+        minReplicas: 1
+        resources:
+          # limits:
+          #   cpu: 100m
+          #   memory: 100M
+          requests:
+            cpu: 100m
+            memory: 100M
+      mailroom:
+        hpa:
+          maxReplicas: 3
+          minReplicas: 1
+          cpu:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          memory:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
+        resources:
+          # limits:
+          #  cpu: 1
+          #  memory: 2G
+          requests:
+            cpu: 50m
+            memory: 150M
+      migrations:
+        priorityClassName: high
+        resources:
+          limits:
+            cpu: 250m
+            memory: 200Mi
+          requests:
+            cpu: 250m
+            memory: 200Mi
+      sidekiq:
+        minReplicas: 2
+        maxReplicas: 5
+        hpa:
+          cpu:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          memory:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
+        resources:
+          # limits:
+          #  memory: 5G
+          requests:
+            cpu: 900m
+            memory: 2G
+        maxUnavailable: 1
+        priorityClassName: medium
+      spamcheck:
+        hpa:
+          maxReplicas: 5
+          minReplicas: 2
+          cpu:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          memory:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
+        maxUnavailable: 1
+        priorityClassName: high
+        resources:
+          # limits:
+          #   cpu: 100m
+          #   memory: 100M
+          requests:
+            cpu: 100m
+            memory: 100M
       toolbox:
+        priorityClassName: medium
         backups:
+          cron:
+            enabled: true
+            extraArgs: "--maximum-backups 14"
           objectStorage:
             config:
               secret: gitlab
               key: backups_connection
+        resources:
+          # limits:
+          #  cpu: 1
+          #  memory: 2G
+          requests:
+            cpu: 50m
+            memory: 350M
       webservice:
         ingress:
           tls:
             secretName: gitlab-tls
+        hpa:
+          cpu:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          memory:
+            targetType: Utilization
+            targetAverageUtilization: 75
+          behavior:
+            scaleDown:
+              stabilizationWindowSeconds: 300
+        workhorse:
+          resources:
+            # limits:
+            #   cpu: 100m
+            #   memory: 100M
+            requests:
+              cpu: 100m
+              memory: 100M
+        trusted_proxies:
+          - 10.0.0.0/8
+        resources:
+          # limits:
+          #  cpu: 1.5
+          #  memory: 3G
+          requests:
+            cpu: 300m
+            memory: 2.5G
+        maxUnavailable: 1
+        minReplicas: 2
+        maxReplicas: 5
+        priorityClassName: high
     registry:
+      priorityClassName: low
       ingress:
         tls:
           secretName: gitlab-registry-tls
+      resources:
+        # limits:
+        #   cpu: 200m
+        #   memory: 1024Mi
+        requests:
+          cpu: 50m
+          memory: 32Mi
+      maxUnavailable: 1
+      hpa:
+        maxReplicas: 5
+        minReplicas: 2
+        cpu:
+          targetType: Utilization
+          targetAverageUtilization: 75
+        memory:
+          targetType: Utilization
+          targetAverageUtilization: 75
+        behavior:
+          scaleDown:
+            stabilizationWindowSeconds: 300
+    gitlab-zoekt:
+      install: true
+      indexStorage: 20Gi
+      replicas: 1
+      indexer:
+        resources:
+          # limits:
+          #   cpu: 200m
+          #   memory: 1024Mi
+          # requests:
+          #   cpu: 50m
+          #   memory: 32Mi
+      webserver:
+        resources:
+          # limits:
+          #   cpu: 200m
+          #   memory: 1024Mi
+          # requests:
+          #   cpu: 50m
+          #   memory: 32Mi
+      gateway:
+        resources:
+          # limits:
+          #   cpu: 200m
+          #   memory: 1024Mi
+          # requests:
+          #   cpu: 50m
+          #   memory: 32Mi
+      resources:
+        # limits:
+        #   cpu: 100m
+        #   memory: 128Mi
+        requests:
+          cpu: 100m
+          memory: 128Mi
