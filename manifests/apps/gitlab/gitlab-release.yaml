@@ -55,7 +55,7 @@ spec:
           enabled: true
           secret: gitlab
           key: redis_password
-        host: redis-headless.gitlab.svc.cluster.local
+        host: redis-master.gitlab.svc.cluster.local
         port: 6379
       minio:
         enabled: false
