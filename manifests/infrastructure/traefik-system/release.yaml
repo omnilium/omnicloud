@@ -21,16 +21,15 @@ spec:
       minAvailable: 1
     ingressRoute:
       dashboard:
-        matchRule: Host(`traefik.talos.omnilium.local`) && (PathPrefix(`/dashboard`) || PathPrefix(`/api`))
-        entryPoints:
-          - web
-          - websecure
-        tls:
-          secretName: traefik-dashboard
+        enabled: false
     ports:
       websecure:
         http3:
           enabled: true
+          advertisedPort: 4443
+    tlsOptions:
+      default:
+        minVersion: VersionTLS13
     autoscaling:
       enabled: true
       minReplicas: 2
@@ -46,7 +45,7 @@ spec:
           resource:
             name: memory
             target:
-              type: Utilization
+              type: Utilizations
               averageUtilization: 75
       behavior:
         scaleDown:

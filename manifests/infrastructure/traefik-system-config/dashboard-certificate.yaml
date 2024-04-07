@@ -2,13 +2,13 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: traefik-dashboard
+  name: dashboard
   namespace: traefik-system
 spec:
-  commonName: traefik.talos.omnilium.local
-  secretName: traefik-dashboard
+  commonName: traefik.omnilium.local
+  secretName: dashboard-tls
   dnsNames:
-    - traefik.talos.omnilium.local
+    - traefik.omnilium.local
   issuerRef:
     kind: ClusterIssuer
     name: local
