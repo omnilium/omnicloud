@@ -5,11 +5,9 @@ machine:
     hostname: talos-worker-5.omnilium.local
     interfaces:
       - interface: enxbc2411258138
-        addresses:
-          - 10.0.0.8/16
-        routes:
-          - network: 0.0.0.0/0
-            gateway: 10.0.0.1
+        dhcp: true
+        dhcpOptions:
+          ipv6: true
         mtu: 1400
   nodeLabels:
     topology.kubernetes.io/region: hel1

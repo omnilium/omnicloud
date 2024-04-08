@@ -1,0 +1,15 @@
+cluster:
+  network:
+    podSubnets:
+      - 10.244.0.0/16
+      - fd72:5af2:852f:1162:10:244::/112
+    serviceSubnets:
+      - 10.96.0.0/12
+      - fd72:5af2:852f:1162:10:96::/112
+  controllerManager:
+    extraArgs:
+      node-cidr-mask-size-ipv4: 24
+      node-cidr-mask-size-ipv6: 120
+machine:
+  sysctls:
+    net.ipv6.conf.all.forwarding: 1
