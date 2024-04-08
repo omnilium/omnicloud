@@ -1,10 +1,9 @@
 ---
 apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
+kind: BFDProfile
 metadata:
   name: default
   namespace: metallb-system
 spec:
-  addresses:
-    - 10.0.1.0/24
-    - 2a01:4f8:fff0:39:10:0:1:0/112
+  receiveInterval: 380
+  transmitInterval: 270

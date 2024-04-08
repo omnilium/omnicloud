@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
   - ip-address-pools.yaml
   - l2-advertisements.yaml
+  - bgp-peer.yaml
+  - bgp-advertisement.yaml
+  - bfd-profile.yaml
