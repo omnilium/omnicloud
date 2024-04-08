@@ -48,11 +48,11 @@ spec:
     tlsOptions:
       default:
         minVersion: VersionTLS13
-    service:
-      ipFamilyPolicy: RequireDualStack
-      ipFamilies:
-        - IPv4
-        - IPv6
+    # service:
+    #   ipFamilyPolicy: RequireDualStack
+    #   ipFamilies:
+    #     - IPv4
+    #     - IPv6
     autoscaling:
       enabled: true
       minReplicas: 2
