@@ -2,7 +2,7 @@ machine:
   install:
     disk: /dev/sda
   network:
-    hostname: talos-worker-2
+    hostname: talos-worker-2.omnilium.local
     interfaces:
       - interface: enxbc241100c94a
         addresses:

@@ -2,7 +2,7 @@ machine:
   install:
     disk: /dev/sda
   network:
-    hostname: talos-master-1
+    hostname: talos-master-1.omnilium.local
     interfaces:
       - interface: enxbc24119cda22
         addresses:
