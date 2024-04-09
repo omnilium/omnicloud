@@ -19,8 +19,8 @@ spec:
     deployment:
       podLabels:
         app.omnilium.local/identifier: traefik
-      additionalVolumes:
-        - name: plugins
+      # additionalVolumes:
+      #   - name: plugins
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
@@ -32,9 +32,9 @@ spec:
     ingressRoute:
       dashboard:
         enabled: false
-    additionalVolumeMounts:
-      - name: plugins
-        mountPath: /plugins-storage
+    # additionalVolumeMounts:
+    #   - name: plugins
+    #     mountPath: /plugins-storage
     ports:
       websecure:
         http3:
