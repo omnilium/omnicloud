@@ -19,8 +19,6 @@ spec:
     deployment:
       podLabels:
         app.omnilium.local/identifier: traefik
-      # additionalVolumes:
-      #   - name: plugins
     podDisruptionBudget:
       enabled: true
       minAvailable: 1
@@ -32,9 +30,6 @@ spec:
     ingressRoute:
       dashboard:
         enabled: false
-    # additionalVolumeMounts:
-    #   - name: plugins
-    #     mountPath: /plugins-storage
     ports:
       websecure:
         http3:
@@ -48,11 +43,11 @@ spec:
     tlsOptions:
       default:
         minVersion: VersionTLS13
-    # service:
-    #   ipFamilyPolicy: RequireDualStack
-    #   ipFamilies:
-    #     - IPv4
-    #     - IPv6
+    service:
+      ipFamilyPolicy: RequireDualStack
+      ipFamilies:
+        - IPv4
+        - IPv6
     autoscaling:
       enabled: true
       minReplicas: 2
