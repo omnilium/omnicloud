@@ -24,7 +24,7 @@ spec:
           namespaces:
             - traefik-system
     lapi:
-      replicas: 2
+      # replicas: 2
       ingress:
         enabled: true
         annotations:
@@ -34,9 +34,9 @@ spec:
           - secretName: crowdsec-lapi-ingress-tls
             hosts:
               - lapi.crowdsec.omnilium.local
-      priorityClassName: critical
-      podLabels:
-        app.omnilium.local/identifier: crowdsec-lapi
+      # priorityClassName: critical
+      # podLabels:
+      #   app.omnilium.local/identifier: crowdsec-lapi
       dashboard:
         enabled: true
         resources: {}
@@ -62,33 +62,33 @@ spec:
         config:
           storageClassName: replicated
           size: 500Mi
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
-                labelSelector:
-                  matchLabels:
-                    app.omnilium.local/identifier: crowdsec-lapi
-                topologyKey: topology.omnilium.local/host
-      topologySpreadConstraints:
-        - labelSelector:
-            matchLabels:
-              app.omnilium.local/identifier: crowdsec-lapi
-          topologyKey: topology.kubernetes.io/zone
-          maxSkew: 1
-          whenUnsatisfiable: ScheduleAnyway
+      # affinity:
+      #   podAntiAffinity:
+      #     preferredDuringSchedulingIgnoredDuringExecution:
+      #       - weight: 100
+      #         podAffinityTerm:
+      #           labelSelector:
+      #             matchLabels:
+      #               app.omnilium.local/identifier: crowdsec-lapi
+      #           topologyKey: topology.omnilium.local/host
+      # topologySpreadConstraints:
+      #   - labelSelector:
+      #       matchLabels:
+      #         app.omnilium.local/identifier: crowdsec-lapi
+      #     topologyKey: topology.kubernetes.io/zone
+      #     maxSkew: 1
+      #     whenUnsatisfiable: ScheduleAnyway
     agent:
       acquisition:
         - namespace: traefik-system
           podName: traefik-*
           program: traefik
-      priorityClassName: high
-      podLabels:
-        app.omnilium.local/identifier: crowdsec-agent
+      # priorityClassName: high
+      # podLabels:
+      #   app.omnilium.local/identifier: crowdsec-agent
       persistentVolume:
         config:
-          enabled: true
+          enabled: false
       env:
         - name: PARSERS
           value: "crowdsecurity/cri-logs"
