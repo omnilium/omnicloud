@@ -123,47 +123,47 @@ spec:
     provider: sops
     secretRef:
       name: sops-gpg
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: traefik-system
-#   namespace: flux-system
-# spec:
-#   interval: 10m0s
-#   path: ./manifests/infrastructure/traefik-system
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   healthChecks:
-#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#       kind: HelmRelease
-#       name: metallb
-#       namespace: metallb-system
-#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#       kind: HelmRelease
-#       name: cert-manager
-#       namespace: tls-system
-#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#       kind: HelmRelease
-#       name: trust-manager
-#       namespace: tls-system
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: traefik-system-config
-#   namespace: flux-system
-# spec:
-#   interval: 10m0s
-#   path: ./manifests/infrastructure/traefik-system-config
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
-#   healthChecks:
-#     - apiVersion: helm.toolkit.fluxcd.io/v2beta1
-#       kind: HelmRelease
-#       name: traefik
-#       namespace: traefik-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: traefik-system
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./manifests/infrastructure/traefik-system
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: metallb
+      namespace: metallb-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: cert-manager
+      namespace: tls-system
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: trust-manager
+      namespace: tls-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: traefik-system-config
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  path: ./manifests/infrastructure/traefik-system-config
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  healthChecks:
+    - apiVersion: helm.toolkit.fluxcd.io/v2beta1
+      kind: HelmRelease
+      name: traefik
+      namespace: traefik-system
