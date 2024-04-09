@@ -14,3 +14,4 @@ machine:
     topology.kubernetes.io/region: hel1
     topology.kubernetes.io/zone: dc7
     topology.omnilium.local/host: hel1-master-1
+    topology.omnilium.local/role: master

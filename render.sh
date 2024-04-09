@@ -12,6 +12,9 @@ nodes["talos-worker-3"]=worker
 nodes["talos-worker-4"]=worker
 nodes["talos-worker-5"]=worker
 nodes["talos-worker-6"]=worker
+nodes["talos-storage-1"]=worker
+nodes["talos-storage-2"]=worker
+nodes["talos-storage-3"]=worker
 
 if [[ -z "$1" ]]; then
   echo "Usage: $0 <hostname>|all [flags]"
@@ -37,6 +40,7 @@ talosctl gen config \
   --config-patch @patches/drbd.yaml \
   --config-patch @patches/image.yaml \
   --config-patch @patches/kubelet-certificate-rotation.yaml \
+  --config-patch @patches/loadbalancer.yaml \
   --config-patch @patches/metrics.yaml \
   --config-patch @patches/subnets.yaml \
   --config-patch @nodes/$1.yaml \

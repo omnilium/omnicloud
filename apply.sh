@@ -12,6 +12,9 @@ nodes["talos-worker-3"]=10.0.0.6
 nodes["talos-worker-4"]=10.0.0.7
 nodes["talos-worker-5"]=10.0.0.8
 nodes["talos-worker-6"]=10.0.0.9
+nodes["talos-storage-1"]=10.0.0.13
+nodes["talos-storage-2"]=10.0.0.14
+nodes["talos-storage-3"]=10.0.0.15
 
 if [[ -z "$1" ]]; then
     echo "Usage: $0 <hostname>|all [flags]"

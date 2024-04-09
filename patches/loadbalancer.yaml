@@ -1,0 +1,11 @@
+machine:
+  certSANs:
+    - api.talos.omnilium.local
+    - 10.0.0.2
+    - fd72:5af2:852f:1162:10::2
+cluster:
+  apiServer:
+    certSANs:
+      - api.talos.omnilium.local
+      - 10.0.0.2
+      - fd72:5af2:852f:1162:10::2

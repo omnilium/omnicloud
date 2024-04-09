@@ -1,0 +1,19 @@
+machine:
+  install:
+    disk: /dev/sda
+  network:
+    hostname: talos-storage-1.omnilium.local
+    interfaces:
+      - interface: enxbc24115a1e19
+        dhcp: true
+        dhcpOptions:
+          ipv6: true
+          duidv6: 000100012da79d15bc24115a1e19
+        mtu: 1400
+  nodeLabels:
+    topology.kubernetes.io/region: hel1
+    topology.kubernetes.io/zone: dc8
+    topology.omnilium.local/host: hel1-storage-1
+    topology.omnilium.local/role: storage
+  nodeTaints:
+    role.omnilium.local: storage:NoSchedule
