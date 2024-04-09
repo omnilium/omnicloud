@@ -78,6 +78,8 @@ spec:
       #     topologyKey: topology.kubernetes.io/zone
       #     maxSkew: 1
       #     whenUnsatisfiable: ScheduleAnyway
+      strategy:
+        type: Recreate
     agent:
       acquisition:
         - namespace: traefik-system
