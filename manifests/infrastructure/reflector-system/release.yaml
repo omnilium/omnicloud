@@ -16,8 +16,6 @@ spec:
         namespace: reflector-system
       interval: 1m
   values:
-    cron:
-      enabled: true
     podLabels:
       app.omnilium.local/identifier: reflector
     resources: {}
