@@ -30,6 +30,9 @@ spec:
     ingressRoute:
       dashboard:
         enabled: false
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
     volumes:
       - name: crowdsec-bouncer-tls
         mountPath: /etc/traefik/crowdsec-certs/
