@@ -41,10 +41,15 @@ spec:
       access:
         enabled: true
     ports:
+      web:
+        middlewares:
+          - traefik-system-crowdsec@kubernetescrd
       websecure:
         http3:
           enabled: true
           advertisedPort: 4443
+        middlewares:
+          - traefik-system-crowdsec@kubernetescrd
       ssh:
         port: 2222
         expose:
