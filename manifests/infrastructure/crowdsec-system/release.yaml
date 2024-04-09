@@ -96,3 +96,7 @@ spec:
           value: "crowdsecurity/cri-logs"
         - name: COLLECTIONS
           value: "crowdsecurity/traefik"
+      tolerations:
+        - key: node-role.kubernetes.io/control-plane
+          operator: Equal
+          effect: NoSchedule
