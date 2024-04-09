@@ -8,6 +8,7 @@ machine:
         dhcp: true
         dhcpOptions:
           ipv6: true
+          duidv6: 000100012da79d15bc2411258138
         mtu: 1400
   nodeLabels:
     topology.kubernetes.io/region: hel1
