@@ -4,3 +4,4 @@ resources:
   - dashboard-certificate.yaml
   - dashboard-middleware.yaml
   - dashboard-ingress.yaml
+  - crowdsec-middleware.yaml

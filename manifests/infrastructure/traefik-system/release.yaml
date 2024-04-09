@@ -30,6 +30,13 @@ spec:
     ingressRoute:
       dashboard:
         enabled: false
+    volumes:
+      - name: crowdsec-bouncer-tls
+        mountPath: /etc/traefik/crowdsec-certs/
+        type: secret
+    logs:
+      access:
+        enabled: true
     ports:
       websecure:
         http3:
