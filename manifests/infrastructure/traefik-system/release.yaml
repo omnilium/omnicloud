@@ -65,7 +65,7 @@ spec:
         - IPv6
     autoscaling:
       enabled: true
-      minReplicas: 2
+      minReplicas: 3
       maxReplicas: 5
       metrics:
         - type: Resource

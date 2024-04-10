@@ -17,6 +17,7 @@ spec:
       interval: 1m
   values:
     operator:
+      replicaCount: 3
       priorityClassName: medium
       affinity:
         podAntiAffinity:
@@ -37,7 +38,17 @@ spec:
           cpu: 200m
           memory: 500Mi
     console:
-      affinity: {}
+      replicaCount: 3
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: name
+                    operator: In
+                    values:
+                      - minio-operator
+              topologyKey: topology.omnilium.local/host
       resources:
         requests:
           cpu: 100m
