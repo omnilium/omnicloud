@@ -1,0 +1,80 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+    name: roundcube
+    namespace: roundcube
+spec:
+    interval: 10m0s
+    chart:
+        spec:
+            chart: roundcube
+            version: '>=1.11.1 <1.12.0'
+            sourceRef:
+                kind: HelmRepository
+                name: roundcube
+                namespace: roundcube
+            interval: 1m
+    values:
+        config:
+            skins:
+                larry:
+                    enabled: true
+            plugins:
+                managesieve:
+                    enabled: true
+                contextmenu:
+                    enabled: true
+            uploadMaxFilesize: 100M
+        externalDatabase:
+            host: postgres-postgresql.roundcube.svc.cluster.local
+            user: roundcube
+            password: ENC[AES256_GCM,data:dNjgiRid3VA37/gEB21HTGLA0w34Hcc/aXoLczszXi4=,iv:jiwxVCIB4HgGKF6Lm9YTOVjuYoIG46xhlEAJNlKoz6c=,tag:HDeU146j4+XvpFdH8/aStg==,type:str]
+        imap:
+            host: mail.omnilium.cloud
+        smtp:
+            host: mail.omnilium.cloud
+        deployment:
+            replicas: 3
+            port: 8080
+        ingress:
+            host: webmail.omni.ms
+            class: traefik
+            tls:
+                secretName: roundcube-tls
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-10T18:45:52Z"
+    mac: ENC[AES256_GCM,data:bSY9XxU4C8NWVgg668o09zwC+XbuyNNGKGpCdu/X8V7Ka8k4ubdwEWaFD9g3YEU5dIVBOcofmfXA+/wh3TpDLzyb2CmuyxlEKqiwjqgOtTbuxUcXsoM+CYHbxRe8WK81xeF/qRKtN1k1eqJcT+ou28EUdGOsYID8FEFLCFTtjc4=,iv:Zr42JIKet+du5yduja5ffw9eSW23r7OWCHJ0KoldB30=,tag:ZRwBTIq8n56U+Nz0vowhzA==,type:str]
+    pgp:
+        - created_at: "2024-04-10T18:45:52Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMExxonAWv/9SSyvrcppj0uElLDAhyLvuntzmY8MGBc4awQ
+            hqd2Kj7arm5KdUzFPFaX9s+EcT+5nBWdXpzOlgpMPtTzwjOUjljLesNR9kRr0/Vq
+            OUxjD+oyyBXkJF7uWoRZMMgyegzSfXH78ILUkZIkKyN5HUuHsf5csJoWV2OXZ9IB
+            4J5M4nRMJys7QpHUT0SK0tRmAQkCEJOeooG2flXfPnOn/q9YDHOHHNB0cBVb0m+O
+            zFnjvYLcHhyYScpV2BqfXvFsisCBXLXXk7OFB9QCncGQxnCWh//bpQEDgwXUrxCD
+            nzWLVc737xbgAB6JhkxCJY3a4zpH4fIL
+            =GAgf
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-10T18:45:52Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEd7JKSKgWQ+14oRBxQ8XUpv0scw2oVqW3ZddIe8376cep
+            BQSJL5f2hpaDc6NtVQR/l1WWpPT7F9jQ+hzE2Iy3n/8WmN/9x6kVE8RJmWcx4b2P
+            kJq76zVLUP8qcaVkpksyMCCXrkbYfV717juMFiUsKqw/K9Rvqx80n/i8CUzB6HTd
+            tY7KYFcrVB34lrzaBVE77NRmAQkCEGgl6CZ6DU8jR+r/rcOTCNUh9n7EoVnq2vwW
+            A/C2ELu6F7CwehiPKxKPIzbinBPx1hMvkcqqgVuMRbtMOH/l3geYOCLFee9cUjzj
+            styL8+3N0WFtj6zf8csa33gzeAbhg5nk
+            =Yvlq
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|stringData|password)$
+    version: 3.8.1

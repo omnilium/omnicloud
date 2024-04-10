@@ -1,5 +1,5 @@
 creation_rules:
-  - path_regex: manifests/apps/onedev/postgres-release.yaml
+  - path_regex: manifests/apps/*/postgres-release.yaml
     encrypted_regex: ^(password|replicationPassword)$
     pgp: >-
       0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
