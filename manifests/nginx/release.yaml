@@ -67,7 +67,6 @@ spec:
       enableCertManager: true
       service:
         ipFamilyPolicy: RequireDualStack
-        ipFamilies: ["IPv4","IPv6"]
       pod:
         extraLabels:
           app.omnilium.local/identifier: nginx-controller
