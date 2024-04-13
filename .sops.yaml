@@ -1,21 +1,21 @@
 creation_rules:
-  - path_regex: manifests/apps/*/postgres-release.yaml
-    encrypted_regex: ^(password|replicationPassword)$
-    pgp: >-
-      0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
-      1918B94484C52CDE42CA1B87E7812096B8DA4A52
+  # - path_regex: manifests/apps/*/postgres-release.yaml
+  #   encrypted_regex: ^(password|replicationPassword)$
+  #   pgp: >-
+  #     0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
+  #     1918B94484C52CDE42CA1B87E7812096B8DA4A52
 
-  - path_regex: manifests/*
-    encrypted_regex: ^(data|stringData|password)$
-    pgp: >-
-      0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
-      1918B94484C52CDE42CA1B87E7812096B8DA4A52
+  # - path_regex: manifests/*
+  #   encrypted_regex: ^(data|stringData|password)$
+  #   pgp: >-
+  #     0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
+  #     1918B94484C52CDE42CA1B87E7812096B8DA4A52
 
-  - path_regex: patches/harbor.yaml
-    encrypted_regex: ^password$
+  - path_regex: manifests/talos/kustomizations/piraeus/linstor-passphrase.yaml
+    encrypted_regex: ^(MASTER_PASSPHRASE)$
     pgp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
 
-  - path_regex: secrets.yaml
+  - path_regex: manifests/talos/secrets.yaml
     encrypted_regex: ^(secret|bootstraptoken|secretboxencryptionsecret|token|key)$
     pgp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
 

@@ -1,9 +1,0 @@
----
-apiVersion: traefik.io/v1alpha1
-kind: MiddlewareTCP
-metadata:
-  name: inflight
-  namespace: onedev
-spec:
-  inFlightConn:
-    amount: 20

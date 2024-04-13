@@ -1,0 +1,27 @@
+apiVersion: cilium.io/v2alpha1
+kind: CiliumBGPPeeringPolicy
+metadata:
+  name: default
+spec:
+  virtualRouters:
+    - localASN: 65550
+      exportPodCIDR: true
+      neighbors:
+        - peerAddress: 10.0.0.1/32
+          peerASN: 65551
+          eBGPMultihopTTL: 10
+          connectRetryTimeSeconds: 120
+          holdTimeSeconds: 90
+          keepAliveTimeSeconds: 30
+          gracefulRestart:
+            enabled: true
+            restartTimeSeconds: 120
+        - peerAddress: fd72:5af2:852f:1162:10::1/128
+          peerASN: 65551
+          eBGPMultihopTTL: 10
+          connectRetryTimeSeconds: 120
+          holdTimeSeconds: 90
+          keepAliveTimeSeconds: 30
+          gracefulRestart:
+            enabled: true
+            restartTimeSeconds: 120

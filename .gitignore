@@ -1,1 +1,8 @@
-rendered/
+.direnv/
+.mypy_cache/
+manifests/apps/
+manifests/infrastructure/
+manifests/talos/base/*
+!manifests/talos/base/.gitkeep
+manifests/talos/rendered/*
+!manifests/talos/rendered/.gitkeep

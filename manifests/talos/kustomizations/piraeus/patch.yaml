@@ -1,0 +1,8 @@
+- op: add
+  path: /spec/template/spec/tolerations/2
+  value:
+    effect: NoSchedule
+    key: node-role.kubernetes.io/control-plane
+- op: add
+  path: /spec/template/spec/priorityClassName
+  value: system-cluster-critical

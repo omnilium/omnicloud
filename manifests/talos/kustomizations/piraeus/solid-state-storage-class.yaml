@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: solid-state
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: linstor.csi.linbit.com
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  linstor.csi.linbit.com/autoPlace: "1"
+  linstor.csi.linbit.com/storagePool: solid-state
+  csi.storage.k8s.io/fstype: xfs

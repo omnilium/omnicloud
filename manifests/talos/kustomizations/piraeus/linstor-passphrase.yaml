@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: linstor-passphrase
+    namespace: piraeus-datastore
+data:
+    MASTER_PASSPHRASE: ENC[AES256_GCM,data:4v4jrLccvzUSRH5RBWzjyF/lwOBiDhwsVVL6jCQ20fM6q7CLif5y7rHKEKI=,iv:ntjfdFCLvxHTANvYznaB/wnIViGgtTATfAk6aCkPsNI=,tag:IT6VXS0NlqmUQStDvA2zEQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-13T19:59:06Z"
+    mac: ENC[AES256_GCM,data:xn0IsXayrmaXkiWH/jVsSWuWn3VlgTxZgQos7DMVyX2kCPu4qafZBwQ3BiUUp73EAIuJ3w6/HtM3BZzCB2pvoYUbK2OIqOpzVVNEacgF2k9ij0qwJRzD2s5URqU058TvlnFP4Dj/EjPAFexLzEuaeih9oWVN4jZUDuEHtbX79zQ=,iv:EgWpC/d10P2QdpAaeXJuCuq21Olw+zU108p8DB/Qd6Y=,tag:AegqsesV6siCKlTVD68zdQ==,type:str]
+    pgp:
+        - created_at: "2024-04-13T19:59:06Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMERoZrV1OG2DhR3HPGPehgYfNjz2tcL/yD1ZXarcuybbYO
+            OgyMngo+UrEdntxUjG0lYKCauP4YCsXxtgoqtexpEP+YXzllu33oFxH1ugeAy2jA
+            I4Xs5V15R8XIsTs2StUXMIHq4G4UV7eHjtCVp3Coz7ZkEQdEsK/qolXuxsiTVTf5
+            jQc9f29ewFYCmnsxuqFbBtRoAQkCEKk4eOBPV6vYi3knzvennnL0tD4cR3zTLTm6
+            HCZpIaE4+SBR81tiY932QAEAEYucWGU5RSvcEbMVB5HW6LWEpm3h22POt9GTnJWK
+            jTYKGuhZlIBZHxVkvl9d8Uvc4J8Z7MuCDm4=
+            =RhGR
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(MASTER_PASSPHRASE)$
+    version: 3.8.1

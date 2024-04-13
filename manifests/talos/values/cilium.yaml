@@ -1,0 +1,113 @@
+k8sServiceHost: localhost
+k8sServicePort: 7445
+k8sClientRateLimit:
+  qps: 100
+  burst: 200
+
+securityContext:
+  capabilities:
+    ciliumAgent:
+      - CHOWN
+      - KILL
+      - NET_ADMIN
+      - NET_RAW
+      - IPC_LOCK
+      - SYS_ADMIN
+      - SYS_RESOURCE
+      - DAC_OVERRIDE
+      - FOWNER
+      - SETGID
+      - SETUID
+    cleanCiliumState:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_RESOURCE
+
+autoDirectNodeRoutes: true
+
+annotateK8sNode: true
+
+bandwidthManager:
+  enabled: true
+  bbr: true
+
+bgpControlPlane:
+  enabled: true
+  v2Enabled: true
+
+bpf:
+  preallocateMaps: true
+  masquerade: false
+bpfClockProbe: true
+
+encryption:
+  enabled: true
+  type: wireguard
+  nodeEncryption: true
+  wireguard:
+    persistentKeepalive: 5s
+
+endpointRoutes:
+  enabled: false
+
+socketLB:
+  hostNamespaceOnly: false
+
+hubble:
+  metrics:
+    enabled:
+      - dns
+      - drop
+      - flow
+      - httpV2
+      - icmp
+      - port-distribution
+      - tcp
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+  tls:
+    auto:
+      method: helm
+
+ipam:
+  mode: cluster-pool
+  operator:
+    clusterPoolIPv4PodCIDRList:
+      - 10.32.0.0/12
+    clusterPoolIPv4MaskSize: 24
+    clusterPoolIPv6PodCIDRList:
+      - fd72:5af2:1032::/48
+    clusterPoolIPv6MaskSize: 64
+
+ipMasqAgent:
+  enabled: false
+
+ipv4:
+  enabled: true
+ipv6:
+  enabled: true
+
+kubeProxyReplacement: true
+
+enableIPv4Masquerade: false
+enableIPv6Masquerade: false
+
+ipv4NativeRoutingCIDR: 10.32.0.0/12
+ipv6NativeRoutingCIDR: fd72:5af2:1032::/48
+
+loadBalancer:
+  algorithm: maglev
+  mode: dsr
+  acceleration: native
+  l7:
+    backend: envoy
+    algorithm: least_request
+
+routingMode: native
+
+cgroup:
+  autoMount:
+    enabled: false
+  hostRoot: /sys/fs/cgroup

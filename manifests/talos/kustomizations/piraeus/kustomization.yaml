@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - https://github.com/piraeusdatastore/piraeus-operator/config/default?ref=v2.5.0
+  - linstor-passphrase.yaml
+  - linstor-cluster.yaml
+  - solid-state-linstor-satellite-configuration.yaml
+  - spinning-disk-linstor-satellite-configuration.yaml
+  - solid-state-storage-class.yaml
+  - solid-state-replicated-storage-class.yaml
+  - spinning-disk-storage-class.yaml
+  - spinning-disk-replicated-storage-class.yaml
+patches:
+  - target:
+      version: v1
+      kind: Deployment
+      name: piraeus-operator-controller-manager
+    path: patch.yaml
+  - target:
+      version: v1
+      kind: Deployment
+      name: piraeus-operator-gencert
+    path: patch.yaml

@@ -1,0 +1,24 @@
+apiVersion: piraeus.io/v1
+kind: LinstorCluster
+metadata:
+  name: linstorcluster
+spec:
+  nodeSelector:
+    linstor.omnilium.cloud/deploy: "true"
+  linstorPassphraseSecret: linstor-passphrase
+  controller:
+    podTemplate:
+      spec:
+        priorityClassName: system-cluster-critical
+  csiController:
+    podTemplate:
+      spec:
+        priorityClassName: system-cluster-critical
+  csiNode:
+    podTemplate:
+      spec:
+        priorityClassName: system-node-critical
+  highAvailabilityController:
+    podTemplate:
+      spec:
+        priorityClassName: system-cluster-critical

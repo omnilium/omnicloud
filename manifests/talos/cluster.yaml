@@ -1,0 +1,30 @@
+cluster:
+  clusterName: omnicloud
+  network:
+    cni:
+      name: none
+    podSubnets:
+      - 10.32.0.0/12
+      - fd72:5af2:1032::/48
+    serviceSubnets:
+      - 10.16.0.0/12
+      - fd72:5af2:1016::/108
+  apiServer:
+    certSANs:
+      - api.talos.omnilium.local
+      - 10.0.0.2
+      - fd72:5af2:852f:1162:10::2
+  controllerManager:
+    extraArgs:
+      allocate-node-cidrs: false
+      node-cidr-mask-size-ipv4: 24
+      node-cidr-mask-size-ipv6: 64
+  proxy:
+    disabled: true
+  discovery:
+    enabled: true
+    registries:
+      kubernetes:
+        disabled: true
+      service:
+        disabled: false

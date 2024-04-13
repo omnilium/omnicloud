@@ -1,0 +1,13 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: spinning-disk
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "false"
+provisioner: linstor.csi.linbit.com
+allowVolumeExpansion: true
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  linstor.csi.linbit.com/autoPlace: "1"
+  linstor.csi.linbit.com/storagePool: spinning-disk
+  csi.storage.k8s.io/fstype: xfs
