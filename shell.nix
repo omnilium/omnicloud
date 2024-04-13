@@ -12,6 +12,10 @@ in
   with pkgs;
     mkShell {
       packages = [
+        wget
+        yq
+        jq
+
         kubectl
         kubernetes-helm
         cilium-cli
