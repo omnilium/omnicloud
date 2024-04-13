@@ -5,6 +5,12 @@ metadata:
 spec:
   virtualRouters:
     - localASN: 65550
+      serviceSelector:
+        matchExpressions:
+          - key: bogus-key
+            operator: NotIn
+            values:
+              - bogus-value
       exportPodCIDR: true
       neighbors:
         - peerAddress: 10.0.0.1/32
