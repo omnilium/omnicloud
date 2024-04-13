@@ -287,6 +287,8 @@ def post_bootstrap():
         input=process.stdout,
     )
 
+    subprocess.run(["kubectl", "apply", "-k", "manifests/flux"])
+
 
 @talos.command("reset")
 @click.option("-n", "--node", "target_nodes", type=click.STRING, multiple=True)
