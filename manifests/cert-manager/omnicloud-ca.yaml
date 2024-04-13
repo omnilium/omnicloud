@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: omnicloud-ca
+    namespace: cert-manager
+data:
+    tls.crt: ENC[AES256_GCM,data:WL9gySjGGqJ3O7gvsVx/bfURMekCfr7FRjToFg89zasAyIHInOGYlRAQcIdlOyyrlG8FjnU5NcJjVB+HrNR8sWkyus6pmjnRvGcp5OOEEALFzhrb1tjspFaMjF+cclvuQeNe0r/8tcZ8O3S6RXCdbsMc22/b/TmbQv/fRFIZ33GAz7sn8kw6g59RDuvewFQIjjhglmHbPj8r1yhGNSGEKareySxRf+4UzUAsQWSf4NV4xi1tbwf8CNHmkmmY6yQBhD1pJKhsReZsF8itHFNRGUUw5CyAssrnKBGbVrIqwxqmbqDTmvELJ1PXXxi968mMCxhhR41GcvMnCo//WrbJJ9OJOEUYhEOLJizecZAoA9TMGpm9PvT/PO3MaE5MxjTj8vtm1FK23NRbYLjDdO7peFX3GuXEyybPhm12c0KeYw4xtDZ5nlRf4vhhKYaq/La6b5d+as78BfCaGDPhVCBYvzDpo5SznCh7JzLZCmPjz+W8TSXxykL1oIL0isx2WW6Uo+Sqq8eMG0Buq/AZtxh5usO8i5tiyDgzW0oq0lZ0H+ILBUP29E8XbnANz7tZ6uRzTyFT158zvo0+YHck2Ii8MbKp5n5tbTUspIlxxEAUttuQ/z63FW6+6aEXxwJRFN14O1cJW6bKA9LfP5J2ZHOzekyRO7VHW193jc6892SZxBpJGA7+3HFdrWalVvwID7nD3rw+ByXZ0kLA5ju/ynyK2T0UnwbjbysmlDgUCSqgO+xWgmEr1HrauBQ0u3qRCMci1SS/9gqYxWCK/ELZgpaQTvLqa9jKwHGBZkIILhXSA9ig4x8CV1b6dTjfAnd+zzkgIJj/t8yypTvED42aIJklIQxoDjrIBsp7ZBnERjCoGYAAQvqpqhJlzY2X7sAXNueKoGRqETzHKdK2cmExOndbhij4cHhkhsRFrr55riFsOl9PbXMoc41QwdusDyorYIgj7cD5H+NCDIQRpCYlNWOIiuqubHyORo0VexlB2daIgomOz6SqGHR58Meq5vq2LOsNQPRFz96/nniE5Yuj9WD8kHQQMW/+gwAkDDEeV7ZXmiVL3/9YctUA709dpvpI3xfFXyCQ5z1/iOkFnx7KX4MviLN17kXySXzlBiHfFjJER9J6u6SoZ6iAVZRGKM2Fhd+4oOjs7H7VCqwa/PbQOGZdrKPgNMvWK1ULCI0CGIHM66mzv/HKmLlYUVIPXisnLtK/ebMB4OupnrkYIpvFc2OEiq3f+zcStNv9l6/f1opoz2gNOXMp1GmyJl1kJmeoNtMDY7rY2pnT4c2pYuwEPuXw3Ujo7xcGX+llXQ+/6TAPdBeIpsPBjSDpegTqPl/qXD3b9q3zbM5guFo6qFLdUYNKKxSizyeoe+UI46VOGXbkO0OpOMsHB8PvTLGF56gBkWMXdC2kzfW3zWhEuzQPA1mKDc2kLXWKhTfOkKPwCXDxu/nkNhvTYXlEuCFzLzTH2G4j/eOHQcoTOUqHo++fsaBj8sPvhWdYn7tfqbpIKtSMjCi+qzApJXb9jMfGWuqIjMX4zHR1GqgBlKidlc+taN6GrNyuKwLj+RiXnWGeXBhlf+UZ8oNouoGiz1PbZH4e6+6WxablLiK6Lv511ZTcLZwZo96uz8Nr+vTz7dniA8TcgVgPT7htYMlzW1BvLrWtPB96Mj8KM15h/E9s2f4j07dawMzWUqv0cdAI4ZivIJpkilRhm8U+h7/4KU4J++16ziVcjkrvYgsY8sW44/HFmib8mjgC06PN79LJ5TiLctOybCPW/wXJ0LCKj2A1KteYSHDJlorOHdez1HKozaeYAbo/hF9SQvAfEfdUTqplMRmJObO99Dkk,iv:9IW0n4bEKQk+2QkhET2z6TyCVw2prF/Hsx5VJzq1CAo=,tag:CFIiEUIyWCjhrAhxpOYh5g==,type:str]
+    tls.key: ENC[AES256_GCM,data:75vc9nTxvd4CmRCe+pMzHk9liB83pHKECOJobQedbEIytRc2iQpuIoXLkjM1PxPIgG4nHCk6uFWCCJkgwWE/Qbfcr2+xFX8Tyy8my+7xfTxVn+i7CBUpB0XAnIyxILehhQaQPNSOIiZXcX212IWMuTlreKs/ZF83rE3vY+w1RJdS5eLh3oE0huAE7enAV6jcYNVvzVD9YnEFQNsxYcWXeIgq6JcIeP1GE3uAFsn4US0nMPqWemA2LseGUFJLAWqjgpaLxsha0629rGJb2Suu+FVh1pwkOEy1LKLwRoKMBhmC34BXXtGOeafaGccQAggC82mUZey4DjZSrhkDoY8usYTo9gVAz5ls33OScxlPWGMRyuHP+a2/Hkq9QfvIkwBGyfjTvsaq3i+IEkSIshYbHAKepX0Z6M+Kj2COlvNLQV9Q+4JU,iv:LY70Zn250dYIPQGBFvJtmdUMTTRuOJzn5ZkoYi+SrK4=,tag:kdHDgThJmTZhfw1yy6frFw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-13T20:21:03Z"
+    mac: ENC[AES256_GCM,data:vkngi6u5YLMNWPwd7rTXoeyE5ic4EQ+IJR8BkeZh7u690GRTr1nr3zKohL3lVK77Y9GACVwPQ1I2qz1oQ86yUEkc77DRaiXa39Ef+cbaptB7iHYdfGl9ko4gtxqpxcn5QPfCsueiCLUt6H3G9Dx4pNoFJCPV61ZQuPV8wi/eKtA=,iv:NWHjWx708yC7W8QE7w1MkEo7fD2Vx1ihmetZgE1XVmc=,tag:XYkqKnlzVD+HSYfN0IubZA==,type:str]
+    pgp:
+        - created_at: "2024-04-13T20:21:03Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEa+rnmQg51/WzpkH8cMrz2vnhxsSbr8nEr7vH1YtGiIQi
+            5vdPYN4RWD1av91D1wzpsNC1I0xb84J1avl+mBhco5+Hgoc6c8YjbqvjfzgYg3Rd
+            GRTHB6jVgvebvPz6JqKpMC+0sL7SeS04bs+IFG94AJXgnmY91H5tmfY7zKL/kFq5
+            cZ/9HvqfRH8d0a07+138DtRoAQkCEF44KkM8uBkA5IiAuMTcLLdFCKeyUXnh3/oP
+            DvKwFSjpTl9DIoMLJwHDDqYjpPqSGlcZsqwRVtDULRkLGDdM+Je37EGPHwVs24Ps
+            tjW2wwl4MO/aPwhTiI/NlTL0BPE2wNbOoYs=
+            =rTWC
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-13T20:21:03Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEyA16tRUwI/sM1K/Km3UwNH9hBEI3PNCdRLn+Bx6xxxDR
+            WpDVfLunrJMdj+V9ZrI9L0YwUPF2XtHeErgr4maF/HT2psYUALTTPz6OWzZi4krW
+            mbk0/YCEiZrOo3TQpQ+wMNdrb+T4HYZBy1+E9ibkaOx6QTYxWU8ruK+kSgY4fZtd
+            yR55NmAoBrhHWagDDVcnCNRoAQkCENAmTsw9tVc4Kk5gM2nHlgiPmtf88KOCjroi
+            aGANcm+AbSuihqivopcT/4mi7Uw8U8mmzwb88fE9L6VzwMXphIcnQvkG2z+TnRvO
+            xY/TY8DMXXlxT3hYlJudS5oe/6iN+jR51ew=
+            =YXcU
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|stringData|password)$
+    version: 3.8.1

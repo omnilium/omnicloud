@@ -17,6 +17,7 @@ cluster_name = "omnicloud"
 cluster_endpoint = "https://talos.omnilium.local:6443"
 base_path = "manifests/talos"
 sops_paths = [
+    f"manifests/cert-manager/omnicloud-ca.yaml",
     f"{base_path}/kustomizations/piraeus/linstor-passphrase.yaml",
     f"{base_path}/secrets.yaml",
     "talosconfig",
