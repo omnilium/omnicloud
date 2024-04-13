@@ -2,7 +2,7 @@ apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
   name: omnicloud
-  namespace: default
+  namespace: flux-system
 spec:
   url: https://github.com/omnilium/omnicloud
   interval: 5m0s
