@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - resources.yaml
   - repository.yaml
+  - flux.yaml
   - cert-manager.yaml
