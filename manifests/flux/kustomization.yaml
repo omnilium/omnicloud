@@ -5,4 +5,4 @@ resources:
   - repository.yaml
   - flux.yaml
   - cert-manager.yaml
-  - kong.yaml
+  - nginx.yaml
