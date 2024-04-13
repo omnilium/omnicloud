@@ -37,7 +37,7 @@ bgpControlPlane:
 
 bpf:
   preallocateMaps: true
-  masquerade: false
+  masquerade: true
 bpfClockProbe: true
 
 encryption:
@@ -82,7 +82,7 @@ ipam:
     clusterPoolIPv6MaskSize: 64
 
 ipMasqAgent:
-  enabled: false
+  enabled: true
 
 ipv4:
   enabled: true
@@ -91,7 +91,7 @@ ipv6:
 
 kubeProxyReplacement: true
 
-enableIPv4Masquerade: false
+enableIPv4Masquerade: true
 enableIPv6Masquerade: false
 
 ipv4NativeRoutingCIDR: 10.32.0.0/12
