@@ -3,6 +3,8 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - repository.yaml
+  - cnpg-password.yaml
+  - cnpg-cluster.yaml
   - release.yaml
   - internal-ingress.yaml
   - external-ingress.yaml
