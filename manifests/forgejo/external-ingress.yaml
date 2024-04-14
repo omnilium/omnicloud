@@ -7,6 +7,9 @@ metadata:
     cert-manager.io/cluster-issuer: acme
     meta.helm.sh/release-name: forgejo
     meta.helm.sh/release-namespace: forgejo
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
 spec:
   tls:
     - hosts:
