@@ -23,16 +23,4 @@ spec:
   upgrade:
     remediation:
       retries: 3
-  values:
-    # TODO: Add Gateway if keeping Flagsmith
-    ingress:
-      frontend:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: omnicloud
-        hosts:
-          - flagsmith.omnilium.local
-        tls:
-          - secretName: flagsmith-tls
-            hosts:
-              - flagsmith.omnilium.local
+  values: {}
