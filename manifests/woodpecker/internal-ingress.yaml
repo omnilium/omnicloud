@@ -22,4 +22,4 @@ spec:
               service:
                 name: woodpecker-server
                 port:
-                  number: 8000
+                  number: 80
