@@ -1,14 +1,14 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: onedev-cnpg-cluster
-  namespace: onedev
+  name: forgejo-cnpg-cluster
+  namespace: forgejo
 spec:
   instances: 3
   bootstrap:
     initdb:
-      database: onedev
-      owner: onedev
+      database: forgejo
+      owner: forgejo
       secret:
         name: cnpg-password
   storage:

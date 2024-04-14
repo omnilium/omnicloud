@@ -1,0 +1,122 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+    name: forgejo
+    namespace: flux-system
+spec:
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: forgejo
+            version: 5.0.*
+            sourceRef:
+                kind: HelmRepository
+                name: forgejo
+            interval: 60m0s
+    releaseName: forgejo
+    targetNamespace: forgejo
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        replicaCount: 1
+        strategy:
+            type: Recreate
+        service:
+            http:
+                ipFamilyPolicy: RequireDualStack
+                ipFamilies:
+                    - IPv4
+                    - IPv6
+            ssh:
+                ipFamilyPolicy: RequireDualStack
+                ipFamilies:
+                    - IPv4
+                    - IPv6
+        ingress:
+            enabled: true
+            annotations:
+                cert-manager.io/cluster-issuer: acme
+            hosts:
+                - host: git.omni.ms
+                  paths:
+                    - path: /
+                      pathType: Prefix
+            tls:
+                enabled: true
+        schedulerName: gvisor
+        persistence:
+            size: 32Gi
+        gitea:
+            admin:
+                username: webmaster
+                password: ENC[AES256_GCM,data:WJg/ZXbSb8F9Gu4f/1Z3jlNHhTew4lmVCQROpkVtQ7w=,iv:H1fNMYsjxd1t6uPKTMfYlGda/1MAjJPsvYll+TLWlmw=,tag:tFq2Uv+l0EEwz2QcwvMsFA==,type:str]
+                email: webmaster@omnilium.cloud
+            config:
+                repository:
+                    DISABLED_REPO_UNITS: repo.actions
+                    DEFAULT_REPO_UNITS: repo.code,repo.issues,repo.pulls
+                cors:
+                    ENABLED: true
+                    SCHEME: https
+                    ALLOW_DOMAIN: git.omni.ms,forgejo.omni.ms
+                server:
+                    DOMAIN: git.omni.ms
+                    ROOT_URL: https://git.omni.ms/
+                    START_SSH_SERVER: true
+                    ENABLE_GZIP: true
+                    LFS_START_SERVER: true
+                database:
+                    DB_TYPE: postgres
+                    HOST: forgejo-cnpg-cluster-rw.forgejo.svc.cluster.local:5432
+                    NAME: forgejo
+                    USER: forgejo
+                    PASSWD: ENC[AES256_GCM,data:4x7USm6Q3KLYJYi+KeGSwe0iQeNT3phlWgjrmX9poKE=,iv:khlGTEbyWyFAltQWNp4yUwBfCnqk+oKc+IIvILMgJLQ=,tag:0i9vL9usydnBZj6f3gtywg==,type:str]
+                service:
+                    DISABLE_REGISTRATION: true
+        postgresql-ha:
+            enabled: false
+        postgresql:
+            enabled: false
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-14T16:32:34Z"
+    mac: ENC[AES256_GCM,data:w8jT11d7Px5mwL9no78GMwtvEwrrtg+Fe/Ay+dakB0nU5yBH+EEzqYF5WHiHo3Fwnbl49EynpZMysHGdJf0cSSH2Ea6ZUYW3B1k5HTiZbIStgcrU3qCqlqcwrYR6/YpdHNyKSSvgm7L2cAGSTlainE6xcGIYDA+2t1T6K9/08OA=,iv:zUfr4gLWcE/NsFiOfP/tZRd8KXXN9qIhipeUH5lKba8=,tag:vEWZkrz9/jdXN21lJKR3mA==,type:str]
+    pgp:
+        - created_at: "2024-04-14T16:32:34Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEMqxWWBHUGufaYuEdZNttXX5fG1Q8lwv1Wj389Nm3vIBd
+            v01haoXHqLBKxhyqGVUcscGiyEvKYFOdtfhXWTTN/KHhLznkzPRfptiecWYBD54E
+            4J7iQAi0q3YS1lV32g1vMB3Xcszl1tGTdYzg3QmPh/cC4tgxbwiMn90yg0h1mDGp
+            cupxSqnbYz7Iqph0d06tlNRmAQkCEGJPqQ/xHyU3EmhJs8B3z1AROJ9UQ772+CFn
+            jz8jk8tZopmcVgTo8LqFPVTouha/yMevRWKFfJKXVrRQUhw2f5OUxP/iM+P7NeFi
+            /SiQC5iLE3oJMlYVYxdaoB491yP0dmAl
+            =Uzud
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-14T16:32:34Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMETPpSNNikJlhrqO1Jk/5NCnsP/naVK1QngCwNGeVl8Vnh
+            KFLKUhnMnp2OZUsWGPfNaCEpP2ZlrJoXwQ+Y/6NOJ45WAxIeWuPI5dd05nVsS/O6
+            I9L8SesW8KOCk+55/gfkMIntlzqMA2cIe/o2ribHvN5Ovaemxcg8BVkQ8eztkPkV
+            mnvboKdxkUbJQHc5n1lD09RmAQkCEJVbKGnD8GNN8cL+bcwTUgpB8fQklhISkc6W
+            EQGNXfl06tsybOXJEcuqw/uRfK6Kls4IHWtBYkCmM7lKxkaNj1nRJVeCyDhWfOq0
+            +DpfqJ4Vdq5YfINipylggv0QyTp6a+5n
+            =HaWX
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(password|PASSWD)$
+    version: 3.8.1
