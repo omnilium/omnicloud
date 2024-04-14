@@ -5,8 +5,6 @@ resources:
   - repository.yaml
   - cnpg-password.yaml
   - cnpg-cluster.yaml
-  - minio-certificate.yaml
-  - minio-tenant.yaml
   - release.yaml
   - internal-ingress.yaml
   - external-ingress.yaml
