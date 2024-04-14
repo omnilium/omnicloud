@@ -8,7 +8,7 @@ spec:
     - "*.woodpecker.svc.cluster.local"
     - "*.woodpecker.woodpecker.svc.cluster.local"
     - "*.woodpecker-hl.woodpecker.svc.cluster.local"
-  secretName: tenant-certmanager-tls
+  secretName: minio-tls
   issuerRef:
     group: cert-manager.io
     kind: ClusterIssuer
