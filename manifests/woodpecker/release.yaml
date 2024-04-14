@@ -1,36 +1,89 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: woodpecker
-  namespace: flux-system
+    name: woodpecker
+    namespace: flux-system
 spec:
-  interval: 10m0s
-  timeout: 5m0s
-  chart:
-    spec:
-      chart: woodpecker
-      version: 1.2.*
-      sourceRef:
-        kind: HelmRepository
-        name: woodpecker
-      interval: 60m0s
-  releaseName: woodpecker
-  targetNamespace: woodpecker
-  install:
-    remediation:
-      retries: 3
-    createNamespace: true
-  upgrade:
-    remediation:
-      retries: 3
-  values:
-    agent:
-      replicaCount: 3
-    server:
-      statefulSet:
-        replicaCount:
-      env:
-        WOODPECKER_ADMIN: woodpecker,admin
-        WOODPECKER_HOST: https://ci.omni.ms
-      persistentVolume:
-        storageClass: solid-state-replicated
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: woodpecker
+            version: 1.2.*
+            sourceRef:
+                kind: HelmRepository
+                name: woodpecker
+            interval: 60m0s
+    releaseName: woodpecker
+    targetNamespace: woodpecker
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        agent:
+            replicaCount: 3
+            env:
+                WOODPECKER_SERVER: woodpecker-server:9000
+                WOODPECKER_AGENT_SECRET: ENC[AES256_GCM,data:KeGYh+5k1kdLPYdF0YowCYNEnqspa5NjmQXrTEQlGHk=,iv:SEefA+5niKrXnxm4z43FurVYH6FGIL4DpGD8sXouTpI=,tag:TLoVC7wWysdM2Mis6zpBFQ==,type:str]
+                WOODPECKER_BACKEND: kubernetes
+                WOODPECKER_BACKEND_K8S_NAMESPACE: woodpecker
+                WOODPECKER_BACKEND_K8S_VOLUME_SIZE: 10G
+                WOODPECKER_BACKEND_K8S_STORAGE_RWX: true
+                WOODPECKER_CONNECT_RETRY_COUNT: "3"
+        server:
+            statefulSet:
+                replicaCount: 1
+            env:
+                WOODPECKER_HOST: https://ci.omni.ms
+                WOODPECKER_ADMIN: woodpecker,admin,webmaster
+                WOODPECKER_ORGS: omnilium
+                WOODPECKER_OPEN: false
+                WOODPECKER_AGENT_SECRET: ENC[AES256_GCM,data:ajN2kp0q5r0AbqtTuwKKURlIYdgZAfEo4Eg+zXHp/TY=,iv:1tpGhjcaQEaYo81Gyi8sZDvVUQN97lzvbv36yeAg9Q0=,tag:xkADcb5FzuKKH3cE3MW5pA==,type:str]
+                # WOODPECKER_DATABASE_DATASOURCE: # TODO: https://woodpecker-ci.org/docs/administration/server-config#woodpecker_database_datasource
+                WOODPECKER_GITEA: true
+                WOODPECKER_GITEA_URL: https://git.omni.ms
+                WOODPECKER_GITEA_CLIENT: woodpecker
+                WOODPECKER_GITEA_SECRET: ENC[AES256_GCM,data:JQ6D,iv:WE4KuIKrVWj0NuG3WTOFzdnCqXvnvUDodAWQ6hYI2Z0=,tag:suKWif86Ux/IXKi2SryPBQ==,type:str]
+            persistentVolume:
+                storageClass: solid-state-replicated
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-14T18:21:12Z"
+    mac: ENC[AES256_GCM,data:IHfFpw6cNO33wLVPrOGR8KEjnvDv+b8a0eq/y63pJZthY2a9D96ZKV1BTB9NpyzAWxVXYWwCu6iZ1keFkf7xicUiyC4qvHUj6LgzVQ9IHnpiSdA0OD51JY7/YusiRwTsWVJKWotUMeVUI44v07dX61eNkvbIkcBxc9aQLE0mMnk=,iv:rXAWU9YSwNpk80lsa4qh7S4aq4DlRNyEX52Jj9zrD+c=,tag:A/m0iSXiYEHaSMZay16jvg==,type:str]
+    pgp:
+        - created_at: "2024-04-14T18:21:12Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEECSNZWxVEzq7P9F9C3E53jX4hpUDU5yoOjpAZpMG3HO5
+            FxJu2c/6/8nFEnTOhO+rihC2VzcrIxutSJvLxTPHsENTgkSN7f6lnOUpcypI9w3G
+            5wceoLahOtQMe/TOJ2yfMITxtJDWCM7ftP0+obKrfTpaEk9jgHrPf52gxU0AeRgs
+            6Xwk2dlH2DjCozUCuAhOZdRoAQkCEIZMOYusioEtSwuxw4HcIIK5m6WkWp/22/Io
+            MYZhd1/z2EM9zVKJO6pi2ZAlzrPKlFbNVJ9YV5xuuZqIGg9t+bD/GtFSlk2CFtww
+            5k/8gAECDpYB0zoAptELqMEPkbps3StzQJs=
+            =Il4F
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-14T18:21:12Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEEnvRQKD//mI1mpTwhifbXnjQBq8RtHfi+tri7suruxRV
+            tQAMpNcX1vUFuWtoXt1vQ9wMiAwN0qtzh/rCKa8ycxaZPpdYH/bf7L/EW0c4iXZC
+            bMO6X2GSRUhfknk4pdEGMMcMO7R2DObWieehItb0Vuz8714CpxhTssoq3MIOIL7F
+            BxKRzMVKPzqdLf2AwvFbjNRoAQkCECOxL4esPiHE8fG1d18/vE6N3+wpnJ+dFLYU
+            8hUBkG3cc1YHWfo1wZ6Yls0VNT+/U2E9u1ew+OeQNs3g8GKscz2iuMqWeSf8Qaaf
+            7nDocm3SvJeZrHAyfnCYcR94Bk7kL8umQcc=
+            =zAUl
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(WOODPECKER_AGENT_SECRET|WOODPECKER_GITEA_SECRET)$
+    version: 3.8.1

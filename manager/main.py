@@ -24,6 +24,7 @@ sops_paths = [
     "manifests/forgejo/release.yaml",
     "manifests/roundcube/cnpg-password.yaml",
     "manifests/roundcube/release.yaml",
+    "manifests/woodpecker/release.yaml",
     f"{base_path}/kustomizations/piraeus/linstor-passphrase.yaml",
     f"{base_path}/secrets.yaml",
     "talosconfig",
