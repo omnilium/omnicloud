@@ -20,7 +20,6 @@ sops_paths = [
     "manifests/cert-manager/omnicloud-ca.yaml",
     "manifests/flagsmith/cnpg-password.yaml",
     "manifests/flagsmith/release.yaml",
-    "manifests/nginx/release.yaml",
     "manifests/onedev/cnpg-password.yaml",
     "manifests/onedev/release.yaml",
     "manifests/roundcube/cnpg-password.yaml",
