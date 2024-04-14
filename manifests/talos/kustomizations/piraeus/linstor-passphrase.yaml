@@ -4,27 +4,27 @@ metadata:
     name: linstor-passphrase
     namespace: piraeus-datastore
 data:
-    MASTER_PASSPHRASE: ENC[AES256_GCM,data:CmHUARe4dne+oo/ShmeQ8PJxghrI/Ao4MKENHl+JfJbRIlzA5/YYdnWt8AA=,iv:TP2J8uqEqe+mUyqkFjqduo7LwexwpjniTATcF+HVIQ0=,tag:WHfFs82tX6or4lTppgSKVg==,type:str]
+    MASTER_PASSPHRASE: ENC[AES256_GCM,data:X5V4pP3vFArzIx40cddwusQ1YiDiLpXbah8cuVmUBgCWZhXkMrJvQUYEOyI=,iv:7WLBacugXyQPkKqr4opY/L1r6ZsOd6RqwjTe6t8rk7I=,tag:A36LxcG8UAnXUsi6bD4C7w==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T18:45:44Z"
-    mac: ENC[AES256_GCM,data:ij8kLXqML2q/HYjzv6aCoYiZR3DK+OsMGr3DVuOx5J4a0O8jH2UUnrhiO8meChsS9PH/PYD6NK6q+DUeEeNggMwuvzi11Rz1RLLHBowhIlXr9dMN7OfmoROukEkY9Z6Yw7bwRJ8wVez8AIo06w0HycxZAVxuu6QafEW6Eg9hEbM=,iv:4DroxT6MvoO/pJ+XHoAdsyjfz7nrj7tGg2ESa+KlNz0=,tag:VaCpZO8WE7+jNf2ChSl1FQ==,type:str]
+    lastmodified: "2024-04-14T18:46:52Z"
+    mac: ENC[AES256_GCM,data:LGvxIZJs79DQ0LaH2tysBAulyJXI03duQ4/5wHU5zDPv7LlvYP7TXwp0sYlGr2obz4kQfe92uwXwd+u99mTIz9bs7f0cGoAbzISTzgnFja6WxFEWGzyzilcFS9LuQNcbjpNonYxVtnuS3I/8Ne1Y15EI29mmLFoHEq3q9KTdlXs=,iv:YJ3fpZn4uNlFZKjiW2SH2WuzuFW2ESQlqDfZTdd2UG0=,tag:un+JpLNNTLXCWu+0Y9Vafw==,type:str]
     pgp:
-        - created_at: "2024-04-14T18:45:44Z"
+        - created_at: "2024-04-14T18:46:52Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMET4kM4mfV96bdC97RbSMzfvfoh3khDIz0zU5II03sjt/A
-            0TPPGE79ABEYCjgm/QunSqsjW6A2wjjOxYMdO7m2VunY+OJN3peUvjWC7KYGHPwL
-            I+apTwp93tCl/F0hVl/QMOm2RKNkTeRnTCg4YaVZxp1dOiZw9TU8DSd9O2Ea4WVB
-            4Y6twiCuqbUoM+KUr2IRytRmAQkCEE/eH30QViT/aIAjN70l8DIdaPMdRazXwPHY
-            g9EfUwYny1wZpNY5/y7ch5kMDuDyew11WqqcJQTZnPek+OJF+gdB2HHP6uKEAPcV
-            kG0ajWBLr7qAxr+KzPhfkK73sTzDiO6Q
-            =Z1W+
+            hJ4DLG005yzvDc8SAwMEK4BG8Bz9HeeNEV9j+3qFNz28U4eNfIUVDXa9M6+PeYc5
+            UXUdkuIXRnVtz6OHhvtdOx1upNaRbLnJo2RSR4HKnivKaWAnnb7y/T8iCvyJjBhj
+            /9ov3/xJ8Nopjh3Hrp0gMOKzt+LanDcGJIwZitdbX++7tmMNKxgy1whcgYiy1JfY
+            fFC6X7N4DikQZzI/59l6cdRoAQkCEOc+biSOoH7r32BAs4sdFQ8UyCsbCywpnuJX
+            ePaeH0pXkvAAEHhNkapP5FoB5Ckaa+5qltnVojufnxmC4utquL1fiYviOWdHn65i
+            Qdzq6r6jqVhkULlU1shbqgrH7iQUC1ZWvJA=
+            =8oJs
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(MASTER_PASSPHRASE)$
