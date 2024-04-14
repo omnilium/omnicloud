@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: forgejo-external
+  namespace: forgejo
+  annotations:
+    cert-manager.io/cluster-issuer: omnicloud
+    meta.helm.sh/release-name: forgejo
+    meta.helm.sh/release-namespace: forgejo
+spec:
+  tls:
+    - hosts:
+        - git.omni.ms
+      secretName: forgejo-external-tls
+  rules:
+    - host: git.omni.ms
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: forgejo
+                port:
+                  name: http

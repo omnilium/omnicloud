@@ -7,3 +7,4 @@ resources:
   - cnpg-cluster.yaml
   - release.yaml
   - internal-ingress.yaml
+  - external-ingress.yaml

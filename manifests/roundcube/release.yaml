@@ -41,7 +41,7 @@ spec:
         externalDatabase:
             host: roundcube-cnpg-cluster-rw.roundcube.svc.cluster.local
             user: roundcube
-            password: ENC[AES256_GCM,data:Xyv4ksNFbA7c6nkJhKPQMF1Ij7YihK8tI2t/MM8pVLs=,iv:U9hR+qa//vfagt0tX0kf/iFVYWqaCh/gXM4ofeXc3Lk=,tag:ByK17y1H9oZXRIgmgeaTtQ==,type:str]
+            password: ENC[AES256_GCM,data:8rvPiqNq+uhi4Mjn+mbc8Xn9OKEOPtf4B33N8e3bv5E=,iv:OymZn9Ov01G+JhdBQh5JcJwRRefHyRVm5eVBdagkx5A=,tag:BtJXXuGcoRwvO6S3hFY7SA==,type:str]
         imap:
             host: mx.omnilium.cloud
         smtp:
@@ -61,33 +61,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T16:32:34Z"
-    mac: ENC[AES256_GCM,data:YZiRT4xH45etGvzSgdtBXyPTdjH2caH/CmvtlbvQIzkixKcvna21M3d5FQRs3lkk+pthjGQs61zxsojV4+pvLsq0Yx4iVRr7/3438OQcmk/WFtVB5DDjl1R4LaT0XaSnW61uuXaEEr9lZzzkG5f3Uh+pLmc53IDppAjiUNlNjDk=,iv:dX8eCHGKmeC3SgTReBR6OKZ+aE2nWvvloB2n+y/+0gk=,tag:Yk66PQnXuKYjywbwqd1fPQ==,type:str]
+    lastmodified: "2024-04-14T16:37:36Z"
+    mac: ENC[AES256_GCM,data:mHzO2XqFPLvVJxfz5bLpQSwSJ/xIMpXFeYzBT11hFsQbKnQZVrmqk2Hibx21OJuDx3chCaNFLa7Q6eKwqPlkkUPHof8DpNuBnXmmxcxGH0NPX5s8m7RI+nOIebXFgAmpEo/SUOg9UufJ9bGCcBxpXlQZmGBJb11Dx7j53eLqNL8=,iv:3Mz/5LsWG+w2RRZqOyLKG82rAwJaFu5R2H9q0AavS2A=,tag:0ADjxOFc3GbDZS5y6CK3Lw==,type:str]
     pgp:
-        - created_at: "2024-04-14T16:32:34Z"
+        - created_at: "2024-04-14T16:37:36Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEERHVt5bBd/u1otAW9S3bGN5uBSByqdxZJV0LXUBCLuEH
-            t2wdzePaMYBck+qTvHqcTyCMUAviuXNBtzyiai/PpLQTEymzYKnluuaBjPolzk0i
-            0jMytDjmiBphkV9zP5flMK6F5Xvt6VVHyi/ZUUXvnMdobErEAMZe9B3UgfWIeb3T
-            6jj2i1VREwCWHPUEUBorWNRmAQkCEML9ulb3GbqJWNLBcGiXsbaRd/yes4KGSrm6
-            CGtoI8b9De6OpDsoJ10bfOLNGwyr1VeIs9IETuRIvTmbTtb3X4DiClnI5q2fZpXh
-            8dmUPaN4r/tjN1GtD8f7b6FwisZpkLEh
-            =NUlG
+            hJ4D0dRkdsWQFPUSAwMEOXP3adam75ei2sUUli1YKqSlk31+lfTQal7RdYsVUTxb
+            Xq6BMhj9yst8knyIZKzqTM15vCMNcfK8vN7Z4yKB02NbLAzDrC77j0GhYzjiBmvw
+            ZIFqk2dnv/zjXcxRhl79MD1FnyQc/lmbdyeYdw4tS/ZbdzJg3n3Ssz6vx+HXEXad
+            ztgxt1YtSrVXS/SH3kVMddRmAQkCEEphEdZuhwfsIyxVWUGuwbCuS18nRArkUcf/
+            7GlqK7tGPNgzbD/xMIwxhmlEEavItO83kXVbMKW/2qmYNsiDK9CGf4B6q4NHvqvC
+            2NpcFX3+oBv6Z+Nz7/N20P5jPlKMN3i8
+            =sSbs
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T16:32:34Z"
+        - created_at: "2024-04-14T16:37:36Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEuQ4hsFsLQcU5+L16IeIrZBK7RFMvVJtdHzoPJyXcqB0R
-            X5nLth1F4Jji90zfZ3LQJOEIap5+VWS85phtbJP8CqdgYFGsYNWt7ZPIYvbKm0Ih
-            /Xx+Fif/ViTyjUFGph7pMPavJIRgbD26EQlmmrUDMa20AA+SSwckowvwuNqD1l/l
-            EzmZ+ehn3AEu29k08Qa8qtRmAQkCECPirl+u3gPdYTQ3JN7xl3Yun+kP5VFui7ce
-            zKwiN+p0ygUJxIUtewAOTcg2YzpB3KZiaZdGRSGQFiIzgVQMjpcBOxxcW9O+R8yR
-            sganLvT+pKIqdcmKRJMSelWlDQ2vZedC
-            =WqG0
+            hJ4DLG005yzvDc8SAwME2HPkChTZqz2YgjE0dJQcZLWSaFE6O6PVQciRl9OIVgpR
+            G/uS0n59ZigRqKRJRZ+uQsyzNa6agKimU0JAEUDFLjmIQI1W38pcoAjCbklyNxF9
+            rPK2jVqGcHzDAsqf/hr0MFstzMPLjKUUxQjHIY8c7NMZRxuaLopdNb9ujWbcfwK8
+            aU33ueTUR7/PlgzKOHKmwtRmAQkCEN1WzOClHmB9UcMXFp/5jr7KBqMgfiAPzgJI
+            kT54z1v405ZLzUQKl4aNJAqtBJZokJNJ7mpks+7fPHfZLMoxA+NUYXsUg9VZ40f6
+            4tQf0wUXdA50uuZlvxjs1k+GduiL7zPE
+            =uLDO
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password)$
