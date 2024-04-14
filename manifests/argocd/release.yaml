@@ -1,0 +1,42 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: argocd
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  timeout: 5m0s
+  chart:
+    spec:
+      chart: argo-cd
+      version: 6.7.*
+      sourceRef:
+        kind: HelmRepository
+        name: argocd
+      interval: 60m0s
+  releaseName: argocd
+  targetNamespace: argocd
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    crds:
+      keep: false
+    global:
+      domain: argocd.omnilium.local
+    server:
+      certificate:
+        enabled: true
+        issuer:
+          group: cert-manager.io
+          kind: ClusterIssuer
+          name: omnicloud
+      # TODO: Add Gateway if keeping ArgoCD
+      ingress:
+        enabled: true
+        # annotations:
+        #   cert-manager.io/cluster-issuer: omnicloud
+        tls: true

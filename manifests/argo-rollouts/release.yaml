@@ -1,0 +1,39 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: argo-rollouts
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  timeout: 5m0s
+  chart:
+    spec:
+      chart: argo-rollouts
+      version: 2.35.*
+      sourceRef:
+        kind: HelmRepository
+        name: argocd
+      interval: 60m0s
+  releaseName: argo-rollouts
+  targetNamespace: argocd
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    keepCRDs: false
+    dashboard:
+      enabled: true
+      # TODO: Add Gateway if keeping argo-rollouts
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: omnicloud
+        hosts:
+          - rollouts.omnilium.local
+        tls:
+          - secretName: rollouts-tls
+            hosts:
+              - rollouts.omnilium.local

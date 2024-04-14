@@ -9,3 +9,5 @@ resources:
   - cert-manager.yaml
   - trivy-operator.yaml
   - cloudnative-pg.yaml
+  - argocd.yaml
+  - argo-rollouts.yaml

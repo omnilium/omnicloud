@@ -1,0 +1,15 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: argo-rollouts
+  namespace: flux-system
+spec:
+  sourceRef:
+    kind: GitRepository
+    name: omnicloud
+  prune: true
+  interval: 5m0s
+  retryInterval: 1m0s
+  path: manifests/argo-rollouts
+  wait: true
+  timeout: 2m30s
