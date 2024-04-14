@@ -46,7 +46,7 @@ spec:
                       operator: In
                       values:
                         - minio-operator
-              topologyKey: topology.omnilium.cloud/host
+                topologyKey: topology.omnilium.cloud/host
       tolerations:
         - key: storage
           operator: Equal
