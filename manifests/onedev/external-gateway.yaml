@@ -8,6 +8,10 @@ metadata:
 spec:
   gatewayClassName: cilium
   listeners:
+    - name: http
+      hostname: git.omni.ms
+      port: 80
+      protocol: HTTP
     - name: https
       hostname: git.omni.ms
       port: 443
