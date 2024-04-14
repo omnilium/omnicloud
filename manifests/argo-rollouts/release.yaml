@@ -27,14 +27,3 @@ spec:
     keepCRDs: false
     dashboard:
       enabled: true
-      # TODO: Add Gateway if keeping argo-rollouts
-      ingress:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: omnicloud
-        hosts:
-          - rollouts.omnilium.local
-        tls:
-          - secretName: rollouts-tls
-            hosts:
-              - rollouts.omnilium.local

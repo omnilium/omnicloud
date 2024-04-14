@@ -31,10 +31,3 @@ spec:
     configs:
       params:
         server.insecure: true
-    server:
-      # TODO: Add Gateway if keeping ArgoCD
-      ingress:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: omnicloud
-        tls: true
