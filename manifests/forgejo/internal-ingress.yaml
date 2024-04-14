@@ -1,31 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: onedev-internal
-  namespace: onedev
+  name: forgejo-internal
+  namespace: forgejo
   annotations:
     cert-manager.io/cluster-issuer: omnicloud
-    meta.helm.sh/release-name: onedev
-    meta.helm.sh/release-namespace: onedev
-    nginx.ingress.kubernetes.io/affinity: cookie
-    nginx.ingress.kubernetes.io/affinity-mode: persistent
-    nginx.ingress.kubernetes.io/proxy-body-size: "0"
-    nginx.ingress.kubernetes.io/session-cookie-expires: "172800"
-    nginx.ingress.kubernetes.io/session-cookie-max-age: "172800"
-    nginx.ingress.kubernetes.io/session-cookie-name: session-sticky
+    meta.helm.sh/release-name: forgejo
+    meta.helm.sh/release-namespace: forgejo
 spec:
   tls:
     - hosts:
-        - onedev.omnilium.local
-      secretName: onedev-internal-tls
+        - forgejo.omnilium.local
+      secretName: forgejo-internal-tls
   rules:
-    - host: onedev.omnilium.local
+    - host: forgejo.omnilium.local
       http:
         paths:
           - path: /
             pathType: ImplementationSpecific
             backend:
               service:
-                name: onedev
+                name: forgejo
                 port:
                   name: http
