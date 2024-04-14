@@ -2,7 +2,6 @@ from manager.objects.inline_manifest import (
     cilium_config_manifest,
     cilium_manifest,
     descheduler_manifest,
-    gateway_crds_manifest,
     gvisor_manifest,
     kubelet_serving_cert_approver_manifest,
     metrics_server_manifest,
@@ -15,7 +14,6 @@ class Cluster:
         self.inlineManifests = []
 
         if name.startswith("master-"):
-            self.inlineManifests.append(gateway_crds_manifest(base_path))
             self.inlineManifests.append(gvisor_manifest(base_path))
             self.inlineManifests.append(
                 kubelet_serving_cert_approver_manifest(base_path)

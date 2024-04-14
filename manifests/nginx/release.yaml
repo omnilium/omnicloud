@@ -1,0 +1,90 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: nginx
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  timeout: 5m0s
+  chart:
+    spec:
+      chart: ingress-nginx
+      version: 4.10.*
+      sourceRef:
+        kind: HelmRepository
+        name: nginx
+      interval: 60m0s
+  releaseName: nginx
+  targetNamespace: nginx
+  install:
+    remediation:
+      retries: 3
+    createNamespace: true
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    controller:
+      enableAnnotationValidations: true
+      ingressClassResource:
+        default: true
+      podLabels:
+        app.omnilium.cloud/identifier: nginx
+      maxmindLicenseKey: "" # TODO
+      updateStrategy:
+        rollingUpdate:
+          maxUnavailable: 1
+        type: RollingUpdate
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app.kubernetes.io/name
+                      operator: In
+                      values:
+                        - ingress-nginx
+                    - key: app.kubernetes.io/instance
+                      operator: In
+                      values:
+                        - ingress-nginx
+                    - key: app.kubernetes.io/component
+                      operator: In
+                      values:
+                        - controller
+                topologyKey: topology.omnilium.cloud/host
+      maxUnavailable: 1
+      resources:
+        limits:
+          cpu: 500m
+          memory: 256Mi
+        requests:
+          cpu: 100m
+          memory: 64Mi
+      autoscaling:
+        enabled: true
+        minReplicas: 3
+        maxReplicas: 10
+        targetCPUUtilizationPercentage: 75
+        targetMemoryUtilizationPercentage: 75
+        behavior:
+          scaleDown:
+            policies:
+              - type: Pods
+                value: 1
+                periodSeconds: 60
+          scaleUp:
+            stabilizationWindowSeconds: 60
+            policies:
+              - type: Pods
+                value: 1
+                periodSeconds: 30
+      service:
+        ipFamilyPolicy: RequireDualStack
+        ipFamilies:
+          - IPv4
+          - IPv6
+    tcp:
+      "8000": "onedev/onedev:22"

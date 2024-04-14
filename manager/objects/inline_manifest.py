@@ -9,26 +9,6 @@ class InlineManifest:
         self.contents = LiteralScalarString(dedent(contents))
 
 
-def gateway_crds_manifest(base_path: str) -> InlineManifest:
-    result = subprocess.run(
-        [
-            "kubectl",
-            "apply",
-            "--dry-run=client",
-            "-o",
-            "yaml",
-            "-f",
-            "https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/experimental-install.yaml",
-        ],
-        capture_output=True,
-    )
-
-    if result.returncode != 0:
-        raise Exception(result.stderr.decode("utf-8"))
-
-    return InlineManifest("gateway-crds", result.stdout.decode("utf-8"))
-
-
 def gvisor_manifest(base_path: str) -> InlineManifest:
     result = subprocess.run(
         [

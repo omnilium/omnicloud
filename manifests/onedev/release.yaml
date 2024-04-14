@@ -28,7 +28,7 @@ spec:
             replicas: 3
             initSettings:
                 user: admin
-                password: ENC[AES256_GCM,data:kYrMvr8UzXE7FBwZgKgcyE8qJk85I+9li6GBO8CRWJs=,iv:dX9StVLVzrgZ8dlVC6opsJ7J4lVjc051xaYJ+F+4yuQ=,tag:KgK3E20+hefNiUM7nEO5vg==,type:str]
+                password: ENC[AES256_GCM,data:fJUzX0NUwhjJackCTM/1oiL5SYJAsc8uy4O3fnF16Jc=,iv:2oYaLQaD27cIldUldpHR6CenFxpIdBqBRDG4vy6U14M=,tag:TMyFrKwCy4QPDiGJs9gq0w==,type:str]
                 email: webmaster@omnilium.cloud
         database:
             external: true
@@ -37,7 +37,7 @@ spec:
             port: "5432"
             name: onedev
             user: onedev
-            password: ENC[AES256_GCM,data:DbvFC6m2QXDKrxys2BBMhsJS86VE4FFQ41PpwJ54Q98=,iv:O9zcMBq+YrC79jJmfk/ol53th8i6uB1r5cs26dTP/tg=,tag:TnlQZxX32POBcJagBRpRcg==,type:str]
+            password: ENC[AES256_GCM,data:h2ZmAOktw5fEKlfnWQ3wV9WqoJHibLJScy5nJHF1VzA=,iv:FKnMNCoi4WD/u70QXxNJUKTBKN2mH8QDatTZ3ULAGgQ=,tag:SBKu7JBuHG1gpb4JUzz83w==,type:str]
         podLabels:
             app.omnilium.cloud/identifier: onedev-server
         affinity:
@@ -54,11 +54,11 @@ spec:
                         topologyKey: topology.omnilium.cloud/host
         persistence:
             size: 32Gi
-        service:
-            separateSSH:
-                enabled: true
-                type: LoadBalancer
-                port: 22
+        # service:
+        #     separateSSH:
+        #         enabled: true
+        #         type: LoadBalancer
+        #         port: 22
         ingress:
             enabled: true
             annotations:
@@ -72,33 +72,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T14:14:04Z"
-    mac: ENC[AES256_GCM,data:5UlVq2NCVQAR2U/JHGruZhOUn6l4Dc9el283bM3fgDi762ZfRzARj6/BJLrEMfPwXsV4nl91uB5Vimg7pXC2Ws520lrmz2W0mJpqu5BACg+McR25TMP3bu5MBfPAQrXIUnfV43dO4rJvi++K48Fu3st6LEiH181MDwAeqAGMKtI=,iv:F/hW0zR1BIIdjXDfLX0m6L5dKI5xgcpeWBKy/Q3xEhI=,tag:RuVjH/IxmvdJUsdSmW87MA==,type:str]
+    lastmodified: "2024-04-14T14:37:51Z"
+    mac: ENC[AES256_GCM,data:iw8AvQVVj8CMXTTERMz8ZVDCUyG+fT3Z9aP8Qb/Ga3+0ksmThUD7+Ikk2D3fHopTPFBPVU5bgj341rnaNQpi/EHmVr8ZD3ejTy2DKJg9QMVaGHHk03qDaJtKls2iI/n0ogqCWgzEcgsWm1ysRCEdgUB3RSgU+jqBCuL0WbkRplQ=,iv:JIkt+/g4GvRLfjR7uoIPmWpIWwP7Q8zwqyczTu4Z3mo=,tag:Z5MkiRhKOSV2+64w6pw3TQ==,type:str]
     pgp:
-        - created_at: "2024-04-14T14:14:04Z"
+        - created_at: "2024-04-14T14:37:51Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEojrPodrcnMSUKoRC3bTwWesMJU4zLY/y/GvCOA8D7djJ
-            4zkNzJWAq+QncVDK49JC14X7AgBQaLAtUZGhfK5gA+Dm+sEIZqqAhtdNwW/S5a3C
-            jAoWKU2bOxO1CIS7jxEPMJHfFTcXX26RFbQIZhpv9aDo+rrJnG2B0S4H2ADGJAc3
-            weEC+ColXrbLsdHNVqz/r9RoAQkCEF/HHepwKK1WQncIDM2mO1h4QYcw1RcJQgBS
-            JSETbHjagmx6H3jycsWk4R8xi/ryminw2jAuXklID/9yuC21qFqsbmr9yfS6Gf2U
-            ryzGwIrRDtPx/stRVzqyCZyyFhOBewcHbDE=
-            =tp9y
+            hJ4D0dRkdsWQFPUSAwMEjMvwDeZGJnTcIOQcB+nc27KMAHfSY6hX6lVbrFxgcIUO
+            PkG1cyP7o/K25OGpsOMXDkmqyLIjR78HN+OE+tmLiHhq82JNiVVtnDYTwbTpNXK6
+            MHfr7ATfyZDgmB0czyMIMJGDfpzWYk+r7kjJ/SpXmtX/dLf1qmyym1yw/madTzVX
+            wA9rJQPYFl5lhySBMGA0HNRoAQkCED6ugrpYPBQu6OQtz440ZI9fcNir4V2U4NKo
+            Ixz01/0j8wm5pS3r3eGoUVAuWmmQMhfyMO6KFCX+c9jV/XGlutoynnenZy9c60L1
+            RVMYUaEBW2lr1T1QkBLFbeWJita6uqIxiIs=
+            =OLD/
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T14:14:04Z"
+        - created_at: "2024-04-14T14:37:51Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEgt6pN9t7VoXvnJhhHfYphhdFh+GwklDJ1ElaYgvxzViH
-            kpnGpO9ZN3UFt6VIBnxzkeZhRphUUtkR4ziqWKCybXTvJq3LkKcZBf6uc9mYFmoz
-            oj+9YevCN0k90Q42t/6iMM87fxucQYBrh9bcq+COa/I3OMlJ8ZUwohdMx2qC4yGx
-            GJhWafpEiO3eIJoLcuwCItRoAQkCECF5G0VD7Py+f5SX+o90fii4a5RM8V3uMS5C
-            OURYxF7633fhXAemFqDVFWhAmobn7T+sjUuCq99lB650n0RzqT1HL3AaSnh0aKDj
-            n5kIKh6neu4BMUzRFUpXP7IEM/BLmROBtvM=
-            =I2Tf
+            hJ4DLG005yzvDc8SAwMELVWS7PhIjcmzKQPC7Tmcg0X5M4aMDHwC/4mmghMMpCXf
+            dTOMSRYJl6cGpqgAcWxGeK5w9l01UHw9yEkSPRqHRkHdTDwXaYAPvhEn7tSLahs0
+            ws0xRunK8Gd9hZYm668IMLw8znYz3zuWjUj8QyS2iM//YE8PBcCwbIZkABPNNe+x
+            JiOrUAV4IlE1q+n8Gy6pDdRoAQkCEP+rv/jlxOqcllnuhz+OVJF5itlF+AImW6YQ
+            OwCW77KijBly4cw/pwi6ekPz2B8LCSVaMA15cav175PUH2tdYMpZklCC/v8R+18i
+            0n4GqLv451HQLbgar/WiqaqRjy+YVCOVonU=
+            =LPRm
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password)$

@@ -3,8 +3,8 @@ kind: Kustomization
 resources:
   - resources.yaml
   - repository.yaml
-  - gateway-class.yaml
   - prometheus-stack.yaml
+  - nginx.yaml
   - flux.yaml
   - cert-manager.yaml
   - trivy-operator.yaml
