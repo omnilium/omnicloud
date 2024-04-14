@@ -13,3 +13,4 @@ resources:
   - argo-rollouts.yaml
   - flagsmith.yaml
   - onedev.yaml
+  - roundcube.yaml

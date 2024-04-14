@@ -22,6 +22,8 @@ sops_paths = [
     "manifests/flagsmith/release.yaml",
     "manifests/onedev/cnpg-password.yaml",
     "manifests/onedev/release.yaml",
+    "manifests/roundcube/cnpg-password.yaml",
+    "manifests/roundcube/release.yaml",
     f"{base_path}/kustomizations/piraeus/linstor-passphrase.yaml",
     f"{base_path}/secrets.yaml",
     "talosconfig",
