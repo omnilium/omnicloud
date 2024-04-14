@@ -8,3 +8,4 @@ resources:
   - flux.yaml
   - cert-manager.yaml
   - trivy-operator.yaml
+  - cloudnative-pg.yaml
