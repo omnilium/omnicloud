@@ -5,9 +5,11 @@ metadata:
   namespace: woodpecker
 spec:
   dnsNames:
-    - "*.woodpecker.svc.cluster.local"
-    - "*.woodpecker.woodpecker.svc.cluster.local"
+    - minio.woodpecker
+    - minio.woodpecker.svc
+    - minio.woodpecker.svc.cluster.local
     - "*.woodpecker-hl.woodpecker.svc.cluster.local"
+    - "*.woodpecker.svc.cluster.local"
   secretName: minio-tls
   issuerRef:
     group: cert-manager.io
