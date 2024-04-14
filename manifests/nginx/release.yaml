@@ -30,7 +30,7 @@ spec:
                 default: true
             podLabels:
                 app.omnilium.cloud/identifier: nginx
-            maxmindLicenseKey: ENC[AES256_GCM,data:h07h/N3i8Lwo+CJQVwjkIiq0zerwxQpOYheIdg1kfGi4RkVAq/XrRg==,iv:ndp/Ll/TN+nmK+l9+YY3In8udLIWA2Gc8+66z9fWf6w=,tag:WBYfnBPq7YEC0EIr8k2GLQ==,type:str]
+            maxmindLicenseKey: ENC[AES256_GCM,data:e2hmutzyLe3zWf3pZMoVRJ0/uWtrFFQynBPQlpb/licBLw8JITY9lg==,iv:a3SI8i47LEReASLE8VLzcnPCF5SWrJjE1tdoLkt660o=,tag:DAnvy8KcvsO+cqMz084ZCA==,type:str]
             updateStrategy:
                 rollingUpdate:
                     maxUnavailable: 1
@@ -59,10 +59,10 @@ spec:
             resources:
                 limits:
                     cpu: 500m
-                    memory: 256Mi
+                    memory: 512Mi
                 requests:
                     cpu: 100m
-                    memory: 64Mi
+                    memory: 256Mi
             autoscaling:
                 enabled: true
                 minReplicas: 3
@@ -94,33 +94,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T15:33:36Z"
-    mac: ENC[AES256_GCM,data:7NqVnRz8wR4zVlV+LLdZb8ePTBWzvrjcbVKdJ71dztgeKh6jrvWPWSR3kgsH4EJSnFj6Rtx9Os+x0KOiHwhR3TE2eUrBaBURJr8gDgkm3O0sSKZl8BEjXKS2z8FTGNZH31e+OR7ffYzs0IhrJyEyYeLos67nfgqI+hUxeiPNIN8=,iv:qP7pDFfkSZpiDNZv1yfDneege7R6Njq86gJmsqbicMw=,tag:DFrrN3yFhwcXEUFRXykIag==,type:str]
+    lastmodified: "2024-04-14T15:36:35Z"
+    mac: ENC[AES256_GCM,data:0alIaVMpzQo2UiRBFYjmYDUa9pKhg7XojFOpnqbfJq91DLBkRXYpPg2oamXJK397BGzMO2oFdiCJadfcPzfDOkO3bm3uKeKn/qQZ/jFnkUe/mLunoVe/eGyMKETo8zLlRataj6b5D7Xh7CjGRmQ7KjZG2bbQKIa4FBFpq7rfFFY=,iv:uGhKWgkko1JT2A4tHKYK/mLJs8lCM7jZi6EyJ30Y6o4=,tag:uJrmvQo+EiLW5F03IjXg7w==,type:str]
     pgp:
-        - created_at: "2024-04-14T15:33:36Z"
+        - created_at: "2024-04-14T15:36:35Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEIpWWzdgMHZlwwAQQk99THb817IWwbDwpltiHlOrQ6IW6
-            sI+IbWE2+yWO1LTwHTITkKT42BOwy83nr//s91s8MaI8U1ReennqOsLZiyWrwrTo
-            9e1pMBiRPNZJgW0z+GWvMEAhWjkldS+8BzFaRhkWw9oW/a3n5Rw696YYPvBfhVjL
-            w8CuolJsa0P+wHoBUwv9pNRmAQkCEIn9QC9PfyoI390OK1lnr2Mpdox2j0udCoaR
-            aYeJKB73ngvaRAdBSOnbVDSYADPuAnYh/HPAExiM3eCddZExrYQjttHJ6TZuuX7H
-            W385cgnkGA4o96jC3Shb12bvqH6Er0JD
-            =VHiX
+            hJ4D0dRkdsWQFPUSAwMEmu6RoZG7Wo7Farmlxq2lTiH8wSC4HeCPgIZg80nD0Zit
+            Yk4QCUviJF+eS63pMoTy2YqqB2t76xmnUmMzToK35YPNFXfjKFkkxIbKZsXScQMM
+            /DezfY8t/ARdSfJdJGjQMOxOUDqJG+b3cQyAPole6ZOixtXxpjPyL1WZ0jOOFBxr
+            lqsJhO8HrDtJVxbocO7OLNRoAQkCEOMLhL1+G2SkcKZsd/MrsIBm2kjKOZbyB8Zh
+            GZgpQooMnMgkt1lUUrw3pdIjTLFHw/qjhw7nQFUPv1uTcrzGMGu6yH0M6eFjAGb1
+            K1Y26R6OXbqYl/g8RSlmpFhu7OPmDNObt5E=
+            =mltq
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T15:33:36Z"
+        - created_at: "2024-04-14T15:36:35Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEd3hkp4FRdMYG+QgCE5RtoMFPgx9TqpPuayoSL1jhom6O
-            21SPPv41gc9eGatuaY9NZRNcs1sPnRyZnF/pxItJGd8megpxBap5ZSN4oyf5NOkN
-            nlK5oozPmZYGajt7jjEbMNgrXxuEsbtg3JzgkXV4QkeIGMS9el9eI1Q7d2fuZYxI
-            U10rYO6OgjlIXdxfWODaHtRmAQkCEMRUvl91QSsM/szjoEYkjpYaU6q+xW1S528a
-            C7yjiKHCcc9n8tvio6hQdOHeGdsyUsc+xoOqGhviy0+/LWUWLj+8ISIq2fip5tjB
-            BnvP1rHAuqILZrEvup6GD0kS1vlXg76r
-            =E8BT
+            hJ4DLG005yzvDc8SAwMEuKAHgw6QKoM5k+5zfzpKCRqctgRYANOosL4a4TRY1t25
+            6m2YuCWqxIFxfANNCYYxwhkIJ4NMjSVs7gLnWkMlItq7XqqV9nk04M4b+1TZLKtA
+            gZewbZX7ue13YiI6JD4DMHJa2qVCeh9+2DumO8vG0+67M0JGkuF7ESJgdx0um+ol
+            BMOv0H3atEB7sNlNYxhMc9RoAQkCEI+HaOpoFEh3HqqjY0TDyoLE3+wO+z2Fm4lG
+            4LTz0/K4EbV4sguV+8X1NBsnNlZP7lJlyp61fcz6uhcePAtMrX0xYE6KmfnMDF8e
+            l+4Zpa0Qcj0OgvrvZsOfgDx0TnIkShoyPI4=
+            =0tby
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^maxmindLicenseKey$
