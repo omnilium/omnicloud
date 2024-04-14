@@ -86,4 +86,4 @@ spec:
           - IPv4
           - IPv6
     tcp:
-      "8000": onedev/onedev:22
+      "8000": forgejo/forgejo-ssh:22

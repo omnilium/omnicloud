@@ -20,6 +20,6 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: forgejo
+                name: forgejo-http
                 port:
-                  name: http
+                  number: 3000

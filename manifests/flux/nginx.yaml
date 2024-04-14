@@ -13,7 +13,3 @@ spec:
   path: manifests/nginx
   wait: true
   timeout: 2m30s
-  decryption:
-    provider: sops
-    secretRef:
-      name: sops-gpg
