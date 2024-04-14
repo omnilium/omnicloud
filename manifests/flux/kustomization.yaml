@@ -10,6 +10,7 @@ resources:
   - nginx.yaml
   - dragonfly.yaml
   - cloudnative-pg.yaml
+  - minio.yaml
   - argocd.yaml
   - argo-rollouts.yaml
   - roundcube.yaml
