@@ -3,12 +3,3 @@ kind: Kustomization
 resources:
   - repository.yaml
   - release.yaml
-patches:
-  - target:
-      version: v1
-      kind: Namespace
-      name: trivy-system
-    patch: |-
-      metadata:
-        annotations:
-          pod-security.kubernetes.io/enforce: privileged
