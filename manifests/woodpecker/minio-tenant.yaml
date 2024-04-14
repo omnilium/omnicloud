@@ -27,7 +27,7 @@ spec:
         secrets:
             name: woodpecker-minio-configuration
             accessKey: n2hcwNY5dxJ7Hj2kWVkXZaZaxfrurrY3
-            secretKey: ENC[AES256_GCM,data:/+lsv23hId33sESEyzFG8unhyB7pPQUFG3xLtJ8NWTE=,iv:BXoFm8Q+vnTWVVK39b+u4c+e19mXEGU8KDHbuEwMJM4=,tag:UW9RqB6DptUBHq+Uhojq7Q==,type:str]
+            secretKey: ENC[AES256_GCM,data:rOcKlQoveIpB+eX9mppSiyN+7uPwpsR0PkJ8BXT/oSA=,iv:Gejb7R8648L4GE4Rhy1t/tRf51L1EFT4UhLiDoC1bdE=,tag:pgwnDAuxxI44HopxV2fUZQ==,type:str]
         tenant:
             name: woodpecker
             configuration:
@@ -67,6 +67,9 @@ spec:
                                             - woodpecker-minio
                                 topologyKey: topology.omnilium.cloud/host
             certificate:
+                externalCaCertSecret:
+                    - name: omnicloud-ca
+                      type: kubernetes.io/tls
                 externalCertSecret:
                     - name: minio-tls
                       type: cert-manager.io/v1
@@ -79,33 +82,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T20:37:23Z"
-    mac: ENC[AES256_GCM,data:ycgpRT/RJD5/Lv2PLj4LhATaDZXN5enYSQwpGcYQgwyFlaYsgLFmtXePR1F0yKx3D+j3DuZ3xvs8SQBynW1EILG5C0UsdbtLd+8Oj11zod32EnhNm1aesMX7TMienvmwqcyiBdC1M31Y7EHGtugh5bjl9lNtrhk5UGbTwe49XIU=,iv:+P7w5kAnV/UAXjGgSi6uGpLvxXxGMnDKLl9wi48A7SU=,tag:FUUbC9hcQxNb6mFUAuWSsQ==,type:str]
+    lastmodified: "2024-04-14T20:45:52Z"
+    mac: ENC[AES256_GCM,data:KJMmHQJFhyjOYlPNB7Ff+A4LUlkT5AlPv2kULBJeLDOb/TbMOIBMBv9uDw9gzucXG+kATBugy9L1LzGgoWVQNX0VVIBU7dnfSTQDqfs2bEdoJhQUiZf1Qf5wkBQ1CfvnkKCS/sj2DrTzfkMSFYIdF3AVQaTBDAri5IpOicmWBzw=,iv:BrZmmfHuLF9xS2DOYklhjeKYqjai0D2din5Tq8w+TPQ=,tag:LLvlfzRNsqEHbjZjf1mKpQ==,type:str]
     pgp:
-        - created_at: "2024-04-14T20:37:23Z"
+        - created_at: "2024-04-14T20:45:52Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEG+WspIeOc2RtSYrYOS2tbdDS9ZrlwGeGJFD3DQiUuHuc
-            9P3SKsumHbzfcN2zZWdf8kdszc6p9vu3m/LYLcVbM5Ke3s2qecOPi0iOPxeH/v+S
-            t0n0lQzkSdI9tXz0BDGMMP59yFQrAva9f6zxEdT8BZtSm3Vja85hVL0DmnWzzTrN
-            kEBhwFXUmIo1kB3aDjvNg9RmAQkCENla7wTot/6Iirnm3LhnGSoAZ6m0AJHFqVu4
-            5RsQvqimBysGYz2/w/YmyjY/t+su9jyB+DvSKf4lrgpzPnreUMQM4rH6ZALPLqcj
-            4gqi78VCF1F3aPvV/6ul4AVmEF58bPed
-            =WOvq
+            hJ4D0dRkdsWQFPUSAwMEKO4a9J08B2bCPvZ6EYOVnlpnJs1KQNDwfBi1yhjgbiVJ
+            8kpOmDtF34tWx2oO4zP8uctz8Mo4REl5aBF16lOfPqpV9L6hwn4yG9QbnWTHZLYo
+            sON7lwbg6dLq2mnNd19UMGiU9RN5jJGSD/6nxcoOlIjPtHG0LLk8ze/cL1Qs4GWz
+            zobAzBhbPTBeM6GwctiZcdRmAQkCEMqEjaS16aVupmVqxx+siiANILKcIzdTgdaS
+            vGoGn8daYRAVQvf49B++bBG8yy2i+UR9WcolOFCelcKXATEjfAkI9ByczptP6pIo
+            HNYe22Be8jy9pLuCRqGiw0o/KxU972Ts
+            =VZq7
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T20:37:23Z"
+        - created_at: "2024-04-14T20:45:52Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwME5dl8tXCcodygBanKKX3liPnFeVxaH5/dCn8VLMfLKx5F
-            5CpfjRNew+P9Vx33b1kv689wQoYPWVoDpmsphYf1SSsw5GBUwghEDfDS0a+lDKdJ
-            Bv3dFpfJ9Kndu8b7U8yAMI5PVLt1O6PwItOM7IzA8xlaSDXWo2WG9a7aDJ+7Dy7v
-            BKHvkM7hkv+6snoYkvbLaNRmAQkCEPDjwzRJCEM8xx7FC0EyFE7GV+UKBpSB4q8W
-            m6Fcqk1cu7ci7ZvJiP68inKwMWMk1YwnDA4t2aato63inTPR2xbEp3/5GSLxNgqV
-            dzNuNO4Qx1u7fvHLfn8roKTv7I1yQD5l
-            =anqY
+            hJ4DLG005yzvDc8SAwMECVa0quvK+g/0NwDqFJYXUvl785iU6wS47MHg4Sqkb3La
+            TQo4rTG+qatK26BpLqfQKbHH9CAiUAB3SqL2lxd8AuGoD1dr4J066DayCrtWKV6Q
+            FF/Bco+jpvydwWWQPUh9MPvhxXo0n8h2gUO6s03Q1rJKn5F5r0FYw8Hg/QU+VSyC
+            CBvZeaPkLZJMdd6JJTccPNRmAQkCEDHZb0o8JBSAoOpwrLvchvJtIHlP5ceQNHBz
+            ixQvpBRNnP5mHwINelyZJp1rnKpjvqcXxmWM5fub22869fbG0ASKcTJdMUYreEfH
+            Ar8vZZaNcC4+4CeDAO7ZBda4YBKzPRjy
+            =fmYn
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|secretKey)$
