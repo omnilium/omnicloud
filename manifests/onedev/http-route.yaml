@@ -1,0 +1,20 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: onedev-route
+  namespace: onedev
+spec:
+  parentRefs:
+    - name: onedev-internal-gateway
+    # - name: onedev-external-gateway
+  hostnames:
+    - onedev.omnilium.local
+    # - git.omni.ms
+  rules:
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: onedev
+          port: 80

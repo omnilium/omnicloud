@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: onedev-exteral-gateway
+  namespace: onedev
+  annotations:
+    cert-manager.io/cluster-issuer: acme
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: https
+      hostname: git.omni.ms
+      port: 443
+      protocol: HTTPS
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: onedev-exteral-tls

@@ -1,0 +1,92 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+    name: onedev
+    namespace: flux-system
+spec:
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: onedev
+            version: 10.4.*
+            sourceRef:
+                kind: HelmRepository
+                name: onedev
+            interval: 60m0s
+    releaseName: onedev
+    targetNamespace: onedev
+    install:
+        remediation:
+            retries: 3
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        onedev:
+            replicas: 3
+            initSettings:
+                user: admin
+                password: ENC[AES256_GCM,data:PdhHPO0Uyb0YambtNLtTnwiayu/PMVtCPFHZDcaD5fc=,iv:1dVdIfmiTnDUhtIlMyCq+rnay9aB6vqZGVewhH8LnWg=,tag:Hi/C9BZ4kVdrAHw+cHx+dw==,type:str]
+                email: webmaster@omnilium.cloud
+        database:
+            external: true
+            type: postgresql
+            host: google.com
+            port: "5432"
+            name: onedev
+            user: onedev
+            password: ENC[AES256_GCM,data:pCUejYhe320QXeRI6HY2nA2Z8FWitUnot6VRGMqAmndbUiiyTA1z8AuEtDc=,iv:WRjSWiyWo9rXooSZPsUgG3UQkpVyhxjqnyYNVTASSYY=,tag:Hjm3cBKkAOkg/WaewQHovg==,type:str]
+        podLabels:
+            app.omnilium.cloud/identifier: onedev-server
+        affinity:
+            podAntiAffinity:
+                preferredDuringSchedulingIgnoredDuringExecution:
+                    - weight: 100
+                      podAffinityTerm:
+                        labelSelector:
+                            matchExpressions:
+                                - key: app.omnilium.cloud/identifier
+                                  operator: In
+                                  values:
+                                    - onedev-server
+                        topologyKey: topology.omnilium.cloud/host
+        persistence:
+            size: 32Gi
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-14T12:31:00Z"
+    mac: ENC[AES256_GCM,data:eaZYAaJ0fu5odkE4D+AdmLSkpx7TBfPXzqw59NX6uv/oWZZqWKIbSXNUAihOgB39gJIr2ZiUfDfT8vM8G64KuSajGBpTL/ZnFmARd82RP0v8fCvkeZn5agDmOgLao90NYtaJwBZyn5+M+6hGvWcLcK3abXu+fChpaA0xFVRlHx8=,iv:mOGFZ4VOttjfrS+yUtQDEqYxsnv7luy5BN2ZXGMHN+I=,tag:3Z5/m2hZvX19sq0YTfmYlA==,type:str]
+    pgp:
+        - created_at: "2024-04-14T12:31:00Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEtCUooiU+KdsVeSkQ29uG8irPSezdvA/+tjZAw/RAPVcU
+            GcV9F/XMP/iUuZnlgLRZ7Xx8sN6OpIMZBjzwJIXUbSQScYuXuloM14ObLgybStfB
+            tjEKRE6mZYH02YZtG3uzMN7h6ri68gGdLdXj3Ff3rhj0CoX4RBpdot9iELyDVxhl
+            Xyfrokouq6hRJ/pyDapjV9RoAQkCEEO45OWiCS/3ZevX/6uLI3rtN8bJ0UYdUr0B
+            kZr6LyWWC1APQer6nbCZii5jvEGsfnSn7Yw2y+3h37Blt3oRUj0Q8wDmvmwIYLUf
+            ygnKtpOx1VRCX7cQKj8Lod8ZyuHINhwPONQ=
+            =9crM
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-14T12:31:00Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEL/RMu5fUBuFC17FVNfazNkcTyGxlWGLcwVNwJvs8Canj
+            /lDIkQJbT7MkNu7eXTQRu6mQKirDhVL7rZPdr6VBT4Umuox8V6UvgU8SoA0DVXi3
+            BBcXc978Nv9aX2kExbxgMOBoCFQ+HrveCYIAPOTocKoRdYXo+yMXdkiyMkzQ/Sla
+            SUZH5tPH3Bg5dD1kMQYaX9RoAQkCEEPPWjyLcE6u4NSAaPonoEynNQqgC1QlSKkd
+            UJ8JLDV6GQywXuqoAt64P2V5u8dsr0lnbXlv4wN31mWBgtD0JsNOFiAbRsn2XMB5
+            O3zRGeM/9zBXl+0WwLMD4teCZ9pyPdEUMno=
+            =lpU1
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|stringData|password)$
+    version: 3.8.1

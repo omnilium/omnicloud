@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - namespace.yaml
+  - repository.yaml
+  - cnpg-password.yaml
+  - cnpg-cluster.yaml
+  - cnpg-pooler.yaml
+  - release.yaml
+  - internal-gateway.yaml
+  # - external-gateway.yaml
+  - http-route.yaml
+  - tcp-route.yaml
