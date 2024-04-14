@@ -26,6 +26,9 @@ spec:
     operator:
       scanJobsConcurrentLimit: 20
       scanNodeCollectorLimit: 3
+    trivyOperator:
+      scanJobTolerations:
+        - operator: Exists
     tolerations:
       - operator: Exists
     nodeCollector:
