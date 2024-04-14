@@ -4,42 +4,42 @@ metadata:
     name: omnicloud-ca
     namespace: cert-manager
 data:
-    tls.crt: ENC[AES256_GCM,data:c/A6+tb/aQDP7XAmciyjef7MGEPm0uvUb/WsisPAk1AAyDeDZzMW0v4BVuudqq1GbiioWSQtI319gbKAsoC3ZQWyC0tPqIChXTCoB8tmP7mq+wMtspHJCdpeH8JfUfWu0EXw1LdBckmLXCZ5/4KsvPZTsJYibLXlXCJ9dT8fDjlIxu42Rk83tXAmNhPjYv5TUH6VfmSOoT0eb5mW8YkmX+oaqs3Maf9BEIesFepr9o2TheW3yKlSDQ2I0Sie7jq5Nc6BnwZz8+VLvSYLiVrAnKVtNTxldYOYF9e60i0sJoRlP8EFVoGpnE26LDoAhON9PQZRVftL7GTs/Zvlgq0ggiu6RjWtUQmu2xTOP1P6DZUvhHZgaFVolQaNx3wd+zbcLPvjUkdkwj5wO3EHzHCBhUJYBp3TfyJDi0Xb9t5P7lu82d48/kcUu02bDyfE5nYN+VbBrVs7KdAj4X9dugKKjejgXP/QSAJhe8y7mXWTcgAC6lv08/D5navOOB+ffvkgpDoSdUJsEGOiUyIcnU8nX/51YdqJ/3l5Zb1sqPige/C6koEDpQVnQmaEqezvNf7/H1eUjYFmjtx3NEwLlGwmVrLVRaF0Pa3xADwQUIirs2dNfGIwuts6tFuzh/+4wxpjYd1x5okeD3ApPhxstMxYdr3TQgleQXcoUel49Oxt9OZfVHpZDflA4bvZT8mgLN7Gu7FfL9KmeP2QE3bcdXrGFcwZolMpG4L5OrnP4mgpzUxIzEs3yL0venLRaKAtBaHp/DsqgtbpkmOcdZfkfKZxD/xlktPoKw07IgK5+eIUNsnNBvXHHKHuMuUFILH4Tb2X5BPwpxZHcA38oBLuE/hVDdu//js3N458FZBgHOYIHOiEO0LiipUG70kw3kzdNgURZSEdSrekdzsxS5pywWFEMAs8I71+YVUqt1n5nq+4u2ltR5lp68dyYssqSWItfWALrnfYXr6zMWuhh06WPxIHLHoAjSBYBMdVZ++ZkMVx+1A/l3tGsqa8lVyaZUVgTloE5M4BZuUioadiS1m0xUpbImKpkqV9Bj+QmQljFwGOmg+ntJCyfQT//1yFh6v+mbD/lxIza2hF7HNqFg2bVgEibzGBrEi+GzhbZgMie9Lp3qt/g0ed7KFkSkbDdz+e9lc3fSSKo5rBHgQWmomgE0yUMbeDY7iMzQKKEHAAA26hlpidMA0+XkceiyJY76n/zJOtjkTSaaIiCHYFM+k/+KCGRkEaHudfl/P0FQT/74dWU3XCZPVdLvLdi+VLqp+5XCP1jrYuRSjjTWSeDKIvWD6SX6pApXPUqzIuObuEsPxAq5pmeFcdaf3b56bofDAMItp1a5hI+Nc0kRW6pxzG3Zch5DoQIv6qEIhWtc8Ybo8gU4MN10lq1hY126zpct9nXp2t5sKFXQmtTSw1OFMO+ihJgMzsosKg3eYVfG11Ya1TLcL/OAd3vGzO6HauLGiVzQMYHsIqzvac+7B+BbqUKfHg0sDE5A/gWE+pZO0oiSUo15BPSmvx6MaO3xBCXrBRBmDsvbAAPU3ybZ84+2Ma8bZUnqgENfNsgXsC633xPFRf2/fK+27aR38lL3j5RYfEvgkET+vMgV5znAFARteQqBeNMYfR2lNIswewb4qrNWkmvDGEufXIgDG8I93HhhxYKwx5JjoCMaV+r2kuwh6VJLFsF6cFWxIvBUFDZDdC2RiXrTBwI2CRxNqbtYXdAlc9I8NbibOjTg/hrAqNMAWBtAezHcXjMH0pFCZL8ffvBDBXFUyaunIPpRPOsRKz7G//5JOu//bb0SoxKJC9rKk/wM1unRgVwZlkOE1euynU4x55uyajlDSP,iv:FVNLM65pdum0tue/6oz9JJmQtiqWxJ+z+XJVByYhPgQ=,tag:c8BWqMzKj5Yhu82cN0tHig==,type:str]
-    tls.key: ENC[AES256_GCM,data:/CgBi+HC4S54WLSSgZas3kWC6eSEWMs5oOZU2086WR8xLbORSpODkIKKSi+0LLnx8UF8lkw+FYFJOR9jpkhan/Sj7s29HffpkrTj1dF/jVJ1vLH1M1WPUc+s2FlJ7NrEhgqhwWi+koVg8PEWvN1/84EFxJ6TbstWGKMJ+tt+ogFnM1PGQ6ILH+kbo3h6fHSCV+tr9t2ZjrwEPFCWkk3KngouKrNmZvKSI66V93mOH6n3VCeEY1I59x7cWolvywZjJ+8AFTksWFP0fGVoCBMNOvVZtBymSaHXJTMSynVAyilweyRp4Pfio+QgVqOjVlmYSCxyizEyXwi4I5Zfw4dt80SXRAOP1oLiZ0CNtBUnr46UE7RP+Cl3QwN1C/l2SAZFUjq8XtjWlUTltlAv/llmVIgEWJvLDLLEb9d4BySE699J+MVM,iv:U7aUi4G9v5ZMII4uR0E/ExA/lQGKcoJ7kb0q9Bm0clQ=,tag:3dnTC+lr4qi9BX4aVs3CaA==,type:str]
+    tls.crt: ENC[AES256_GCM,data:UwYDWzOHAmDpRHJezBpj1zbuflbzsiCqY0kzoCaaLheO2V3zOiSuPOJXMCynoo/01mTmcT/T8u3W+VIQ/ZP9b6vkSCi5CFo31w1yU6EhI5MGPXqx88uEKzeGir/DY3F2tbnK0IdpmMsxc3UFEWtrgDDOZUvkB/jlMEW/C1N5HVvExLKQ8SaxDWs/v7tEEhtlxr45ljZHs7yvRP1rt4U2LQWD4z9zlzypqJ4cA2/o4GNYVcX6Hc7EslJYPJ2BNyAQe0lqF3OToGdZqE1hUPdJHvVJaLxDnJavlCq+3QPJxfXyYOQ93i7/Z+hUPDayniaMSaNFyYC2Rx62L7Rgtoh+WuVX8ACN4a2D0MMmf2VFx20VqJvxRKRdRMEuE3oCisN0qrjq4nnWi0q2Lut3irRtUUwtYpwwai6shZSyHWEz3N28VOscgeU6Yq7LxOX6cfM3G52v0KsQT4zmNM0OICbs76siQZw/W9zBIuOEOvQ1+LtRIQRAjg+6wuvLLs7+Sndt6E+WnTD7jWKchxAUpFBkM5l7wIgWYc/NncXB7XatvzSdg3/YDUinBWD/UTI9RQJgjWos6RiHX09/1D4Pt+rH4YQeThSg+XgO3iC9rVjYBagXXhIXZn+yVxE5IUyAuZnRXm64JTAvNuzfrv2Id84M7ukEAcUjgRHgSkjLWnMEnITYWcGZBK0iGbrZttvMjqAl0CNm9fUn5TE1pfjs0FlN8agXEjnyjMwfPe6M5VOXSnpPaC0TAwGz/B1FrENt4ozbj8t/tMXd0f0OOdsGtFXNeIFvVDz14ZB6JCeJq0XM3EkNx/4PNC34fw2NEY81gqFLjr8LuIfm8cfdl4sXuKBkO+8B2QA6R3LHuAppDWXL0jH623x+axC/mAG7u1kJKueYIQ8gF+HTLCquh8pECl0qZ0f6R1cfd2+HoIvytEpKImSwY+d8TpaQFWa4dTezt0QEpUjb+eLsslx7q7tP6Vy7sDaGb9F9q1CSZFD3plDGPMG9orsBfmneBqW09fpXWgmHQxRCR8ZILEH/RnTpKVMZ2F/mOPqt6Cf7VrUJZnOxv0X89dAAS7I7Sz6bUA2uDP3ifNQSMvWZCuBTd5l25qBT0n9SkmHaavafnh6wnQ3Ii+551jzB25GQdyDEAFvJrnwXa1kbQPqfInlUSo6wyUdLzlHoK5Awy/en6RQQ4+PSKO2zNr5Qcn/93+FxCZ+9NJWuHSV+Ad3VQnhO2+noL+Flmt+TkR5Ii5JSV3TjOXTsQ3UdUOwn0j6u9QPGECJa9kW5ekxL1zmWnszA0e4MiJ1V9VAAsE/X/SKKAcJ5lMHRZV6e9Wem1/TVE3evykwlUhLwV2JO941PfFz8Qh0/WtUyOTGIQWQXvNE+z3PA3scQ4sSF4TRQXDyC3QlOx3LxXLqgaPpRbjBnb6MD82Cj9g/PUIZsiR45U6vzX8TOMFHcKf1OVjs51wmAyKjYaO2y/B7xbEFyRcFF8kakhLGl8dTg2rT97GIw3EBk4pHUe7x4AKo01uZMwQh3+sHQUp+9+ur6DsJ99au6AAaBJsh+Up5Rgkr0+fKppa7fuFKTPSWLkcsYhvMXAmFwOMaf2SWiyMgCFa7r2V0mFvtBiqO/Uvt/L8Gxr2Tb5wzOjYaK1bPkQCrFKYFh+IYvxt4Vcfq5t3osIwpevFxc74Bh5ifmasj15Trz+R5JmqL+NnfDlfbQuTcyTp/5AFyUBfDDwPvQ4VeY/XyViNcP417+apo2V8L8ygIeOruDe9tlLPDZXGjnJRTUqvvwsLahdvTyQx7rXwzvuJXzis1EkNT7MnJOqgUScKGiiLieE/MTzSIBAli9UCU2kobG,iv:WFFGq5a8W+8/eHGrQkuWB3fGkMElaMkDGpBru2nIAYo=,tag:yddIN8q/OxUSgwyQ3tN0QQ==,type:str]
+    tls.key: ENC[AES256_GCM,data:B7NjEo8lzew/kN3b2dRI9QD+fqkWIiKZfNBYiuDGd1CUzWPWOzAdBg9HlMlmpxPvrD01YenoYIBxOY5RkUm8ilEAsrK7J+kfRINwvOv7hpK9gKGvGabmAelN0tIHdnDWDyzz3jqNoffXo/lyZFF0QPt8YpHNqodEVRGm1FglWw1S32UF9ZpyaQj7KNy4+yg98IcdafuTbmAqjv/FKSICQNeeUC5WLQ7z+AEKazVbD0cyjxDf2FDDUgjX3pVVCZqJkNgRmQoxDTeU4RBgZVuh2Uf26QDhtktujIMCecFBBZH2fzB4YNesRJPnECCulK5kj1xojc+vAqRMFp4jCNbBZutLtq+xa7U+FzVB1z29XywdbsQeGfiPPAisJsHBDwh4J3R3o0jIB1mMLfbrPQSTnb8EhuTMk1tO63ZWy6ww8amJssAE,iv:hF60upWtUNh4Ll3AgPQRT1lhGCEUVfKzRTlK2zsQxP4=,tag:lGWJnU6TnfN33S6My0eriw==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T19:54:17Z"
-    mac: ENC[AES256_GCM,data:j+60uBo0tZS1247nfTKEZcoVpQJNG0TyggKeZvjZDVRgOQdONSxJfK+AP7aE+rihzXyy73eCuIRCsVlE6OeBHVY/rLuVBKwsdkb2QhMk3fyK887jSfHjTaeD53xydnemTr2JugaXLJ6sAZEYbX9U8eY/dXGqpyUcFopTq3b4iWc=,iv:RYlyTTTyqqlUHtiiU9XVxF0/EhZR13aHEo0hBQtC2Mc=,tag:4xdGLP6ALcDOWVMM9M0PCw==,type:str]
+    lastmodified: "2024-04-14T20:37:23Z"
+    mac: ENC[AES256_GCM,data:dXXdUa+BMMeUmlAhTeUVcDgiDDggjWUCtdfRKzCZC3zU9ptWk1Ff1LcDr5e+vHSSmCHN0n2x+77nl+o1+nGZ81AO/3jkvzO/M1P8msRX6eKRI2NbwUXTvCgOygbzhRfB34Cb1F70X1COBQn9NP8ZfdPzk7NI2snWhiMR9/9VNRk=,iv:/0IkpZthX3i2LuIgPx9kfh39gQeY9J2vSEdDFddDzdQ=,tag:9OowT2JNgpZl9J+6vNn/oA==,type:str]
     pgp:
-        - created_at: "2024-04-14T19:54:17Z"
+        - created_at: "2024-04-14T20:37:23Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEedcPAtVDuXtiwxhjpElfJuGVf4Tef7XmTxjr+UPJZwWv
-            x8+StKNmeRd8VXiP3MudAXfzYsTyZyFIsVCzpA7aClSEnYfwhUAFQEubAe6G0bQc
-            Cgj2bWNC4bJy5M6afq0oMCA0BGyRJ84et8/Uj4+9zKqW1lQAsz8lQ5L4J++gjVIG
-            RKsUvuVI/jzx0f+TS70659RoAQkCEBxNcgjnsiE117HEzAkpYIJn0kcVbsleaoBH
-            y8e/5u0+1sEiLPifLLiviCTm5sCHEBB2y0wpPMUeSOJjHo8WF2dMTjUmliN83xWd
-            nALZIiT4wY9xOP0iR/iNtZ0cy1RiJELHIfk=
-            =hng7
+            hJ4D0dRkdsWQFPUSAwMEvPS+6s1mLItHJ9WaARINSInqS29j9IuGG4tQlRPKKGtO
+            nhmVkPQSCcVYLYUAUeEqhDKWaIfeXZ3RnFDJb4dijocgJHfk9ILlkDTHnGy69LgY
+            /rOoS7Zss6W1BddZi2JGMFrkRyuekUNtkdhhlKll5+PBoRtETeerefT0vPsAtdbz
+            Z0Nz6SMip2MrkXRn/bB3JtRbAQkCECPXiiANAGHvKd3nsJ7baFcz242/u7g5z+d0
+            UtUwI4HYxpbwZW3WGeDcdMdt+PYomrqCyLzYMQkkkkhQL0q7DMES+dpRMEir+QQw
+            CmasoyaY1LvjejF/0A==
+            =7ki4
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T19:54:17Z"
+        - created_at: "2024-04-14T20:37:23Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEhrA5C3EBSsKFqUEuFGBAAZdlnRVVPrcSvT/9ToGDdLq0
-            k8hFgnta48+EkFXNRhWx87YTEh4h/qbdSKoxCevr1oW9oS5dvYerWg61WiqzcSe8
-            ovZh7Yl8u1xZmY2nI6emMEa8s8R+I9HMmimm05+ekXcPeIXge51NCyTYfKkRz9O9
-            r6wpUfL62tpnTfjp0XAr89RoAQkCEG4Ycep5vXA1y1jNctKD9F3BWazttnllZvqt
-            J6Npe8zQ8OSTR52tN7tVwtVGRUSuOUm6oVf5GspLZp0JuMr4Q43r1ql4dp5N22Of
-            60KfhjUv1GKLtZo+plt7WPuLd+Q3Hn4fsw8=
-            =klgt
+            hJ4DLG005yzvDc8SAwME2KYVUQH+6S7vGEh3KTpcKJKad4OJ40RckJBK/tSrDBdQ
+            dFsQmlo9CsNHnMH/xtHXahrfJk86PPmgWp8BGJJbNThyFWNevzGndpL5fIBdAySN
+            VhfLNjg/oBHJBZCFlvwHMFXtKavYTfS3YuCPelCiZkNCV3RJgmKepUIR6O/BGq+n
+            W+39tzASPgWWwEXRs6J/StRbAQkCEBjc4/onsbx166SqVk8AEJs7OS5tMHttYS4I
+            qs8tFLFHB1aSiHbnreLC2e66buuj/UtlzAUdPM6MsYvOv3QsRWf/o/SZEoDQWAtR
+            8082+3Vwy9qSHc21xg==
+            =KlT3
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
-    encrypted_regex: ^(data|stringData|password)$
+    encrypted_regex: ^(data|stringData|password|secretKey)$
     version: 3.8.1
