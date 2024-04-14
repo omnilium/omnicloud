@@ -11,3 +11,4 @@ resources:
   - cloudnative-pg.yaml
   - argocd.yaml
   - argo-rollouts.yaml
+  - flagsmith.yaml

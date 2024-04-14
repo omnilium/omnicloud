@@ -1,0 +1,37 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: flagsmith
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  timeout: 5m0s
+  chart:
+    spec:
+      chart: flagsmith
+      version: 0.32.*
+      sourceRef:
+        kind: HelmRepository
+        name: flagsmith
+      interval: 60m0s
+  releaseName: flagsmith
+  targetNamespace: flagsmith
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    # TODO: Add Gateway if keeping Flagsmith
+    ingress:
+      frontend:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: omnicloud
+        hosts:
+          - flagsmith.omnilium.local
+        tls:
+          - secretName: flagsmith-tls
+            hosts:
+              - flagsmith.omnilium.local
