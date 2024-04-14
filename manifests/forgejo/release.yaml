@@ -45,7 +45,7 @@ spec:
         gitea:
             admin:
                 username: webmaster
-                password: ENC[AES256_GCM,data:er7uRkrj4Nr/iaeJcqcpjTCHU09Lo7RUhWsiI3PrJlY=,iv:/hyijfTjoxDd4ZKdnUrkoy44h9SW2AaqtoE9ysj1NY0=,tag:Q+LCWkI/DJq+Ba0r6iMEbA==,type:str]
+                password: ENC[AES256_GCM,data:92ph12VWLDHjpOOK3ndlfRr0g/oLGsyw4U+k2v5/Dq4=,iv:AoIp0YvSLpCA5jmKFQ7bLnBMnrUVPn6/bXgjSNLnVWQ=,tag:Muoy7Yjcup9qcK2bit5+UQ==,type:str]
                 email: webmaster@omnilium.cloud
             config:
                 repository:
@@ -68,7 +68,7 @@ spec:
                     HOST: forgejo-cnpg-cluster-rw.forgejo.svc.cluster.local:5432
                     NAME: forgejo
                     USER: forgejo
-                    PASSWD: ENC[AES256_GCM,data:Mfvc0w+Ub2FEDPoH4iSLzo/CRxtDFknFdnE2iHPdkR0=,iv:LUI1zuOja1ZBL0pPA3oJic/PBRmTXu2IcrcpdntfJQw=,tag:mQouAqaY6Vjng+ElrTdblw==,type:str]
+                    PASSWD: ENC[AES256_GCM,data:uX3sEUKBq/LuxLnsvsB9o8VGfz6qo6F9kWwTMcPs8oU=,iv:IuBZfzAqqjILu19SvbJGcyKgtZoIY4nYGb8tX1tdDOc=,tag:eLnntUUTU1QhORt4WDyrLQ==,type:str]
                 indexer:
                     REPO_INDEXER_ENABLED: true
                 queue:
@@ -90,7 +90,7 @@ spec:
                     SMTP_ADDR: smtp.eu.mailgun.org
                     SMTP_PORT: 465
                     USER: forgejo@mg.omni.ms
-                    PASSWD: ENC[AES256_GCM,data:GT7DTnn4b8g3OKV4Di5RT0YfVJ1pGs0XZtXpvm5mPXY=,iv:rWKJ9MwhcPt52ndmq0vJnMIdUMAhgoIbVE1wShItd70=,tag:McPjwIORfPfczzMO1oaWoQ==,type:str]
+                    PASSWD: ENC[AES256_GCM,data:BAUJWPnC81H5lMZcbvlQdJfjkbqmiTP3YCRqNMkKyM4=,iv:tMLyqxAMXGA+sv3M3bCMc5LD7eLokz+L5vLPepOSN6o=,tag:eDMI+eN7fDhHB60lY55T1g==,type:str]
                     HELO_HOSTNAME: git.omni.ms
                     FROM: '"Forgejo" <git@omni.ms>'
                 cache:
@@ -103,8 +103,6 @@ spec:
                     DOMAIN: git.omni.ms
                 attachment:
                     MAX_SIZE: 10
-                oauth2:
-                    DEFAULT_APPLICATIONS: git-credential-oauth,git-credential-manager,woodpecker
                 time:
                     DEFAULT_UI_LOCATION: Europe/Bucharest
                 actions:
@@ -121,33 +119,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T18:21:12Z"
-    mac: ENC[AES256_GCM,data:sbPjUuoGLKxI0Km5j8fQiR49A9gm/zq3/ze6NUyyeLRQrR1VfwxE8bRPBP1Qe/k6VO/QEDgPIqpueP3i6GJgBBI+oJXuTUQKFharQz1rn90AT6tL4sLpTTBt3BzRTNrmePoyV8/FkjA2a8cnJFcAeB1qXTEXHtNml2rbzTG0E9Q=,iv:ciJPGvbbXbZxCHs+zD90YqATq1SNo4TzRhmoAwsvtWc=,tag:WLC9KgezZjY1ciZhWsBykA==,type:str]
+    lastmodified: "2024-04-14T18:23:48Z"
+    mac: ENC[AES256_GCM,data:ajvGP4B6BT3Hbc27+9yGDaLLEcrqwNaW7alnexeXPFTUPWN4uMR3jQui6SWKZPDuM3WYmGBwRm5O9TvDqFlWGXnF3Db0P8z0SXbYBCURXrn0t98b5lb1apf2lehwz8+bbIWYZOIZdS6NV5DaySGRlbNcxOfvi0XD/gsIYYIAUf0=,iv:wPNAz55Gl/fP+ddRMype75RhfQFfoe8hsSAx+3HWYco=,tag:nuJBTgwVmzu8/EYyLB5A9Q==,type:str]
     pgp:
-        - created_at: "2024-04-14T18:21:12Z"
+        - created_at: "2024-04-14T18:23:48Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMELgOIkFLHqp6zreQ+JJ/yb8sQ7NcttbulPVgHfHFTA2yM
-            K9Fbw4zImUIxYaIhFVT0sTN+OkV9QRhIB2Ops/ToSwhZQnFUvSjPR2H4xHLOnl/V
-            qWTCRmvmh6KD+1Y3P5mTMOAsBKACsZaZUfDaLpBoae9L4yo92peRbE/x36l7QLMW
-            GkqMIrO0HRMVhn6Q3Bg/nNRoAQkCEIg1wBA/scYMJluI2mfmynlFswd088GyPpAP
-            FcRdDseLMQ4r9puI1iZOvFcUOt+HAClha7sRouOtpfJdLjms3LgPPl1X0gMJOM/p
-            kLcdUiOparQz/qnyLTxE3SpSqvTaGoIjAM0=
-            =fNoe
+            hJ4D0dRkdsWQFPUSAwMED2iWhQTqiyMKLYhoAfLjQN0sAoK9b04HMFQaip9yN/Mq
+            gBfVlLjPvhHMCeL9xmP/s/DLZJ2567bQaLI0o4oJiCrFJ1pJda51k3T+TBFvjd2f
+            qvAclIbX0opStVDODyT0MAFl96/p/+BKSOuOyA+PjUplQOJf1liRc4T9L8MEfBIu
+            GUKJVkUnjnDik4zIDB+BddRmAQkCEOFnJGYtlCqrXhiZRHIpqND+6YAqMdBL1lQ9
+            n6Me9GSNoQQnv50dVbizUGxffRPjEC6YJlL0ITFdCdGOEivcYSwUZzWMZrKeQQrc
+            dLHDV+GfZLCtWDY3ZpRe80wq/Db+/h0I
+            =hGDD
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T18:21:12Z"
+        - created_at: "2024-04-14T18:23:48Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEB0Yf0XC16nEbYHzoYdO4SBYvXyI7o3PvFtzHKQkFy0Wn
-            lUZ7C+Vt9cAEjm0lrt0XC0rztwIOdWdjDZSJYWihiwbIBYVAloQw3TOW0RZbib1q
-            XDss3x9xAuxAxtnZ7aUMMOkfyXOXj28AerSswtzyVrXT7DTRtubNYgPYU04dTDjz
-            JPLq9F1dLyS0xD2NBkHCE9RoAQkCEFPrTrDOMBFVw6ZeRkwEepJxNyWty5fxQqtw
-            hCmvwPajdM1zeDN9nsqOomEb/9FC2co+VIvj6jz/GYDmCgCynn/vlLnE0dWohasF
-            em/21aFhjjdubuzqOaV0Tj+k/ENnH1tpc/0=
-            =y8cm
+            hJ4DLG005yzvDc8SAwMEoAuQax186JlaIrMEC2tMAebjt0IXVohhL0lUAx9hq+Ba
+            5rFpfGsJU14C7B1EuqFh8XyoqLKR4EKvzqfjCK01NCOIJZ9sg3jtxFkvMXI/1u47
+            DJ9YmDyCjl1tT7HGCqQbML8uXA42TP1WMPkXVuuh1k8qSM/dIjKrlZ8t30Irr5gb
+            Xcrk7q4B2zvW0STLr8XXZNRmAQkCEJW2YDssX3Isnw2NDF/HtmD/yioDcXIz0NsV
+            PQakKCZA2aNvmSTSz7aqwIfa1Q6nWkrSSjVL8uYMqvnn49sY2TQz+YBK+OfH/X0v
+            5sNrpTO+9ByOInTlDwrpVM3WG3rBCwBr
+            =pNpp
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(password|PASSWD)$
