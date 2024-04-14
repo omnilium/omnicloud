@@ -54,20 +54,16 @@ spec:
       endpoints: []
     prometheusOperator:
       admissionWebhooks:
-        failurePolicy: IgnoreOnInstallOnly
+        failurePolicy: Fail
         deployment:
           enabled: true
           podDisruptionBudget:
             minAvailable: 1
     prometheus:
-      thanosService:
-        enabled: true
-      thanosServiceMonitor:
-        enabled: true
       prometheusSpec:
         retention: 7d
-        replicas: 1
-        shards: 3
+        replicas: 3
+        shards: 1
         podAntiAffinity: soft
         podAntiAffinityTopologyKey: topology.omnilium.cloud/host
         storageSpec:
