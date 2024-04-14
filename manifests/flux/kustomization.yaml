@@ -2,15 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - resources.yaml
-  - repository.yaml
-  - prometheus-stack.yaml
-  - nginx.yaml
   - flux.yaml
+  - repository.yaml
   - cert-manager.yaml
+  - prometheus-stack.yaml
   - trivy-operator.yaml
+  - nginx.yaml
+  - dragonfly.yaml
   - cloudnative-pg.yaml
   - argocd.yaml
   - argo-rollouts.yaml
+  - roundcube.yaml
   - flagsmith.yaml
   - forgejo.yaml
-  - roundcube.yaml
