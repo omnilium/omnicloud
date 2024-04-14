@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - resources.yaml
   - repository.yaml
+  - prometheus-stack.yaml
   - flux.yaml
   - cert-manager.yaml
   - trivy-operator.yaml
