@@ -31,3 +31,10 @@ spec:
     configs:
       params:
         server.insecure: true
+    server:
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: omnicloud
+        hostname: argocd.omnilium.local
+        tls: true

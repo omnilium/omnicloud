@@ -46,6 +46,16 @@ spec:
       sidecar:
         dashboards:
           enableNewTablePanelSyntax: true
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: omnicloud
+        hosts:
+          - grafana.omnilium.local
+        tls:
+          - secretName: grafana-tls
+            hosts:
+              - grafana.omnilium.local
     kubelet:
       serviceMonitor:
         attachMetadata:

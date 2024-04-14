@@ -6,5 +6,3 @@ resources:
   - cnpg-password.yaml
   - cnpg-cluster.yaml
   - release.yaml
-  - gateway.yaml
-  - route.yaml

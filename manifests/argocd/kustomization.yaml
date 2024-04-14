@@ -4,5 +4,3 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
-  - gateway.yaml
-  - route.yaml

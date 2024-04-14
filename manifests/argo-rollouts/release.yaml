@@ -27,3 +27,13 @@ spec:
     keepCRDs: false
     dashboard:
       enabled: true
+      ingress:
+        enabled: true
+        annotations:
+          cert-manager.io/cluster-issuer: omnicloud
+        hosts:
+          - argocd-rollouts.omnilium.local
+        tls:
+          - secretName: argocd-rollouts-tls
+            hosts:
+              - argocd-rollouts.omnilium.local
