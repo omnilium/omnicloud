@@ -1,0 +1,111 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+    name: woodpecker-minio-tenant
+    namespace: flux-system
+spec:
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: tenant
+            version: 5.0.*
+            sourceRef:
+                kind: HelmRepository
+                name: minio
+            interval: 60m0s
+    releaseName: woodpecker-minio-tenant
+    targetNamespace: woodpecker
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        secrets:
+            name: woodpecker-minio-configuration
+            accessKey: n2hcwNY5dxJ7Hj2kWVkXZaZaxfrurrY3
+            secretKey: ENC[AES256_GCM,data:cCr7Nw81LiDK8Z4R+Kzc0eV0PaB+1v6Pozr08IyAUIM=,iv:teCV1V9J3RwoNrynOXO2hMMIQss/GVVn7ggZDIUpNPs=,tag:wcS63mpiLTNTEsbae6gfnA==,type:str]
+        tenant:
+            name: woodpecker
+            configuration:
+                name: woodpecker-minio-configuration
+            pools:
+                - servers: 4
+                  name: minio-0
+                  volumesPerServer: 2
+                  size: 8Gi
+                  labels:
+                    app.omnilium.cloud/identifier: woodpecker-minio
+                  tolerations:
+                    - key: storage
+                      operator: Equal
+                      value: spinning-disk
+                      effect: NoSchedule
+                  affinity:
+                    nodeAffinity:
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                            - weight: 100
+                              preference:
+                                matchExpressions:
+                                    - key: node.omnilium.cloud/role
+                                      operator: In
+                                      values:
+                                        - storage
+                    podAntiAffinity:
+                        preferredDuringSchedulingIgnoredDuringExecution:
+                            - weight: 50
+                              podAffinityTerm:
+                                labelSelector:
+                                    matchExpressions:
+                                        - key: app.omnilium.cloud/identifier
+                                          operator: In
+                                          values:
+                                            - woodpecker-minio
+                                topologyKey: topology.omnilium.cloud/host
+            certificate:
+                externalCertSecret:
+                    - name: minio-tls
+                      type: cert-manager.io/v1
+                requestAutoCert: false
+            buckets:
+                - name: artifacts
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-14T20:33:41Z"
+    mac: ENC[AES256_GCM,data:XDrvEwCV/ofM2Iiz7l51PwfxidaBCtwhdNT539sPIxD7eSVVn4csbB2SJ4OGEzO9oUlwo02OD+W2BnY0EreSClYMGKrkUYeHzVIl3UFOSaZgTzZi0v31bQR4KogSeXiTOtJh/pp+iwedRdQplfSchaQ/67Mf5UTKVkUcTc2tA3w=,iv:G+0IKHCMAoSa1pE/D/9LFJgWYyhK5aOpfLm/nVn9WfI=,tag:EDhJBDS0z+2InopjmCywoQ==,type:str]
+    pgp:
+        - created_at: "2024-04-14T20:33:41Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEnUcLUFRn7YYtBWYNq3NL2D1z1AcVcrc5zaSuolemXu56
+            YYCVqa4AvbJibj3KMpDtd37RV3L6LKAjFix1r8b5tADAZ4If6JresbrSmyMytwxp
+            byBXPPpqVhgKU1kAxAtMMNv+eHjjm6dUZzv30EmI8BwGfuktaqzlCojt/nJ775FX
+            IaAQc9I3zB3cNje+NhomCNRoAQkCEEBf0e5cZgp2vITDJA9RGhjvcBBhOkWF3oIt
+            AagB/z61HWKITDe3kxwb6WyYWDMiAVV5gn3R1JHcbryqNvD5XoVoPzeK2k1g8E8i
+            rZRFxhN5DWluriKK087E2WSd88j07UB+vAI=
+            =pYXg
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-14T20:33:41Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwME7AX50aRzodqqbUhYXMJy6ohQmroFCQTP9ydn2/QKFAvn
+            lorcW6eefNL2+D5Rukm+4IWUl/oECi1w8XUE6ZYt3vRhvwV9ndXBhvrckj+X0rcu
+            BvycXR6JMr9LpBG4mOydMHkmmBgA4V6hIGP1LuulGFBecRS/AA0W4xNz6EJ8G/7D
+            a2EQtxU71KhXgqCHNWsOcdRoAQkCEOVQZ3oy+9WB3xsKLSOOqx7kb/DnDpV7DjNS
+            +OXVJ5LiOiL/AsGlcO+32aA9BG9y0I8qFBRw/gfcekHSgY+9bRbeDe7g5mzmyF9E
+            8Hg/ner+Rm1SnVVSqxMBF2nNrr2Tvdw8eNw=
+            =lT4v
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|stringData|password|secretKey)$
+    version: 3.8.1
