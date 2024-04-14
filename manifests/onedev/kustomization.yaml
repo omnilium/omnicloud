@@ -5,7 +5,6 @@ resources:
   - repository.yaml
   - cnpg-password.yaml
   - cnpg-cluster.yaml
-  - cnpg-pooler.yaml
   - release.yaml
   - internal-gateway.yaml
   # - external-gateway.yaml
