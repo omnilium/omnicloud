@@ -7,11 +7,16 @@ metadata:
     cert-manager.io/cluster-issuer: omnicloud
 spec:
   gatewayClassName: cilium
+  addresses:
+    - type: IPAddress
+      value: 10.0.1.1
+    - type: IPAddress
+      value: fd72:5af2:852f:1162:10:0:1:1
   listeners:
-    - name: https-1
-      protocol: HTTPS
-      port: 443
+    - name: https
       hostname: grafana.omnilium.local
+      port: 443
+      protocol: HTTPS
       tls:
         certificateRefs:
           - kind: Secret
