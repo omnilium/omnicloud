@@ -1,26 +1,103 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: flagsmith
-  namespace: flux-system
+    name: flagsmith
+    namespace: flux-system
 spec:
-  interval: 10m0s
-  timeout: 5m0s
-  chart:
-    spec:
-      chart: flagsmith
-      version: 0.32.*
-      sourceRef:
-        kind: HelmRepository
-        name: flagsmith
-      interval: 60m0s
-  releaseName: flagsmith
-  targetNamespace: flagsmith
-  install:
-    remediation:
-      retries: 3
-    createNamespace: true
-  upgrade:
-    remediation:
-      retries: 3
-  values: {}
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: flagsmith
+            version: 0.32.*
+            sourceRef:
+                kind: HelmRepository
+                name: flagsmith
+            interval: 60m0s
+    releaseName: flagsmith
+    targetNamespace: flagsmith
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        api:
+            replicacount: 3
+            podLabels:
+                app.omnilium.cloud/identifier: flagsmith-api
+            affinity:
+                podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                        - weight: 100
+                          podAffinityTerm:
+                            labelSelector:
+                                matchExpressions:
+                                    - key: app.omnilium.cloud/identifier
+                                      operator: In
+                                      values:
+                                        - flagsmith-apir
+                            topologyKey: topology.omnilium.cloud/host
+        frontend:
+            replicacount: 3
+            podLabels:
+                app.omnilium.cloud/identifier: flagsmith-frontend
+            affinity:
+                podAntiAffinity:
+                    preferredDuringSchedulingIgnoredDuringExecution:
+                        - weight: 100
+                          podAffinityTerm:
+                            labelSelector:
+                                matchExpressions:
+                                    - key: app.omnilium.cloud/identifier
+                                      operator: In
+                                      values:
+                                        - flagsmith-frontend
+                            topologyKey: topology.omnilium.cloud/host
+        postgresql:
+            enabled: false
+        databaseExternal:
+            enabled: true
+            host: flagsmith-cnpg-pooler.flagsmith.svc.cluster.local
+            database: flagsmith
+            username: flagsmith
+            password: ENC[AES256_GCM,data:D3vJgqPd4fPNttLmuFsaJbWM+gKBLpSwOOsuFTn9mic=,iv:1kP9FPtZZpNWPsOj1WOoSGbNU/gb0YEURtTAHRH7IA8=,tag:szJy6yFJeOwocfFKCUgOBA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-14T13:16:22Z"
+    mac: ENC[AES256_GCM,data:+Xrvg2PFi3xx2G/K3CRWetBRc4u+sIj5SxGbJGuSXeD7O29CHkOzKeTq6jfjvqyuMCH9mkWCxzOKwNDELApvK0oe5yCCc5+42jt6UBPaPFFfCOpVLdCE98Q0Drlyvu998roHc7/asGzdWHpFezkZwEE1jFlAzaQeWx3fOuBYeI4=,iv:44EG/VAr5sL7lm0Vy0xIF1gTOQxhVUO1M5K2oUecxwY=,tag:JG0ULe/IJrRmzImiw7hHMg==,type:str]
+    pgp:
+        - created_at: "2024-04-14T13:16:22Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEbm7e59XrMdBqVZmICiK0DXhfhTJJQZbIdhTZibNzKqdw
+            d4Det9z70wo3ieaiYTSMVjw+154yKZVduiXEPKdx3GuvXDY2GgwnETX8AhZ+wBi3
+            Ndfgrln9iiKhsFy/G+5ZMAOxKZkGEr/pMFZ6biHTdxNbJZ0pQyLnpPtcq1BMMNVV
+            NhgqN/E3OZ+bWfntqLDw9tRoAQkCEDmJ+oLgsgyj+Cu3kcgtDC7YWHg2uTmVJNvE
+            AlPX1bep4F/13YLt/OEy84VcqrIU80cSpgDVmrwyzGemF191wWF/5H0blNMG/ANE
+            rOGecpKA7UmfQPhV76Cn9JLhxaer6NMAIwo=
+            =UhkO
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-14T13:16:22Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwME+CHo0jVXCzJ/RaLlo3GAdDfT1uJDanvlOzRO5fOSCz7/
+            KUtMYtlF9+y6NmNGha0yVpA9otoMSW6BRgZZQllUezQVoFk4lnKPo3qMwY6L2bNw
+            +5MQPdx6jQKNPj6jYg9AMFnrYO5XZBoTJS3ci54n8v8QstKa3XxH/BH2doQVMv/j
+            KEY23rJZMo7MqVMkE5E5ZNRoAQkCEO8TqkgU6wH++4/W53aKlv4rf7C0Ql7FWZbP
+            ZwOxE1dyI1PaGELxBgetcSqZcZSeTZ8lEkS90CrBACis6ROA8R8RdtgFTaWqiRNF
+            GFl6h3Aqo5zpwXsf9iLHe6VuzMONcC5kbPk=
+            =tc++
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|stringData|password)$
+    version: 3.8.1
