@@ -71,7 +71,7 @@ hubble:
       certManagerIssuerRef:
         group: cert-manager.io
         kind: ClusterIssuer
-        name: omnicloud-ca
+        name: omnicloud
 
 envoyConfig:
   enabled: true
