@@ -4,7 +4,7 @@ metadata:
   name: forgejo-external
   namespace: forgejo
   annotations:
-    cert-manager.io/cluster-issuer: omnicloud
+    cert-manager.io/cluster-issuer: acme
     meta.helm.sh/release-name: forgejo
     meta.helm.sh/release-namespace: forgejo
 spec:

@@ -4,7 +4,7 @@ metadata:
   name: woodpecker-external
   namespace: woodpecker
   annotations:
-    cert-manager.io/cluster-issuer: omnicloud
+    cert-manager.io/cluster-issuer: acme
     meta.helm.sh/release-name: woodpecker
     meta.helm.sh/release-namespace: woodpecker
 spec:
