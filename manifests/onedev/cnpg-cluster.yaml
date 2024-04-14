@@ -1,7 +1,7 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: onedev
+  name: onedev-cnpg-cluster
   namespace: onedev
 spec:
   instances: 3

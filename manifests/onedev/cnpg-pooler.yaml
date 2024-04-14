@@ -1,11 +1,11 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Pooler
 metadata:
-  name: onedev-pooler
+  name: onedev-cnpg-pooler
   namespace: onedev
 spec:
   cluster:
-    name: onedev
+    name: onedev-cnpg-cluster
   instances: 3
   type: rw
   pgbouncer:
