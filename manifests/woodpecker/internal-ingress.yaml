@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: woodpecker-internal
+  namespace: woodpecker
+  annotations:
+    cert-manager.io/cluster-issuer: omnicloud
+    meta.helm.sh/release-name: woodpecker
+    meta.helm.sh/release-namespace: woodpecker
+spec:
+  tls:
+    - hosts:
+        - woodpecker.omnilium.local
+      secretName: woodpecker-internal-tls
+  rules:
+    - host: woodpecker.omnilium.local
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: woodpecker-http
+                port:
+                  number: 3000

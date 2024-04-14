@@ -15,3 +15,4 @@ resources:
   - roundcube.yaml
   - flagsmith.yaml
   - forgejo.yaml
+  - woodpecker.yaml

@@ -1,0 +1,36 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: woodpecker
+  namespace: flux-system
+spec:
+  interval: 10m0s
+  timeout: 5m0s
+  chart:
+    spec:
+      chart: woodpecker
+      version: 1.2.*
+      sourceRef:
+        kind: HelmRepository
+        name: woodpecker
+      interval: 60m0s
+  releaseName: woodpecker
+  targetNamespace: woodpecker
+  install:
+    remediation:
+      retries: 3
+    createNamespace: true
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    agent:
+      replicaCount: 3
+    server:
+      statefulSet:
+        replicaCount:
+      env:
+        WOODPECKER_ADMIN: woodpecker,admin
+        WOODPECKER_HOST: https://ci.omni.ms
+      persistentVolume:
+        storageClass: solid-state-replicated
