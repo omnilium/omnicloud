@@ -27,7 +27,7 @@ spec:
         secrets:
             name: woodpecker-minio-configuration
             accessKey: n2hcwNY5dxJ7Hj2kWVkXZaZaxfrurrY3
-            secretKey: ENC[AES256_GCM,data:rOcKlQoveIpB+eX9mppSiyN+7uPwpsR0PkJ8BXT/oSA=,iv:Gejb7R8648L4GE4Rhy1t/tRf51L1EFT4UhLiDoC1bdE=,tag:pgwnDAuxxI44HopxV2fUZQ==,type:str]
+            secretKey: ENC[AES256_GCM,data:Fn8kj/rYLm87XZeAM5RBX340V44jBJ2bNdwVr1aoGEA=,iv:cSx/hzVEC21VifL1nQga5wdumCTROVVgAR1+9FZLsrE=,tag:Aek1W8i9X9pN8mM53YCo8Q==,type:str]
         tenant:
             name: woodpecker
             configuration:
@@ -68,6 +68,8 @@ spec:
                                 topologyKey: topology.omnilium.cloud/host
             certificate:
                 externalCaCertSecret:
+                    - name: root-ca
+                      type: kubernetes.io/tls
                     - name: omnicloud-ca
                       type: kubernetes.io/tls
                 externalCertSecret:
@@ -82,33 +84,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T20:45:52Z"
-    mac: ENC[AES256_GCM,data:KJMmHQJFhyjOYlPNB7Ff+A4LUlkT5AlPv2kULBJeLDOb/TbMOIBMBv9uDw9gzucXG+kATBugy9L1LzGgoWVQNX0VVIBU7dnfSTQDqfs2bEdoJhQUiZf1Qf5wkBQ1CfvnkKCS/sj2DrTzfkMSFYIdF3AVQaTBDAri5IpOicmWBzw=,iv:BrZmmfHuLF9xS2DOYklhjeKYqjai0D2din5Tq8w+TPQ=,tag:LLvlfzRNsqEHbjZjf1mKpQ==,type:str]
+    lastmodified: "2024-04-14T20:58:21Z"
+    mac: ENC[AES256_GCM,data:VVBttYhVeVNN3kccF5CsDpyTfiNVqqiiS5/4w5GCDLDhmR64FufgDc1dakW59mnvZ8AvoCzy4KADgmmVKoyDSQbIAUzPD99si0TY71naTty4CF2ltld9q4F6kb7fmT9poG5TLD8h5wdxnGnOMX78VLyS6rV81G7/BgC9IDax5z0=,iv:ZiNfBCWwN0dx2a6zKGInOd+S+c5TZyFE4tTPrD0Ap0k=,tag:6XLx54pyV2XQ5FHW9UqQKA==,type:str]
     pgp:
-        - created_at: "2024-04-14T20:45:52Z"
+        - created_at: "2024-04-14T20:58:21Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEKO4a9J08B2bCPvZ6EYOVnlpnJs1KQNDwfBi1yhjgbiVJ
-            8kpOmDtF34tWx2oO4zP8uctz8Mo4REl5aBF16lOfPqpV9L6hwn4yG9QbnWTHZLYo
-            sON7lwbg6dLq2mnNd19UMGiU9RN5jJGSD/6nxcoOlIjPtHG0LLk8ze/cL1Qs4GWz
-            zobAzBhbPTBeM6GwctiZcdRmAQkCEMqEjaS16aVupmVqxx+siiANILKcIzdTgdaS
-            vGoGn8daYRAVQvf49B++bBG8yy2i+UR9WcolOFCelcKXATEjfAkI9ByczptP6pIo
-            HNYe22Be8jy9pLuCRqGiw0o/KxU972Ts
-            =VZq7
+            hJ4D0dRkdsWQFPUSAwME2X5GAJKo97KL5xihbxj77k+6CVAZLkmI+FKENbO8WHY7
+            YRXfvP1M/UJHX02rEwTPdzJ++PsdZWxVEgcvx2nS4mJ6kZs1It8e+nAzq17P9Jgc
+            tZDK3+tUsRXpRf1s5MYNMCFIyZ4eOY48zHtVttIuZjNoIjr0a9hJRJH9/wqIlBPs
+            CeJRzRXJ7e4x81dF83jcItRoAQkCEIUQq7QrUl9t5A8fpE2CvHX3TsVMIPI6jqnK
+            WjzRmiN4RDalI6Emi4csXDmr8avhG0aR2yIXuCi0C4seXpvtL3eNXfGsYtkySQPx
+            pCJ6lbgI6PTDQ1IrxIBw/f/XE+ChcJpW40k=
+            =aSUk
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T20:45:52Z"
+        - created_at: "2024-04-14T20:58:21Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMECVa0quvK+g/0NwDqFJYXUvl785iU6wS47MHg4Sqkb3La
-            TQo4rTG+qatK26BpLqfQKbHH9CAiUAB3SqL2lxd8AuGoD1dr4J066DayCrtWKV6Q
-            FF/Bco+jpvydwWWQPUh9MPvhxXo0n8h2gUO6s03Q1rJKn5F5r0FYw8Hg/QU+VSyC
-            CBvZeaPkLZJMdd6JJTccPNRmAQkCEDHZb0o8JBSAoOpwrLvchvJtIHlP5ceQNHBz
-            ixQvpBRNnP5mHwINelyZJp1rnKpjvqcXxmWM5fub22869fbG0ASKcTJdMUYreEfH
-            Ar8vZZaNcC4+4CeDAO7ZBda4YBKzPRjy
-            =fmYn
+            hJ4DLG005yzvDc8SAwMEIcKpF9PptFti2PNK7dKcVJFhLr8JCtLngPhsoI3/hyKH
+            gXVK0dR6xpvL5/GFAlri6rv0h3j3jESNrVTgx/2eEEIhMniJGdPWhaC7kUd7/5pC
+            QlBHrohfytrDjSmW5sJbMEBPHXYN52MePROtTzw35O5rveZ4w5uPsw0Bij0PFHZB
+            Q5dsyvuoJOmg4lDE1DaA+9RoAQkCEINSRffGtDjpPNI1ImASpZ1OihrhusN+fMgP
+            y9FPzaKIhxphy5kOxIUCiIupYEvCDbEpNHhCJsdBQfNw13QINyj33TNjC5e1W5Eu
+            x47I5+37EtGCmdQLgfyxkT/8g8exr76T444=
+            =MBXe
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|secretKey)$

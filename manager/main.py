@@ -18,6 +18,7 @@ cluster_endpoint = "https://talos.omnilium.local:6443"
 base_path = "manifests/talos"
 sops_paths = [
     "manifests/cert-manager/omnicloud-ca.yaml",
+    "manifests/cert-manager/root-ca.yaml",
     "manifests/flagsmith/cnpg-password.yaml",
     "manifests/flagsmith/release.yaml",
     "manifests/forgejo/cnpg-password.yaml",
