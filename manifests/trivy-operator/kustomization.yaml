@@ -1,6 +1,14 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - namespace.yaml
   - repository.yaml
   - release.yaml
+patches:
+  - target:
+      version: v1
+      kind: Namespace
+      name: trivy-system
+    patch: |-
+      metadata:
+        annotations:
+          pod-security.kubernetes.io/enforce: privileged
