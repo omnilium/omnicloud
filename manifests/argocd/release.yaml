@@ -39,4 +39,4 @@ spec:
         enabled: true
         # annotations:
         #   cert-manager.io/cluster-issuer: omnicloud
-        tls: true
+        # tls: true
