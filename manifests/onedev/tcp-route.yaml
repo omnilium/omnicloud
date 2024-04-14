@@ -9,9 +9,6 @@ spec:
       port: 22
     # - name: onedev-external-gateway
     #   port: 22
-  hostnames:
-    - onedev.omnilium.local
-    # - git.omni.ms
   rules:
     - backendRefs:
         - name: onedev

@@ -16,3 +16,6 @@ spec:
         certificateRefs:
           - kind: Secret
             name: onedev-exteral-tls
+    - name: ssh
+      port: 22
+      protocol: TCP
