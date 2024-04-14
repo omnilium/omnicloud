@@ -3,6 +3,7 @@ kind: CiliumLoadBalancerIPPool
 metadata:
   name: default
 spec:
+  allowFirstLastIPs: Yes
   blocks:
     - cidr: 10.0.1.0/24
     - cidr: fd72:5af2:852f:1162:10:0:1::/112

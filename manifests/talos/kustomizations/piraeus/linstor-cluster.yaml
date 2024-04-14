@@ -10,15 +10,23 @@ spec:
     podTemplate:
       spec:
         priorityClassName: system-cluster-critical
+        tolerations:
+          - operator: Exists
   csiController:
     podTemplate:
       spec:
         priorityClassName: system-cluster-critical
+        tolerations:
+          - operator: Exists
   csiNode:
     podTemplate:
       spec:
         priorityClassName: system-node-critical
+        tolerations:
+          - operator: Exists
   highAvailabilityController:
     podTemplate:
       spec:
         priorityClassName: system-cluster-critical
+        tolerations:
+          - operator: Exists

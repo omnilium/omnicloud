@@ -6,4 +6,3 @@ manifests/talos/base/*
 !manifests/talos/base/.gitkeep
 manifests/talos/rendered/*
 !manifests/talos/rendered/.gitkeep
-open-appsec-k8s-install.log

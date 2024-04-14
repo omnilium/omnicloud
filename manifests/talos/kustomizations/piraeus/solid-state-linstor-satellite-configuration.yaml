@@ -38,3 +38,5 @@ spec:
           hostPath:
             path: /var/etc/lvm/archive
             type: DirectoryOrCreate
+      tolerations:
+        - operator: Exists

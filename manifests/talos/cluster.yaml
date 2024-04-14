@@ -16,7 +16,7 @@ cluster:
       - fd72:5af2:852f:1162:10::2
   controllerManager:
     extraArgs:
-      allocate-node-cidrs: false
+      allocate-node-cidrs: true
       node-cidr-mask-size-ipv4: 24
       node-cidr-mask-size-ipv6: 64
   proxy:

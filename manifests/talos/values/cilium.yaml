@@ -50,9 +50,6 @@ encryption:
 endpointRoutes:
   enabled: false
 
-socketLB:
-  hostNamespaceOnly: false
-
 hubble:
   metrics:
     enabled:
@@ -69,7 +66,20 @@ hubble:
     enabled: true
   tls:
     auto:
-      method: helm
+      # mathod: helm
+      method: certmanager
+      certManagerIssuerRef:
+        group: cert-manager.io
+        kind: ClusterIssuer
+        name: omnicloud-ca
+
+envoyConfig:
+  enabled: true
+ingressController:
+  enabled: true
+  default: true
+gatewayAPI:
+  enabled: true
 
 ipam:
   mode: cluster-pool
@@ -92,7 +102,7 @@ ipv6:
 kubeProxyReplacement: true
 
 enableIPv4Masquerade: true
-enableIPv6Masquerade: false
+enableIPv6Masquerade: true
 
 ipv4NativeRoutingCIDR: 10.32.0.0/12
 ipv6NativeRoutingCIDR: fd72:5af2:1032::/48
@@ -100,7 +110,8 @@ ipv6NativeRoutingCIDR: fd72:5af2:1032::/48
 loadBalancer:
   algorithm: maglev
   mode: dsr
-  acceleration: native
+  acceleration: best-effort
+  serviceTopology: true
   l7:
     backend: envoy
     algorithm: least_request
