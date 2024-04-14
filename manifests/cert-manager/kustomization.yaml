@@ -5,6 +5,7 @@ resources:
   - namespace.yaml
   - repository.yaml
   - release.yaml
+  - root-ca.yaml
   - omnicloud-ca.yaml
   - omnicloud-cluster-issuer.yaml
   - acme-cluster-issuer.yaml
