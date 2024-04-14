@@ -1,0 +1,18 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: grafana-gateway
+  namespace: prometheus-stack
+  annotations:
+    cert-manager.io/cluster-issuer: omnicloud
+spec:
+  gatewayClassName: cilium
+  listeners:
+    - name: https-1
+      protocol: HTTPS
+      port: 443
+      hostname: grafana.omnilium.local
+      tls:
+        certificateRefs:
+          - kind: Secret
+            name: grafana-tls

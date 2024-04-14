@@ -52,13 +52,6 @@ spec:
     kubeEtcd:
       enabled: true
       endpoints: []
-    prometheusOperator:
-      admissionWebhooks:
-        failurePolicy: Fail
-        deployment:
-          enabled: true
-          podDisruptionBudget:
-            minAvailable: 1
     prometheus:
       prometheusSpec:
         retention: 7d
