@@ -5,6 +5,7 @@ resources:
   - repository.yaml
   - cnpg-password.yaml
   - cnpg-cluster.yaml
+  - dragonfly-cluster.yaml
   - release.yaml
   - internal-ingress.yaml
   - external-ingress.yaml
