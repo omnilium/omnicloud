@@ -27,7 +27,7 @@ spec:
         secrets:
             name: woodpecker-minio-configuration
             accessKey: n2hcwNY5dxJ7Hj2kWVkXZaZaxfrurrY3
-            secretKey: ENC[AES256_GCM,data:+ReHA+DoPGshfDVv2ru3HfbxMqegEXrsEgo/27qCEyc=,iv:wOWW+CjQ3sZY+02m25uZIeWP3jiFxh47rjeZonXhkgM=,tag:VqtXkvXbA0zU165rP7zGAQ==,type:str]
+            secretKey: ENC[AES256_GCM,data:k/ydDvhq35TTHX/t054nm0SOqrZON9cA6pLI6fbsHOE=,iv:/W9BGWAXjzW2OmyCfL9G+kzT0v3ADffjI1i3jjk9/z4=,tag:950lTshmT12TMPRM+L0xHg==,type:str]
         tenant:
             name: woodpecker
             configuration:
@@ -67,11 +67,6 @@ spec:
                                             - woodpecker-minio
                                 topologyKey: topology.omnilium.cloud/host
             certificate:
-                externalCaCertSecret:
-                    - name: root-ca
-                      type: kubernetes.io/tls
-                    - name: omnicloud-ca
-                      type: kubernetes.io/tls
                 externalCertSecret:
                     - name: minio-tls
                       type: cert-manager.io/v1
@@ -84,33 +79,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T21:07:25Z"
-    mac: ENC[AES256_GCM,data:9jXyqhpybvDT1SdzkEjnRm3ZZZDnSxF6NMlwxqNgLSMIUa28ijGFTMPwhBE7ETkMUKvmXz0Uj8c4dd+zIkCKFHcdus+CPNx/buzEld7edEYXFyr3m4t/EyJ6B4JB4h0fUqVCzj6e4YemSX3XfZ82zJz+OpkdUa/g7NBlIssbtcY=,iv:CaQuhMWoEX1HftP9fXINdo5IxHUQTe+Bzw3fF7s9hAM=,tag:/qTm1pXHuWAflSbB+HssFQ==,type:str]
+    lastmodified: "2024-04-14T21:09:57Z"
+    mac: ENC[AES256_GCM,data:sp4ZtXLA+9DjmKQZ5UeUxTrF2SIPjIheL682dbGhyYKDT7+n6zYvLxIOPHczeZ4StLXG4/0nY+RK5iWWRVpnGMFNwapDP78y8wgTtkOb6wrwV+mjrstfOh5dIf2wzX0G+AqQcbd4sIaRBLjl1N2cvW5WoSYnWNiQyh9Nmj/WhoY=,iv:xKCgVur9wc6rYufupJj89HbzcfNpl7Px3K2aSpoPm88=,tag:8Ogu110fLpTFWLzdqYCqag==,type:str]
     pgp:
-        - created_at: "2024-04-14T21:07:25Z"
+        - created_at: "2024-04-14T21:09:57Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwME0dgyT1RjJ36YSFp2tqCqpaudGVfy06T4Pfmv6ZmRHcbk
-            0z/F1IYhG78Up2ookajjIvQtfNJvJO5R7NKuZtkJgYxNkTGinbRQp/cZqUOxIdXF
-            9PZbHGZw5Or/p5CdEcNMMHBnrGov4LfIc+Nu6dCJDMUTeKwdtAhYORPjhQAJLoBQ
-            t8Z9MtPkBomitO4GcQvphdRoAQkCELhvy31wKWENH2yUsl09l4SBMGhdAbk0iddh
-            9upyEua8a7AonEu5FobSzxOUEqqu/guwl0if5kxVX2ZeKpSdT9cmunciXKK8sKGA
-            HgpRIBgiC0ADcEHGAd241vM5O0rqWOArfSY=
-            =Km5H
+            hJ4D0dRkdsWQFPUSAwMEsmhUtiE9MKEjtgffgN4CEg7zV0U4fTr4z1gQmwKLjSfn
+            W1fk4z5+5NRKk2CD+TCnOly1IGNn6a0Z9OUQ8yJMoayf5Sc7bbH6lu3XOQWTUqyp
+            U24YixCdIf7z9jEuu0o8MIX8NRSsw2bOEqRUshDt968sWbMXXme48+U9Q5X24pOV
+            qqOdNH476NzOiTozLDOriNRmAQkCEAYcJYXrT25rzUf0jh2MxGwuoVJDKQ9uvd+h
+            bRzf9obtO5Ean17LpYAf47HYtVdWvBpqxHaWVrv6A09hfPbrERh8UTDVxG87F2E+
+            vYsqbHjD1Zh5haVD2NaeklCRMiBx0u7Y
+            =GciK
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T21:07:25Z"
+        - created_at: "2024-04-14T21:09:57Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwME5xZJiKchlkx4CETzvdtOIkFk4PBgtl/7CWrhIdSmcOMi
-            WemXsqyOjQBZsabRNdbjHmCj2b+U7RjlwVlPQ27xNQ/DRkQlQuN07yu2y1Jdykmz
-            LEAw1uYKKcvXs483q3SHMI1IU2gcxlZ1whh8WSCiOuHvmUiY8NQ1PWYDtIV8w2DC
-            NXQIF1666Qsm5G9gUuGr9dRoAQkCEFMcw051nwi5h9htf8U6DT0EyYd/j5hhpdMo
-            sawBIJLm79Jazlxq/5u9RsTrUSztC4W7LSx2UmpUKviv6QxCALq7hgrXN/9OXJ0C
-            LaWTz+BhweRxgQ5zGmfF8qSeiOAufIMAKCw=
-            =o7YZ
+            hJ4DLG005yzvDc8SAwME2I0VkazqqzN78SGSoYJyDEKPhG8g3/RIvLNbezHMoS9l
+            8A0yDTuQFfaoPVV+4NOgQwAJvSQRGcHzbaxAQQtP43pwMw33NhpSX90jYFaOQwWS
+            HkgIqD6rp/F2nsJQ2UEvMHUwvopIfAoHJHWiyGNLsDK1FfLNasrFZdaIz614teuX
+            Fdl6AneNI6L/91mBuWRwR9RmAQkCEAn3/YMe9XkADtoQNzEC6dRzS+ZhP4lJG7a+
+            j028UQPCSXCJASk6kpJKXQGi2YPEVdi3yK2ad+W0uLSLQUFH3BMRMAOVw6A5m7HK
+            uM23TzFdko1sFcJCjixestQSSuptQ8zw
+            =t99P
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|secretKey)$
