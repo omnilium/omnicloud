@@ -9,4 +9,4 @@ resources:
   - internal-gateway.yaml
   - external-gateway.yaml
   - http-route.yaml
-  - tcp-route.yaml
+  - tls-route.yaml
