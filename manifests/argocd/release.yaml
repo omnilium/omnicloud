@@ -27,13 +27,10 @@ spec:
       keep: false
     global:
       domain: argocd.omnilium.local
+    configs:
+      params:
+        server.insecure: true
     server:
-      # certificate:
-      #   enabled: true
-      #   issuer:
-      #     group: cert-manager.io
-      #     kind: ClusterIssuer
-      #     name: omnicloud
       # TODO: Add Gateway if keeping ArgoCD
       ingress:
         enabled: true
