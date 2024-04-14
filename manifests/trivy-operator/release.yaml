@@ -26,6 +26,8 @@ spec:
     operator:
       scanJobsConcurrentLimit: 20
       scanNodeCollectorLimit: 3
+    tolerations:
+      - operator: Exists
     nodeCollector:
       volumeMounts:
         - name: var-lib-etcd
