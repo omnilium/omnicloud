@@ -6,10 +6,10 @@ metadata:
 spec:
   parentRefs:
     - name: onedev-internal-gateway
-    # - name: onedev-external-gateway
+    - name: onedev-external-gateway
   hostnames:
     - onedev.omnilium.local
-    # - git.omni.ms
+    - git.omni.ms
   rules:
     - matches:
         - path:

@@ -7,6 +7,6 @@ resources:
   - cnpg-cluster.yaml
   - release.yaml
   - internal-gateway.yaml
-  # - external-gateway.yaml
+  - external-gateway.yaml
   - http-route.yaml
   - tcp-route.yaml
