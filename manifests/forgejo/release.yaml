@@ -43,7 +43,7 @@ spec:
         gitea:
             admin:
                 username: webmaster
-                password: ENC[AES256_GCM,data:944b6pzWS+o2BB2OpT/uMw2KsAbR61qJCjEjI5aEAFY=,iv:ejelFUvN1b6CJ1VvENHPTZn8s0njzlAtMywqopJaNoU=,tag:vtj9huOTcCCjnoDDKlwHIA==,type:str]
+                password: ENC[AES256_GCM,data:II6t1Oc9wnvxepYP9aJvuXB9gOx9XlgU+F5/yla3T7U=,iv:wPgC7GyO+g/jA2LV7kXxZ5pm1S3wc2VLiU/oe4MOq4s=,tag:67haUgjjra7nt5AC/StlBA==,type:str]
                 email: webmaster@omnilium.cloud
             config:
                 repository:
@@ -66,12 +66,12 @@ spec:
                     HOST: forgejo-cnpg-cluster-rw.forgejo.svc.cluster.local:5432
                     NAME: forgejo
                     USER: forgejo
-                    PASSWD: ENC[AES256_GCM,data:BspA8fTLwHizJSQi4SQkM6dBDtPJCSB1MMaCpx35iQ4=,iv:pWwiRP1K0kQnLDhuYLvKKHI4nNAFQjCyp4azNLfThfA=,tag:OILzigG5K4Z8+/y/mDW/xg==,type:str]
+                    PASSWD: ENC[AES256_GCM,data:KF0xBsr66nsNKF1Q31QAskXHO7+YwPid/QahjUQIbC8=,iv:KZSEfsB+4pogxKuQZwRiJAA8CSMguVB1VfxgT9XW5Po=,tag:t8K5nfgxlZ7nw9JQ1kFuXQ==,type:str]
                 indexer:
                     REPO_INDEXER_ENABLED: true
                 queue:
                     TYPE: redis
-                    CONN_STR: redis+cluster://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/0
+                    CONN_STR: redis://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/0
                 admin:
                     DISABLE_REGULAR_ORG_CREATION: true
                     SEND_NOTIFICATION_EMAIL_ON_NEW_USER: true
@@ -88,15 +88,15 @@ spec:
                     SMTP_ADDR: smtp.eu.mailgun.org
                     SMTP_PORT: 465
                     USER: forgejo@mg.omni.ms
-                    PASSWD: ENC[AES256_GCM,data:uQFDSf1kZasgFBVaha/VtGBnpaWIirGb+LyB2tFgnVo=,iv:y/sU2Bp502cptTbuzJAtI7e4vIuGZYi9Sp764eje/0A=,tag:XpaLg0AFuvsaQbwcpMBB2g==,type:str]
+                    PASSWD: ENC[AES256_GCM,data:x+21j6nijgNpXJp6mmKMgyv8fWwsWNRkiGJQtC96OSA=,iv:hycU7sqQ3YtKk6zj9AygqCUiEBjnlc3kRM6chltUGfc=,tag:gy80iK7Y0mmo5PrtV2wGQg==,type:str]
                     HELO_HOSTNAME: git.omni.ms
                     FROM: '"Forgejo" <git@omni.ms>'
                 cache:
-                    ADAPTER: redis-cluster
-                    HOST: redis+cluster://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/1
+                    ADAPTER: redis
+                    HOST: redis://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/1
                 session:
-                    PROVIDER: redis-cluster
-                    PROVIDER_CONFIG: redis+cluster://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/2
+                    PROVIDER: redis
+                    PROVIDER_CONFIG: redis://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/2
                     COOKIE_SECURE: true
                     DOMAIN: git.omni.ms
                 attachment:
@@ -105,7 +105,7 @@ spec:
                     DEFAULT_UI_LOCATION: Europe/Bucharest
                 task:
                     QUEUE_TYPE: redis
-                    QUEUE_CONN_STR: redis+cluster://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/3
+                    QUEUE_CONN_STR: redis://forgejo-dragonfly-cluster.forgejo.svc.cluster.local:6379/3
                 actions:
                     ENABLED: false
         redis-cluster:
@@ -120,33 +120,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-14T17:32:20Z"
-    mac: ENC[AES256_GCM,data:7GgQUshLA7y8aryi1g7aCVyEdrCZv7pSHnSCdlwvsoauPXw92SErsLdCT8akoL1E9tL8jyQrYwDJsNq8dqTx903JZPDhn1kHcEKeBX+4bPGTEHMIxRsxBiZjEoCmBM9Pqmnl8wURg7QH+sMF5TUXRzZsTArr6CrJdSc7l5ENijU=,iv:JuA4YVBYw5I74MQSnsjdJdKtUnRbr43+U7duwJV67kY=,tag:QrkojCe7jBaiZz7NBsFLMA==,type:str]
+    lastmodified: "2024-04-14T17:34:08Z"
+    mac: ENC[AES256_GCM,data:cs4KWt7mlhlQePRZnVFH3F7i4jfh8uhikEk+VN4W75u6IfoQmMn2KoWG0GWX6C1Jqv+uBBUO6F6OrVrEulBFAPKa6OgLwDCmzpytrGSnccS44m38fyQxNEbS9xlOBe2rFouqteLDA3In8lDqXaayGwODFkU22Sa3HbjhHtIizxk=,iv:W3zE6gZPQkiHyBnj162VJ1ngZdbrgjNKRuN+s6Fhf/8=,tag:aMO+KwlyAan5I2d9n4DfzA==,type:str]
     pgp:
-        - created_at: "2024-04-14T17:32:20Z"
+        - created_at: "2024-04-14T17:34:08Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEohO+IrgbJr9K8iEY9RpiiFmUF9aghISohvPYJdCBAluK
-            MEgtqWfF2xxjmCdK8/kB92LQyEYaUumU8KtnkhWfFH6yIYas0CY7lVtxGB07T4aM
-            B/F07NMqUHNhX/IFucEUMLyRmkm6Lcw+/S3uovCZf7ciHIOfC6A+DMjcvKuMBv5K
-            wMqPpGRwQe4PX7dCl+ByYdRmAQkCEAb/UVijpZRKcWpqDn6Q70WkJFCTDaXSLhOa
-            IHCQnTYTeIpHqSS+o50BItze/vdjZMoY9Qva+4VaTdQ64S+xg4vWWFsNh0k6X6fS
-            2Sa7qwEs9qmY+/g3MjDhfMlTKIZFF8i8
-            =sGGF
+            hJ4D0dRkdsWQFPUSAwMEMrDGImB9vMFFaAKgwX6BmwXwt0vxlIMwm1hcqToPt/Uz
+            hhP2Zwq/CY/vxQzGiaffCLFg+U+7nyNv3ts0wRkVv2vlLYFCbDSTqO15z4qr3xxc
+            IXAj8eg/mEb/IvRjpvY/MMRTdVe3Hw1QI7awXvhO7cFS06MoOkgbhiKgXVsHG+CJ
+            LU7Kc/sAFeMqPiAnAYZDFtRoAQkCEOlvorHyaN4PuCI22aD3tthTkNx9WLvrh0fD
+            uu+6UOJ2Zr8nSTSlW8mC7hu9DS2q7PNUMsXjPX0WILh7tkq0lAZYjJ35qAjA9cpj
+            DFlJaJccsuDfrxhPkUldVgBu1XGarQ/8W2A=
+            =jPfO
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-14T17:32:20Z"
+        - created_at: "2024-04-14T17:34:08Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEO2SjZ2thYhKcS2lZddn3hcynGFGD4BCTwIPLRws63b8k
-            jdfB73qhUVAgsLwhBv/6cZbCcUCCILSCOjb/UG1nlL8OXRH144kVa8CSx+9nBxzS
-            kaQaj41tmZrS3C3gZnMhMFYMuvQDGruOO0vKul6lEbsRRyfhYV3WsT5OzKAIvNuH
-            iw0pM68g1x8gPSfbbpaW0tRmAQkCEBEO+KBADvlE4qbZsN/FLqKAUnPkwGmPzVEp
-            DFDOdBIjVHJcro/MejxaQwBSLfgnU2w8Qwz7Qu8koIbCgszICADIj8vdIQ1JSE/N
-            22HqIPWhmf1G7ohDq0r4zV5XtBH5z/2M
-            =yUth
+            hJ4DLG005yzvDc8SAwMEHw9hodTKP0RL/zjLB/hIwFlYphB84N991224ELvD9htO
+            yFo47NeuQEfRjHYMgL/kZmxK2a3pzAeIBC6hpMbHYJndXcide2Sn3yZ7MvHBOiH/
+            JFlt9GysEgG4+LZxPhQPMOL42Bbi9iSp1IgjUQy6Q9QqNYbcpeOv/NL9fJgaOaJY
+            jzTx5QDmts7fEYBXDQubsNRoAQkCECF0757fp2QJfto7QgJE6K2MXj5U1UgFiy97
+            22ZQsdUSQdEuL2IaCk48HJhf/VS3Ir/OeQyEh7u9pGVMmSeTKBz66/Qr1N92QcXr
+            B7L4I1UkfZuALUE1UyKta0pVNjAZ3GIIYUQ=
+            =/O3Q
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(password|PASSWD)$
