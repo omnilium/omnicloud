@@ -15,6 +15,6 @@ resources:
   - argocd.yaml
   - argo-rollouts.yaml
   - roundcube.yaml
-  - flagsmith.yaml
+  - unleash.yaml
   - forgejo.yaml
   - woodpecker.yaml

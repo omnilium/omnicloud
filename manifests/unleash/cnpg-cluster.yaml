@@ -1,14 +1,14 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: flagsmith-cnpg-cluster
-  namespace: flagsmith
+  name: unleash-cnpg-cluster
+  namespace: unleash
 spec:
   instances: 3
   bootstrap:
     initdb:
-      database: flagsmith
-      owner: flagsmith
+      database: unleash
+      owner: unleash
       secret:
         name: cnpg-password
   storage:
