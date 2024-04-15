@@ -28,7 +28,7 @@ spec:
             replicaCount: 3
             env:
                 WOODPECKER_SERVER: woodpecker-server:9000
-                WOODPECKER_AGENT_SECRET: ENC[AES256_GCM,data:Ol7PBnieSASHFNxCpsjOQeE6A1LhcuNsc2Uc+Sm0P/0=,iv:grRj1OML9HaBNxXwwTBejw0ajBFIXq/gA8HTiEJ0J5s=,tag:Nv1qgThNoX1Lw657mdG/Pg==,type:str]
+                WOODPECKER_AGENT_SECRET: ENC[AES256_GCM,data:Dp4eFcseWPi3G4hSV3W7bPADeGK/TdF1EGP587C0rw0=,iv:iwKO9D9XGDJklyuWK2XmCaAUrUFj4Fe8oCNQ+n+EQbE=,tag:ts/1pTOaFTmYXd6uXVWlIw==,type:str]
                 WOODPECKER_BACKEND: kubernetes
                 WOODPECKER_BACKEND_K8S_NAMESPACE: woodpecker
                 WOODPECKER_BACKEND_K8S_VOLUME_SIZE: 10G
@@ -42,13 +42,13 @@ spec:
                 WOODPECKER_HOST: https://ci.omni.ms
                 WOODPECKER_ADMIN: woodpecker,admin,webmaster,andrei
                 WOODPECKER_OPEN: false
-                WOODPECKER_AGENT_SECRET: ENC[AES256_GCM,data:HiLWEFT+ytL95UxWzUEoI1tiSmcpJuAJE4soxYbif6A=,iv:nbeosBIE+VkpPdJksnEfTrJ8QoIKbgAtZvOfiYJrKq8=,tag:ptd13sXEs29adfr3n+J6FA==,type:str]
+                WOODPECKER_AGENT_SECRET: ENC[AES256_GCM,data:wui5LdmSWDNM4AIs4z6i5LVNgZVNMS5bf82jMeuBe30=,iv:64iqno2ZapLiiOIm4ZsienHWrJYO7lwJ4b5fCCXlWz4=,tag:MfldyOA5wTxrm5TZ3odk1A==,type:str]
                 WOODPECKER_DATABASE_DRIVER: postgres
-                WOODPECKER_DATABASE_DATASOURCE: ENC[AES256_GCM,data:j8UOYUYoIbHkXkKsPtDEsouEBxniWTle81JwIsG2k5oOCxbsUdegTew+s6/iL9BJTQt6/mmm1CJK6HePZ7cB5tDGhoeimiWgKXsW8IhaAplSPEx0aDR/K2ahzVBNN6JS+VgoWlwndAcMZOUvlnwze0eT00U/FrlSkW+/1CHJc3APZHD3evfKJpn5X2/N5A==,iv:NTABci4B0Rgc3zVUQhjJTMKXMOOMdJ4lkMPanBMBsSc=,tag:WXxXVKeA+wiew5LilOo09w==,type:str]
+                WOODPECKER_DATABASE_DATASOURCE: ENC[AES256_GCM,data:y4YuErh5qAmsHG9OrKIK7zL1SVR5z1VJlq4PWnRy3/g7AqsXw6CrI3CLoWATpE2NOe/bErjMMhWfoTigluhh004yGuSb2nfchSv8/zowH5Ob+D5Osg6QI5oHapiarqiWSCfLb/5I1lSif+SP9akxnHGqe8ZpcW9PU1j2jI75iVbOrSNbV4VooQiFvfZgwg==,iv:AJBjf7RVXJYpvf+tQG6ihglvRMaNsjSOmrIObJ/vkBA=,tag:W5pmIZr7nOmtkERmTOklhQ==,type:str]
                 WOODPECKER_GITEA: true
                 WOODPECKER_GITEA_URL: https://git.omni.ms
                 WOODPECKER_GITEA_CLIENT: 1fc71f6c-48c2-4334-ac37-4dff1203a7c2
-                WOODPECKER_GITEA_SECRET: ENC[AES256_GCM,data:Rn6PVU8yfLEz50MEHig3ukRkAJUFXQ7ZQV3Ds5sHmyKObTLGZDva4X63/AcqkIRz59H9Lfm7ghU=,iv:pqpvzVszsBx7J9hjOkJ473P5gQT3Sa5fwA5PtmPKF1M=,tag:xOG8OLbCr7/88cBgoKSQfQ==,type:str]
+                WOODPECKER_GITEA_SECRET: ENC[AES256_GCM,data:IZy3gNGuFWNdOd/FRXSZj+815z08DgQerVMJ5yo4Sn7Q16S4o5v7vhhwZwMs5leq5ydqrMB7hH4=,iv:elevn33Kf7YnpeAqdehu/nEtC7JHYpW/uaKpu3qGtoY=,tag:ehLI0z76DDsj1ia9JB5cRw==,type:str]
             persistentVolume:
                 storageClass: solid-state-replicated
 sops:
@@ -57,33 +57,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-15T10:17:53Z"
-    mac: ENC[AES256_GCM,data:BOkfa24s/FRIe0GZSXzNeV1IhjlNl730u1kIGvG+8hG13/WUEspod/8j0qvnfIzffU/LUQJAklOFmH4WA+kwMnFPopAxIyh7XGlbaEFtxghu/QxSD1nu/lYYiYZBLbwoQs7oSJWbKEqJPI3ce0rG8+T58y++K502D4eUo+t4774=,iv:DFmX666lBkFkFL+YSFaz9THIH/05zjgCSmrXe/RktCY=,tag:eBxDrpK3s4HtIKGCdC0O5Q==,type:str]
+    lastmodified: "2024-04-15T10:41:23Z"
+    mac: ENC[AES256_GCM,data:45HrwM1TCFpEPceu2EoVRiprFBEHAROHdfHZJAXHhpTPT2NTsj2IuhEtt0a+z9SgDfHZwk6u2lIbmCocsrCL+hpzQNSbEB+BOYwGeLK7D9qKIzPH+yZB1tsJ8JWs9LfFlk0/6wb9U4XdSbMfKyvseGKUVFoj+V1x7whA96KrvOQ=,iv:xMMyRbfbNvW9RVyYwgGxU7LahM8WM31SugJXoeHeMiU=,tag:XdfSiP3NXOV+GLvmo6KPDw==,type:str]
     pgp:
-        - created_at: "2024-04-15T10:17:53Z"
+        - created_at: "2024-04-15T10:41:23Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEVsJhEbqNcZIETTB1aFrnu4EEdtI5ffpZcq188IWLLW13
-            DR5FcaFsQbPaSpWRmhniUtnKfCc5LJHTsn9wVqGJ8I+9+/X0OxQwLJryTxi3Yan2
-            TvRnjOHfa6RJ4MCLNhZXMIi+gixt7VvXU4g4nUhYOr+YE/3EECrySECylQ/E3UQX
-            ADpLrCFWE8YW3m8WusUCWNRoAQkCEFfCESoSW3Rtg511sm9CgdR3Byf2BDhHJq7s
-            PELmvTVvpa/fMO/RT+OgS3LfXcA1MuTRIbCClKav9oRpspufd+6/YryfDiBkQ+tC
-            vimICxtAh+mhR39tWEllQL/g314ogRHSPec=
-            =vnNt
+            hJ4D0dRkdsWQFPUSAwMExjxgSIEGbV2JSZAZlfLg+yudLb2SrvbkAzKaZgRBzdVB
+            E0XU3hJ6tkgJzS1VCLqGL5e2m++sHYkfWZ0h5TJWjXKq6qoc8cmkRPIaUZfK+RmX
+            bJf0FM+6O6B1LMQ9JyWpMJO+VLySSfdR5mSG7tBRQWlMmAgUhP9W0C0Dm+1m4ffT
+            HeW7TgtScLI07+JrXxLrWtRmAQkCEDo+M0DHwLb4xT2L1xY61s3s1S0b15hP4oDL
+            Ktcucl42ZOr+2gy/Mz2E027SH6stqe3FjTa7xXcBV5ENo1PD+ns1eS7/atgsx+i+
+            k2Y1PXZPLHgifsbk0x9H4pghptMs1jEM
+            =BJ7W
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-15T10:17:53Z"
+        - created_at: "2024-04-15T10:41:23Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEWu5Id2lvP8bvh/yBz0FujNStVFTNRAbN5AjUHcERhxgl
-            JDoSeVg/BVoqwgHXK4ELnCBptYAvx9xJ0OY6SQpritg/itxZg8/2eWfWRX4+k+1a
-            PIE3saBICG1/id+0eNdCMKjsKOF8oRnvfWiwCoxXs6TuflAMod+HVjP8zLmku67h
-            39OCI6preCxkv2YeX9jePtRoAQkCEACSfjNtxs6aa7ofsvrfgql+MguLq87pupCp
-            yaK6G/oN2g5nk9lLEW2Y3ACiwLIDa+yAiUN4V6lrbm1zS/5wa8kpPo6gcrM9Zq5e
-            nIX4tGOaGl66cWSiCSE3Mz1oQt1Vdy8GdzI=
-            =J9zu
+            hJ4DLG005yzvDc8SAwMEBKPu6RYh9BVhZgHd8wuikaBkD+nZLVAUMKo/LhUsZ/+N
+            DhGxxItrHKvu2Kt7iGkJvzXWkv1EVRZ1Kvj89iojo0FgkD8Dqi0uuP6VXJO+dly6
+            HRlLCg1JxFa2S5HqMCUyMKvkQHCy7TLhDX77/+uF0ILLfMLS9ieH4R8pvuPHgIVN
+            mad/ZW4X3VvIqUQp1L3Q29RmAQkCEMWVjxNGBXsBzPYFKgbEFQlRuDA9UfWZ285F
+            wYmZ1nq/Bnj87Lc7AgTfBK7xBswEuwwmbp5FfMI1BPz9FWxILIgnlI6WOJ1D0v/b
+            FxSykC+tEf5JMMs2uJ5wovCtGPaaetBQ
+            =ajBa
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(WOODPECKER_AGENT_SECRET|WOODPECKER_DATABASE_DATASOURCE|WOODPECKER_GITEA_SECRET)$
