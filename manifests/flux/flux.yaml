@@ -14,3 +14,7 @@ spec:
   targetNamespace: flux-system
   wait: true
   timeout: 2m30s
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-gpg

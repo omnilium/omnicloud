@@ -3,11 +3,12 @@ kind: Kustomization
 resources:
   - resources.yaml
   - flux.yaml
+  - image-pull-secret.yaml
   - repository.yaml
   - cert-manager.yaml
   - reflector.yaml
   - prometheus-stack.yaml
-  - trivy-operator.yaml
+  # - trivy-operator.yaml
   - nginx.yaml
   - dragonfly.yaml
   - cloudnative-pg.yaml

@@ -20,6 +20,7 @@ sops_paths = [
     "manifests/cert-manager/omnicloud-ca.yaml",
     "manifests/flagsmith/cnpg-password.yaml",
     "manifests/flagsmith/release.yaml",
+    "manifests/flux/image-pull-secret.yaml",
     "manifests/forgejo/cnpg-password.yaml",
     "manifests/forgejo/release.yaml",
     "manifests/roundcube/cnpg-password.yaml",
