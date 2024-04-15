@@ -57,40 +57,50 @@ spec:
                     g, omnilium:workshop, role:workshop
             secret:
                 extra:
-                    dex.forgejo.clientSecret: ENC[AES256_GCM,data:Y3ssGMk6x5XE9gwjDU9y/dU0w8XBxLQhnQhdKuhQbWltW+hzaLa/Mztk5vspwWRYWA1hOAf/QEM=,iv:mwhNP/7lMK0VDEYprAglKOanJNEwvUJPLEedacB3Ot4=,tag:HDpz6/PPgISuIkjMYYNHPA==,type:str]
+                    dex.forgejo.clientSecret: ENC[AES256_GCM,data:JBvfDT9pFMvRlFRmexws3lMnUO7QAor3A36x42LGg+hWmAuZhCMq9WaRHaioHYl7syBXWCsXs8k=,iv:E6M+PBx0Ad/XVpZbDlbxvynyEd1tyllFW7Hd2zHAhWk=,tag:NcD54+0a1I5HEEGCwTC9zQ==,type:str]
+        server:
+            extensions:
+                enabled: true
+                image:
+                    tag: v0.0.5
+                extensionList:
+                    - name: extension-rollout
+                      env:
+                        - name: EXTENSION_URL
+                          value: https://github.com/argoproj-labs/rollout-extension/releases/download/v0.3.4/extension.tar
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-15T10:02:27Z"
-    mac: ENC[AES256_GCM,data:GnMsSLEk+jTvMul63kbD2YCXC3P+UskqYlRiaXp1t16beeObKssGeNh4RRYH5V8dPNT095sX5lR4H8VVhau4w8wBzv8YKaYXkG0hvOPRS0HSsuUlx3QmcCKDpxBwcLUIcZVg2qzXSnreLeRVQBmq6YJPuzPQp695YDNVwl2MbE0=,iv:zO2azCt3c3wEJuQo6VmtFZFR/OsOjLvsQs+73O9b6T0=,tag:Yax2qaOFpR3tx4cCi+7JXw==,type:str]
+    lastmodified: "2024-04-15T10:17:53Z"
+    mac: ENC[AES256_GCM,data:UhqJu3C9cffgrKfHvm2zEkRxZPKaAnJ4N+NMRBn3m3gVqVZ3lpR0xnj+Ubyy4RuJYIkTINqO9Ovu58Arh/cYQO9THvniTLDKcWexvaHkKOi2exGMi0Iq601hKc0qGkNlRQw+Nz6ihbWEThJlXZdGqOGAaQLB8uJ8qrBQjxepB6U=,iv:k8EZET8uq52lsDobd8fPw4EjlBpCt3Hv9iGtr7NkVcY=,tag:DnmIEKvgTjB7ZkGxgttL8A==,type:str]
     pgp:
-        - created_at: "2024-04-15T10:02:27Z"
+        - created_at: "2024-04-15T10:17:53Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwME2EIpfHE5GLLrFvZFploZgU7JmJdBRqJPi9LSVap6eaEZ
-            fIU3lWInyk9wuq8betu7YeBt7X9G1QKXdHxFcfCrPcFETLSl29mssEtmJ/df0gt0
-            l+YPdGrxDn+cQp4EDFJvMJdY6UCDpdQhSzkBwgo5UtbDimp9bFgkYZjFVVcFjtc9
-            ZK21dHi0/QE84y+zYoPpINRoAQkCEOoVo5IoCSSxCovhqKmCQYqokZOokZhEXW4+
-            R9k7wpW6mQh1dwHsdUFZDcTsGuOF8rA7AMkzHUf60TD2pM06W0QJbgo5rrET1kGW
-            pOwUkB7SzXkjn43GqPohUIAaT58sk8t2/AE=
-            =/l06
+            hJ4D0dRkdsWQFPUSAwME3ayZw1/QPcYer404gyonUXtLLkaJnt4Z09bgkcMh8YpP
+            CwK7EKrIYiPEOg2AWiIZ326z+nFhvCXiD4ftJmTh+coP5N5eq/+/0GW5bmRKM7Dd
+            YAWllP2mKGxDQb+ci1w6MKGdRQ3/nZguLNGRRNqzxUbMbMfzjYJobrJkuMlVqe5E
+            Ia0OZUnwnnr63kE+NKBiENRoAQkCENrlgIl6X+6ABZY+XCh8gz7GUHcz0fgzRr24
+            8ikP3/g/iopU0Wutk75qP8htc6WenYEY6s1gTTCi3Lm1pNMECQ/jLGesVDAfejGg
+            QBt+y3mKOr18Di0zth+w6wrqKYHV8Del0Xo=
+            =GfFZ
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-15T10:02:27Z"
+        - created_at: "2024-04-15T10:17:53Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEl4ToV2I8MdfHk7idFjAyM6KOTlskuTNiVMVvYr5irNtd
-            7uZyCSmx+q5NmcP7sCuzPTO5KFwdxDelNEGFKASJsslE4Ao2kb+AO1BCsMe4+quv
-            b2Uh2u+6/olIXZKIT7WmMGX/kA/jmrqOfwoxxlNwAJjPo1ez0tjx6LBvEgRd/s1O
-            P3i4Ib7FXfVhpAQjxltDH9RoAQkCEHIydipUTVgfG9s91Y22MJBBCiIIEsZmbCS/
-            eDqqTvQCjheDUO70GV6hzvxRSa5zlHFXkWjVAr/rxEjhZPCdnMEUi0A9Z/DV633W
-            6iffVe2Y1hK+QuZnHO47JlCWVAV1c6+1Im8=
-            =2dig
+            hJ4DLG005yzvDc8SAwMET3Skvw4kewqmpTrsH1h2BkuYNTO1Ye8m3BV6Ad/xa2jT
+            0+NOxHsiKZVFgsK7jZDzBHkdwKX80zJctjI9SdCv8dE1CJKJfdoIWavwiQuBQeex
+            8SjDUse02sSO08nJAZxkMFi5YYn2sH8RjWWvEO4cC9xEwhb4VhOzWMOkOawypqE8
+            UtLqUt/s0vdKsi/h88Cs7tRoAQkCEElHiHQJwC8/VxG9/r9+3NQZ7Gv02Fsx54jP
+            iiDAVnQ4K5G8rBa26Xv/+wcxw0c2Z5GgoD1ZyYDYn4ntjGqbkh2dtT5VN0fy2B47
+            35ncq5+vp3lr1AIYOy5gxmRsxvfP8yP8Tm4=
+            =Baac
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|secret|secretKey)$
