@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - namespace.yaml
   - repository.yaml
+  - image-pull-secret.yaml
   - cnpg-password.yaml
   - cnpg-cluster.yaml
   - dragonfly-cluster.yaml
