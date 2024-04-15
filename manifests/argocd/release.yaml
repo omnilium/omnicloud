@@ -52,54 +52,45 @@ spec:
                     g, omnilium:owners, role:admin
 
                     p, role:workshop, applications, get, workshop/*, allow
-                    p, role:workshop, clusters, get, *, allow
-                    p, role:workshop, repositories, get, *, allow
                     p, role:workshop, projects, get, workshop, allow
                     p, role:workshop, logs, get, workshop/*, allow
                     g, omnilium:workshop, role:workshop
             secret:
                 extra:
-                    dex.forgejo.clientSecret: ENC[AES256_GCM,data:Xf71vRrhh5C8ER2en1N4QV3e83ZO+0UefJakH+H59XArzPraCK0UvBHISA+knzmiVJYrTbUUZ8E=,iv:X84Mg70s8cXsuR6iCshVRjCna/z2KTz2IP+mJl2L/tc=,tag:jj3m+vdrTauhQNnkfj6iqA==,type:str]
-        server:
-            ingress:
-                enabled: true
-                annotations:
-                    cert-manager.io/cluster-issuer: omnicloud
-                hostname: argocd.omnilium.local
-                tls: true
+                    dex.forgejo.clientSecret: ENC[AES256_GCM,data:mB//W2J8ecOsBy/g75/7icbUF8nnKP+j35NXA005nF/Fi5SlnJCKQYVo3A4c//n2TTbIFGv9W9w=,iv:xc0BNYPNfvUro6nvn3Cxkp6GtQEPapNZoYRCUWJ5RR8=,tag:dRiJb/4AE5L4R2zoLDiLkw==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-15T09:50:48Z"
-    mac: ENC[AES256_GCM,data:P0YiQ7hCn1XLOaK/HpIPFSI6TvEPybWPC/Umio2fAKjekFnU1Rjq2vhAKJrTIUULXVsqasYpthNV0lw8oHpBz/IEuHYvneXBg2NQIwFhqPANu+PHC78c9xYKS6a3Kxhl7LBfrbohIP05VEcDenQ6CW7m2L459a5i0jBWmUsZkD4=,iv:EtZsqkLR3ivFdBQ67YorIJ9pc6RCDBDcbOFTaEtTsbc=,tag:wRh/WwoIxThUsxMbKUYVUQ==,type:str]
+    lastmodified: "2024-04-15T09:52:46Z"
+    mac: ENC[AES256_GCM,data:r1ZgHlkqA7FNkv35vVPOl/DVgUj+owxaNa8r8i8xVGeSbYCCbXkJFcue4wVtqxhYU8Dp589R9vdCSQCM9lwEPqkjV4QZjpHP6qHLOUjdhLaeJziPvBd6KSgULEszFiCXaLnzLN7vUGSqzvXz/4mZrdlovnUj+j4TIMXovgvq92g=,iv:qBS6n9pifKE7qvQdbgieMz/VdhavuidMABuPxpQzfyw=,tag:GduOoCZyw7Fg5EQLnxYJGA==,type:str]
     pgp:
-        - created_at: "2024-04-15T09:50:48Z"
+        - created_at: "2024-04-15T09:52:46Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEpC+249aVmw8hBEU5xjzHXwxwGAm58b8jPpw885xESPiA
-            YqwsgusFxYUD9mt2tGacGGoTpVF30rFgeqbbrAtrl1WNv7MYjJObeoigjyCHifMl
-            6CtmROaXPSeH/SZ8iUBcMJQ5VU9kaZJIq5BytaZ9NEfLySJw94vnkoABI8Dpeggn
-            DsAWnKkFYS3A+CN56eZMatRoAQkCEC60wTscAIoffM68nUKDHyN8iBMz4lV9d4Tv
-            W3Yc9xDdQqAGfDzXg7rNP2ITTi5GoFn3VKmEmOvD8dPBgimCS4214qd+URSehMo/
-            JhXwyXvOc5ZPD7/ZumNbbdMvKVedTCh25Mk=
-            =CT2r
+            hJ4D0dRkdsWQFPUSAwMEMw3pELiPsnbbIbaIMUVtR+p4XUXYo/BFb+LVAfmW+pfn
+            ZjAFCbxxVykm4SrDAHnKmK3ddkN0lxUK1qkTOo+5sKZ44f98W3cBQFW36xoMaSW7
+            NqykgOxVQ6WE6N8UOHMDMAFC+MtefjN8JIA5Ar7Jpx+CDxl/WaQYMb99L2t2vdH5
+            Mmz3vQDn37U1DfEA7E17CtRoAQkCEJvesIbyQhwVladxDi3qjI72WS9EGINDMPD+
+            G8KlOmsL+4dm3MNTs4BYpLb9LkJBo9moy7jZcO/TTOkJ9d1tZLLxqDBwiOrRyb64
+            pW9qr1cjbjjMGKefBZpH+ow3KbKq30mF55k=
+            =TcKT
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-15T09:50:48Z"
+        - created_at: "2024-04-15T09:52:46Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwME4vJq2iXfQDuIVKfvnR9czpb281xx2fRmINavjmrp0Tiv
-            qhVnuOvzIniRz954s8rqqUa1U7QJyu1qna6iLMqOrA1jj7HA1++8yYYPKjTXCM8w
-            RfJ99Zm8fRVpz5BPMca8MOfS8q9STse2nKn3PZD2Nzvput2p2UDbJEDaSv1i0Bkq
-            TGSnvCCgj+eHcuNvFewu3tRoAQkCEA0s8uJBnedjGO5VhKvxdSHKHx5L6Dno5O6b
-            ktjY+7P+i3tKeFykbCfcD/yraK9adq6EYx/n6vDNAK5zPTrbnv5ZSeb75cn0JYEz
-            43m1boYZT16syg/N6ToaLQG4BI7q+TF9+3c=
-            =oyMR
+            hJ4DLG005yzvDc8SAwMEd3zQpd7mT7agqXL1FtQZXr7PXUz2HX572jX1ovcs/weR
+            FgA7CeHdnOKpKG46e7ojYo/m/bqkiAWlvlwMtzdw2BHGj720cOVSWqQCnD50B08T
+            8eCkp3IhWYJjY5LyTP5eMK1zkKcoZKF6cTveBIztHlA1DyjF6AmNPhiWTxilhyc9
+            O92Qvj4YtHTzUtDNEHAcg9RoAQkCEJWuYIyAbCmiz1ejJus4CU05FraUxws90GW0
+            E+X3vNMzdQF8RqbaZrKKPoLg2CNtWXWu9ejGV62QfVzU9c2l77D5h0veTWdnxfHN
+            RHdxyCcSpVFL04nFtiyrcqfef3dyIrgXVAM=
+            =aUMq
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|stringData|password|secret|secretKey)$

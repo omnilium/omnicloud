@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-external
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: acme
+    meta.helm.sh/release-name: argocd
+    meta.helm.sh/release-namespace: argocd
+    nginx.ingress.kubernetes.io/proxy-body-size: 1024m
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+spec:
+  tls:
+    - hosts:
+        - cd.omni.ms
+      secretName: argocd-external-tls
+  rules:
+    - host: cd.omni.ms
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 80
