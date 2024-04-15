@@ -17,6 +17,7 @@ cluster_name = "omnicloud"
 cluster_endpoint = "https://talos.omnilium.local:6443"
 base_path = "manifests/talos"
 sops_paths = [
+    "manifests/argocd/release.yaml",
     "manifests/cert-manager/omnicloud-ca.yaml",
     "manifests/flagsmith/cnpg-password.yaml",
     "manifests/flagsmith/release.yaml",

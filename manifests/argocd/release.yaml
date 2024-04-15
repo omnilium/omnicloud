@@ -1,40 +1,95 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
-  name: argocd
-  namespace: flux-system
+    name: argocd
+    namespace: flux-system
 spec:
-  interval: 10m0s
-  timeout: 5m0s
-  chart:
-    spec:
-      chart: argo-cd
-      version: 6.7.*
-      sourceRef:
-        kind: HelmRepository
-        name: argocd
-      interval: 60m0s
-  releaseName: argocd
-  targetNamespace: argocd
-  install:
-    remediation:
-      retries: 3
-    createNamespace: true
-  upgrade:
-    remediation:
-      retries: 3
-  values:
-    crds:
-      keep: false
-    global:
-      domain: argocd.omnilium.local
-    configs:
-      params:
-        server.insecure: true
-    server:
-      ingress:
-        enabled: true
-        annotations:
-          cert-manager.io/cluster-issuer: omnicloud
-        hostname: argocd.omnilium.local
-        tls: true
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: argo-cd
+            version: 6.7.*
+            sourceRef:
+                kind: HelmRepository
+                name: argocd
+            interval: 60m0s
+    releaseName: argocd
+    targetNamespace: argocd
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        crds:
+            keep: false
+        global:
+            domain: argocd.omnilium.local
+        configs:
+            cm:
+                dex.config: |
+                    connectors:
+                      - type: oidc
+                        id: forgejo
+                        name: Forgejo
+                        config:
+                          issuer: https://git.omni.ms/
+                          clientID: 1e3265ca-f7cd-474f-84cc-fdd1250ba5cc
+                          clientSecret: $dex.forgejo.clientSecret
+                          insecureEnableGroups: true
+                          scopes:
+                            - profile
+                            - email
+                            - groups
+            params:
+                server.insecure: true
+            secret:
+                extra:
+                    dex.forgejo.clientSecret: ENC[AES256_GCM,data:zGVexs+LmmHlOldQgjQOMYefmB+tOax2Q7B3MHxFBCp1PT/jbKqML/6UMGjk5f35Mnf3I6YGEWg=,iv:JXByRUW0OgR1YVKU9XXQP2V8/DRDxJIvzdqzn2GwvbM=,tag:6RM5C2Z9/fcEQmGMyowyGg==,type:str]
+        server:
+            ingress:
+                enabled: true
+                annotations:
+                    cert-manager.io/cluster-issuer: omnicloud
+                hostname: argocd.omnilium.local
+                tls: true
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-15T09:36:44Z"
+    mac: ENC[AES256_GCM,data:f9E441EnAb7Yhx7wKGUelkzAV6M996rx7IBO10BU5WUngo+fKL2T4o7shQN8TO4CT1ffOG9YLq+S3nV6ZfebzVy9bPEAaRahcP123mueQjWX4MnwpkNE1u029NtbSNdyXpzZHXT0Q65vezMUL0zDcftE79Hb3EG9fD3M+Q9sjqw=,iv:0WpiqR38JpVNfmDUDToW7Ek9NLp6OGuwwQKXH1A8N6E=,tag:gt/BGwmw7Lhfcgs4+uSguQ==,type:str]
+    pgp:
+        - created_at: "2024-04-15T09:36:44Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEEylqD0p6tlwxh+rFlVBAw7sV6eFh2iinYHEbNiCOr1OS
+            HyJ8xum3kjUdi3gFX7BMkZZ+ATELVVj4lMuLS9H5rOeSVCYGTDcRDMZrOt0ls7TA
+            lbfxKeI0qjzMvL3FY979MD0UHyfYMhlt9ZeZka6pyspgzpYtUJnuZ3K4fyLtJxd8
+            HyD8TS5sq1K4Z6JbMDpy/dRoAQkCEG4GXHIx27qN9CL4iObDPooy31Kd5cE8oDRF
+            QnCoS0geCBOhw5AHFiuyRHE8/3o9ISV+LSIlKnPebV2KRgk8PIrBBO8nCHjKv9LE
+            LVsJbntlPk8A1O8XDJRBmoPmIlNrz06T/0o=
+            =DrOC
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-15T09:36:44Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEou6Rad9gdK5xZgpkmOxIFTpMYCFahP59qkkNwAooWxk+
+            Ztm5hP+50lcliGOlvMfAe4Iu5qIgTYs9icXFuI//krRgb6Hdqkxl/NKHofYf8AXg
+            3E6XTj8lh6GgSD62hs+CMOEvc0EZ8t0RJMfJr5kyJmtgmwtVxkT6a54imya9k/nb
+            ndTT9ZLcuQ4CsezX6Y+msNRoAQkCEDkaWz2rtrsaa31kQyAeJLAZ4RYh0RiDGLdR
+            uyUTP52X7K7MHlI1eZTg9Z2WBFUJhL91HmQ++/k6W2JL40nL+XZaKzLU59ILU6C+
+            mz5VN0WdyRF3vds474QlL+P1LLJzZffnNT8=
+            =6l8t
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|stringData|password|secret|secretKey)$
+    version: 3.8.1
