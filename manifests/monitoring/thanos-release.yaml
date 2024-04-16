@@ -27,8 +27,8 @@ spec:
         nameOverride: thanos
         fullnameOverride: thanos
         objstoreConfig:
-            name: ENC[AES256_GCM,data:BaZLBQj6xTH2HFaXym9kNHwMTkRgdnrDMQbpKQ==,iv:feO/VrcSJ6cr4hF2cz/GqP1waY9Jd8NBXgx1hzGNyDo=,tag:vpjQsUQnHbZWbS/62AQjCw==,type:str]
-            value: ENC[AES256_GCM,data:1nevB7I7ree1fLFZEFlp4tbQDReyHq5vpTbw1L0HWlmK4FVh2e0hXKbnGTvUqQb/SADtHviFuNgK17LXBb+vn+EiHKhrNrxG1XCoaXhX7Zbwhd/LEzjBxlLoEUMLJr2HScCS4MTFEdFPDK0aecQVn7XGscvlhOzEyPgRfbbgv16bLMYhkh6TIvry+SpB80bMh21K5IfGtExlPkbAw3o=,iv:D2p/OL7Ktb/ppFSjDPvLOdxwslzdQghfuRX+WmMSwiM=,tag:HyhpXImZ943SBtEsHUBIyQ==,type:str]
+            name: ENC[AES256_GCM,data:neF9j+x48el8p6sHG09MapOlmfYOmr1+IBjB/g==,iv:ub6wXmHmufq6ktWn2bKo8hFHO0Osfhlsydtc3/SU/30=,tag:DAZ8IlluwWbVdJDt5xFLgQ==,type:str]
+            value: ENC[AES256_GCM,data:kGZlqAyldZaJvUo55TFEj+rM3BMOCszjB6x7M1iklNNBV2HO3xyAEyLUMuWi0+BEpDg63Hsnn3HWXr/tBRrq3g+pmYgfYDl3yYtcshLN+IC/Bf7kLW3gq8K4L/J4h4N0cd+xmMzwQ3gUlEPq3kyOurWZU/awQfzGi0bhOyI83dAAKKwxjdrbSl/wU/qIZqV+SasOXLbE+ZMiFYpAcVJJ6CWlhRrhqnpO8ccriSwLmpGFMD28XQfdnuVFnUYtFtf2L0a6KOEItsIO/g==,iv:xNMsBSpny+nZf/loMm5UQOyPilKOznWms4KREjNV7vs=,tag:0vitS0qW5ohPHsMYwrl3Hg==,type:str]
         serviceMonitor:
             enabled: true
         compact:
@@ -45,8 +45,8 @@ spec:
                     - secretName: thanos-tls
                       hosts:
                         - thanos.omnilium.local
-            # TODO
-            # resources: {}
+            replicas: 2
+            resources: {}
             # autoscaling:
             #   enabled: true
             #   minReplicas: 1
@@ -76,8 +76,8 @@ spec:
                     - secretName: thanos-frontend-tls
                       hosts:
                         - frontend.thanos.omnilium.local
-            # TODO
-            # resources: {}
+            replicas: 2
+            resources: {}
             # autoscaling:
             #   enabled: true
             #   minReplicas: 1
@@ -96,6 +96,7 @@ spec:
                     matchLabels:
                         app.omnilium.cloud/identifier: thanos-frontend
         storeGateway:
+            replicas: 2
             resources: {}
 sops:
     kms: []
@@ -103,33 +104,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-16T19:19:51Z"
-    mac: ENC[AES256_GCM,data:kltXqEfsWRIIDfRuY+fi6mib64k2LmajK5jeatr5pBHX6ZmCUqFS8BNPFZPlOAdxPbE0QuCXWGfeTaicHTf8IMopIislMjVba1L6tbySyVnQQlTHH54WuFGxbq0Pz0ILAfEQP9c+lzorA/C8A43Pq8LPZetseGr9jmTDfJ1ZexQ=,iv:yL+LZQHQJLsf3YC3VipSllFaGQ7XOqiAmqjpyrc4JYM=,tag:uWLuUEy/YRxsbyZQmdpBDA==,type:str]
+    lastmodified: "2024-04-16T19:25:45Z"
+    mac: ENC[AES256_GCM,data:4LWSgWybpMh7SvLC2+SwxE/hx5+rG5cBFZKXN+hIfaPVMHgGXz2IdreGamQ+lGXu5jvLqmkILEn0Eg6C3A2xMr78zRLHEbmeZQHxciGMlHrfRzBk99FIS2BlPTS82+m1VPWhP7+mC4qD9v3MWhUsYOgPLry+icxxVdquwvdkwq8=,iv:Ns5gABjL4vPtf9Or8Q71zsZmlfiFsKGWOigjr1los1Y=,tag:GF5CvHW+PusVHy+M15dBzg==,type:str]
     pgp:
-        - created_at: "2024-04-16T19:19:51Z"
+        - created_at: "2024-04-16T19:25:45Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMECbvpAca1vprNRqlyClQttGDmwgxcsIpm3PtDfiXqkwVb
-            OoyLQgN05FsY2P1Tehc2WYj2Nwv5K8XRQ8cZpOkfXHgJgR14AhCvsw3DTZBtOGFL
-            uA23eRzuRlEAnZ0hsh4rMCcuUqF+JbGLvfEaswQHOB4CJWMPkeAsL0d0NbVQ7HER
-            YXvi2I2gTFSAAK/mC+2VotRoAQkCEMO0C9SKwCwNOGNUmybTRbMwenCKpZwgXCBo
-            Ingvvh0WiFXuSHt/nZuq1w3GBDbUezu2Bjzgm0DSUg/96dtV9QfdaA9hGhCfqE4T
-            uff0bTVwEBSkCH7B4IMfEcxN/JpXm5kOkY4=
-            =g3ds
+            hJ4D0dRkdsWQFPUSAwMETl90VdpeGLrZp8flTNk4sS0Lu9AEZ6h1l7rHefWtJ3E/
+            A/LaeO8UkpiItlcWl8UDUcmbveB2TWGDLr4ouoyQHk5/cDDBMtLtLyM2dktk4aVj
+            a5HnRi1ZxwXNt7A9yg33MNL1mN/skZOwxizC99A6727KU+yD9Lhqrd6AOK6Ojr7u
+            TrPq2PPM/MZP+yVoCEQcTdRmAQkCEMBtlOUeOo8tG3h6CEhhPL5sgYS7OEVIL8yZ
+            XHedUNPa7yzWgwl5UNdgltE4F9WQ5ZH1djCOXWmN5Gn0j6wKSLPlmJIfx7L52CZI
+            PAxd1EJUkUI4HLo6WPuaYe03MVPiJ+PA
+            =Z6C0
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-16T19:19:51Z"
+        - created_at: "2024-04-16T19:25:45Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMExifyWhZurAbpmAEV4wb7noqi1W+isKnZcnjL2RJUnXBX
-            C7NjI+y7Bmb/mLnrTD4TDzeEqyg8Dv0qfcIat2Kr4/BXXnkizVYJFYohqTkwCVDQ
-            GYfe8QS9+/nhGJLOrWCRMBZuX7B5ped37Q9/jMLKZa8DthcNeiHa/Lpal/rd/sDY
-            MLCEY9wLWznvB5V+tOnbANRoAQkCELF0wfmZte2Fyc6N0XUtbUoB7Vc4udw/ZCee
-            eTsuPgwf1AwnwZTa95OXP8JhzZ0c6cFgXZEndZDR91Gml6tzYnOtHEguTCkVXW6Z
-            +oWk5o1wHCdC8j7gqkKeTgOUNbTC2Pd93l8=
-            =yGLD
+            hJ4DLG005yzvDc8SAwME007MMueSbLYFnlijVtnhlfRs9GhOoHE7EYGX2e83Zn3U
+            83P0Bvn1Oamw2pI6LTijdvArgp0ayElsyYHY3a9iauYjRIbJ/5RUBzD+PwHNGbGt
+            ZvT+5mXLsAZuweEbp7oiMAZWjG30ird0IGSzrxNDA98HV/r3h/2ICgD8RwiICN78
+            HLho8T22pwWdFrzxp90lq9RmAQkCEJEP054cmGdiNhP/ZJ7/fev/lbAAUUqLFRBq
+            cpkICTpDTtOsH4yebOHQ4NOR6bOBQxJ4k2KkBbBqoXwnIwzg5omo6UyQINoCnYR9
+            AqHwucfnttD34sC/ab6tTV86KyFIQxAt
+            =wSoF
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig)$
