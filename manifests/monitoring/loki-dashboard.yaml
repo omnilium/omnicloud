@@ -298,7 +298,7 @@ data:
       },
       "timepicker": {},
       "timezone": "",
-      "title": "Loki Kubernetes Logs Copy",
+      "title": "Loki Kubernetes Logs",
       "uid": "adixz3ju087i8c",
       "version": 6,
       "weekStart": ""
