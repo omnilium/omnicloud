@@ -1,0 +1,95 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+    name: monitoring-minio-tenant
+    namespace: flux-system
+spec:
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: tenant
+            version: 5.0.*
+            sourceRef:
+                kind: HelmRepository
+                name: minio
+            interval: 60m0s
+    releaseName: monitoring-minio-tenant
+    targetNamespace: monitoring
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        secrets:
+            name: monitoring-configuration
+            accessKey: 1b1cec7c7f8b0840404d3144829025b9
+            secretKey: ENC[AES256_GCM,data:pcwcjUSmu+1SSAZ385sbGbyEXubxRAtjdTMa72cWwkE=,iv:mMGeRjdSw1vM2ZcpzNKmLQW31i+Va0Y6Gn0OxxT+Etw=,tag:bApuMrv4nzVBE2QMgGMg+w==,type:str]
+        tenant:
+            name: monitoring
+            configuration:
+                name: monitoring-configuration
+            pools:
+                - servers: 4
+                  name: pool-0
+                  volumesPerServer: 2
+                  size: 64Gi
+                  storageClassName: spinning-disk
+                  labels:
+                    app.omnilium.cloud/identifier: monitoring-minio-tenant
+                  tolerations:
+                    - operator: Equal
+                      key: storage
+                      value: spinning-disk
+                      effect: NoSchedule
+                  nodeSelector:
+                    node.omnilium.cloud/storage: spinning-disk
+                  resources: {}
+            certificate:
+                externalCertSecret:
+                    - name: minio-tenant-tls
+                      type: cert-manager.io/v1
+                requestAutoCert: false
+            buckets:
+                - name: thanos
+                  region: hel1
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-16T19:05:11Z"
+    mac: ENC[AES256_GCM,data:ECu8dI4g06DYi7EwCq0QI0cyWes8VhZYDy0mNs4ClCWfEvrkfMlQtvu+sjBksTmy/4rAn6tHCJtu5sscu9zfKfgJVJBW4DxslZIzKtAibcx2TmEdfeJkQ3tlL8UyE1se4SGtMxpgBZQDFRgpruZ5sR5qsPQhTxpx0ndVtNqJ4k4=,iv:FltO88NWJ5SJJEk3p01Q7BqHBRlQTNcS/xbxqHfwsoU=,tag:2z3qVt5rWPrNRP0QzTMGRg==,type:str]
+    pgp:
+        - created_at: "2024-04-16T19:05:11Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwME4m6+u7Bfg0Pc+DaEJ4g7Waiv8+MqdBHJIqw+9A1f2UKk
+            0HNbrcPW5MzyeyJNPSHydaihl2hX5i2qwa99diuJmtTbWSgg41hyXnKKr2BxvZP1
+            GXzML4AYe9aVIwyeFbPeMJCfWyrsJhYer6GQ+Br6I05bZ+6s9zVtHXaRN21pw/Ig
+            yuWbVjBPTW0WfKEb7gdhSdRoAQkCEBysNQ4qcC5PZVcuS4wlrUod4pXFefuiaNYG
+            C9XdxF9fxdLq6Ya9BdGD7N3aCmHFoK/hkqh4pYYLMoDIwRfayu9oGGD7LuSmHmPp
+            2TP1x0SUkOhemzPvNKmUc9Xp8AmhbB5FL9c=
+            =Ikpr
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-16T19:05:11Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEvHFTsccKjUSRSFNvOCdGO8C/MeEXguXfg1tpMztUcKGa
+            lRGa839ZLiFz85x+XFqTLZAId293zOxRRxnWYY9vzTLCezo7YXB+KFsWnBZKS/91
+            9C5w7m8R7wlrPmvHV+XDMGbS5nR68Y93msPjHaS2cSpDDkFkI9fBA+e0X8nbgTZK
+            PZ6DL+hnbzf1pBvahrl/GtRoAQkCED+UA7kto/OKrD6ait+NDZjmAZ7dC6QQO5re
+            IT0rxZYee71NOc+led2lFTJkz08lCN6UbTILkcEfUX1CwEgRSgaT/ujGlnrQiGPs
+            J1Gk/9bGBv6zeZJQjl9Vls1bSRlUfPklsrQ=
+            =oHZO
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig)$
+    version: 3.8.1

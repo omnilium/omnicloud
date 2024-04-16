@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: minio-tenant-tls
+  namespace: monitoring
+spec:
+  dnsNames:
+    - "*.monitoring.svc.cluster.local"
+    - "*.monitoring.monitoring.svc.cluster.local"
+    - "*.monitoring-hl.monitoring.svc.cluster.local"
+  secretName: tenant-certmanager-tls
+  issuerRef:
+    name: omnicloud
+    kind: ClusterIssuer

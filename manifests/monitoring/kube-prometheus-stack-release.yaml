@@ -1,0 +1,197 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+    name: kube-prometheus-stack
+    namespace: flux-system
+spec:
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: kube-prometheus-stack
+            version: 58.1.*
+            sourceRef:
+                kind: HelmRepository
+                name: prometheus-community
+            interval: 60m0s
+    releaseName: kube-prometheus-stack
+    targetNamespace: monitoring
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        nameOverride: promstack
+        fullnameOverride: promstack
+        alertmanager:
+            podDisruptionBudget:
+                enabled: true
+            ingress:
+                enabled: true
+                annotations:
+                    cert-manager.io/cluster-issuer: omnicloud
+                hosts:
+                    - alertmanager.omnilium.local
+                paths:
+                    - /
+                pathType: ImplementationSpecific
+                tls:
+                    - secretName: alertmanager-tls
+                      hosts:
+                        - alertmanager.omnilium.local
+            alertmanagerSpec:
+                podMetadata:
+                    labels:
+                        app.omnilium.cloud/identifier: alertmanager
+                replicas: 3
+                retention: 168h
+                storage:
+                    volumeClaimTemplate:
+                        spec:
+                            resources:
+                                requests:
+                                    storage: 16Gi
+                externalUrl: https://alertmanager.omnilium.local
+                resources: {}
+                podAntiAffinity: soft
+                topologySpreadConstraints:
+                    - maxSkew: 1
+                      topologyKey: topology.omnilium.cloud/host
+                      whenUnsatisfiable: ScheduleAnyway
+                      labelSelector:
+                        matchLabels:
+                            app.omnilium.cloud/identifier: alertmanager
+                priorityClassName: system-cluster-critical
+        grafana:
+            defaultDashboardsTimezone: Europe/Bucharest
+            adminPassword: ENC[AES256_GCM,data:/yAgNEI16V136R0yjOdxz/jaf/3vO8k7oQl9qyXVkzM=,iv:h6fTPwwQTjJkPn4EWw9/fICwF9C/Xt5cV5La35DRfoY=,tag:0ZqY5Af7/h91Konjk8f1yw==,type:str]
+            ingress:
+                enabled: true
+                annotations:
+                    cert-manager.io/cluster-issuer: omnicloud
+                hosts:
+                    - grafana.omnilium.local
+                tls:
+                    - secretName: grafana-tls
+                      hosts:
+                        - grafana.omnilium.local
+            persistence:
+                enabled: true
+                type: sts
+                size: 8Gi
+            resources: {}
+            sidecar:
+                datasources:
+                    # url: http://prometheus-stack-prometheus
+                    alertmanager:
+                        handleGrafanaManagedAlerts: true
+        kubeEtcd:
+            endpoints:
+                - 10.0.0.3
+                - 10.0.0.10
+                - 10.0.0.11
+        prometheusOperator:
+            admissionWebhooks:
+                certManager:
+                    enabled: true
+                    issuerRef:
+                        name: omnicloud
+                        kind: ClusterIssuer
+            resources: {}
+        prometheus:
+            thanosService:
+                enabled: true
+            thanosServiceMonitor:
+                enabled: true
+            podDisruptionBudget:
+                enabled: true
+            ingress:
+                enabled: true
+                annotations:
+                    cert-manager.io/cluster-issuer: omnicloud
+                hosts:
+                    - prometheus.omnilium.local
+                paths:
+                    - /
+                pathType: ImplementationSpecific
+                tls:
+                    - secretName: prometheus-tls
+                      hosts:
+                        - prometheus.omnilium.local
+            prometheusSpec:
+                disableCompaction: true
+                scrapeInterval: 15s
+                enableFeatures:
+                    - exemplar-storage
+                topologySpreadConstraints:
+                    - maxSkew: 1
+                      topologyKey: topology.omnilium.cloud/host
+                      whenUnsatisfiable: ScheduleAnyway
+                      labelSelector:
+                        matchLabels:
+                            app.omnilium.cloud/identifier: prometheus
+                externalUrl: https://prometheus.omnilium.local
+                retention: 7d
+                replicas: 3
+                podMetadata:
+                    labels:
+                        app.omnilium.cloud/identifier: prometheus
+                podAntiAffinity: soft
+                resources: {}
+                storageSpec:
+                    volumeClaimTemplate:
+                        spec:
+                            resources:
+                                requests:
+                                    storage: 32Gi
+                priorityClassName: system-cluster-critical
+                thanos:
+                    objectStorageConfig:
+                        secret:
+                            type: S3
+                            config:
+                                bucket: thanos
+                                endpoint: xyz
+                                region: hel1
+                                access_key: 1b1cec7c7f8b0840404d3144829025b9
+                                secret_key: ENC[AES256_GCM,data:Tb1z8deKU4ts860U6oFnoc+yKMtVH2Sl+XZWxVbaLjY=,iv:89+6z6gJjnHHvry7HRLI/t0lMKmxqEwu01HQF7pf7jE=,tag:IrXOV/dArHmyqjbzTIW0WA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-16T19:05:11Z"
+    mac: ENC[AES256_GCM,data:QtZRnxLxnncB8oX2tMtqSVEPCLIkic1ZLHDbDJjT5ShYXD9NFHihxpbEBk1uERZEGIsL48n18sjzKoWqFhJAu9drAGzthTJ/KQFGdHzby8x6XQcXhGq+7XS1BXgRtHXpme5m1J+tojhDK0aywdJl6odvWhvnhCebSzIazzoZRsM=,iv:HyWCWzQivecJMThaFuNmCZvBIuQ2QSOBwFzL2NPHUXc=,tag:FEDLVJiQtFWfyBPQVOi2qA==,type:str]
+    pgp:
+        - created_at: "2024-04-16T19:05:11Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEZ0xty0fbK+aFOiuNrY1Mm+MbPlor7PnowMALYNcv9Hfl
+            Z/1YP1oDhH/2+mRvAsXnif7fLmqfmV7pfUKWZyeqb+CxTutQTLqnJDTToQVEMc02
+            pae3rN823UHtc9oob1hOMNmXyF5faNHqdI+C0rRW1Iv2MjdoTWFyYS6LYmtNRSzx
+            phToqqHl36XNrJ+hDo/uqNRoAQkCEAVvA+nvU1cICkEFSc4OXPQS1krNmX5rnUXz
+            HLL82cGmwOJjH84jmCAUSf6nxKIELU8fFAsG0E91siHf5BnODkIzXWYOhMij8dvM
+            Yowel0pU+qILTqzTQioaMUFUOfw9Q37Ce4Q=
+            =CNPt
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-16T19:05:11Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEXjVnEpjAlL2a0IQ8QHOqOK4VGA36YJCtq7+SvFenxAFm
+            oUgFMfuY6zvdhE3INYGmXxODBobQ2lShr5o+9p9hs6AkJg0cBgd0ZYkvHmUhYu0p
+            2aeqSzb7xvgmxeZhqEE2MCQj2Xs9/vcH7tJ0K6bBpA9KQMsLY/mbj2wY3nRRISac
+            3z5RceQvy6ANZrIYpSJrt9RoAQkCELu+ENqiL8roceUpEedkevvoeEsNP2TN7xIr
+            KL1/QMYt4PxGrd4p7akBgLegkBrkAtyrz4rywT+Gvg2tE+zseunfRKFja9iniDnn
+            vPmr+CvhBvh4qhTDy7YdSZWKYLUEIKNTYIQ=
+            =lr4Y
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig)$
+    version: 3.8.1

@@ -5,6 +5,12 @@ creation_rules:
       0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
       1918B94484C52CDE42CA1B87E7812096B8DA4A52
 
+  - path_regex: manifests/monitoring/*
+    encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig)$
+    pgp: >-
+      0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
+      1918B94484C52CDE42CA1B87E7812096B8DA4A52
+
   - path_regex: manifests/woodpecker/release.yaml
     encrypted_regex: ^(WOODPECKER_AGENT_SECRET|WOODPECKER_DATABASE_DATASOURCE|WOODPECKER_GITEA_SECRET)$
     pgp: >-
