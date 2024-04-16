@@ -4,8 +4,10 @@ resources:
   - namespace.yaml
   - prometheus-community-repository.yaml
   - stevehipwell-repository.yaml
+  - grafana-repository.yaml
   - minio-tenant-certificate.yaml
   - minio-tenant-release.yaml
   - kube-prometheus-stack-release.yaml
   - prometheus-pushgateway-release.yaml
   - thanos-release.yaml
+  - loki-release.yaml

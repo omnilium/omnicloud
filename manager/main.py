@@ -23,6 +23,7 @@ sops_paths = [
     "manifests/forgejo/cnpg-password.yaml",
     "manifests/forgejo/release.yaml",
     "manifests/monitoring/kube-prometheus-stack-release.yaml",
+    "manifests/monitoring/loki-release.yaml",
     "manifests/monitoring/minio-tenant-release.yaml",
     "manifests/monitoring/thanos-release.yaml",
     "manifests/roundcube/cnpg-password.yaml",

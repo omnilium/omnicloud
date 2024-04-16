@@ -6,7 +6,7 @@ creation_rules:
       1918B94484C52CDE42CA1B87E7812096B8DA4A52
 
   - path_regex: manifests/monitoring/*
-    encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig)$
+    encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig|secretAccessKey)$
     pgp: >-
       0F003E832B1DA1A11CA9F206712F90FA248BBBC2,
       1918B94484C52CDE42CA1B87E7812096B8DA4A52

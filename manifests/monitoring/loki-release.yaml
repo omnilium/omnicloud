@@ -1,0 +1,101 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+    name: loki
+    namespace: flux-system
+spec:
+    interval: 10m0s
+    timeout: 5m0s
+    chart:
+        spec:
+            chart: loki
+            version: 6.2.*
+            sourceRef:
+                kind: HelmRepository
+                name: grafana
+            interval: 60m0s
+    releaseName: loki
+    targetNamespace: monitoring
+    install:
+        remediation:
+            retries: 3
+        createNamespace: true
+    upgrade:
+        remediation:
+            retries: 3
+    values:
+        global:
+            priorityClassName: system-cluster-critical
+        nameOverride: loki
+        fullnameOverride: loki
+        loki:
+            auth_enabled: false
+            limits_config:
+                retention_period: 744h
+                max_query_lookback: 744h
+            storage:
+                bucketNames:
+                    chunks: loki-chunks
+                    ruler: loki-ruler
+                    admin: loki-admin
+                s3:
+                    endpoint: monitoring-hl.monitoring.svc.cluster.local:9000
+                    region: hel1
+                    accessKeyId: 1b1cec7c7f8b0840404d3144829025b9
+                    secretAccessKey: ENC[AES256_GCM,data:uzyQDI9f6cJ6SS0bUn4o1lspd3yNIYNUQOHI1HeQrHY=,iv:c/xDNOAeo4RRCxzf84v2+bZCGNePlMoON3fLgAvVAzU=,tag:B+TP3Nfec67hXHr5YjyCzQ==,type:str]
+                    signatureVersion: v4
+                    s3ForcePathStyle: true
+                    http_config:
+                        insecure_skip_verify: true
+            schemaConfig:
+                configs:
+                    - from: "2024-04-01"
+                      store: tsdb
+                      object_store: s3
+                      schema: v13
+                      index:
+                        prefix: index_
+                        period: 24h
+            compactor:
+                compaction_interal: 2h
+                retention_enabled: true
+                retention_delete_delay: 1h
+                retention_delete_worker_count: 20
+                delete_request_store: s3
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2024-04-16T20:47:33Z"
+    mac: ENC[AES256_GCM,data:istrDrqPNNy+VR3sKXxP4iqMKHoF3VJ8HBR3rLUjUEasSbmpENpz/8G/LLTUfdDVqUILRwL5pR0yk0Cq0neqAMVG3b78hUTYer4L87LIolx4YvzYnp/J9y310lTlno8tQVcpz6GU4ok30XSBoMJ3/4haxOhvblhcVbf/4W2Sy0g=,iv:RTy+g0mwaHwYNNQ1x2k4rPhBs7TmTIWbq23BkH1ICgE=,tag:YrjAS/0dU7kkKFAh8KVF4Q==,type:str]
+    pgp:
+        - created_at: "2024-04-16T20:47:33Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4D0dRkdsWQFPUSAwMEVR9SWkq66jNrsJOpn58znOcHmJ7GRD1Fpwmu3fr6gl1Z
+            7Ya1l197moP9tNWCRyunowlMsF33DZU7ou84enwsE2lsPcxMQEFkmSlRB9LUI/o5
+            nM5w4r21A9l4zNNWIE9IMFufWva5wTMGfNuFr8S7kclh41brtomv4W8PQ2TQYfpf
+            WFkEdQddYWTC+76uI9aTGdRoAQkCEOyOF8kIF3qrt5U2E8dQYRGGU48oOTZ1+Yk2
+            C543jQqEkvhdAWidW/Fe8+X+9luMI+ccYH5AcDQjq9LVq7YZ5/hcv6mLhHHMhlvj
+            PSrexEIvylNWIEaKCYt/zkgGqwtq07YUntg=
+            =wfL+
+            -----END PGP MESSAGE-----
+          fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
+        - created_at: "2024-04-16T20:47:33Z"
+          enc: |-
+            -----BEGIN PGP MESSAGE-----
+
+            hJ4DLG005yzvDc8SAwMEvsVsKjX3tU4Ibhyvz8QtCiT5OE1WA7HnjecAZXA4iujb
+            olG7QHN3Y4MGbgj8tFoyYMLxiiR+v1+5LwpZY36f0kza3cX6t6nC7XniSdBYG8bi
+            84pjaZnBXVe1kVEGzC6jMNfZ830OuDES22JIWX1+NN/bgQXdPPsDUp47FD7jDoyY
+            VA0LluOwNEm2NHm21EUj5dRoAQkCENp9acfrl46fqTU7JX2NCKtZaqITAekI/xYB
+            gJemwt7up0MYx95/nSu3jm2O5u9qjaxZllxK17os2e4GEj53VkbQoF2Bjt/abo6d
+            UKahaxAwpaaVdpIGdXpyOE6EynjesxG9A+s=
+            =YtE4
+            -----END PGP MESSAGE-----
+          fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
+    encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig|secretAccessKey)$
+    version: 3.8.1
