@@ -11,3 +11,4 @@ resources:
   - prometheus-pushgateway-release.yaml
   - thanos-release.yaml
   - loki-release.yaml
+  - loki-dashboard.yaml
