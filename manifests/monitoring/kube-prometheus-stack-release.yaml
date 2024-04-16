@@ -67,7 +67,7 @@ spec:
                 priorityClassName: system-cluster-critical
         grafana:
             defaultDashboardsTimezone: Europe/Bucharest
-            adminPassword: ENC[AES256_GCM,data:LIVyJGclCpy05j0sD1Thnv+ZOkvuI947iOD3yTyiwHE=,iv:uBtQyKzqXPZBfWH+2+302TVEATDL8bfKsX+5yzE2dKs=,tag:OU4gcT52/+1grVe38WDyzA==,type:str]
+            adminPassword: ENC[AES256_GCM,data:uHb9BaGRMmVOOGh4rDaZcDlCajzlQbQVVK0PNuBMRCg=,iv:/bw4kTUb9xep9+SazvNPWEKx90AFN3dn2hY1YnAU6bQ=,tag:lruDmiZyABMO2aWnZJ2hIg==,type:str]
             ingress:
                 enabled: true
                 annotations:
@@ -91,11 +91,7 @@ spec:
             grafana.ini:
                 server:
                     root_url: https://grafana.omnilium.local
-        kubeEtcd:
-            endpoints:
-                - 10.0.0.3
-                - 10.0.0.10
-                - 10.0.0.11
+        # kubeEtcd:
         prometheusOperator:
             admissionWebhooks:
                 certManager:
@@ -162,40 +158,40 @@ spec:
                                 endpoint: monitoring-hl.monitoring.svc.cluster.local:9000
                                 region: hel1
                                 access_key: 1b1cec7c7f8b0840404d3144829025b9
-                                secret_key: ENC[AES256_GCM,data:OQFJR2EG+p8zr6z3Keuhk/BizZJ6JK8nlBSzn64cFRE=,iv:83s7BR/CkQzhd1MQz7iaXkA80r8w5ak5XXoXK8KIaM0=,tag:MPVwDPmVZw10O9RMMb0lSg==,type:str]
+                                secret_key: ENC[AES256_GCM,data:RdjPuOHRTv4ArYftdexXzpaSa6bC98rjXIcS6YOQ+Es=,iv:JHCAcA3Uv/cwyMErd7FVnyj2pmUgERoCX7+KV4UvUjw=,tag:S3T0Ms4cXrfjkwo4IT6JZw==,type:str]
 sops:
     kms: []
     gcp_kms: []
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-16T19:32:48Z"
-    mac: ENC[AES256_GCM,data:NK3NHuTvqhToE9epi+ncO6FIc+CB4A7VgDapJPe6NUa4e8R0BPIIUkyTnVgNyi+XG0Ss255/EDSEg7KMqkGem0F7eVKYrE9JrM7lYAwHee2c6uJtW0DNpj+Tr1bGH0xrJkLDxx/wuESiuuyOnrxbpe5I9lfuU9QB7KZk9+xt5JM=,iv:9MlqKmIL7wOK21krVjtBfkDiPrHRMI6MkpWUIlUBy1c=,tag:LNjxu80qdlXdyrtgpXrU5g==,type:str]
+    lastmodified: "2024-04-16T19:40:08Z"
+    mac: ENC[AES256_GCM,data:3h2Hk9rbovN2731vXsZdfPnnxdNgDTKL6l8L9INE6lAuL//KcIug8ABSJC7ueLFfA3JYFMnhdAXlkVRKz2is2T0OgEZ745k3oFTAeF4bOjs6eIB14Wtv5IYc0imInmem6o1iewhYW6gr4nNTfZzgTLzxJaqN7DjMLulDjGVB3ko=,iv:JyO4sRlg1w7kyru1KanBc5dDe2JPGZuFiJpdtcTB9sU=,tag:1q1eOM/7hufrLUocY58mOA==,type:str]
     pgp:
-        - created_at: "2024-04-16T19:32:48Z"
+        - created_at: "2024-04-16T19:40:08Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEBxiWX5BLtFCNZ+ByAWm0K5ihka4Gt4WFRFfRSNCnWskB
-            ttxSEioc/qLKJeaC7Ldqiw0TNS9FUWLQL12rJNZvY341FTTYhsiUBFNtTQBRiFc6
-            9Zu735SyZ0n3hx5W32umMNZEZHHbiWvfkrKpCkUry7hIAkwo199b3M5mszYwtUwB
-            MEVVGE2hn1J7l7E7tqryndRoAQkCEH9UGohNw0qDshOiyNq7XobA4678MFjuT9BX
-            I58K4iC3JynKn15NxJ8EpuXwCJgmMjn2h4mHFEgwg/xFOFrvq0kr0uKcRTp5H8JS
-            x1VVbLXhsjavn/FzGEyrElgGF/7cxAplrk4=
-            =dysV
+            hJ4D0dRkdsWQFPUSAwMEZo0WvOJfI7Y9x3N2tYNRKw5Bt8dED8V04x4ds+AztdbE
+            5AI2mS22wVMd3gvDY4GQXQ/lBcELwzyocOe9/FMcEgH1BFNM/y+j/uXcoM/bOhls
+            AhIgQpJjpPVSqHrbpth+MDefIDR7xavnYpJ1vIIzto/Tgz1cV5z+KrmXQrdcPun4
+            YXvSL6jLnYUqFuEdADc6qtRoAQkCEHf1zGfl13oJ2RSzZk90tNizyHsAsb8nraXU
+            2hmOi/LTx1+kAuqkkF0EvK8u7/GXIBwn7JJb/wSdtIqP8wd/vPDYiK1SYoTDCRDw
+            K1ou3/PhJcyOWWIjM5E9XTtE++GOFQtETag=
+            =ax2d
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-16T19:32:48Z"
+        - created_at: "2024-04-16T19:40:08Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwME25TC6d8Pi+X5UncU6I4TcDXF3GMlG+dCqczvMhWXWKIo
-            wbe8IxVj4JLgliZwh/VRMMt+SjDE/MupZy9CXb/GSBfbG52kUumB3KY89uOMz+k/
-            VzVMSsUyIwbhtYZ8swf+MGdHNykl9aQ/jK4lT5f6iU3r392qR4t9FreoHcmbYvst
-            dVIVf6tckgErZXV7In7HiNRoAQkCEEe+ckg5CjDMDt9a0V+HiE5giCI/H/bsxy8k
-            3daJ5Ua4oCdVA/AZSvvS6Mx+e2+zEC4dKZXzjCnzrbLloMIXJtHpAUHXcbzTHy33
-            sCUVfupuelUk8hIpv/4Szs1KNp6XwQ466Bw=
-            =qozM
+            hJ4DLG005yzvDc8SAwMEkTvW1ctzXKyTI+mkKNDEGBp6dOsqmJSudtbkvSQ5u1HP
+            qsg+xIoJoGwY5u3kDKPqNV2r2X8HnAIXG3vkdkSFKx4qrpvd2Hz1VLjb6gG0o6SF
+            vOcCOtFwqmbZiYAm6u44MBHg7EWhrhqqoJZLMTxamakBnHR8MggNow87jW80T9fb
+            FW0qZwL8hKqRT5Gt9EGChtRoAQkCEIMaI2+X7/K/5lZZ5Uw7qktnEeGWa+58Gsif
+            nURHts13xtqz6D6vw18L9tHAIWKkWBGPpFW+i2P2Vi4G5j4/KhZzDtB7r4ugMVxH
+            N/A+4sqIS6KAHmtm12hZ0TaZ+BZ33w25K58=
+            =EPTB
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig)$
