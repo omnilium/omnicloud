@@ -56,6 +56,10 @@ spec:
           - secretName: grafana-tls
             hosts:
               - grafana.omnilium.local
+      grafana.ini:
+        server:
+          root_url: https://grafana.omnilium.local/grafana
+          serve_from_sub_path: true
     kubelet:
       serviceMonitor:
         attachMetadata:
