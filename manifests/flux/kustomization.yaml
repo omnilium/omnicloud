@@ -6,8 +6,6 @@ resources:
   - repository.yaml
   - cert-manager.yaml
   - reflector.yaml
-  - prometheus-stack.yaml
-  # - trivy-operator.yaml
   - nginx.yaml
   - dragonfly.yaml
   - cloudnative-pg.yaml
