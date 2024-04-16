@@ -5,8 +5,10 @@ metadata:
   namespace: monitoring
 spec:
   dnsNames:
+    - minio.monitoring
+    - minio.monitoring.svc
+    - minio.monitoring.svc.cluster.local
     - "*.monitoring.svc.cluster.local"
-    - "*.monitoring.monitoring.svc.cluster.local"
     - "*.monitoring-hl.monitoring.svc.cluster.local"
   secretName: minio-tenant-tls
   issuerRef:
