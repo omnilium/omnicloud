@@ -22,7 +22,6 @@ sops_paths = [
     "manifests/forgejo/image-pull-secret.yaml",
     "manifests/forgejo/cnpg-password.yaml",
     "manifests/forgejo/release.yaml",
-    "manifests/monitoring/cnpg-password.yaml",
     "manifests/monitoring/kube-prometheus-stack-release.yaml",
     "manifests/monitoring/minio-tenant-release.yaml",
     "manifests/monitoring/thanos-release.yaml",
