@@ -12,3 +12,4 @@ resources:
   - thanos-release.yaml
   - loki-release.yaml
   - loki-dashboard.yaml
+  - promtail-release.yaml
