@@ -42,7 +42,7 @@ spec:
                     endpoint: monitoring-hl.monitoring.svc.cluster.local:9000
                     region: hel1
                     accessKeyId: 1b1cec7c7f8b0840404d3144829025b9
-                    secretAccessKey: ENC[AES256_GCM,data:uzyQDI9f6cJ6SS0bUn4o1lspd3yNIYNUQOHI1HeQrHY=,iv:c/xDNOAeo4RRCxzf84v2+bZCGNePlMoON3fLgAvVAzU=,tag:B+TP3Nfec67hXHr5YjyCzQ==,type:str]
+                    secretAccessKey: ENC[AES256_GCM,data:9xySbmxu5V/wmek2QJLZH3PKjrFcdTLDzBah6xmFm2Y=,iv:WGjGSLtv6G4mqXPkK8aIL8SA/1ffgkqwag/y+6Mzxv8=,tag:k2W3qF2wqbW95uqw4RMHtw==,type:str]
                     signatureVersion: v4
                     s3ForcePathStyle: true
                     http_config:
@@ -57,7 +57,7 @@ spec:
                         prefix: index_
                         period: 24h
             compactor:
-                compaction_interal: 2h
+                compaction_interval: 2h
                 retention_enabled: true
                 retention_delete_delay: 1h
                 retention_delete_worker_count: 20
@@ -68,33 +68,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-16T20:47:33Z"
-    mac: ENC[AES256_GCM,data:istrDrqPNNy+VR3sKXxP4iqMKHoF3VJ8HBR3rLUjUEasSbmpENpz/8G/LLTUfdDVqUILRwL5pR0yk0Cq0neqAMVG3b78hUTYer4L87LIolx4YvzYnp/J9y310lTlno8tQVcpz6GU4ok30XSBoMJ3/4haxOhvblhcVbf/4W2Sy0g=,iv:RTy+g0mwaHwYNNQ1x2k4rPhBs7TmTIWbq23BkH1ICgE=,tag:YrjAS/0dU7kkKFAh8KVF4Q==,type:str]
+    lastmodified: "2024-04-16T20:52:06Z"
+    mac: ENC[AES256_GCM,data:2bSkqbshhtLoo7ioyd/gXUkfQOQwJnJd5KaJBqI7441TiMjOIPZu8+IZNkhypqiGn6UdpZo/ESQIBKlaNn5v3F47nwZmh+UxIG0Y/4tletj9Y0rwJjL4w8xaDb4CEhlDQJtZLR7Eg23d2W6MlHpfygFoo7WtEQBN335imZr3FRQ=,iv:vfvFtUs93VGgMojJXi+a8wKyG/+hNi6+zePVc9KIqfQ=,tag:l55bTheFpwJExneS51uo+g==,type:str]
     pgp:
-        - created_at: "2024-04-16T20:47:33Z"
+        - created_at: "2024-04-16T20:52:06Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwMEVR9SWkq66jNrsJOpn58znOcHmJ7GRD1Fpwmu3fr6gl1Z
-            7Ya1l197moP9tNWCRyunowlMsF33DZU7ou84enwsE2lsPcxMQEFkmSlRB9LUI/o5
-            nM5w4r21A9l4zNNWIE9IMFufWva5wTMGfNuFr8S7kclh41brtomv4W8PQ2TQYfpf
-            WFkEdQddYWTC+76uI9aTGdRoAQkCEOyOF8kIF3qrt5U2E8dQYRGGU48oOTZ1+Yk2
-            C543jQqEkvhdAWidW/Fe8+X+9luMI+ccYH5AcDQjq9LVq7YZ5/hcv6mLhHHMhlvj
-            PSrexEIvylNWIEaKCYt/zkgGqwtq07YUntg=
-            =wfL+
+            hJ4D0dRkdsWQFPUSAwMEQGyWF4jzLQ9EaLpgh83/M7vAC1aK13z+VxnIIHP/Ub51
+            GRe37dbJGeOEb3NPBd3hf2PFpmH5/gw8UVpGPWHE9RVAIVAySsxKUDtfhrxwoL0S
+            DNgIt9nw6ZK77zNTlCZIMKfDsIQYSQhqRGG5lmWsrqhhIFaeGSqB6tSUrKWrXISx
+            erIcrpwS/yQcpEWjCe9zGtRoAQkCEEiP3VtqNUC0+Pc1SmMGU9V54U+H8m7Tu8+g
+            MQu4Alcot06HJUca/pBQcCpM5mtDa4B6Vva6FhAC54vgGZ/ZpRb/LwYCGM+7me7b
+            E7/mk8V5A6zUsWDeETDPe1yObMaOxM17Gfg=
+            =HrP+
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-16T20:47:33Z"
+        - created_at: "2024-04-16T20:52:06Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEvsVsKjX3tU4Ibhyvz8QtCiT5OE1WA7HnjecAZXA4iujb
-            olG7QHN3Y4MGbgj8tFoyYMLxiiR+v1+5LwpZY36f0kza3cX6t6nC7XniSdBYG8bi
-            84pjaZnBXVe1kVEGzC6jMNfZ830OuDES22JIWX1+NN/bgQXdPPsDUp47FD7jDoyY
-            VA0LluOwNEm2NHm21EUj5dRoAQkCENp9acfrl46fqTU7JX2NCKtZaqITAekI/xYB
-            gJemwt7up0MYx95/nSu3jm2O5u9qjaxZllxK17os2e4GEj53VkbQoF2Bjt/abo6d
-            UKahaxAwpaaVdpIGdXpyOE6EynjesxG9A+s=
-            =YtE4
+            hJ4DLG005yzvDc8SAwMEfoN8go8johoPUs64IGVqw7aY7rh4sAJw7Hd/UoQJsFeI
+            4g3hQNVDUFjdDTgr1FfCo2SC2LwLGwKWUUWhCkm7zhdMzeViuAc8sHyEUjLjsONX
+            yi8VTUZy64R6OjVDqMXuMPjnVB33lW8xAm6E3D+VdaAWG+Rmi1EelVt7bpGUpX33
+            th6BfDhxCtg+NAS9RRWpLtRoAQkCEEm8B3c8LhY9fjbLn3+IdtfjJWEFdhJN5J5b
+            BqIDbb4fkjKWOdrKGsV4qMmu/XbxnDW8apTK0nCSjeKinORVAMKk6dj39w6Yal5O
+            eIeR/CBaJswye7QYX2NdgFcLKGlGUj/JOJc=
+            =h/s4
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig|secretAccessKey)$
