@@ -29,7 +29,7 @@ spec:
     podLabels:
       app.omnilium.cloud/identifier: pushgateway
     resources: {} # TODO
-    replicaCount: 3
+    replicaCount: 2
     runAsStatefulSet: true
     podAntiAffinity: soft
     topologySpreadConstraints:
