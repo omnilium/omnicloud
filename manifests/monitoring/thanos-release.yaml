@@ -27,8 +27,8 @@ spec:
         nameOverride: thanos
         fullnameOverride: thanos
         objstoreConfig:
-            name: ENC[AES256_GCM,data:rzMVkD0KcEkp5aycqLkVVL6ctAgpoC+U5uCcQw==,iv:IYcdfWBA2rrbqWe08gI+VRUKHOZlQKaRFipEL0hBALI=,tag:PWuWKLk6uxSDH3f7v3s/cA==,type:str]
-            value: ENC[AES256_GCM,data:uTxtprKsDm3W1pRCJpM/7aUJtBnGD6WujCtYiRyHZgQ6lCfCWm6uTEy6xHtDTXrsDigG2eJ71P9KG5F5wsFj08PPMEbgFCT4TJdhJ+ADi33D3QSNQlkBnqJPV7o7pksg15IUQPRqjco93IPhjG0ZlIa5udm2vZBRKqR/KT50ipx7Uqs8F3kNz2IJeJT8EII4ploLURef7p7xICa+PAaz/0f2FwziN9c+9K6G1FdSvozUKiu4ku7J25N7CpFQ0lUZmI0NuozO9gbwC4yARqk740J5qgNSQZptjjCcgM/cr+4yLk/osjt/XMRxQJFT8YVsghf18WijI/g=,iv:K+MsH38MrA5h8q4cJf6Y9eEaOWaKImGCklkM6Jc0Qyc=,tag:oJb0oxXJVxeqAJ9xBkeFgw==,type:str]
+            name: ENC[AES256_GCM,data:aW76SCtVPAwSQQSxKzKrSa71Iya12o9Us44jcQ==,iv:9z/lvtooxW99CQNKe6BYDy2mt0dbg8VLRbnPC5c6nA4=,tag:U4DmDXh8AJYwfjPFxEupEA==,type:str]
+            value: ENC[AES256_GCM,data:YcRqGKUGh5+bkei5vigTqAKdsj28dYuyhdGplpyTCLa/utGwIVGepHUsCUfE7CR0RcIGk/CMnt4Uagbl7tALy/lAhbuFcvSI4x7D3ZBnBShOVH+c3UdEzI8kEJQIK77b3hUr29dcs49Tf9sXMg8bd+hFeIVX7iEC+tpXllUNVKmLmXfi/MpWtDoKq7KiIB7RRCGYDme6XXJnzpAOK/UblQNTU097sSarjZHbKz+n5pwUD2KUbnolULBdQngfPIHVMhW+S0gTZ7gtCuz1yHxGs/E+6qLXMalYSsn8hF1y4639Xpz7kP+ojUE23aCYniKtlWw+125v7AQ=,iv:NHTbRW6QQZzZsYfugHZ/vaHYC8celnakonShIE26efc=,tag:c+ObK4iR4+XOp9vNHqnYcA==,type:str]
         serviceMonitor:
             enabled: true
         compact:
@@ -55,6 +55,9 @@ spec:
             # podDistruptionBudget:
             #   enabled: true
             #   minAvailable: 1
+            extraArgs:
+                - --store=dnssrv+_grpc._tcp.thanos-store-gateway-headless.monitoring.svc.cluster.local
+                - --store=dnssrv+_grpc._tcp.promstack-thanos-discovery.monitoring.svc.cluster.local
             podLabels:
                 app.omnilium.cloud/identifier: thanos
             topologySpreadConstraints:
@@ -104,33 +107,33 @@ sops:
     azure_kv: []
     hc_vault: []
     age: []
-    lastmodified: "2024-04-16T19:32:48Z"
-    mac: ENC[AES256_GCM,data:/GOi/L9dDIEfYwLMq0MDhfgSjC8vafqVciKbBT5+HdD5ccX893TnL1ZyhSfUZQpbg4p1aR+To7E+xeSaACSNqla4jDm7TwOrYwpWdZi39r4xnMFqXBJLAxN/S8rG8X9nXk3yhjyodUrEFRXcRg30N3MwHAAxFSf86QsotHNkXWc=,iv:hNkZYvBjGB7l62wHIi925RLIQRfnUlMwR0Cm3Ns4E1Y=,tag:BeOSaz4hCdnIvvagEtjE2w==,type:str]
+    lastmodified: "2024-04-16T20:23:12Z"
+    mac: ENC[AES256_GCM,data:SO/58hR2p5WhHelpJmd6jKUjtQwPn6HcD1+pv/hx1n9sGg7763snvKDFCj4G+u5mGq5IRnGRpRNZ9njbc17RSDL/ZUsPYV8n1J1xAtpNGqrdZ2C+ixaqMbMiSQZVqqOX71fPq20/U+6q9ugG6JZre7QTFvWHlkliY8cz7SrpHwE=,iv:vJd4VoFqe/II9gsoUKuGdTLNg++T/ck80DMTxbSeT/Q=,tag:ZUQnsJTtnEj1k8w+hPm7jQ==,type:str]
     pgp:
-        - created_at: "2024-04-16T19:32:48Z"
+        - created_at: "2024-04-16T20:23:12Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4D0dRkdsWQFPUSAwME8HFM7oJeNpRZrxKoRFdfatVIxkvK79VbnCWv2gktiRTC
-            rghuutHNg5HK9/JECFsdRKjcTMxF6myie5otGLzu4xkGhMH0pwDsJFeYG/lcfHYf
-            FXggpW4lZ6ik5byxPjyEMDUpZEfRVWuvBvDQ9lrHyTsZmHJcpa5LhRk81yo09s5m
-            og1w2aJ4UM6Gh8RzFO/V1dRmAQkCENw36ie30Dzttvmzr8L+Cit8lIgrFWc4+QV8
-            Bo9h169vjjRmSM+2yGnTmCSBsiTHp746WvVv+HtuF5A8VwxAniEXEGILVkwnPEvf
-            LXaa4++sXHuSqT90s2050rrroCopeJ0s
-            =lZQt
+            hJ4D0dRkdsWQFPUSAwME73xeLijgaK+pkQI5jxxBTLeyTzudeezAveVzBEb1Qd2w
+            rLQPXsgb8aXwb5c/CK3jL2bkvbdL3ScgrL6+1MSYKjxn7KjWqJaKZqjyEDBulYsS
+            Qvcxb6pNEpnBgG/zZm1mMFFMHrwqVtFh0j6QgkrV6HjEeA1ZD/U/G/Q1VyQ4AqLL
+            VDviSM58fI0YuZzvoXdLHtRmAQkCEFvngNrE13gwb2f+UPZNihLfZa7GU/dzKSJy
+            fulpiJjTJpUiXgnj3Oh8UZyCy/bgo1Bo9ZKqFEOl065no1XHBtQqp5g1vHZ7yWbH
+            1rAtwHDf66Q08pHHQOs8A5Cqz2VjHrV+
+            =odgb
             -----END PGP MESSAGE-----
           fp: 0F003E832B1DA1A11CA9F206712F90FA248BBBC2
-        - created_at: "2024-04-16T19:32:48Z"
+        - created_at: "2024-04-16T20:23:12Z"
           enc: |-
             -----BEGIN PGP MESSAGE-----
 
-            hJ4DLG005yzvDc8SAwMEfwdJ1vIAv1xhUn+T3m5+2MYCPWD+SVnylQIzNp2TJ8ar
-            6YI61kj59eP7TNV7ruSu7V7+Rsg8mhFgclpnViuDdZh9+rCLgM9+qDzjXh0hchkx
-            V/iwSvfkED0f3YPSBEUlMBUBFBls95wqJJ7SJF4pe5PJ+C2yiQiYtdcrC+PyWS9G
-            iPnet48s3fyGU+f1Pzhh+tRmAQkCEM1BndZeY8BFnPjL/eLaahap/amDxY2Oapl5
-            VN3q2A7SZuuzw7Tfq+zHSJxrjbptFrzrS8wkIS0XTeZsO1LAkwYJ7uuEF0/3UjRo
-            QX3o6aK9JM23X2pTExvWp9VV/0ACCiVv
-            =Z8GK
+            hJ4DLG005yzvDc8SAwMEwYZfP40nXDbfvR7ehjLOZADWOhfVTjaDojnm83XrTy2k
+            QX9CeR78d7GJcqNlMKb2/sgYOfNvVTSf20j+17KmpBMXb5pkiF6+LoQEaYJBgwsK
+            MDF6EfT/+SESjZCxQLakMCw4um/DZbt9/+QPTucB/Zht48AhkLGcn3l4x/uky2GT
+            XjWEJBvd3fWBwpkNyuTRadRmAQkCEGg61Wob4sybhVMCd5DOiiLdfJMrhdFT+A9G
+            BOUp310649jJnUDv4jLAdWEW3rUzEyEoFZfPzD7hVkvjiG0oBt4NUXcCDHpngvS8
+            SDTfTVaNBK4cu6lOZ41wwVbH7HR/xzhT
+            =HFES
             -----END PGP MESSAGE-----
           fp: 1918B94484C52CDE42CA1B87E7812096B8DA4A52
     encrypted_regex: ^(data|adminPassword|secret_key|secretKey|objstoreConfig)$
